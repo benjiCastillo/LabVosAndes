@@ -11,7 +11,7 @@ use App\Lib\Response,
 class  ExamenGeneralModel
 {
 	private $db;
-	private $table = 'examen-general';
+	private $table = 'examen_general';
 	private $response;
 
 
@@ -72,6 +72,42 @@ class  ExamenGeneralModel
 
 		return $this->response->setResponse(true);
 		}
+
+	public function insertGeneralTest($data){
+
+		//$this->db->insertInto($this->table, $data)
+		//		 ->execute();
+		$this->db_pdo->multi_query(" CALL insertarExamenGeneral('".$data['_color']."',
+														'".$data['_cantidad']."',
+														'".$data['_olor']."',
+														'".$data['_aspecto']."',
+														'".$data['_espuma']."',
+														'".$data['_sedimento']."',
+														'".$data['_densidad']."',
+														'".$data['_reaccion']."',
+														'".$data['_proteinas']."',
+														'".$data['_glucosa']."',
+														'".$data['_cetona']."',
+														'".$data['_bilirrubina']."',
+														'".$data['_sangre']."',
+														'".$data['_nitritos']."',
+														'".$data['_urubilinogeno']."',
+														'".$data['_eritrocitos']."',
+														'".$data['_piocitos']."',
+														'".$data['_leucocitos']."',
+														'".$data['_cilindros']."',
+														'".$data['_celulas']."',
+														'".$data['_cristales']."',
+														'".$data['_otros']."',
+														'".$data['_exa_bac_sed']."',
+														'".$data['_id_examen']."')");
+			$res = $this->db_pdo->store_result();
+			$res = $res->fetch_array();
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res[0],"response"=>true);
+			return $res;	
+	}
+
 	//actualizar
 	public function update($data, $id){
 

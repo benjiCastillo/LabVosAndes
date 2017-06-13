@@ -17,6 +17,13 @@ $app->group('/examen',function(){
 				   	);	
 	});
 
+	$this->get('/testList/',function($req, $res, $args){
+		return $res->withHeader('Content-type', 'aplication/json')
+				   ->write(
+				   		json_encode($this->model->Examen->listarExamenes())
+				   	);	
+	});
+
 		// $this->get('listar-paginado/{l}/{p}',function($req, $res, $args){
 		// 	return $res->withHeader('Content-type', 'aplication/json')
 		// 			   ->write(
@@ -46,6 +53,21 @@ $app->group('/examen',function(){
 			       -> write(
 						json_encode($this->model->Examen->insert($req->getParsedBody()))
 
+				   	);
+	});
+
+	$this->post('/insertTest/',function($req, $res, $args){
+		// $r = UserValidation::validate($req->getParsedBody());
+
+		// if(!$r->response){
+		// 	return $res->withHeader('Content-type', 'aplication/json')
+		// 			   ->withStatus(422)
+		// 			   ->write(json_encode($r->errors));
+		// }
+
+		return $res->withHeader('Content-type', 'aplication/json')
+			       -> write(
+						json_encode($this->model->Examen->insertTest($req->getParsedBody()))
 				   	);
 	});
 

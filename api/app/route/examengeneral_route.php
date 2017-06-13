@@ -42,6 +42,15 @@ $app->group('/examengeneral',function(){
 				   	);
 	});
 
+	$this->post('/insertGeneralTest/',function($req, $res, $args){
+
+		return $res->withHeader('Content-type', 'aplication/json')
+			       -> write(
+						json_encode($this->model->ExamenGeneral->insertGeneralTest($req->getParsedBody()))
+
+				   	);
+	});
+
 	$this->post('/read/',function($req, $res, $args){
 
 

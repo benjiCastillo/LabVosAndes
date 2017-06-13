@@ -72,6 +72,32 @@ class  ExamenModel
 
 		return $this->response->setResponse(true);
 		}
+
+		public function insertTest($data){
+
+		//$this->db->insertInto($this->table, $data)
+		//		 ->execute();
+		$this->db_pdo->multi_query(" CALL insertarExamen('".$data['_tipo_examen']."',
+														'".$data['_id_medico']."',
+														'".$data['_id_paciente']."')");
+			$res = $this->db_pdo->store_result();
+			$res = $res->fetch_array();
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res[0],"response"=>true);
+			return $res;	
+	}
+
+	public function listarExamenes(){
+		$this->db_pdo->multi_query(" CALL listarExamenes()");
+			$res = $this->db_pdo->store_result();
+			while($fila = $res->fetch_assoc()){
+				$arreglo[] = $fila;
+			}
+			$res = $arreglo;
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res,"response"=>true);
+			return $res;	
+	}
 	//actualizar
 	public function update($data, $id){
 
