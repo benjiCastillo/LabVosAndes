@@ -1,7 +1,7 @@
-var app = angular.module('facturacionApp.pacientesCtrl', []);
+var app = angular.module('facturacionApp.pacientesCtrl', ['ngStorage']);
 
 // controlador clientes
-app.controller('pacientesCtrl', ['$scope','$routeParams','pacientesServices', function($scope,$routeParams, pacientesServices){
+app.controller('pacientesCtrl', ['$scope','$routeParams','$window','pacientesServices','$sessionStorage', function($scope,$routeParams,$window, pacientesServices,$sessionStorage){
 	
 	var pag = $routeParams.pag;
 	 $scope.paciente = {};
@@ -69,6 +69,12 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','pacientesServices', fu
             $("#modal-paciente-eliminar").modal("hide");
              $scope.listar();
 		});        
+    }
+
+    $scope.crearExamen = function(paciente){
+        console.log(paciente);
+        $sessionStorage.data = paciente;
+         $window.location.href = '#/paciente/examen/';
     }
 
 }])

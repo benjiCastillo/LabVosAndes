@@ -9,7 +9,7 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://192.168.1.2/LabVosAndes/api/public/examen/testList/',
+					  	url: 'http://192.168.1.8/LabVosAndes/api/public/examen/testList/',
                     	})
                         .then(function successCallback(response) {
                                 // ok

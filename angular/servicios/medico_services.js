@@ -4,13 +4,12 @@ app.factory('medicosServices', ['$http','$q','$rootScope', function($http,$q,$ro
 
 
 var self ={
-
 				insertar : function(datos){
 					var d = $q.defer();
 					console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/',
+					  	url: 'http://192.168.1.8/LabVosAndes/api/public/medico/',
                         // url: 'http://localhost/gitgrad/APIPOLLO/public/observation/read/',
                         data:{
 								nombre:datos.nombre,
@@ -37,7 +36,7 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/',
+					  	url: 'http://192.168.1.8/LabVosAndes/api/public/medico/',
                     	})
                         .then(function successCallback(response) {
                                 // ok
@@ -61,7 +60,7 @@ var self ={
 				
                     $http({
                       method: 'PUT',
-					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/'+user.id,
+					  	url: 'http://192.168.1.8/LabVosAndes/api/public/medico/'+user.id,
 						  data:{
 								nombre:user.nombre,
 								apellidos:user.apellidos
@@ -88,7 +87,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/'+user.id
+					  	url: 'http://192.168.1.8/LabVosAndes/api/public/medico/'+user.id
                     	})
                         .then(function successCallback(response) {
                                 // ok

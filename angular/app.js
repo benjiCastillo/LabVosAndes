@@ -8,6 +8,7 @@ var app = angular.module( 'facturacionApp',[
 		'facturacionApp.dashboardCtrl',
 		'facturacionApp.informeCtrl',
 		'facturacionApp.examenCtrl',
+		'facturacionApp.pacExaCtrl',
 		'facturacionApp.pacientesServices',
 		'facturacionApp.medicosServices',
 		'facturacionApp.informeServices',
@@ -73,9 +74,13 @@ app.config([ '$routeProvider', function($routeProvider){
 			templateUrl: 'dashboard/dashboard.html',
 			controller: 'dashboardCtrl'
 		})
-		.when('/paciente/:pag',{
+		.when('/paciente/',{
 			templateUrl: 'paciente/paciente.html',
 			controller : 'pacientesCtrl'
+		})
+		.when('/paciente/examen/',{
+			templateUrl: 'paciente/examen.html',
+			controller : 'pacExaCtrl'
 		})
 		.when('/medico/:pag',{
 			templateUrl: 'medico/medico.html',
