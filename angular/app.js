@@ -7,9 +7,11 @@ var app = angular.module( 'facturacionApp',[
 		'facturacionApp.medicosCtrl',
 		'facturacionApp.dashboardCtrl',
 		'facturacionApp.informeCtrl',
+		'facturacionApp.examenCtrl',
 		'facturacionApp.pacientesServices',
 		'facturacionApp.medicosServices',
-		'facturacionApp.informeServices'
+		'facturacionApp.informeServices',
+		'facturacionApp.examenServices'
 		]);
 
 
@@ -94,6 +96,10 @@ app.config([ '$routeProvider', function($routeProvider){
 		.when('/reaccion_widal/:pag',{
 			templateUrl: 'examen/reaccion_widal.html',
 			controller : 'reaccionCtrl'
+		})
+		.when('/examen/:pag',{
+			templateUrl: 'examen/examen.html',
+			controller : 'examenCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
