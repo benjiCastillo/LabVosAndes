@@ -6,7 +6,7 @@
 			<h3 class="text-primary box-title">Medicos</h3>
 			<div class="box-tools">
 				<div class="input-group">
-					<a ng-click="mostrarModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar Medico</a>
+					<a ng-click="insertarModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar Medico</a>
 				</div>
 			</div>
 		</div>
@@ -17,28 +17,30 @@
 				Cargando...
 			</center>
 		</div>
-			<table class="table table-hover table-striped" ng-show="medicos.cargado"> 
+		<label for="#">Buscar</label>
+				<input type="text" class="form-control" placeholder="Buscar" ng-model="buscadorMedico" required>
+			<table class="table table-hover table-striped" > 
 				<thead>
 				 <tr> 
-				 	<th>id</th> 
 				 	<th>Nombre</th> 
-				 	<th>Editar</th>
+				 	<th>Apellidos</th>
+					<th>Editar</th>
 				 	<th>Eliminar</th> 
 				 </tr> 
 				</thead> 
 				<tbody>
-				 	<tr ng-repeat="medico in medicos.Medico">
-				 		 <td> {{ medico.id }}</td> 
-				 		 <td> {{ medico.nombre }} </td> 
+				 	<tr ng-repeat="medico in medicos  | filter:buscadorMedico">
+				 		 <td> {{ medico.nombre }}</td> 
+				 		 <td> {{ medico.apellidos }} </td> 
 
-				 		 <td> <a class="btn btn-info"  ng-click="modalEditar( medico )"><i class="fa fa-edit"></i>Editar</a> </td>
+				 		 <td> <a class="btn btn-info"  ng-click="mostrarEditar( medico )"><i class="fa fa-edit"></i>Editar</a> </td>
 
 				 		 <td> <a class="btn btn-danger" ng-click="mostrarEliminar( medico )"><i class="fa fa-remove"></i>Eliminar</a> </td>  
 				 	</tr> 
 				</tbody> 
 			</table>
 		</div>
-		<div class="box-footer clearfix">
+		<!--<div class="box-footer clearfix">
 			<ul class="pagination pagination-sm no-margin pull-right">
 	
 				<li ng-repeat="pag in medicos.paginas"
@@ -48,12 +50,12 @@
 					<a ng-click="moverA(pag)">{{ pag }}</a>
 				</li>		
 			</ul>
-		</div>	
+		</div>	-->
 	</div>
 </div>
 
 </section>
 
-<div ng-include="'template/modal/modal_medico.html'"></div>
-<div ng-include="'template/modal/modal_editar_medico.html'"></div>
-<div ng-include="'template/modal/modal_eliminar_medico.html'"></div>
+<div ng-include="'medico/modal_medico.html'"></div>
+<div ng-include="'medico/modal_editar_medico.html'"></div>
+<div ng-include="'medico/modal_eliminar_medico.html'"></div>

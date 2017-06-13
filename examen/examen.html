@@ -1,0 +1,39 @@
+
+<section class="row fadeInDown animated">
+<div class="col-md-8 col-md-offset-2">
+	<div class="box">
+		<div class="box-header with-border">
+			<h3 class="text-primary box-title">Examenes</h3>
+			<div class="box-tools">
+				<!--<div class="input-group">
+					<a ng-click="insertarModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar Medico</a>
+				</div>-->
+			</div>
+		</div>
+		<div class="box-body">
+		<label for="#">Buscar</label>
+			<input type="text" class="form-control" placeholder="Buscar" ng-model="buscadorExamen" required>
+			<table class="table table-hover table-striped" > 
+				<thead>
+				 <tr> 
+				 	<th>Examen</th> 
+				 	<th>Paciente</th>
+					<th>Medico</th>
+				 	<th>Fecha</th> 
+				 </tr> 
+				</thead> 
+				<tbody>
+				 	<tr ng-repeat="examen in examenes  | filter:buscadorExamen">
+				 		 <td> {{ examen.tipo_examen }}</td> 
+				 		 <td> {{ examen.NombrePac }}  {{ examen.ApellidosPac }} </td> 
+                         <td> {{ examen.NombreMed }} {{ examen.ApellidosMed }} </td> 
+                         <td> {{ examen.fecha }} </td> 
+				 	</tr> 
+				</tbody> 
+			</table>
+		</div>
+
+	</div>
+</div>
+
+</section>

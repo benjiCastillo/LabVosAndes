@@ -49,7 +49,7 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','pacientesServices', fu
         pacientesServices.modificar(pacienteMod).then(function(){
 		    $scope.response = pacientesServices.response;
             console.log($scope.response);
-            $("#modificarModal").modal("hide");
+            $("#modal-editar-paciente").modal("hide");
              $scope.listar();
 		});        
     }

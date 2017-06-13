@@ -2,76 +2,111 @@ var app = angular.module('facturacionApp.medicosServices',[])
 
 app.factory('medicosServices', ['$http','$q','$rootScope', function($http,$q,$rootScope){
 
+
 var self ={
-				 guardar: function( medico ){
-				 	var d = $q.defer()
-					 console.log(medico)
-				 	$http.post('api/public/medico/', medico)
 
-				 	.success(function(respuesta){
-				 	
-				 			self.cargarPagina(self.pag_actual)
-				 			d.resolve()	
-				 	})		
-				 	return d.promise
-				 },
-				 eliminar: function( medico ){
-				 	var d = $q.defer()
-					 console.log("este es un medico"+medico)
-					 $http.delete('api/public/medico/'+medico)
-
-				 	.success(function(respuesta){
-				 	
-				 			self.cargarPagina(self.pag_actual)
-				 			d.resolve()	
-				 				
-				 	})
-				 	return d.promise
-				 },
-				editar: function( medico, id ){
-				 	var d = $q.defer()
-
-					 $http.put('api/public/medico/'+id,medico)
-
-				 	.success(function(respuesta){
-				 	
-				 			self.cargarPagina(self.pag_actual)
-				 			d.resolve()	
-				 				
-				 	})
-				 	return d.promise
-				 },		
-				cargarPagina : function(pag){
-
-					var d = $q.defer()
-					$http.get('api/public/medico/10/'+pag)	
-						.success(function(data){
-								//obtener el numero de paginas
-								var paginas = self.obtenerPaginas(data); 
-
-    							self.cargado		= true;
-    							self.cargando		= false;
-								self.Medico 	    = data.data;
-								self.total          = data.total;
-								self.paginas		= paginas;
-								self.pag_actual     = pag;
+				insertar : function(datos){
+					var d = $q.defer();
+					console.log(datos);
+                    $http({
+                      method: 'POST',
+					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/',
+                        // url: 'http://localhost/gitgrad/APIPOLLO/public/observation/read/',
+                        data:{
+								nombre:datos.nombre,
+								apellidos:datos.apellidos
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								// console.log("Service"+response);
+								return d.resolve()	
+                            }, function errorCallback(response) {
+								
+								self.response 	= response.data
+								return d.resolve();
+                        });
+                       return d.promise;	 
+	
+				},
+				listar : function(){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'GET',
+					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/',
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
 								
 								return d.resolve()	
-								
-						})
-					return d.promise;	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+	
 				},
-
-				obtenerPaginas :function(data){
-							var pag = data.total / 10	;
-							pag = Math.floor(pag);
+				modificar : function(user){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/'+user.id,
+						  data:{
+								nombre:user.nombre,
+								apellidos:user.apellidos
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				eliminar : function(user){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'DELETE',
+					  	url: 'http://192.168.1.2/LabVosAndes/api/public/medico/'+user.id
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				}	   
 					
-							var arr_paginas = new Array(pag);
-							for( var i = 0 ; i<=pag ; i++){
-								arr_paginas[i]=i;
-							}
-							return arr_paginas;
-				}
 
 	}
 

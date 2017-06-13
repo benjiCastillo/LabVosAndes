@@ -4,155 +4,66 @@ var app = angular.module('facturacionApp.medicosCtrl', []);
 app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', function($scope,$routeParams, medicosServices){
 	
 	var pag = $routeParams.pag
+	$scope.medicos = "";
+    $scope.medicos.respuesta = "";
+	$scope.nro = 1;
+   
+	$scope.listar = function(){
+			medicosServices.listar().then(function(){
+				$scope.medicos = medicosServices.response;
+                console.log($scope.medicos)
+			});
+    }
 
-	$scope.activar('Mmedico','', 'medicosServices', 'Lista')
-	$scope.medicos = {}
-	$scope.medicoSel = {}
-	$scope.accion = ""
-	$scope.medicoEditado = {}
-
-	//variable para mandar a la vista lo recuperado de la promise
-	$scope.medicos = {
-		'cargando':true
-	}
-
-	$scope.moverA = function(pag){
-
-		$scope.medicos = {
-			'cargando' : true
-		}
-
-		medicosServices.cargarPagina(pag).then(function(){
-			$scope.medicos = medicosServices
-
-		});
+    $scope.listar();
+    
+	$scope.insertarModal = function(){
+			$("#modal-medico").modal();
+    }
 	
-	}
-
-	$scope.moverA(pag);
-
-	//Mostrar Modal de Edicion y Creacion
-
-	$scope.mostrarModal = function(  ){
-		// console.log(medico)
-		
-		$("#modal-medico").modal();
-
-			$scope.medicoEditado.respuesta={
-				'err':false,
-				'cargado':false
-			}
+	$scope.insertar = function(medico){
+		console.log(medico);
+		 medicosServices.insertar(medico).then(function(){
+		    $scope.response = medicosServices.response;
+            console.log($scope.response);
+            $("#modal-medico").modal("hide");
+             $scope.listar();
+		});
 
 	}
+    
+    $scope.mostrarEditar = function(medico){
+        // console.log(medico);
+        $scope.medico = medico
+        $("#modal-editar-medico").modal();
+    }
 
-	$scope.modalEditar = function( medico ){
-		// console.log(medico)
+    $scope.modificar = function(medicoMod){
+		console.log(medicoMod)
+        medicosServices.modificar(medicoMod).then(function(){
+		    $scope.response = medicosServices.response;
+            console.log($scope.response);
+            $("#modal-editar-medico").modal("hide");
+             $scope.listar();
+		});        
+    }
 
-		angular.copy(medico, $scope.medicoSel)
-		
-		$("#modal-editar-medico").modal();
+	$scope.mostrarEliminar = function(medico){
+        // console.log(medico);
+        $scope.medico = medico;
+		console.log(medico)
+        $("#modal-medico-eliminar").modal();
+    }
 
-			$scope.medicoEditado.respuesta={
-				'err':false,
-				'cargado':false
-			}
+	$scope.eliminar = function(medico){
+		console.log(medico)
+        medicosServices.eliminar(medico).then(function(){
+		    $scope.response = medicosServices.response;
+            console.log($scope.response);
+            $("#modal-medico-eliminar").modal("hide");
+             $scope.listar();
+		});        
+    }
 
-
-	}
-
-	//Funcion para guardar
-
-	$scope.guardar = function( medico){
-
-		$scope.medicoEditado = medicosServices
-		$scope.medicoEditado = {
-			'respuesta':{
-					'err':true,
-					'cargado':false
-				}
-			}
-		medicosServices.guardar( medico ).then(function(){
-
-			$scope.medicoEditado = medicosServices
-			$scope.medicoEditado.respuesta={
-				'cargado':true
-			}
-
-					setTimeout(function(){
-						document.getElementById("medNombre").value = ""	
-						$("#modal-medico").modal("hide");
-						
-					},500)
-		})
-	}
-
-	$scope.editar = function( medico,frmmedico){
-
-		$scope.medicoEditado = medicosServices
-		$scope.medicoEditado = {
-			'respuesta':{
-					'err':true,
-					'cargado':false
-				}
-			}
-		var id     = medico.id
-		delete medico['id'];
-		delete medico['fecha_a'];
-
-		medicosServices.editar( medico,id ).then(function(){
-
-			$scope.medicoEditado = medicosServices
-			$scope.medicoEditado.respuesta={
-				'cargado':true
-			}
-
-					setTimeout(function(){
-						document.getElementById("medNombre").value = ""	
-						$("#modal-editar-medico").modal("hide");
-						
-					},500)
-		})
-	}
-
-	//eliminar
-
-		$scope.mostrarEliminar = function( medico ){
-		// console.log(medico)
-
-			angular.copy(medico, $scope.medicoSel)
-
-			$("#modal-medico-eliminar").modal();
-
-			$scope.medicoEditado.respuesta={
-					'cargado':false
-			}
-
-		}
-
-		$scope.eliminar = function( medico ){
-			$scope.medicoEditado = medicosServices
-			$scope.medicoEditado = {
-			'respuesta':{
-					'err':true,
-					'cargado':false
-				}
-			}
-			medicosServices.eliminar( medico.id ).then(function(){
-
-			$scope.medicoEditado = medicosServices
-			$scope.medicoEditado.respuesta={
-				'cargado':true
-			}
-
-					setTimeout(function(){
-
-						$("#modal-medico-eliminar").modal("hide");
-						$scope.medicoSel = {}	
-						//frmmedico.autoValidateFormOptions.resetForm();
-
-					},1000)
-			})
-
-		}
 
 }])
