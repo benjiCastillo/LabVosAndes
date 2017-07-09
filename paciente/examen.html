@@ -1,1 +1,71 @@
-<h1>{{ paciente | json}}</h1>
+<div class="container">
+    <div class="well">
+        <p><b>Paciente: </b> <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span></p>
+        <p><b>Edad: </b> <span>{{ paciente.edad }}</span></p>
+        <p><b>Sexo: </b><span>{{ paciente.sexo }}</span></p>
+        <br>
+         <div class="form-group">
+            <label for="miembroInput" class="text-info">Medico</label>    
+                <select  class="form-control" ng-model="medico">
+                    <option   ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+                </select>
+         </div>       
+         <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Crear Examen</button>
+    </div>
+    <section class="animate fadeIn" ng-show="verExamenes"> 
+        <div class="row">
+            <h2 class="text-primary">Elija Examen</h2>
+            <div class="col-md-4" ng-click="modalInsertarBio()">
+                <div class="well well-examen">
+                    Biometria
+                </div>
+            </div>
+            <div class="col-md-4" ng-click="modalInsertarBio()">
+                <div class="well well-examen">
+                    Analisis General
+                </div>
+            </div>
+            <div class="col-md-4" ng-click="modalInsertarBio()">
+                <div class="well well-examen">
+                    Reaccion de Widal
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" ng-click="modalInsertarInfo('Informe General')">
+                <div class="well well-examen">
+                    Informe - General
+                 </div>
+            </div>
+            <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Quimica Sanguinea')">
+                <div class="well well-examen well-examen">
+                     Informe - Quimica Sanguinea
+                </div>
+            </div>
+            <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Parasitologia')">
+                <div class="well well-examen">
+                     Informe - Parasitologia
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-4" ng-click="modalInsertarInfo('informe de Microbiologia')">
+                <div class="well well-examen">
+                    Informe - Microbiologia
+                </div>
+            </div>
+             
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+            <h2 class="texti-info">Examenes</h2>
+        </div>
+    </section>
+</div>
+
+
+<div ng-include="'paciente/modal-insertar-informe.html'"></div>

@@ -12,7 +12,9 @@ var app = angular.module( 'facturacionApp',[
 		'facturacionApp.pacientesServices',
 		'facturacionApp.medicosServices',
 		'facturacionApp.informeServices',
-		'facturacionApp.examenServices'
+		'facturacionApp.examenServices',
+		'facturacionApp.pacientesExamenServices',
+		
 		]);
 
 
