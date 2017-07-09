@@ -11,7 +11,7 @@ use App\Lib\Response,
 class  InformesGModel
 {
 	private $db;
-	private $table = 'informes-g';
+	private $table = 'informes_g';
 	private $response;
 
 
@@ -72,6 +72,19 @@ class  InformesGModel
 
 		return $this->response->setResponse(true);
 		}
+
+	public function insertarInformeG($data){
+
+		//$this->db->insertInto($this->table, $data)
+		//		 ->execute();
+		$this->db_pdo->multi_query(" CALL insertarInformeG('".$data['_nombre']."',
+														'".$data['_contenido']."')");
+			$res = $this->db_pdo->store_result();
+			$res = $res->fetch_array();
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res[0],"response"=>true);
+			return $res;
+	}
 	//actualizar
 	public function update($data, $id){
 

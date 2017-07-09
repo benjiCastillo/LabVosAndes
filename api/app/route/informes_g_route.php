@@ -9,7 +9,7 @@ use App\Lib\Response;
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 });
 
-$app->group('/informes-g',function(){
+$app->group('/informesg',function(){
 
 	$this->get('/',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'aplication/json')
@@ -49,6 +49,17 @@ $app->group('/informes-g',function(){
 
 				   	);
 	});
+
+	$this->post('/insertReport/',function($req, $res, $args){
+		return $res->withHeader('Content-type', 'aplication/json')
+			       -> write(
+						json_encode($this->model->InformesG->insertarInformeG($req->getParsedBody()))
+
+				   	);
+	});
+
+
+
 
 	$this->put('/{id}',function($req, $res, $args){
 
