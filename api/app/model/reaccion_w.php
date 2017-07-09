@@ -11,7 +11,7 @@ use App\Lib\Response,
 class  ReaccionWModel
 {
 	private $db;
-	private $table = 'reaccion-w';
+	private $table = 'reaccion_w';
 	private $response;
 
 
@@ -91,6 +91,5 @@ class  ReaccionWModel
 
 
 }
-
 
  ?>

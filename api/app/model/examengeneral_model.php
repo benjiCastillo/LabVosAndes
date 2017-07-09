@@ -99,8 +99,7 @@ class  ExamenGeneralModel
 														'".$data['_celulas']."',
 														'".$data['_cristales']."',
 														'".$data['_otros']."',
-														'".$data['_exa_bac_sed']."',
-														'".$data['_id_examen']."')");
+														'".$data['_exa_bac_sed']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);

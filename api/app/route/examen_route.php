@@ -40,6 +40,14 @@ $app->group('/examen',function(){
 				   	);
 	});
 
+	$this->get('/testListPac/{id}',function($req, $res, $args){
+		return $res->withHeader('Content-type', 'aplication/json')
+				   ->write(
+				   		json_encode($this->model->Examen->listarExamenesPac($args['id']))
+				   		
+				   	);
+	});
+
 	$this->post('/',function($req, $res, $args){
 		// $r = UserValidation::validate($req->getParsedBody());
 
@@ -56,6 +64,23 @@ $app->group('/examen',function(){
 				   	);
 	});
 
+	$this->post('/insertType/',function($req, $res, $args){
+		// $r = UserValidation::validate($req->getParsedBody());
+
+		// if(!$r->response){
+		// 	return $res->withHeader('Content-type', 'aplication/json')
+		// 			   ->withStatus(422)
+		// 			   ->write(json_encode($r->errors));
+		// }
+
+		return $res->withHeader('Content-type', 'aplication/json')
+			       -> write(
+						json_encode($this->model->Examen->insertarTipo($req->getParsedBody()))
+
+				   	);
+	});
+
+	
 	$this->post('/insertTest/',function($req, $res, $args){
 		// $r = UserValidation::validate($req->getParsedBody());
 
@@ -70,6 +95,7 @@ $app->group('/examen',function(){
 						json_encode($this->model->Examen->insertTest($req->getParsedBody()))
 				   	);
 	});
+
 
 	$this->put('/{id}',function($req, $res, $args){
 
