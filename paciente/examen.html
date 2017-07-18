@@ -15,12 +15,12 @@
     <section class="animate fadeIn" ng-show="verExamenes"> 
         <div class="row">
             <h2 class="text-primary">Elija Examen</h2>
-            <div class="col-md-4" ng-click="modalInsertarBio()">
+            <div class="col-md-4" ng-click="modalInsertarBio('Biometria')">
                 <div class="well well-examen">
                     Biometria
                 </div>
             </div>
-            <div class="col-md-4" ng-click="modalInsertarBio()">
+            <div class="col-md-4" ng-click="modalInsertarExamenGeneral('Analisis General')">
                 <div class="well well-examen">
                     Analisis General
                 </div>
@@ -62,10 +62,36 @@
 
     <section>
         <div class="row">
-            <h2 class="texti-info">Examenes</h2>
+            <div class="col-md-16">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h2 class="text-info">Examenes</h2>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nro</th>
+                                    <th>Nombre</th>
+                                    <th>Ver</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="examen in examenPaciente">
+                                    <td>{{ $index+1 }}</td>
+                                    <td>{{ examen.tipo }}</td>
+                                    <td>{{ examen.id_tipo }}</td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>
 
 
 <div ng-include="'paciente/modal-insertar-informe.html'"></div>
+<div ng-include="'paciente/modal-insertar-general.html'"></div>
+<div ng-include="'paciente/modal-inserta-biometria.html'"></div>

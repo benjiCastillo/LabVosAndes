@@ -63,7 +63,6 @@ class  ExamenModel
 								->fetch();  						 
 	}
 	//registrar
-
 	public function insert($data){
 		// $data['password'] = md5($data['password']);
 

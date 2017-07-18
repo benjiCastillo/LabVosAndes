@@ -10,7 +10,7 @@ var self ={
 					console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://192.168.1.9/LabVosAndes/api/public/examen/insertTest/',
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/insertTest/',
                         data:{
 								_id_medico:datos.id_medico,
 								_id_paciente:datos.id_paciente
@@ -31,7 +31,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://192.168.1.9/LabVosAndes/api/public/informesg/insertReport/',
+					  	url: 'http://localhost/LabVosAndes/api/public/informesg/insertReport/',
                         data:{
 								_nombre:datos.nombre,
 								_contenido:datos.informe
@@ -52,7 +52,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://192.168.1.9/LabVosAndes/api/public/examen/insertType/',
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/insertType/',
                         data:{
 								_id_examen:datos.id_examen,
 								_tipo:datos.tipo,
@@ -74,7 +74,7 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://192.168.1.9/LabVosAndes/api/public/medico/',
+					  	url: 'http://localhost/LabVosAndes/api/public/medico/',
                     	})
                         .then(function successCallback(response) {
                                 // ok
@@ -93,6 +93,25 @@ var self ={
                        return d.promise;	
 	
 				},
+				listarExaPac : function(id){
+						var d = $q.defer();
+                    $http({
+                      method: 'GET',
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/testListPac/'+id,
+                    	})
+                        .then(function successCallback(response) {
+
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+
+                            	return d.resolve()	
+
+								self.response 	= response.data
+                        });
+                       return d.promise;	
+				}
 
 
 	}
