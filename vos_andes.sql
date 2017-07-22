@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-07-2017 a las 14:15:34
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.8
+-- Tiempo de generación: 22-07-2017 a las 04:23:15
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,30 +34,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarBiometria` (IN `_hematies` 
 	END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
-DECLARE _id_examen INT;
-	    IF ( SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
-        	IF ( SELECT EXISTS (SELECT * FROM paciente WHERE id = _id_paciente))THEN 
-				INSERT INTO examen(id_medico, id_paciente) VALUES(_id_medico, _id_paciente);
-                SET _id_examen = (SELECT @@identity AS id);
-                SELECT _id_examen as respuesta;
-   			ELSE
-                SELECT 0 as respuesta;
-            END IF;
-		ELSE
-			SELECT 2;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamenGeneral` (IN `_color` VARCHAR(10), IN `_cantidad` VARCHAR(10), IN `_olor` VARCHAR(10), IN `_aspecto` VARCHAR(10), IN `_espuma` VARCHAR(10), IN `_sedimento` VARCHAR(10), IN `_densidad` VARCHAR(10), IN `_reaccion` VARCHAR(10), IN `_proteinas` VARCHAR(10), IN `_glucosa` VARCHAR(10), IN `_cetona` VARCHAR(10), IN `_bilirrubina` VARCHAR(10), IN `_sangre` VARCHAR(10), IN `_nitritos` VARCHAR(10), IN `_urubilinogeno` VARCHAR(10), IN `_eritrocitos` VARCHAR(10), IN `_piocitos` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_cilindros` VARCHAR(10), IN `_celulas` VARCHAR(10), IN `_cristales` VARCHAR(10), IN `_otros` VARCHAR(10), IN `_exa_bac_sed` VARCHAR(10))  BEGIN
-	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id = _id_examen))THEN 
-		INSERT INTO examen_general(color, cantidad, olor, aspecto, espuma, sedimento, densidad, reaccion, proteinas, glucosa, cetona, bilirrubina, sangre, nitritos, urubilinogeno, eritrocitos, piocitos, leucocitos, cilindros, celulas, cristales, otros, exa_bac_sed, id_examen) VALUES(_color, _cantidad, _olor, _aspecto, _espuma, _sedimento, _densidad, _reaccion, _proteinas, _glucosa, _cetona, _bilirrubina, _sangre, _nitritos, _urubilinogeno, _eritrocitos, _piocitos, _leucocitos, _cilindros, _celulas, _cristales, _otros, _exa_bac_sed);
-		SELECT 1 as respuesta;
-	ELSE
-		SELECT 0 AS respuesta;
-	END IF;
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarInformeG` (IN `_nombre` VARCHAR(35), IN `_contenido` VARCHAR(400))  BEGIN
 	INSERT INTO informes_g(nombre, contenido)VALUES(_nombre, _contenido);
     SELECT @@identity AS respuesta;
@@ -66,16 +42,6 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75), IN `_edad` VARCHAR(3), IN `_sexo` CHAR(1))  BEGIN
 	INSERT INTO paciente(nombre, apellidos, edad, sexo) VALUES(_nombre, _apellidos, _edad, _sexo);
     SELECT 0;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VARCHAR(5), IN `_paraA2` VARCHAR(5), IN `_paraA3` VARCHAR(5), IN `_paraA4` VARCHAR(5), IN `_paraA5` VARCHAR(5), IN `_paraA6` VARCHAR(5), IN `_paraB1` VARCHAR(5), IN `_paraB2` VARCHAR(5), IN `_paraB3` VARCHAR(5), IN `_paraB4` VARCHAR(5), IN `_paraB5` VARCHAR(5), IN `_paraB6` VARCHAR(5), IN `_somaticoO1` VARCHAR(5), IN `_somaticoO2` VARCHAR(5), IN `_somaticoO3` VARCHAR(5), IN `_somaticoO4` VARCHAR(5), IN `_somaticoO5` VARCHAR(5), IN `_somaticoO6` VARCHAR(5), IN `_flagelarH1` VARCHAR(5), IN `_flagelarH2` VARCHAR(5), IN `_flagelarH3` VARCHAR(5), IN `_flagelarH4` VARCHAR(5), IN `_flagelarH5` VARCHAR(5), IN `_flagelarH6` VARCHAR(5))  BEGIN
-	IF (SELECT EXISTS(SELECT * FROM examen where id = _id_examen))THEN
-		INSERT INTO reaccion_w(paraA1, paraA2, paraA3, paraA4, paraA5, paraA6, paraB1, paraB2, paraB3, paraB4, paraB5, paraB6, somaticoO1, somaticoO2, somaticoO3, somaticoO4, somaticoO5, somaticoO6, flagelarH1, flagelarH2, flagelarH3, flagelarH4, flagelarH5, flagelarH6) 
-		VALUES (_paraA1, _paraA2, _paraA3, _paraA4, _paraA5, _paraA6, _paraB1, _paraB2, _paraB3, _paraB4, _paraB5, _paraB6, _somaticoO1, _somaticoO2, _somaticoO3, _somaticoO4, _somaticoO5, _somaticoO6, _flagelarH1, _flagelarH2, _flagelarH3, _flagelarH4, _flagelarH5, _flagelarH6);
-		SELECT 1 AS respuesta;
-	ELSE
-		SELECT 0;
-	END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTipo` (IN `_tipo` VARCHAR(25), IN `_id_examen` INT, IN `_id_tipo` INT)  BEGIN
@@ -98,6 +64,41 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenesPac` (IN `_id_examen`
     ELSE
 		SELECT 0 AS respuesta;
     END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
+DECLARE _id_examen INT;
+	    IF (SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
+        	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente))THEN 
+				SET _id_examen = (SELECT id FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente);
+                SELECT _id_examen as respuesta;
+			ELSE
+				INSERT INTO examen(id_medico, id_paciente) VALUES(_id_medico, _id_paciente);
+				SET _id_examen = (SELECT @@identity AS id);
+				SELECT _id_examen as respuesta;
+            END IF;    
+   			ELSE
+                SELECT 0 as respuesta;
+    END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamenGeneral` (IN `_color` VARCHAR(10), IN `_cantidad` VARCHAR(10), IN `_olor` VARCHAR(10), IN `_aspecto` VARCHAR(10), IN `_espuma` VARCHAR(10), IN `_sedimento` VARCHAR(10), IN `_densidad` VARCHAR(10), IN `_reaccion` VARCHAR(10), IN `_proteinas` VARCHAR(10), IN `_glucosa` VARCHAR(10), IN `_cetona` VARCHAR(10), IN `_bilirrubina` VARCHAR(10), IN `_sangre` VARCHAR(10), IN `_nitritos` VARCHAR(10), IN `_urubilinogeno` VARCHAR(10), IN `_eritrocitos` VARCHAR(10), IN `_piocitos` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_cilindros` VARCHAR(10), IN `_celulas` VARCHAR(10), IN `_cristales` VARCHAR(10), IN `_otros` VARCHAR(10), IN `_exa_bac_sed` VARCHAR(10))  BEGIN
+	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id = _id_examen))THEN 
+		INSERT INTO examen_general(color, cantidad, olor, aspecto, espuma, sedimento, densidad, reaccion, proteinas, glucosa, cetona, bilirrubina, sangre, nitritos, urubilinogeno, eritrocitos, piocitos, leucocitos, cilindros, celulas, cristales, otros, exa_bac_sed, id_examen) VALUES(_color, _cantidad, _olor, _aspecto, _espuma, _sedimento, _densidad, _reaccion, _proteinas, _glucosa, _cetona, _bilirrubina, _sangre, _nitritos, _urubilinogeno, _eritrocitos, _piocitos, _leucocitos, _cilindros, _celulas, _cristales, _otros, _exa_bac_sed);
+		SELECT 1 as respuesta;
+	ELSE
+		SELECT 0 AS respuesta;
+	END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VARCHAR(5), IN `_paraA2` VARCHAR(5), IN `_paraA3` VARCHAR(5), IN `_paraA4` VARCHAR(5), IN `_paraA5` VARCHAR(5), IN `_paraA6` VARCHAR(5), IN `_paraB1` VARCHAR(5), IN `_paraB2` VARCHAR(5), IN `_paraB3` VARCHAR(5), IN `_paraB4` VARCHAR(5), IN `_paraB5` VARCHAR(5), IN `_paraB6` VARCHAR(5), IN `_somaticoO1` VARCHAR(5), IN `_somaticoO2` VARCHAR(5), IN `_somaticoO3` VARCHAR(5), IN `_somaticoO4` VARCHAR(5), IN `_somaticoO5` VARCHAR(5), IN `_somaticoO6` VARCHAR(5), IN `_flagelarH1` VARCHAR(5), IN `_flagelarH2` VARCHAR(5), IN `_flagelarH3` VARCHAR(5), IN `_flagelarH4` VARCHAR(5), IN `_flagelarH5` VARCHAR(5), IN `_flagelarH6` VARCHAR(5))  BEGIN
+	IF (SELECT EXISTS(SELECT * FROM examen where id = _id_examen))THEN
+		INSERT INTO reaccion_w(paraA1, paraA2, paraA3, paraA4, paraA5, paraA6, paraB1, paraB2, paraB3, paraB4, paraB5, paraB6, somaticoO1, somaticoO2, somaticoO3, somaticoO4, somaticoO5, somaticoO6, flagelarH1, flagelarH2, flagelarH3, flagelarH4, flagelarH5, flagelarH6) 
+		VALUES (_paraA1, _paraA2, _paraA3, _paraA4, _paraA5, _paraA6, _paraB1, _paraB2, _paraB3, _paraB4, _paraB5, _paraB6, _somaticoO1, _somaticoO2, _somaticoO3, _somaticoO4, _somaticoO5, _somaticoO6, _flagelarH1, _flagelarH2, _flagelarH3, _flagelarH4, _flagelarH5, _flagelarH6);
+		SELECT 1 AS respuesta;
+	ELSE
+		SELECT 0;
+	END IF;
 END$$
 
 DELIMITER ;
@@ -149,20 +150,8 @@ CREATE TABLE `examen` (
 --
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(1, '2017-06-13 06:05:14', 2, 2),
-(2, '2017-06-13 06:58:56', 2, 17),
-(3, '2017-06-13 06:59:00', 2, 17),
-(4, '2017-06-13 06:59:01', 2, 17),
-(5, '2017-06-13 15:14:27', 2, 2),
-(6, '2017-06-15 19:36:49', 2, 17),
-(7, '2017-07-09 01:27:11', 5, 17),
-(8, '2017-07-09 01:29:30', 4, 17),
-(9, '2017-07-09 01:38:31', 4, 17),
-(10, '2017-07-09 01:40:37', 4, 17),
-(11, '2017-07-09 01:45:32', 4, 17),
-(12, '2017-07-09 03:26:35', 4, 17),
-(13, '2017-07-09 04:28:13', 4, 17),
-(14, '2017-07-09 04:28:14', 4, 17);
+(28, '2017-07-20 17:23:11', 5, 18),
+(29, '2017-07-20 17:38:15', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -212,7 +201,7 @@ INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `esp
 
 CREATE TABLE `examen_tipo` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `id_examen` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -226,7 +215,12 @@ INSERT INTO `examen_tipo` (`id`, `tipo`, `id_examen`, `id_tipo`) VALUES
 (4, 'Quimica Sanguinea', 14, 50),
 (5, 'Quimica Sanguinea', 14, 51),
 (6, 'Informe de Parasitologia', 14, 52),
-(7, 'Informe de Parasitologia', 14, 53);
+(7, 'Informe de Parasitologia', 14, 53),
+(8, 'Informe de Quimica Sangui', 15, 55),
+(9, 'Informe de Parasitologia', 15, 56),
+(10, 'informe de Microbiologia', 15, 57),
+(11, 'Informe de Parasitologia', 15, 58),
+(12, 'Informe General', 18, 59);
 
 -- --------------------------------------------------------
 
@@ -268,7 +262,15 @@ INSERT INTO `informes_g` (`id`, `nombre`, `contenido`) VALUES
 (50, 'Quimica Sanguinea', 'asdfasdfasdf'),
 (51, 'Quimica Sanguinea', 'Este informe es de quimica sanguinea'),
 (52, 'Informe de Parasitologia', 'fsfasdfasdf'),
-(53, 'Informe de Parasitologia', 'Este informe es de Parasitologia');
+(53, 'Informe de Parasitologia', 'Este informe es de Parasitologia'),
+(54, 'Informe General', 'Este es un informe General'),
+(55, 'Informe de Quimica Sanguinea', 'informe de Quimica Sanguinea'),
+(56, 'Informe de Parasitologia', 'Informe de Parasitologia'),
+(57, 'informe de Microbiologia', 'Informe de Microbiologia!!'),
+(58, 'Informe de Parasitologia', 'Informe de Parasitologia'),
+(59, 'Informe General', 'Este es un informe general'),
+(60, 'Informe', ''),
+(61, 'Informe', '');
 
 -- --------------------------------------------------------
 
@@ -289,7 +291,8 @@ CREATE TABLE `medico` (
 INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
 (2, 'Laura', 'Risueño'),
 (4, 'Kaya', 'Negron'),
-(5, 'Harold', 'Castillo Eguez');
+(5, 'Harold', 'Castillo Eguez'),
+(6, 'Robin', 'Flores');
 
 -- --------------------------------------------------------
 
@@ -314,7 +317,9 @@ INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `estado`) V
 (2, 'Soledad Nina', 'Huanca', '50', 'F', '1'),
 (12, 'Diego', 'Escalante Antezana', '22', 'M', '1'),
 (13, 'Andrian', 'Catalan', '41', 'M', '1'),
-(17, 'Harold', 'Castillo', '22', 'M', '1');
+(17, 'Harold', 'Castillo', '22', 'M', '1'),
+(18, 'Delicia', 'Eguez Alvarez', '51', 'F', '1'),
+(19, 'Benjamin Andres', 'Castillo Fernandez', '52', 'M', '1');
 
 -- --------------------------------------------------------
 
@@ -410,12 +415,12 @@ ALTER TABLE `reaccion_w`
 -- AUTO_INCREMENT de la tabla `biometria`
 --
 ALTER TABLE `biometria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
@@ -425,22 +430,22 @@ ALTER TABLE `examen_general`
 -- AUTO_INCREMENT de la tabla `examen_tipo`
 --
 ALTER TABLE `examen_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
