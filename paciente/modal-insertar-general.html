@@ -103,16 +103,18 @@
               </div>
               <div class="form-group">
                   <label class="col-sm-2">Otros</label>
-                    <textarea ng-model="examenGeneral.otros" class="col-sm-10" id="" cols="30" rows="5" required></textarea>
+                    <textarea ng-model="examenGeneral.otros1" class="col-sm-10" id="" cols="30" rows="5" required></textarea>
               </div>
               <div class="form-group">
                   <label class="col-sm-12">Examen Bacteriologico Sedimento</label>
-                    <textarea ng-model="examenGeneral.otros" class="col-sm-10 col-md-offset-2" id="" cols="10" rows="5" required></textarea>
+                    <textarea ng-model="examenGeneral.otros2" class="col-sm-10 col-md-offset-2" id="" cols="10" rows="5" required></textarea>
               </div>
             </div>
           </div>
       </div>
-      
+      <pre>
+        {{ examenGeneral | json }}
+      </pre>
 
       <div class="modal-footer">
 

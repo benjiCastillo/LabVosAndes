@@ -72,11 +72,9 @@ class  ExamenModel
 		return $this->response->setResponse(true);
 		}
 
-		public function insertTest($data){
-
-		//$this->db->insertInto($this->table, $data)
-		//		 ->execute();
-		$this->db_pdo->multi_query(" CALL insertarExamen('".$data['_id_medico']."',
+	/* INSERTAR EXAMEN */
+	public function insertTest($data){
+		$this->db_pdo->multi_query("CALL insertarExamen('".$data['_id_medico']."',
 														'".$data['_id_paciente']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();

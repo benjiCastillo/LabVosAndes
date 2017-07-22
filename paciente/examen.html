@@ -10,7 +10,7 @@
                     <option   ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                 </select>
          </div>       
-         <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Crear Examen</button>
+    <!--<button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>-->
     </div>
     <section class="animate fadeIn" ng-show="verExamenes"> 
         <div class="row">
@@ -25,7 +25,7 @@
                     Analisis General
                 </div>
             </div>
-            <div class="col-md-4" ng-click="modalInsertarBio()">
+            <div class="col-md-4" ng-click="modalInsertarReaccion('Reaccio de Widal')">
                 <div class="well well-examen">
                     Reaccion de Widal
                 </div>
@@ -95,3 +95,4 @@
 <div ng-include="'paciente/modal-insertar-informe.html'"></div>
 <div ng-include="'paciente/modal-insertar-general.html'"></div>
 <div ng-include="'paciente/modal-inserta-biometria.html'"></div>
+<div ng-include="'paciente/modal-insertar-reaccion.html'"></div>

@@ -13,6 +13,8 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
      $scope.informe.nombre = "Informe";
      $scope.biometria = {};
      $scope.biometria.nombre = "Biometria"; 
+     $scope.reaccion = {};
+     $scope.reaccion.nombre = "Reaccion de Widal";
 
      $scope.alterSexo = function(){
         if($scope.paciente.sexo == "M"){
@@ -72,9 +74,24 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         $("#modal-insertar-biometria").modal();
         $scope.biometria.id_examen =  $sessionStorage.idExamen;
     }
+    //modal reaccion de widal
+    $scope.modalInsertarReaccion = function(nombre){
+        console.log(nombre);
+        $("#modal-insertar-reaccion").modal();
+        $scope.reaccion.id_examen =  $sessionStorage.idExamen;
+    }
 
+    /* INSERTAR DATOS */
 
+    // insertar Examen General
+    $scope.insertarExamenGeneral = function(examenGeneral){
+        pacientesExamenServices.insertarTipo(datos).then(function(){
+		    $scope.insertTipo = pacientesExamenServices.response;
+                console.log($scope.insertTipo);
+		});
 
+    }
+    //insetar tipo
     $scope.insertarTipo = function (datos){
         pacientesExamenServices.insertarTipo(datos).then(function(){
 		    $scope.insertTipo = pacientesExamenServices.response;
@@ -100,9 +117,8 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
 		});
        
     }
-//listar paciente
+//listar examen paciente
     $scope.listarExaPac = function(id){
-
         pacientesExamenServices.listarExaPac(id).then(function(){
             $scope.examenPaciente = pacientesExamenServices.response.message;
             console.log($scope.examenPaciente);
