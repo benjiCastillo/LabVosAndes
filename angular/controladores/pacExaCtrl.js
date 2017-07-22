@@ -8,6 +8,11 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
      $scope.examen = {};
      $scope.btnInsertarExa = true;
      $scope.verExamenes = true;
+     
+     $scope.verExamenesPaciente = false;
+     $scope.cargandoDatosExamenes = false;
+     $scope.noExistenExamenes = false;
+     
      $scope.informe = {};
      $scope.examenGeneral = {}; 
      $scope.informe.nombre = "Informe";
@@ -61,7 +66,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         $scope.examenGeneral.nombre = examenGeneral;
         $scope.examenGeneral.id_examen =  $sessionStorage.idExamen;
     }
-    //modal insetar informe 
+    //modal insertar informe 
     $scope.modalInsertarInfo = function(nombreInforme){
         console.log(nombreInforme);
         $("#modal-insertar-informe").modal();
@@ -112,20 +117,31 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
                  $scope.tipo.id_examen = informe.id_examen;
                  console.log($scope.tipo);
                  $scope.insertarTipo($scope.tipo);
-                $scope.listarExaPac($sessionStorage.idExamen);
+                $scope.listarExaPac($scope.paciente.id);
             } 
 		});
-       
     }
 //listar examen paciente
     $scope.listarExaPac = function(id){
+        $scope.cargandoDatosExamenes = true;
         pacientesExamenServices.listarExaPac(id).then(function(){
             $scope.examenPaciente = pacientesExamenServices.response.message;
             console.log($scope.examenPaciente);
+            $scope.cargandoDatosExamenes = false;
+            if($scope.examenPaciente[0].respuesta){
+                if($scope.examenPaciente[0].respuesta == 0){
+                    $scope.noExistenExamenes = true;
+                    console.log($scope.examenPaciente[0].respuesta)
+                }
+            }else{
+                $scope.verExamenesPaciente = true;
+                $scope.noExistenExamenes = false;    
+            }
+            
         })
 
     }
-    $scope.listarExaPac($sessionStorage.idExamen);
+    $scope.listarExaPac($scope.paciente.id);
      $scope.listarMedicos();
 
 

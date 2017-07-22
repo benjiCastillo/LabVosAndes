@@ -10,7 +10,7 @@
                     <option   ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                 </select>
          </div>       
-    <!--<button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>-->
+    <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>
     </div>
     <section class="animate fadeIn" ng-show="verExamenes"> 
         <div class="row">
@@ -68,11 +68,15 @@
                         <h2 class="text-info">Examenes</h2>
                     </div>
                     <div class="box-body">
-                        <table class="table table-hover">
+                        <p ng-show="cargandoDatosExamenes">Cargando Datos </p>
+                        <p ng-show="noExistenExamenes">No Existen Examenes Aun</p>
+                        <table class="table table-hover" ng-show="verExamenesPaciente">
                             <thead>
                                 <tr>
                                     <th>Nro</th>
                                     <th>Nombre</th>
+                                    <th>Nombre Medico</th>
+                                    <th>Fecha</th>
                                     <th>Ver</th> 
                                 </tr>
                             </thead>
@@ -80,6 +84,8 @@
                                 <tr ng-repeat="examen in examenPaciente">
                                     <td>{{ $index+1 }}</td>
                                     <td>{{ examen.tipo }}</td>
+                                    <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
+                                    <td>{{ examen.fecha }}</td>
                                     <td>{{ examen.id_tipo }}</td>
                                 </tr> 
                             </tbody>

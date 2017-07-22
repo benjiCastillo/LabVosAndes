@@ -122,7 +122,19 @@ class  ExamenModel
 			$res = array("message"=>$res[0],"response"=>true);
 			return $res;	
 	}
-
+	//Listar tipo de examen por id de examen
+	public function listExamenPaciente($id){
+		$this->db_pdo->multi_query(" CALL listarExamenPaciente('".$id."')");
+			$res = $this->db_pdo->store_result();
+			while($fila = $res->fetch_assoc()){
+				$arreglo[] = $fila;
+			}
+			$res = $arreglo;
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res,"response"=>true);
+			return $res;
+			
+	}
 	
 
 

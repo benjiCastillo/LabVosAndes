@@ -23,7 +23,7 @@ $app->group('/examen',function(){
 				   		json_encode($this->model->Examen->listarExamenes())
 				   	);	
 	});
-	
+
 	$this->get('/{id}',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'aplication/json')
 				   ->write(
@@ -36,6 +36,14 @@ $app->group('/examen',function(){
 		return $res->withHeader('Content-type', 'aplication/json')
 				   ->write(
 				   		json_encode($this->model->Examen->listarExamenesPac($args['id']))
+				   		
+				   	);
+	});
+	/* Listar examenes por id de examen */
+	$this->get('/listExamenPaciente/{id}',function($req, $res, $args){
+		return $res->withHeader('Content-type', 'aplication/json')
+				   ->write(
+				   		json_encode($this->model->Examen->listExamenPaciente($args['id']))
 				   		
 				   	);
 	});

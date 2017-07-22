@@ -28,7 +28,7 @@ var self ={
 				},
 				insertarInforme : function(datos){
 					var d = $q.defer();
-					// console.log(datos);
+					console.log(datos);
                     $http({
                       method: 'POST',
 					  	url: 'http://localhost/LabVosAndes/api/public/informesg/insertReport/',
@@ -95,9 +95,10 @@ var self ={
 				},
 				listarExaPac : function(id){
 						var d = $q.defer();
+						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/testListPac/'+id,
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/listExamenPaciente/'+id,
                     	})
                         .then(function successCallback(response) {
 
