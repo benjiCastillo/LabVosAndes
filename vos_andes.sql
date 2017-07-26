@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-07-2017 a las 04:23:15
+-- Tiempo de generación: 26-07-2017 a las 22:10:53
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -34,7 +34,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarBiometria` (IN `_hematies` 
 	END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarInformeG` (IN `_nombre` VARCHAR(35), IN `_contenido` VARCHAR(400))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamenGeneral` (IN `_color` VARCHAR(10), IN `_cantidad` VARCHAR(10), IN `_olor` VARCHAR(10), IN `_aspecto` VARCHAR(10), IN `_espuma` VARCHAR(10), IN `_sedimento` VARCHAR(10), IN `_densidad` VARCHAR(10), IN `_reaccion` VARCHAR(10), IN `_proteinas` VARCHAR(10), IN `_glucosa` VARCHAR(10), IN `_cetona` VARCHAR(10), IN `_bilirrubina` VARCHAR(10), IN `_sangre` VARCHAR(10), IN `_nitritos` VARCHAR(10), IN `_urubilinogeno` VARCHAR(10), IN `_eritrocitos` VARCHAR(10), IN `_piocitos` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_cilindros` VARCHAR(10), IN `_celulas` VARCHAR(10), IN `_cristales` VARCHAR(10), IN `_otros` VARCHAR(200), IN `_exa_bac_sed` VARCHAR(200))  BEGIN
+		INSERT INTO examen_general(color, cantidad, olor, aspecto, espuma, sedimento, densidad, reaccion, proteinas, glucosa, cetona, bilirrubina, sangre, nitritos, urubilinogeno, eritrocitos, piocitos, leucocitos, cilindros, celulas, cristales, otros, exa_bac_sed) VALUES(_color, _cantidad, _olor, _aspecto, _espuma, _sedimento, _densidad, _reaccion, _proteinas, _glucosa, _cetona, _bilirrubina, _sangre, _nitritos, _urubilinogeno, _eritrocitos, _piocitos, _leucocitos, _cilindros, _celulas, _cristales, _otros, _exa_bac_sed);
+		SELECT @@identity AS respuesta;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarInformeG` (IN `_nombre` VARCHAR(100), IN `_contenido` VARCHAR(400))  BEGIN
 	INSERT INTO informes_g(nombre, contenido)VALUES(_nombre, _contenido);
     SELECT @@identity AS respuesta;
 END$$
@@ -44,7 +49,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VAR
     SELECT 0;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTipo` (IN `_tipo` VARCHAR(25), IN `_id_examen` INT, IN `_id_tipo` INT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTipo` (IN `_tipo` VARCHAR(50), IN `_id_examen` INT, IN `_id_tipo` INT)  BEGIN
 	IF(SELECT EXISTS(SELECT * FROM examen WHERE id = _id_examen))THEN
 		INSERT INTO examen_tipo(tipo, id_examen, id_tipo) VALUES(_tipo, _id_examen, _id_tipo);
         SELECT 1 AS respuesta;
@@ -53,16 +58,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTipo` (IN `_tipo` VARCHAR(2
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` ()  BEGIN
-	SELECT e.id, e.tipo_examen, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
-    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente ORDER BY e.fecha DESC;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenesPac` (IN `_id_examen` INT)  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM examen_tipo WHERE id_examen = _id_examen))THEN
-		SELECT * FROM examen_tipo WHERE id_examen = _id_examen;
-    ELSE
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
+	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user))THEN
 		SELECT 0 AS respuesta;
+    ELSE
+        INSERT INTO usuario(nombre, user,password, fecha) VALUES(_nombre, _user, _password,NOW());
+        SELECT 1 AS respuesta;
     END IF;
 END$$
 
@@ -82,15 +83,6 @@ DECLARE _id_examen INT;
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamenGeneral` (IN `_color` VARCHAR(10), IN `_cantidad` VARCHAR(10), IN `_olor` VARCHAR(10), IN `_aspecto` VARCHAR(10), IN `_espuma` VARCHAR(10), IN `_sedimento` VARCHAR(10), IN `_densidad` VARCHAR(10), IN `_reaccion` VARCHAR(10), IN `_proteinas` VARCHAR(10), IN `_glucosa` VARCHAR(10), IN `_cetona` VARCHAR(10), IN `_bilirrubina` VARCHAR(10), IN `_sangre` VARCHAR(10), IN `_nitritos` VARCHAR(10), IN `_urubilinogeno` VARCHAR(10), IN `_eritrocitos` VARCHAR(10), IN `_piocitos` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_cilindros` VARCHAR(10), IN `_celulas` VARCHAR(10), IN `_cristales` VARCHAR(10), IN `_otros` VARCHAR(10), IN `_exa_bac_sed` VARCHAR(10))  BEGIN
-	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id = _id_examen))THEN 
-		INSERT INTO examen_general(color, cantidad, olor, aspecto, espuma, sedimento, densidad, reaccion, proteinas, glucosa, cetona, bilirrubina, sangre, nitritos, urubilinogeno, eritrocitos, piocitos, leucocitos, cilindros, celulas, cristales, otros, exa_bac_sed, id_examen) VALUES(_color, _cantidad, _olor, _aspecto, _espuma, _sedimento, _densidad, _reaccion, _proteinas, _glucosa, _cetona, _bilirrubina, _sangre, _nitritos, _urubilinogeno, _eritrocitos, _piocitos, _leucocitos, _cilindros, _celulas, _cristales, _otros, _exa_bac_sed);
-		SELECT 1 as respuesta;
-	ELSE
-		SELECT 0 AS respuesta;
-	END IF;
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VARCHAR(5), IN `_paraA2` VARCHAR(5), IN `_paraA3` VARCHAR(5), IN `_paraA4` VARCHAR(5), IN `_paraA5` VARCHAR(5), IN `_paraA6` VARCHAR(5), IN `_paraB1` VARCHAR(5), IN `_paraB2` VARCHAR(5), IN `_paraB3` VARCHAR(5), IN `_paraB4` VARCHAR(5), IN `_paraB5` VARCHAR(5), IN `_paraB6` VARCHAR(5), IN `_somaticoO1` VARCHAR(5), IN `_somaticoO2` VARCHAR(5), IN `_somaticoO3` VARCHAR(5), IN `_somaticoO4` VARCHAR(5), IN `_somaticoO5` VARCHAR(5), IN `_somaticoO6` VARCHAR(5), IN `_flagelarH1` VARCHAR(5), IN `_flagelarH2` VARCHAR(5), IN `_flagelarH3` VARCHAR(5), IN `_flagelarH4` VARCHAR(5), IN `_flagelarH5` VARCHAR(5), IN `_flagelarH6` VARCHAR(5))  BEGIN
 	IF (SELECT EXISTS(SELECT * FROM examen where id = _id_examen))THEN
 		INSERT INTO reaccion_w(paraA1, paraA2, paraA3, paraA4, paraA5, paraA6, paraB1, paraB2, paraB3, paraB4, paraB5, paraB6, somaticoO1, somaticoO2, somaticoO3, somaticoO4, somaticoO5, somaticoO6, flagelarH1, flagelarH2, flagelarH3, flagelarH4, flagelarH5, flagelarH6) 
@@ -99,6 +91,39 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VA
 	ELSE
 		SELECT 0;
 	END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` ()  BEGIN
+	SELECT e.id, e.tipo_examen, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
+    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente ORDER BY e.fecha DESC;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenesPac` (IN `_id_examen` INT)  BEGIN
+	IF(SELECT EXISTS(SELECT * FROM examen_tipo WHERE id_examen = _id_examen))THEN
+		SELECT * FROM examen_tipo WHERE id_examen = _id_examen;
+    ELSE
+		SELECT 0 AS respuesta;
+    END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenPaciente` (IN `idin` INT)  BEGIN
+	IF(SELECT EXISTS(	SELECT et.tipo as tipo, m.nombre as nombreMed, m.apellidos as apellidosMed, et.id_tipo as id_tipo, e.fecha as fecha   FROM examen_tipo et inner join examen e on et.id_examen = e.id 
+						      inner join medico m on m.id = e.id_medico
+ WHERE e.id_paciente  = idin))THEN
+	SELECT et.tipo as tipo, m.nombre as nombreMed, m.apellidos as apellidosMed, et.id_tipo as id_tipo, e.fecha as fecha   FROM examen_tipo et inner join examen e on et.id_examen = e.id 
+						      inner join medico m on m.id = e.id_medico
+ WHERE e.id_paciente  = idin;
+    ELSE
+		SELECT 0 AS respuesta;
+    END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
+	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user AND password = _password))THEN
+        SELECT * FROM usuario WHERE user = _user AND password = _password;
+    ELSE
+		SELECT 0 AS respuesta;
+    END IF;
 END$$
 
 DELIMITER ;
@@ -151,7 +176,17 @@ CREATE TABLE `examen` (
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
 (28, '2017-07-20 17:23:11', 5, 18),
-(29, '2017-07-20 17:38:15', 5, 2);
+(29, '2017-07-20 17:38:15', 5, 2),
+(30, '2017-07-22 02:47:44', 5, 19),
+(31, '2017-07-22 03:59:38', 2, 19),
+(32, '2017-07-22 05:03:37', 5, 12),
+(33, '2017-07-22 05:04:53', 5, 13),
+(34, '2017-07-22 05:06:26', 4, 18),
+(35, '2017-07-22 05:34:29', 5, 20),
+(36, '2017-07-24 15:03:09', 6, 20),
+(37, '2017-07-24 15:09:03', 2, 18),
+(38, '2017-07-24 21:03:52', 5, 21),
+(39, '2017-07-26 01:51:46', 8, 22);
 
 -- --------------------------------------------------------
 
@@ -191,7 +226,13 @@ CREATE TABLE `examen_general` (
 --
 
 INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`) VALUES
-(3, '123', '234', '1231', '412', '1234', '342', '2435', '234', '342', '34325', '35342', '3432', '3432', '45425', '34325', '45', '45', '23', '45', '34', '234', '234', '234');
+(3, '123', '234', '1231', '412', '1234', '342', '2435', '234', '342', '34325', '35342', '3432', '3432', '45425', '34325', '45', '45', '23', '45', '34', '234', '234', '234'),
+(4, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'),
+(5, '4', '4', '4', '5', '4651', '31', '8', '4', '7', '1', '2', '1', '5', '5', '6', '6', '4', '6', '1', '32', '2', '3', '31'),
+(6, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+(7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '12', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2'),
+(8, '22', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3'),
+(9, '01', '', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8');
 
 -- --------------------------------------------------------
 
@@ -201,7 +242,7 @@ INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `esp
 
 CREATE TABLE `examen_tipo` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `id_examen` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -211,16 +252,28 @@ CREATE TABLE `examen_tipo` (
 --
 
 INSERT INTO `examen_tipo` (`id`, `tipo`, `id_examen`, `id_tipo`) VALUES
-(1, 'Examen General', 1, 3),
-(4, 'Quimica Sanguinea', 14, 50),
-(5, 'Quimica Sanguinea', 14, 51),
-(6, 'Informe de Parasitologia', 14, 52),
-(7, 'Informe de Parasitologia', 14, 53),
-(8, 'Informe de Quimica Sangui', 15, 55),
-(9, 'Informe de Parasitologia', 15, 56),
-(10, 'informe de Microbiologia', 15, 57),
-(11, 'Informe de Parasitologia', 15, 58),
-(12, 'Informe General', 18, 59);
+(23, 'Informe de Quimica Sangui', 31, 72),
+(24, 'Informe de Parasitologia', 31, 73),
+(25, 'Informe de Parasitologia', 32, 74),
+(26, 'Informe General', 32, 75),
+(27, 'Informe General', 33, 76),
+(28, 'Informe de Quimica Sangui', 33, 77),
+(29, 'Informe de Quimica Sangui', 33, 78),
+(30, 'Informe de Quimica Sangui', 34, 79),
+(31, 'Informe de Quimica Sangui', 34, 80),
+(32, 'Informe de Quimica Sangui', 34, 81),
+(33, 'Informe General', 34, 82),
+(34, 'Informe General', 34, 83),
+(35, 'Informe General', 29, 84),
+(36, 'Informe General', 29, 85),
+(37, 'Informe General', 35, 86),
+(38, 'Informe de Quimica Sanguinea', 35, 87),
+(39, 'Analisis General', 35, 8),
+(40, 'Analisis General', 37, 0),
+(41, 'Informe de Quimica Sanguinea', 38, 89),
+(42, 'Informe General', 39, 90),
+(43, 'Informe de Quimica Sanguinea', 39, 91),
+(44, 'Informe de Parasitologia', 39, 92);
 
 -- --------------------------------------------------------
 
@@ -230,7 +283,7 @@ INSERT INTO `examen_tipo` (`id`, `tipo`, `id_examen`, `id_tipo`) VALUES
 
 CREATE TABLE `informes_g` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(35) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `contenido` varchar(400) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -270,7 +323,38 @@ INSERT INTO `informes_g` (`id`, `nombre`, `contenido`) VALUES
 (58, 'Informe de Parasitologia', 'Informe de Parasitologia'),
 (59, 'Informe General', 'Este es un informe general'),
 (60, 'Informe', ''),
-(61, 'Informe', '');
+(61, 'Informe', ''),
+(62, 'Informe General', 'Informe General, prueba numero1'),
+(63, 'Informe de Quimica Sanguinea', 'Prueba de Quimica sanguinea numero 2'),
+(64, 'Informe de Quimica Sanguinea', 'Informe de Qumica Sanguinea numero 2'),
+(65, 'Informe de Quimica Sanguinea', 'informe de quimica sanquinea 4'),
+(66, 'informe de Microbiologia', 'INforme de microbiologia'),
+(67, 'Informe de Quimica Sanguinea', 'Informe con el doctor Robin'),
+(68, 'Informe de Parasitologia', 'Informe con Kaya'),
+(69, 'Informe General', 'Informe con la doctora kaya'),
+(70, 'Informe General', 'Informe con la doctora Laura risueno'),
+(71, 'Informe General', 'Prueba Informe'),
+(72, 'Informe de Quimica Sanguinea', 'Prueba de Quimica Sanguinea'),
+(73, 'Informe de Parasitologia', 'Examen de Parasitologia'),
+(74, 'Informe de Parasitologia', 'Informe de Parasitologia'),
+(75, 'Informe General', 'ES UN informe Generakl'),
+(76, 'Informe General', 'ES UN informe Generakl'),
+(77, 'Informe de Quimica Sanguinea', 'De Qumica Sanguinea'),
+(78, 'Informe de Quimica Sanguinea', 'Wumasdf'),
+(79, 'Informe de Quimica Sanguinea', 'asfasd'),
+(80, 'Informe de Quimica Sanguinea', 'ASDAsd'),
+(81, 'Informe de Quimica Sanguinea', 'dADAds'),
+(82, 'Informe General', 'informe geneeral'),
+(83, 'Informe General', 'Informe'),
+(84, 'Informe General', 'adsfasdf'),
+(85, 'Informe General', 'Esta es un informe General'),
+(86, 'Informe General', 'Este es un informe'),
+(87, 'Informe de Quimica Sanguinea', 'Qumica Sanguinesas'),
+(88, 'Informe', ''),
+(89, 'Informe de Quimica Sanguinea', 'Este es un informe de belen'),
+(90, 'Informe General', 'Informe General'),
+(91, 'Informe de Quimica Sanguinea', 'Informe de Quimica Sanguinea'),
+(92, 'Informe de Parasitologia', 'informe de parasitologia');
 
 -- --------------------------------------------------------
 
@@ -289,10 +373,8 @@ CREATE TABLE `medico` (
 --
 
 INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
-(2, 'Laura', 'Risueño'),
-(4, 'Kaya', 'Negron'),
-(5, 'Harold', 'Castillo Eguez'),
-(6, 'Robin', 'Flores');
+(7, 'Benjamin', 'Castillo Eguez'),
+(8, 'Erwin', 'Mejia');
 
 -- --------------------------------------------------------
 
@@ -314,12 +396,8 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `estado`) VALUES
-(2, 'Soledad Nina', 'Huanca', '50', 'F', '1'),
-(12, 'Diego', 'Escalante Antezana', '22', 'M', '1'),
-(13, 'Andrian', 'Catalan', '41', 'M', '1'),
-(17, 'Harold', 'Castillo', '22', 'M', '1'),
-(18, 'Delicia', 'Eguez Alvarez', '51', 'F', '1'),
-(19, 'Benjamin Andres', 'Castillo Fernandez', '52', 'M', '1');
+(22, 'Diego', 'Escalante Antezana', '21', 'M', '1'),
+(23, 'Sole', 'Nina', '20', 'F', '1');
 
 -- --------------------------------------------------------
 
@@ -354,6 +432,28 @@ CREATE TABLE `reaccion_w` (
   `flagelarH5` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
   `flagelarH6` varchar(5) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
+(1, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-26 00:00:00'),
+(3, 'Diego Escalante Antezana', 'Diego', '12345', '2017-07-26 10:52:53');
 
 --
 -- Índices para tablas volcadas
@@ -408,6 +508,12 @@ ALTER TABLE `reaccion_w`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -420,37 +526,42 @@ ALTER TABLE `biometria`
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `examen_tipo`
 --
 ALTER TABLE `examen_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
 ALTER TABLE `reaccion_w`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
