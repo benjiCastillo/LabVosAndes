@@ -67,6 +67,48 @@ var self ={
 								return d.resolve();
                         });
                        return d.promise;	 
+
+				},
+				insertarExamenGeneral : function(datos){
+					var d = $q.defer();
+					// console.log(datos);
+                    $http({
+                      method: 'POST',
+					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/insertGeneralTest/',
+                        data:{
+								_color:datos.color,
+								_cantidad:datos.cantidad,
+								_olor:datos.olor,
+								_aspecto:datos.aspecto,
+								_espuma:datos.espuma,
+								_sedimento:datos.sedimento,
+								_densidad:datos.densidad,
+								_reaccion:datos.reaccion,
+								_proteinas:datos.proteinas,
+								_glucosa:datos.glucosa,
+								_cetona:datos.cetona,
+								_bilirrubina:datos.bilirrubina,
+								_sangre:datos.sangre,
+								_nitritos:datos.nitritos,
+								_urubilinogeno:datos.urubilinogeno,
+								_eritrocitos:datos.eritocito,
+								_piocitos:datos.piocitos,
+								_leucocitos:datos.leucocitos,
+								_cilindros:datos.cilindros,
+								_celulas:datos.celulas,
+								_cristales:datos.cristales,
+								_otros:datos.otros1,
+								_exa_bac_sed:datos.otros2
+						}
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								return d.resolve()	
+                            }, function errorCallback(response) {	
+								self.response 	= response.data
+								return d.resolve();
+                        });
+                       return d.promise;	 
 	
 				},
 				listarMedicos : function(){

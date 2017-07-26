@@ -59,7 +59,8 @@ $container['model']	= function($c){
 		'InformesG'	=>	new App\Model\InformesGModel($c->db,$c->db_mysqli),
 		'Medico'	=>	new App\Model\MedicoModel($c->db,$c->db_mysqli),
 		'Paciente'	=>	new App\Model\PacienteModel($c->db,$c->db_mysqli),
-		'ReaccionW'	=>	new App\Model\ReaccionWModel($c->db,$c->db_mysqli)
+		'ReaccionW'	=>	new App\Model\ReaccionWModel($c->db,$c->db_mysqli),
+		'User'	=>	new App\Model\UserModel($c->db,$c->db_mysqli)
 	];
 };
 

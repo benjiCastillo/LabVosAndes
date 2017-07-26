@@ -6,7 +6,11 @@
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
+@font-face {
+  font-family: 'Sacramento';
 
+  src: url('../fonts/Sacramento-Regular.ttf');
+}
 .loader-img{
     background-image: url(../img/loader.gif);
     background-position: center;
@@ -354,4 +358,21 @@
   color:white;
   cursor:pointer;
   padding: 17px;
+}
+/*dashboard*/
+.vos-andes{
+    font-family: 'Sacramento', cursive;
+    font-size: 40px;
+    display: block;
+    text-align: center;
+}
+.img-logo{
+    max-width: 200px;
+    margin:0 auto;
+}
+.sistema{
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    display: block;
+    text-align: center;
 }

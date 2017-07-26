@@ -6,7 +6,7 @@ use App\Lib\Response,
 	App\Lib\Security;
 
 /**
-* Modelo usuario
+* Modelo paciente
 */
 class  PacienteModel
 {
