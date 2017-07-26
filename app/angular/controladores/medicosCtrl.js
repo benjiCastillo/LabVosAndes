@@ -4,14 +4,29 @@ var app = angular.module('facturacionApp.medicosCtrl', []);
 app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', function($scope,$routeParams, medicosServices){
 	
 	var pag = $routeParams.pag
-	$scope.medicos = "";
+	$scope.medicos = [];
     $scope.medicos.respuesta = "";
 	$scope.nro = 1;
-   
-	$scope.listar = function(){
+    $scope.noExistenMedicos = false;
+    $scope.cargandoMedicos = true;
+    $scope.medicosCargado = false;
+	
+    $scope.listar = function(){
+        $scope.pacientesMedicos = true;
 			medicosServices.listar().then(function(){
-				$scope.medicos = medicosServices.response;
-                console.log($scope.medicos)
+                
+				$scope.response = medicosServices.response;
+                $scope.cargandoMedicos = false;
+
+                if ($scope.response.respuesta == 0){
+                    console.log('no hay medicos');
+                    $scope.noExistenMedicos = true;
+                    $scope.medicosCargado = false;
+                }else{
+                    $scope.medicosCargado = true;
+                    $scope.noExistenMedicos = false;
+                    $scope.medicos = $scope.response;
+                }
 			});
     }
 

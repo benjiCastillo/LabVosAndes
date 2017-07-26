@@ -20,20 +20,48 @@
              <span class="vos-andes">Lab Vos Andes</span>
             </div>   
             <div class="col-md-3  ">
-                <div class="form">
-                    <h3>Ingresar</h3>
-                    <div class="form-group">
-                    <label>Usuario</label>
-                        <input type="text" class="form-control" placeholder="Usuario" id="user" required>
-                    </div>
-                    <div class="form-group">
-                    <label>Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" id="password" required>
-                    </div>
-                    <button onclick="login()" class="btn btn-block btn-success btn-ingresar">Ingresar</button>
+                <div class="form" id="form">
+                    <section id="logIn" class="animated fadeIn">
+                        <h3>Ingresar</h3>
+                        <div class="form-group">
+                        <label>Usuario</label>
+                            <input type="text" class="form-control" placeholder="Usuario" id="user" required>
+                        </div>
+                        <div class="form-group">
+                        <label>Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" id="password" required>
+                        </div>
+                        <button onclick="login()" class="btn btn-block btn-success btn-ingresar">Ingresar</button>
+                    </section>
+                    <section id="signIn" class="animated fadeIn">
+                        <h3>Registro</h3>
+                        <div class="form-group">
+                        <label>Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre Completo" id="user" required>
+                        </div>
+                        <div class="form-group">
+                        <label>Usuario</label>
+                            <input type="text" class="form-control" placeholder="Usuario" id="user" required>
+                        </div>
+                        <div class="form-group">
+                        <label>Pasword</label>
+                            <input type="text" class="form-control" placeholder="password" id="user" required>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label>Pasword</label>
+                            <input type="text" class="form-control" placeholder="Introduce nuevamente password" id="user" required>
+                        </div>
+                    
+                        <button onclick="login()" class="btn btn-block btn-success btn-ingresar">Registrar</button>
+                    </section>
+                    
                 </div>
+                <br>
                 <div class="create-account">
-                    No tienes cuenta? <a href="#">Crear</a>
+                    <p id="crearLink" class="animated fadeIn">No tienes cuenta? <a href="javascript:void(0)" onclick="showCreateAccount()">Crear</a></p>
+                    <p id="ingresarLink" class="animated fadeIn">Tienes cuenta? <a href="javascript:void(0)" onclick="showLogIn()">Ingresar</a></p>
+                    
                 </div>
                 
             </div>

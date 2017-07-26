@@ -11,15 +11,11 @@
 			</div>
 		</div>
 		<div class="box-body">
-		<div class="loader-img animate fadeIn" ng-show="pacientes.cargando">
-			<center>
-				<br><br><br><br><br>
-				Cargando...
-			</center>
-		</div>
-				<table class="table table-hover table-striped"> 
-					<label for="#">Buscar</label>
-					<input type="text" class="form-control" placeholder="Buscar" ng-model="buscador" required>
+		<span class="animate fadeIn" ng-show="noExistenPacientes">No existen pacientes aun..</span>
+		<span class="animate fadeIn" ng-show="cargandoPacientes">Cargando..</span>
+				<table class="table table-hover table-striped" ng-show="pacientesCargado"> 
+					<label for="#"  ng-show="pacientesCargado">Buscar</label>
+					<input type="text" class="form-control" placeholder="Buscar"  ng-show="pacientesCargado" ng-model="buscador" required>
 					<thead>
 					<tr> 
 						<th>Nombre</th>

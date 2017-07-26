@@ -1,3 +1,5 @@
+$('#signIn').css('display','none');
+$('#ingresarLink').css('display','none');
 function login(){
     var user = $('#user').val();
     var password = $('#password').val();
@@ -25,4 +27,17 @@ function login(){
         }
     });
 
+}
+function showCreateAccount(){
+    $('#logIn').css('display','none');
+    $('#signIn').css('display','block');
+    $('#crearLink').css('display','none');
+    $('#ingresarLink').css('display','block');
+}
+
+function showLogIn(){
+    $('#logIn').css('display','block');
+    $('#signIn').css('display','none');
+       $('#crearLink').css('display','block');
+    $('#ingresarLink').css('display','none');
 }

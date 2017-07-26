@@ -6,20 +6,36 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','$window','pacientesSer
 	var pag = $routeParams.pag;
 	 $scope.paciente = {};
 	$scope.paciente.visible = false;
-    $scope.paciente.respuesta = "";
+    $scope.pacientes= [];
 	$scope.nro = 1;
-   
-
+    $scope.noExistenPacientes = false;
+    $scope.cargandoPacientes = true;
+    $scope.pacientesCargado = false;
+    
 
 	$scope.listar = function(){
         
             console.log($scope.paciente.visible);
             $scope.paciente.visible = true;
-			pacientesServices.listar().then(function(){
+            setTimeout(function() {
+                pacientesServices.listar().then(function(){
 				$scope.response = pacientesServices.response;
-				console.log($scope.response);
-				$scope.pacientes = $scope.response;
+                console.log($scope.response.respuesta)
+                $scope.cargandoPacientes = false;
+
+                if ($scope.response.respuesta == 0){
+                    console.log('no hay pacientes');
+                    $scope.noExistenPacientes = true;
+                    $scope.pacientesCargado = false;
+                }else{
+                    $scope.pacientesCargado = true;
+                    $scope.noExistenPacientes = false;
+                    $scope.pacientes = $scope.response;
+                }
+				
 			});
+            }, 1000);
+			
     }
 
     $scope.listar();

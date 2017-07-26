@@ -28,9 +28,15 @@ class  PacienteModel
 	//lista_total
 	public function listar(){
 
-		return $data = $this->db->from($this->table)
+		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
+		if(empty($data)){
+		 $respuesta = array('respuesta' => 0 );
+		 return $respuesta;
+		}else{
+		 return $data;
+		}				 
 	//  return $data = $this->db_pdo->query('select * from '.$this->table)
 	//					 			->fetchAll();				   						 
 	}
