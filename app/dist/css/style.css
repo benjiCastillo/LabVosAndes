@@ -1,0 +1,378 @@
+.dark-primary-color    { background: #0288D1; }
+.default-primary-color { background: #03A9F4; }
+.light-primary-color   { background: #B3E5FC; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #536DFE; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+@font-face {
+  font-family: 'Sacramento';
+
+  src: url('../fonts/Sacramento-Regular.ttf');
+}
+.loader-img{
+    background-image: url(../img/loader.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.loader-img-pag{
+    background-image: url(../img/loader.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    margin: auto;
+}
+#exito{
+    background-image: url(../img/success.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    margin: auto;
+}
+
+.loader-img-pag span{
+    position: absolute;
+    left: 0;
+    margin-left: -21px;
+    top: 24px;
+}
+
+.card-panel{
+  width:100% ;
+  position: relative;
+  margin: .5rem 0 1rem 0;
+  background-color: #ffffff;
+  transition: box-shadow .25s;
+  border-radius: 2px;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.card-content{
+  padding: 24px;
+  border-radius: 0 0 2px 2px;
+}
+.card-title{
+  font-size: 24px;
+  font-weight: 300;
+}
+.botones-info{
+  right: 20px;
+  top: 13px;
+  position: absolute;
+  font-weight: 800;
+  font-size: 16px;
+}
+.card-action{
+  position: relative;
+  background-color: inherit;
+  border-top: 1px solid rgba(189, 189, 189, 0.25);
+  padding: 16px 24px
+}
+
+/*background*/
+.btn-green{
+  background: #4CAF50 !important
+}
+.btn-red{
+  background-color:#F44336 !important;
+}
+.btn-blue{
+  background-color: #2196F3 !important;
+}
+
+.btn-floating{
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.btn-floating:hover, .btn-floating:active, .btn-floating:focus,.btn-floating:visited{
+  color:white;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.btn-floating i{
+  padding-left: 14px;
+}
+.btn-edit-info{
+  margin-left: 80%;
+  margin-right: 4%;
+}
+.btn-fixed{
+  position: fixed;
+  width: 50px;
+  line-height: 50px;
+  height:50px;
+}
+.btn-fixed i{
+  font-size: 20px;
+      padding-left: 17px;
+    vertical-align: inherit;
+}
+
+/*editar Informe*/
+
+.editar-informe{
+  color: #212121 !important;
+  font-size: 18px;
+  transition: .3s;
+  cursor: pointer;
+  margin-right: 15px;
+}
+.editar-informe:hover{
+  color: #4CAF50 !important;
+  text-shadow: 1px 2px 3px rgba(102, 102, 102, 0.51);
+  font-size: 24px;
+}
+.eliminar-informe{
+  font-size: 18px;
+  color: #212121 !important;
+  transition: .3s;
+  cursor: pointer;
+}
+.eliminar-informe:hover{
+  color: #f44336 !important;
+  text-shadow: 1px 2px 3px rgba(102, 102, 102, 0.51);
+  font-size: 24px;
+}
+
+/* Progress Bar */
+.progress {
+  position: relative;
+  height: 4px;
+  display: block;
+  width: 100%;
+  background-color: #acece6;
+  border-radius: 2px;
+  background-clip: padding-box;
+  margin: 0.5rem 0 1rem 0;
+  overflow: hidden;
+}
+.progress .determinate {
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  bottom: 0;
+  background-color: #26a69a;
+  transition: width .3s linear;
+}
+.progress .indeterminate {
+  background-color: #26a69a;
+}
+.progress .indeterminate:before {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+.progress .indeterminate:after {
+  content: '';
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  animation-delay: 1.15s;
+}
+.info-contenedor{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@-moz-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+@-moz-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+
+@media (max-width:767px){
+  
+    .botones-info{
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .btn-floating i {
+    padding-left: 10px;
+  }
+  .btn-floating {
+    width: 32px;
+    height: 32px;
+    line-height: 34px;
+  }
+  .btn-fixed {
+    position: initial;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .btn-fixed i{
+    padding-left: 14px;
+    font-size: 16px;
+    vertical-align: inherit;
+
+  }
+}
+
+@media (max-width:992px){
+  
+  .btn-fixed {
+    position: initial;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .btn-fixed i{
+    padding-left: 14px;
+    font-size: 16px;
+    vertical-align: inherit;
+
+  }
+}
+
+/*examen - paciente*/
+.well-examen{
+    text-align: center;
+    border: 0px solid #e3e3e3 !important;
+    font-size: 20px;
+    font-weight: lighter;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    transition: all .3s;
+}
+
+.well-examen:hover{
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+  background: #2196f3  ;
+  font-size: 22px;
+  color:white;
+  cursor:pointer;
+  padding: 17px;
+}
+/*dashboard*/
+.vos-andes{
+    font-family: 'Sacramento', cursive;
+    font-size: 40px;
+    display: block;
+    text-align: center;
+}
+.img-logo{
+    max-width: 200px;
+    margin:0 auto;
+}
+.sistema{
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}

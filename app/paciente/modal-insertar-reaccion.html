@@ -1,0 +1,88 @@
+<div class="modal fade" id="modal-insertar-reaccion">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         <h4 class="modal-title">Reaccion de Widal</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;"  ng-submit="insertarReaccion(reaccion)">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+                <h4 class="text-success">Informe</h4>
+            <table class="table table-hover table-striped">
+				<thead>
+				 <tr> 
+				 	<th>Dilucion</th>
+					<th>1/20</th> 
+				 	<th>1/40</th>
+					<th>1/80</th>
+				 	<th>1/160</th>
+					<th>1/320</th>
+					<th>1/400</th> 
+				 </tr> 
+				</thead> 
+				<tbody>
+				 	<tr>
+				 		<td>Paratyphi "A"</td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pA20" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pA40" required> </td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.pA80" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="reaccion.pA160" required></td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.pA320" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pA400" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Paratyphi "B"</td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pB20" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pB40" required></td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.pB80" required></td>
+				 		<td><input  class="form-control" type="text" ng-model="reaccion.pB160" required></td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.pB320" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.pB400" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Somatico "O"</td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.s20" required> </td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.s40" required> </td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.s80" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="reaccion.s160" required></td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.s320" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.s400" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Flagelar "H"</td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.f20" required> </td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.f40" required> </td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.f80" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="reaccion.f160" required></td>
+						<td><input  class="form-control" type="text" ng-model="reaccion.f320" required></td> 
+						<td><input  class="form-control" type="text" ng-model="reaccion.f400" required></td>  
+				 	</tr>
+					  
+				</tbody> 
+			</table>
+      <div class="form-group">
+        <label class="col-sm-12">Comentario</label>
+        <textarea ng-model="reaccion.comentario" class="col-sm-12" id="" cols="10" rows="5" required></textarea>
+      </div>
+            
+          </div>
+        </div>
+      </div>
+      
+			<pre>
+				{{ reaccion | json }}
+			</pre>
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
+      </div>
+      
+      </form>
+   
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

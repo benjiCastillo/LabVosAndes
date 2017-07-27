@@ -63,7 +63,6 @@ class  ExamenModel
 								->fetch();  						 
 	}
 	//registrar
-
 	public function insert($data){
 		// $data['password'] = md5($data['password']);
 
@@ -73,11 +72,9 @@ class  ExamenModel
 		return $this->response->setResponse(true);
 		}
 
-		public function insertTest($data){
-
-		//$this->db->insertInto($this->table, $data)
-		//		 ->execute();
-		$this->db_pdo->multi_query(" CALL insertarExamen('".$data['_id_medico']."',
+	/* INSERTAR EXAMEN */
+	public function insertTest($data){
+		$this->db_pdo->multi_query("CALL insertarExamen('".$data['_id_medico']."',
 														'".$data['_id_paciente']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
@@ -125,7 +122,19 @@ class  ExamenModel
 			$res = array("message"=>$res[0],"response"=>true);
 			return $res;	
 	}
-
+	//Listar tipo de examen por id de examen
+	public function listExamenPaciente($id){
+		$this->db_pdo->multi_query(" CALL listarExamenPaciente('".$id."')");
+			$res = $this->db_pdo->store_result();
+			while($fila = $res->fetch_assoc()){
+				$arreglo[] = $fila;
+			}
+			$res = $arreglo;
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res,"response"=>true);
+			return $res;
+			
+	}
 	
 
 
