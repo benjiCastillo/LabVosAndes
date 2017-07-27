@@ -86,7 +86,7 @@
                                     <td>{{ examen.tipo }}</td>
                                     <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
                                     <td>{{ examen.fecha }}</td>
-                                    <td>{{ examen.id_tipo }}</td>
+                                    <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo)">Imprimir</button>{{ }}</td>
                                 </tr> 
                             </tbody>
                         </table>

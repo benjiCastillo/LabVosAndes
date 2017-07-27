@@ -178,8 +178,12 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
 
     }
     $scope.listarExaPac($scope.paciente.id);
-     $scope.listarMedicos();
+    $scope.listarMedicos();
 
+    $scope.showPrint = function(idPaciente, idExamen){
+        console.log(idPaciente+' '+idExamen)
+        window.location.href = 'http://localhost/LabVosAndes/reportes/examen_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
+    }
 
 
 }])
