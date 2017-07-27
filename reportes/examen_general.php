@@ -1,6 +1,6 @@
 <?php
-$id='3';
-$idp='1';
+$id='10';
+$idp='28';
 
 
 header('Content-Type: text/html; charset=ISO-8859-1');
@@ -10,7 +10,7 @@ require('conexion.php');
 
 $con=Conectar();
 
-$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, e.fecha FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE e.id=?';
+$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, e.fecha FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
 $stmtp = $con->prepare($sqlp);
 $resultsp = $stmtp->execute(array($idp));
 $rowp = $stmtp->fetchAll();
