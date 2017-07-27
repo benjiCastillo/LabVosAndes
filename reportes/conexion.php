@@ -7,9 +7,9 @@ function conectar (){
     $pwd = '';
     try{
         $conn = new PDO('mysql:host='.$host.';dbname='.$db, $user, $pwd);
-        echo 'Conexion satisfactoria.<br>';
+        // echo 'Conexion satisfactoria.<br>';
     } catch (PDOExeption $e) {
-        echo '<p>No se puede conectar a la base de datos</p>';
+        // echo '<p>No se puede conectar a la base de datos</p>';
         exit;
     }
     return $conn;

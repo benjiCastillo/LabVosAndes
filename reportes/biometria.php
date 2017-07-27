@@ -96,7 +96,7 @@ $initData = '<table>
 
 $pdf->writeHTML(utf8_encode($initData), true, false, false, false, 'L');
 
-$title = '<b><h1>Exámen General</h1></b>';
+$title = '<b><h1>Biometría</h1></b>';
 $pdf->writeHTML($title, true, false, false, false, 'C');
 foreach ($row as $rows){
 $fisico = '<table>
@@ -107,122 +107,94 @@ $fisico = '<table>
         </tr>
         <br>
         <tr>
-            <td><b>Exámen físico</b></td>
+            <td><b>Hemati metria - 3,600 m.s.n.m.</b></td>
         </tr>
         <tr>
-            <td>Color</td>
+            <td>Hematies</td>
             <td>'.$rows[1].'</td>
             <td>Ambar</td>
         </tr>
         <tr>
-            <td>Cantidad</td>
+            <td>Hematocrito</td>
             <td>'.$rows[2].'</td>
             <td>-</td>
         </tr>
         <tr>
-            <td>Olor</td>
+            <td>Hemoglobina</td>
             <td>'.$rows[3].'</td>
             <td>Suigéneris</td>
         </tr>
         <tr>
-            <td>Aspecto</td>
+            <td>Leucocitos</td>
             <td>'.$rows[4].'</td>
             <td>Límpido</td>
         </tr>
         <tr>
-            <td>Espuma</td>
+            <td>V.S.G</td>
             <td>'.$rows[5].'</td>
             <td>Blanca Fugaz</td>
         </tr>
-        <tr>
-            <td>Sedimento</td>
-            <td>'.$rows[6].'</td>
-            <td>Escaso o/nulo</td>
-        </tr>
-        <tr>
-            <td>Densidad</td>
-            <td>'.$rows[7].'</td>
-            <td>1012-1030</td>
-        </tr>
-        <tr>
-            <td>Reacción</td>
-            <td>'.$rows[8].'</td>
-            <td>Ácida</td>
-        </tr>
         <br>
         <tr>
-            <td><b>Exámen químico</b></td>
+            <td><b>Índices Hematimétricos</b></td>
         </tr>
         <tr>
-            <td>Proteinas</td>
+            <td>V. CM.</td>
             <td>'.$rows[9].'</td>
             <td>No contiene</td>
         </tr>
         <tr>
-            <td>Glucosa</td>
+            <td>Hb. C.M.</td>
             <td>'.$rows[10].'</td>
             <td>No contiene</td>
         </tr>
         <tr>
-            <td>Cetona</td>
+            <td>C. Hb. C.M.</td>
             <td>'.$rows[11].'</td>
             <td>No contiene</td>
         </tr>
-        <tr>
-            <td>Bilirrubina</td>
-            <td>'.$rows[12].'</td>
-            <td>No contiene</td>
-        </tr>
-        <tr>
-            <td>Sangre</td>
-            <td>'.$rows[13].'</td>
-            <td>No contiene</td>
-        </tr>
-        <tr>
-            <td>Nitritos</td>
-            <td>'.$rows[14].'</td>
-            <td>No contiene</td>
-        </tr>
-        <tr>
-            <td>Urubilinógeno</td>
-            <td>'.$rows[15].'</td>
-            <td>0,1-1 mg/dl</td>
-        </tr>
         <br>
         <tr>
-            <td><b>Exámen microscópico sedimento</b></td>
+            <td><b>Comentario</b></td>
         </tr>
         <tr>
-            <td>Eritrocitos</td>
+            <td><b>Leucograma</b></td>
+        </tr>
+        <tr>
+            <td>Cayados</td>
             <td>'.$rows[16].'</td>
         </tr>
         <tr>
-            <td>Piocitos</td>
+            <td>Neutrofilos</td>
             <td>'.$rows[17].'</td>
         </tr>
         <tr>
-            <td>Leucocitos</td>
+            <td>Basofilo</td>
             <td>'.$rows[18].'</td>
         </tr>
         <tr>
-            <td>Cilindros</td>
+            <td>Eosonofilo</td>
             <td>'.$rows[19].'</td>
         </tr>
         <tr>
-            <td>Células</td>
+            <td>Linfocito</td>
             <td>'.$rows[20].'</td>
         </tr>
         <tr>
-            <td>Cristales</td>
+            <td>Monocito</td>
             <td>'.$rows[21].'</td>
         </tr>
         <tr>
-            <td>Otros</td>
+            <td>Prolinfocito</td>
+            <td>'.$rows[22].'</td>
+        </tr>
+        <tr>
+            <td>Cel. Inmaduras</td>
             <td>'.$rows[22].'</td>
         </tr>
         <br>
         <tr>
-            <td><b>Exámen bacteriológico sedimento</b></td>
+            <td><b>Comentario</b></td>
         </tr>
         <tr>
             <td>'.$rows[23].'</td>
