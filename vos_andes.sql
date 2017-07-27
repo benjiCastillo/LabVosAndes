@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-07-2017 a las 22:10:53
+-- Tiempo de generación: 27-07-2017 a las 05:36:16
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -175,18 +175,7 @@ CREATE TABLE `examen` (
 --
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(28, '2017-07-20 17:23:11', 5, 18),
-(29, '2017-07-20 17:38:15', 5, 2),
-(30, '2017-07-22 02:47:44', 5, 19),
-(31, '2017-07-22 03:59:38', 2, 19),
-(32, '2017-07-22 05:03:37', 5, 12),
-(33, '2017-07-22 05:04:53', 5, 13),
-(34, '2017-07-22 05:06:26', 4, 18),
-(35, '2017-07-22 05:34:29', 5, 20),
-(36, '2017-07-24 15:03:09', 6, 20),
-(37, '2017-07-24 15:09:03', 2, 18),
-(38, '2017-07-24 21:03:52', 5, 21),
-(39, '2017-07-26 01:51:46', 8, 22);
+(41, '2017-07-27 01:17:08', 10, 28);
 
 -- --------------------------------------------------------
 
@@ -221,19 +210,6 @@ CREATE TABLE `examen_general` (
   `exa_bac_sed` varchar(350) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `examen_general`
---
-
-INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`) VALUES
-(3, '123', '234', '1231', '412', '1234', '342', '2435', '234', '342', '34325', '35342', '3432', '3432', '45425', '34325', '45', '45', '23', '45', '34', '234', '234', '234'),
-(4, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'),
-(5, '4', '4', '4', '5', '4651', '31', '8', '4', '7', '1', '2', '1', '5', '5', '6', '6', '4', '6', '1', '32', '2', '3', '31'),
-(6, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
-(7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '12', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2'),
-(8, '22', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3'),
-(9, '01', '', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8');
-
 -- --------------------------------------------------------
 
 --
@@ -252,28 +228,9 @@ CREATE TABLE `examen_tipo` (
 --
 
 INSERT INTO `examen_tipo` (`id`, `tipo`, `id_examen`, `id_tipo`) VALUES
-(23, 'Informe de Quimica Sangui', 31, 72),
-(24, 'Informe de Parasitologia', 31, 73),
-(25, 'Informe de Parasitologia', 32, 74),
-(26, 'Informe General', 32, 75),
-(27, 'Informe General', 33, 76),
-(28, 'Informe de Quimica Sangui', 33, 77),
-(29, 'Informe de Quimica Sangui', 33, 78),
-(30, 'Informe de Quimica Sangui', 34, 79),
-(31, 'Informe de Quimica Sangui', 34, 80),
-(32, 'Informe de Quimica Sangui', 34, 81),
-(33, 'Informe General', 34, 82),
-(34, 'Informe General', 34, 83),
-(35, 'Informe General', 29, 84),
-(36, 'Informe General', 29, 85),
-(37, 'Informe General', 35, 86),
-(38, 'Informe de Quimica Sanguinea', 35, 87),
-(39, 'Analisis General', 35, 8),
-(40, 'Analisis General', 37, 0),
-(41, 'Informe de Quimica Sanguinea', 38, 89),
-(42, 'Informe General', 39, 90),
-(43, 'Informe de Quimica Sanguinea', 39, 91),
-(44, 'Informe de Parasitologia', 39, 92);
+(50, 'Informe de Quimica Sanguinea', 41, 98),
+(51, 'Informe General', 41, 99),
+(52, 'Informe de Quimica Sanguinea', 41, 100);
 
 -- --------------------------------------------------------
 
@@ -292,69 +249,9 @@ CREATE TABLE `informes_g` (
 --
 
 INSERT INTO `informes_g` (`id`, `nombre`, `contenido`) VALUES
-(1, 'asd', 'asd'),
-(2, 'General', 'Pollo deja de chatear con laura'),
-(4, 'General', 'dfasdf'),
-(5, 'Quimica Sanguinea', 'asdfasdfasdfasdf'),
-(6, 'Quimica Sanguinea', 'asdfasdf'),
-(7, 'General', 'contendioasdf'),
-(8, 'General', 'contendioasdf'),
-(37, 'General', 'contendioasdfasdfgasdfasdfasdf'),
-(38, 'qefsdfs', 'sdfsdfsd'),
-(39, 'General', 'contendioasdfasdfgasdfasdfasdf'),
-(40, 'General', 'sdfg'),
-(41, 'General', 'asddfasdf'),
-(42, 'Quimica Sanguinea', 'asdfasf'),
-(43, 'Quimica Sanguinea', 'adsfasdf'),
-(44, 'Quimica Sanguinea', 'adsfasdf'),
-(45, 'Quimica Sanguinea', 'asdfasdf'),
-(46, 'Quimica Sanguinea', 'asdfasdf'),
-(47, 'General', 'asdfasdf'),
-(48, 'General', 'asdfasdf'),
-(49, 'General', 'asdfasdfasdf'),
-(50, 'Quimica Sanguinea', 'asdfasdfasdf'),
-(51, 'Quimica Sanguinea', 'Este informe es de quimica sanguinea'),
-(52, 'Informe de Parasitologia', 'fsfasdfasdf'),
-(53, 'Informe de Parasitologia', 'Este informe es de Parasitologia'),
-(54, 'Informe General', 'Este es un informe General'),
-(55, 'Informe de Quimica Sanguinea', 'informe de Quimica Sanguinea'),
-(56, 'Informe de Parasitologia', 'Informe de Parasitologia'),
-(57, 'informe de Microbiologia', 'Informe de Microbiologia!!'),
-(58, 'Informe de Parasitologia', 'Informe de Parasitologia'),
-(59, 'Informe General', 'Este es un informe general'),
-(60, 'Informe', ''),
-(61, 'Informe', ''),
-(62, 'Informe General', 'Informe General, prueba numero1'),
-(63, 'Informe de Quimica Sanguinea', 'Prueba de Quimica sanguinea numero 2'),
-(64, 'Informe de Quimica Sanguinea', 'Informe de Qumica Sanguinea numero 2'),
-(65, 'Informe de Quimica Sanguinea', 'informe de quimica sanquinea 4'),
-(66, 'informe de Microbiologia', 'INforme de microbiologia'),
-(67, 'Informe de Quimica Sanguinea', 'Informe con el doctor Robin'),
-(68, 'Informe de Parasitologia', 'Informe con Kaya'),
-(69, 'Informe General', 'Informe con la doctora kaya'),
-(70, 'Informe General', 'Informe con la doctora Laura risueno'),
-(71, 'Informe General', 'Prueba Informe'),
-(72, 'Informe de Quimica Sanguinea', 'Prueba de Quimica Sanguinea'),
-(73, 'Informe de Parasitologia', 'Examen de Parasitologia'),
-(74, 'Informe de Parasitologia', 'Informe de Parasitologia'),
-(75, 'Informe General', 'ES UN informe Generakl'),
-(76, 'Informe General', 'ES UN informe Generakl'),
-(77, 'Informe de Quimica Sanguinea', 'De Qumica Sanguinea'),
-(78, 'Informe de Quimica Sanguinea', 'Wumasdf'),
-(79, 'Informe de Quimica Sanguinea', 'asfasd'),
-(80, 'Informe de Quimica Sanguinea', 'ASDAsd'),
-(81, 'Informe de Quimica Sanguinea', 'dADAds'),
-(82, 'Informe General', 'informe geneeral'),
-(83, 'Informe General', 'Informe'),
-(84, 'Informe General', 'adsfasdf'),
-(85, 'Informe General', 'Esta es un informe General'),
-(86, 'Informe General', 'Este es un informe'),
-(87, 'Informe de Quimica Sanguinea', 'Qumica Sanguinesas'),
-(88, 'Informe', ''),
-(89, 'Informe de Quimica Sanguinea', 'Este es un informe de belen'),
-(90, 'Informe General', 'Informe General'),
-(91, 'Informe de Quimica Sanguinea', 'Informe de Quimica Sanguinea'),
-(92, 'Informe de Parasitologia', 'informe de parasitologia');
+(98, 'Informe de Quimica Sanguinea', 'Informe'),
+(99, 'Informe General', 'ihygvuyhvu'),
+(100, 'Informe de Quimica Sanguinea', 'uygvuyg');
 
 -- --------------------------------------------------------
 
@@ -373,8 +270,7 @@ CREATE TABLE `medico` (
 --
 
 INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
-(7, 'Benjamin', 'Castillo Eguez'),
-(8, 'Erwin', 'Mejia');
+(10, 'Erwin', 'Mendez');
 
 -- --------------------------------------------------------
 
@@ -396,8 +292,7 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `estado`) VALUES
-(22, 'Diego', 'Escalante Antezana', '21', 'M', '1'),
-(23, 'Sole', 'Nina', '20', 'F', '1');
+(28, 'Benjamin', 'Castillo Eguez', '2 m', 'F', '1');
 
 -- --------------------------------------------------------
 
@@ -452,8 +347,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
-(1, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-26 00:00:00'),
-(3, 'Diego Escalante Antezana', 'Diego', '12345', '2017-07-26 10:52:53');
+(4, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-05 00:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -526,7 +420,7 @@ ALTER TABLE `biometria`
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
@@ -536,22 +430,22 @@ ALTER TABLE `examen_general`
 -- AUTO_INCREMENT de la tabla `examen_tipo`
 --
 ALTER TABLE `examen_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
@@ -561,7 +455,7 @@ ALTER TABLE `reaccion_w`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
