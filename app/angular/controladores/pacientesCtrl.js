@@ -17,7 +17,6 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','$window','pacientesSer
         
             console.log($scope.paciente.visible);
             $scope.paciente.visible = true;
-            setTimeout(function() {
                 pacientesServices.listar().then(function(){
 				$scope.response = pacientesServices.response;
                 console.log($scope.response.respuesta)
@@ -34,7 +33,6 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','$window','pacientesSer
                 }
 				
 			});
-            }, 1000);
 			
     }
 
