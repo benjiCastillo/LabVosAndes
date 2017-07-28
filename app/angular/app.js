@@ -37,12 +37,8 @@ app.controller('mainCtrl', ['$scope', 'Configuracion','Mensajes', 'Notificacione
 	$scope.subtitulo = "";
 
 	//console.log( $scope.notificaciones );
-
-	$scope.usuario = {
-		nombre:"Benjamin Castillo"
-	}
-
-
+	var user = sessionStorage.getItem('user');
+	$scope.usuario = JSON.parse(user);
 
 
 	Configuracion.cargar().then( function(){
