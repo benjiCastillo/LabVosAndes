@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-07-2017 a las 05:36:16
+-- Tiempo de generación: 28-07-2017 a las 18:43:09
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -70,8 +70,8 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
 DECLARE _id_examen INT;
 	    IF (SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
-        	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente))THEN 
-				SET _id_examen = (SELECT id FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente);
+        	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente AND date(fecha) = curdate()))THEN 
+				SET _id_examen = (SELECT id FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente  );
                 SELECT _id_examen as respuesta;
 			ELSE
 				INSERT INTO examen(id_medico, id_paciente) VALUES(_id_medico, _id_paciente);
@@ -175,7 +175,8 @@ CREATE TABLE `examen` (
 --
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(41, '2017-07-27 01:17:08', 10, 28);
+(41, '2017-07-27 01:17:08', 10, 28),
+(42, '2017-07-28 16:34:40', 10, 28);
 
 -- --------------------------------------------------------
 
@@ -210,6 +211,13 @@ CREATE TABLE `examen_general` (
   `exa_bac_sed` varchar(350) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `examen_general`
+--
+
+INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`) VALUES
+(10, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2');
+
 -- --------------------------------------------------------
 
 --
@@ -230,7 +238,11 @@ CREATE TABLE `examen_tipo` (
 INSERT INTO `examen_tipo` (`id`, `tipo`, `id_examen`, `id_tipo`) VALUES
 (50, 'Informe de Quimica Sanguinea', 41, 98),
 (51, 'Informe General', 41, 99),
-(52, 'Informe de Quimica Sanguinea', 41, 100);
+(52, 'Informe de Quimica Sanguinea', 41, 100),
+(53, 'Analisis General', 41, 10),
+(54, 'Informe de Quimica Sanguinea', 41, 101),
+(55, 'Informe de Quimica Sanguinea', 42, 107),
+(56, 'Informe de Quimica Sanguinea', 42, 108);
 
 -- --------------------------------------------------------
 
@@ -251,7 +263,15 @@ CREATE TABLE `informes_g` (
 INSERT INTO `informes_g` (`id`, `nombre`, `contenido`) VALUES
 (98, 'Informe de Quimica Sanguinea', 'Informe'),
 (99, 'Informe General', 'ihygvuyhvu'),
-(100, 'Informe de Quimica Sanguinea', 'uygvuyg');
+(100, 'Informe de Quimica Sanguinea', 'uygvuyg'),
+(101, 'Informe de Quimica Sanguinea', 'Informe de qumica sanguinea'),
+(102, 'Informe General', 'informe general'),
+(103, 'Informe de Quimica Sanguinea', 'asdfasdf'),
+(104, 'Informe de Parasitologia', 'asdfasdf'),
+(105, 'Informe de Quimica Sanguinea', 'adfgsax'),
+(106, 'Informe de Quimica Sanguinea', 'adfgsax'),
+(107, 'Informe de Quimica Sanguinea', 'SDFASDF'),
+(108, 'Informe de Quimica Sanguinea', 'SDFASDFAFGASF');
 
 -- --------------------------------------------------------
 
@@ -347,7 +367,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
-(4, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-05 00:00:00');
+(4, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-05 00:00:00'),
+(5, 'Diego Escalante Antezana', 'Diego', '12345', '2017-07-27 23:41:08'),
+(6, 'Benjamin Castillo', 'benji2', '1234', '2017-07-27 23:50:34'),
+(7, 'Harold Castillo Eguez', 'harold', '1234', '2017-07-27 23:54:54'),
+(8, 'Harold Castillo Eguez', 'harold2', '1234', '2017-07-28 00:14:14'),
+(9, 'Erwin Mendez Mejia', 'pollo', '1234', '2017-07-28 11:37:58');
 
 --
 -- Índices para tablas volcadas
@@ -420,22 +445,22 @@ ALTER TABLE `biometria`
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `examen_tipo`
 --
 ALTER TABLE `examen_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
@@ -455,7 +480,7 @@ ALTER TABLE `reaccion_w`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
