@@ -1,0 +1,102 @@
+<div class="modal fade" id="editar-biometria">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         <h4 class="modal-title"> Editar Biometria Hematica</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;"  ng-submit="editarBiometria(edtBiometria)">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="text-success">Hematimetria <small>3600 m.s.n.m</small></h4>
+            <div class="form-group">
+              <label class="col-sm-4">Hematies</label>
+              <input type="text" class="col-sm-8" placeholder="Color" ng-model="edtBiometria.hematies">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Hematocrito</label>
+              <input type="text" class="col-sm-8" placeholder="Hematocrito" ng-model="edtBiometria.hematocrito">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Hemoglobina</label>
+              <input type="text" class="col-sm-8" placeholder="Hemoglobina" ng-model="edtBiometria.hemoglobina">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Leucocito</label>
+              <input type="text" class="col-sm-8" placeholder="Leucocito" ng-model="edtBiometria.leucocito">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">V.S.G.</label>
+              <input type="text" class="col-sm-8" placeholder="V.S.G." ng-model="edtBiometria.vsg">
+            </div>
+            <h4 class="text-success">Indices Hematimetricos</h4>
+            <div class="form-group">
+              <label class="col-sm-4">V.CM</label>
+              <input type="text" class="col-sm-8" placeholder="V.CM" ng-model="edtBiometria.vcm">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Hb.C.M.</label>
+              <input type="text" class="col-sm-8" placeholder="Hb.C.M." ng-model="edtBiometria.hbcm">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">C.Hb.C.M.</label>
+              <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="edtBiometria.chbcm">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2">Comentario</label><br>
+                <textarea ng-model="edtBiometria.comentario1" class="col-sm-10" id="" cols="30" rows="5" required></textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4 class="text-success">Leucograma</h4>
+            <div class="form-group">
+              <label class="col-sm-4">Cayados</label>
+              <input type="text" class="col-sm-8" placeholder="Cayados" ng-model="edtBiometria.cayados">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Neutrofilos</label>
+              <input type="text" class="col-sm-8" placeholder="Neutrofilos" ng-model="edtBiometria.neutrofilos">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Basofilo</label>
+              <input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="edtBiometria.basofilo">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Eosinofilo</label>
+              <input type="text" class="col-sm-8" placeholder="Eosinofilo" ng-model="edtBiometria.eosinofilo">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Linfocito</label>
+              <input type="text" class="col-sm-8" placeholder="Linfocito" ng-model="edtBiometria.linfocito">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Monocito</label>
+              <input type="text" class="col-sm-8" placeholder="Monocito" ng-model="edtBiometria.monocito">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Prolinfocito</label>
+              <input type="text" class="col-sm-8" placeholder="Prolinfocito" ng-model="edtBiometria.prolinfocito">
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4">Cel. Inmaduras</label>
+              <input type="text" class="col-sm-8" placeholder="Cel. Inmaduras" ng-model="edtBiometria.celinmaduras">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2">Comentario</label><br>
+                <textarea ng-model="edtBiometria.comentario2" class="col-sm-10" id="" cols="30" rows="5" required></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Editar</button>
+      </div>
+      
+      </form>
+   
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
