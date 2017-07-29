@@ -55,9 +55,10 @@ $pdf->Cell(0, 15, '                                  Dir.: Av. Camacho esq. Orur
 $pdf->Ln(5);
 $pdf->Cell(0, 15, '                                  Cel.: 72414698        E-mail: labvosandes@gmail.com        Emergencias las 24 horas.', 0, false, 'L', 0, '', 0, false, 'M', 'M');
 
-$style = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
+$style = array('width' => 0.3, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
 $pdf->Line(152.5, 19.5, 199, 19.5, $style);
-$pdf->Line(2, 22, 212, 22, $style);
+$style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
+$pdf->Line(2, 22, 212, 22, $style1);
 
 // set alpha to semi-transparency
 $pdf->SetAlpha(1);
@@ -89,11 +90,11 @@ foreach ($row as $rows){
    
 $general = '<table>
                 <tr>
-                    <td>'.$rows[2].'</td>
+                    <td>'.nl2br($rows[2]).'</td>
                 </tr>
             </table>';
 }
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', utf8_encode($general), $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='47', utf8_encode($general), $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

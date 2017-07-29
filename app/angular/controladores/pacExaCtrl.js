@@ -248,7 +248,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         switch (tipo) {
             case 'Biometria Hematica':
                 console.log('este Biometria Hematica');
-                $("#modal-insertar-general").modal();
+                 $scope.listarBio(idExamen)
                     break;
             case 'Informe General':
                 $scope.listarInforme(idExamen,tipo);
@@ -303,6 +303,18 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
             pacientesExamenServices.editarInforme(data).then(function(){
             $scope.informeEditado = pacientesExamenServices.response;
             $("#editar-informe").modal("hide");
+        })
+    }
+
+    //obtener biometria
+
+    $scope.listarBio = function(id){
+        
+            pacientesExamenServices.listarInforme(id).then(function(){
+            $scope.getInforme = pacientesExamenServices.response;
+            console.log($scope.getInforme);
+            $scope.getInforme.titulo= titulo;
+                $("#editar-informe").modal();
         })
     }
 
