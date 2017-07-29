@@ -288,7 +288,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+user.id
+					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+user.id+'/'+user.titulo
                     	})
                         .then(function successCallback(response) {
 								self.response 	= response.data;
@@ -297,6 +297,264 @@ var self ={
                             }, function errorCallback(response) {
                             
                             	return d.resolve()	
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				listarBio : function(id){
+						var d = $q.defer();
+						console.log(id)
+                    $http({
+                      method: 'GET',
+					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+id,
+                    	})
+                        .then(function successCallback(response) {
+
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+
+                            	return d.resolve()	
+
+								self.response 	= response.data
+                        });
+                       return d.promise;	
+				},
+				editarBio : function(data){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+data.id,
+						  data:{
+								hematies:data.hematies,
+								hematocrito:data.hematocrito,
+								hemoglobina:data.hemoglobina,
+								leucocitos:data.leucocitos,
+								vsg:data.vsg,
+								vcm:data.vcm,
+								hbcm:data.hbcm,
+								chbcm:data.chbcm,
+								comentario_hema:data.comentario_hema,
+								cayados:data.cayados,
+								neutrofilos:data.neutrofilos,
+								basofilo:data.basofilo,
+								eosinofilo:data.eosinofilo,
+								linfocito:data.linfocito,
+								monocito:data.monocito,
+								prolinfocito:data.prolinfocito,
+								cel_inmaduras:data.cel_inmaduras,
+								comentario_leuco:data.comentario_leuco
+
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				eliminarBiometria : function(user){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'DELETE',
+					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+user.id
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            
+                            	return d.resolve()	
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				listarGen : function(id){
+						var d = $q.defer();
+						console.log(id)
+                    $http({
+                      method: 'GET',
+					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+id,
+                    	})
+                        .then(function successCallback(response) {
+
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+
+                            	return d.resolve()	
+
+								self.response 	= response.data
+                        });
+                       return d.promise;	
+				},
+				editarGeneral : function(data){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+data.id,
+						  data:{
+								color:data.color,
+								cantidad:data.cantidad,
+								olor:data.olor,
+								aspecto:data.aspecto,
+								espuma:data.espuma,
+								sedimento:data.sedimento,
+								densidad:data.densidad,
+								reaccion:data.reaccion,
+								proteinas:data.proteinas,
+								glucosa:data.glucosa,
+								cetona:data.cetona,
+								bilirrubina:data.bilirrubina,
+								nitritos:data.nitritos,
+								urubilinogeno:data.urubilinogeno,
+								eritrocitos:data.eritrocitos,
+								piocitos:data.piocitos,
+								leucocitos:data.leucocitos,
+								sangre:data.sangre,
+								cilindros:data.cilindros,
+								celulas:data.celulas,
+								cristales:data.cristales,
+								otros:data.otros,
+								exa_bac_sed:data.exa_bac_sed
+
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				eliminarGeneral : function(user){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'DELETE',
+					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+user.id
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            
+                            	return d.resolve()	
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				eliminarReaccion : function(user){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'DELETE',
+					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+user.id
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            
+                            	return d.resolve()	
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
+				listarRea : function(id){
+						var d = $q.defer();
+						console.log(id)
+                    $http({
+                      method: 'GET',
+					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+id,
+                    	})
+                        .then(function successCallback(response) {
+
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+
+                            	return d.resolve()	
+
+								self.response 	= response.data
+                        });
+                       return d.promise;	
+				},
+				editarReaccion : function(data){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+data.id,
+						  data:{
+								paraA1:data.paraA1,
+								paraA2:data.paraA2,
+								paraA3:data.paraA3,
+								paraA4:data.paraA4,
+								paraA5:data.paraA5,
+								paraA6:data.paraA6,
+								paraB1:data.paraB1,
+								paraB2:data.paraB2,
+								paraB3:data.paraB3,
+								paraB4:data.paraB4,
+								paraB5:data.paraB5,
+								paraB6:data.paraB6,
+								somaticoO1:data.somaticoO1,
+								somaticoO2:data.somaticoO2,
+								somaticoO3:data.somaticoO3,
+								somaticoO4:data.somaticoO4,
+								somaticoO5:data.somaticoO5,
+								somaticoO6:data.somaticoO6,
+								flagelarH1:data.flagelarH1,
+								flagelarH2:data.flagelarH2,
+								flagelarH3:data.flagelarH3,
+								flagelarH4:data.flagelarH4,
+								flagelarH5:data.flagelarH5,
+								flagelarH6:data.flagelarH6,
+								comentario:data.comentario
+
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
 								self.response 	= response.data
                         });
                        return d.promise;	 

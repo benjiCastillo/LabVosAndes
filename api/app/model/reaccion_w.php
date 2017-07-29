@@ -57,7 +57,7 @@ class  ReaccionWModel
 		];				  						 
 	}
 	//obtener
-	public function getReaccion($id){
+	public function getReaccionW($id){
 
 		return $data = $this->db->from($this->table, $id)
 								->fetch();  						 
@@ -107,10 +107,12 @@ class  ReaccionWModel
 	//eliminar
 	public function delete($id){
 
-		$this->db->deleteFrom($this->table, $id)	
-				 ->execute();
-
-		return $this->response->setResponse(true);		 
+			$this->db_pdo->multi_query(" CALL eliminarReaccion('".$id."')");
+			$res = $this->db_pdo->store_result();
+			$res = $res->fetch_array();
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res[0],"response"=>true);
+			return $res;		 	 
 	}
 
 

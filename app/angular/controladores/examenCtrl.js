@@ -43,11 +43,11 @@ app.controller('examenCtrl', ['$scope','$routeParams','examenServices', function
                 break;
             case 'Informe General':
                 console.log('este	Informe General');
-               window.open('http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
+               window.open('http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
                 break;
             case 'Informe de Quimica Sanguinea':
                 console.log('este i qumi sanguinea');
-                window.open('http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
+                window.open('http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
                 break;
             case 'informe de Microbiologia':
                 console.log('este informe de Microbiologia');

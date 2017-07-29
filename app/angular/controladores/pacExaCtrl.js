@@ -275,17 +275,17 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
                     break; 
              case 'Analisis General':
                 console.log('Analisis General');
-                $("#modal-insertar-general").modal();
+                 $scope.listarGen(idExamen); 
                     break;
              case 'Reaccion de Widal':
                 console.log('Reaccion de Widal');
-                $("#modal-insertar-general").modal();
+                 $scope.listarRea(idExamen);
                      break;                          
         
             default:
                 break;
         }
-        console.log(idPaciente+' '+idExamen)
+
         // window.location.href = 'http://localhost/LabVosAndes/reportes/examen_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
     }
 
@@ -309,12 +309,48 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
     //obtener biometria
 
     $scope.listarBio = function(id){
-        
-            pacientesExamenServices.listarInforme(id).then(function(){
-            $scope.getInforme = pacientesExamenServices.response;
-            console.log($scope.getInforme);
-            $scope.getInforme.titulo= titulo;
-                $("#editar-informe").modal();
+            pacientesExamenServices.listarBio(id).then(function(){
+            $scope.edtBiometria = pacientesExamenServices.response;
+            console.log($scope.edtBiometria);
+                $("#editar-biometria").modal();
+        })
+    }
+      $scope.editarBio = function(data){
+            pacientesExamenServices.editarBio(data).then(function(){
+            $scope.informeEditado = pacientesExamenServices.response;
+            $("#editar-biometria").modal("hide");
+        })
+    }
+     //obtener general
+
+    $scope.listarGen = function(id){
+            pacientesExamenServices.listarGen(id).then(function(){
+            $scope.edtGeneral = pacientesExamenServices.response;
+            console.log($scope.edtGeneral);
+                $("#editar-general").modal();
+        })
+    }
+      $scope.editarGeneral = function(data){
+            pacientesExamenServices.editarGeneral(data).then(function(){
+            $scope.generalEditado = pacientesExamenServices.response;
+            $("#editar-general").modal("hide");
+        })
+    }
+
+    //obtener reaccion
+
+    $scope.listarRea = function(id){
+            pacientesExamenServices.listarRea(id).then(function(){
+            $scope.edtReaccion = pacientesExamenServices.response;
+            console.log($scope.edtReaccion);
+                $("#editar-reaccion").modal();
+        })
+    }
+      $scope.editarReaccion = function(data){
+            pacientesExamenServices.editarReaccion(data).then(function(){
+            $scope.reaccionEditado = pacientesExamenServices.response;
+            console.log($scope.reaccionEditado)
+            $("#editar-reaccion").modal("hide");
         })
     }
 
@@ -325,7 +361,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         switch (tipo) {
             case 'Biometria Hematica':
                 console.log('este Biometria Hematica');
-                $("#modal-insertar-general").modal();
+                $scope.eliminarBiometria(idExamen);
                     break;
             case 'Informe General':
                 $scope.eliminarInforme(idExamen,tipo);
@@ -352,37 +388,82 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
                     break; 
              case 'Analisis General':
                 console.log('Analisis General');
-                $("#modal-insertar-general").modal();
+               $scope.eliminarGeneral(idExamen);
                     break;
              case 'Reaccion de Widal':
                 console.log('Reaccion de Widal');
-                $("#modal-insertar-general").modal();
+                $scope.eliminarReaccion(idExamen);
                      break;                          
         
             default:
                 break;
         }
-        console.log(idPaciente+' '+idExamen)
+        
         // window.location.href = 'http://localhost/LabVosAndes/reportes/examen_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
     }
 
     $scope.elmInforme = {};
-    //Obtener informes
+    //Eliminar informes
     $scope.eliminarInforme = function(id, titulo){
-      
             $scope.elmInforme.titulo= titulo;
             $scope.elmInforme.id= id;
                 $("#eliminar-informe").modal();
-     
     }
     $scope.deleteInforme = function(data){
             pacientesExamenServices.eliminarInforme(data).then(function(){
             $scope.informeEliminado = pacientesExamenServices.response;
-            console.log($scope.informeEliminado)
+            console.log('datos '+$scope.informeEliminado)
             $("#eliminar-informe").modal("hide");
              $scope.listarExaPac($scope.paciente.id);
         })
     }
+    //eliminar Biometria
+    $scope.elmBiometria = {};
+    $scope.eliminarBiometria = function(id){
+            $scope.elmBiometria.id= id;
+                $("#eliminar-biometria").modal();
+    }
+
+    $scope.deleteBiometria = function(data){
+        pacientesExamenServices.eliminarBiometria(data).then(function(){
+            $scope.biometriaEliminado = pacientesExamenServices.response;
+            console.log($scope.biometriaEliminado)
+            $("#eliminar-biometria").modal("hide");
+             $scope.listarExaPac($scope.paciente.id);
+        })
+    }
+
+    //eliminar general
+    $scope.elmGeneral = {};
+    $scope.eliminarGeneral = function(id){
+            $scope.elmGeneral.id= id;
+                $("#eliminar-general").modal();
+    }
+
+    $scope.deleteGeneral = function(data){
+        pacientesExamenServices.eliminarGeneral(data).then(function(){
+            $scope.generalEliminado = pacientesExamenServices.response;
+            console.log($scope.generalEliminado)
+            $("#eliminar-general").modal("hide");
+             $scope.listarExaPac($scope.paciente.id);
+        })
+    }
+    //eliminar reaccion
+    $scope.elmReaccion = {};
+    $scope.eliminarReaccion = function(id){
+            $scope.elmReaccion.id= id;
+                $("#eliminar-reaccion").modal();
+    }
+
+    $scope.deleteReaccion = function(data){
+        pacientesExamenServices.eliminarReaccion(data).then(function(){
+            $scope.reaccionEliminado = pacientesExamenServices.response;
+            console.log($scope.reaccionEliminado)
+            $("#eliminar-reaccion").modal("hide");
+             $scope.listarExaPac($scope.paciente.id);
+        })
+    }
+
 
 }])
 

@@ -1,0 +1,85 @@
+<div class="modal fade" id="editar-reaccion">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         <h4 class="modal-title">Editar Reaccion de Widal</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;"  ng-submit="editarReaccion(edtReaccion)">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+                <h4 class="text-success">Informe</h4>
+            <table class="table table-hover table-striped">
+				<thead>
+				 <tr> 
+				 	<th>Dilucion</th>
+					<th>1/20</th> 
+				 	<th>1/40</th>
+					<th>1/80</th>
+				 	<th>1/160</th>
+					<th>1/320</th>
+					<th>1/400</th> 
+				 </tr> 
+				</thead> 
+				<tbody>
+				 	<tr>
+				 		<td>Paratyphi "A"</td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA1" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA2" required> </td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA3" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA4" required></td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA5" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraA6" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Paratyphi "B"</td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB1" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB2" required></td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB3" required></td>
+				 		<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB4" required></td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB5" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.paraB6" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Somatico "O"</td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO1" required> </td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO2" required> </td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO3" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO4" required></td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO5" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.somaticoO6" required></td>  
+				 	</tr> 
+					 <tr>
+				 		<td>Flagelar "H"</td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH1" required> </td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH2" required> </td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH3" required> </td>
+				 		<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH4" required></td>
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH5" required></td> 
+						<td><input  class="form-control" type="text" ng-model="edtReaccion.flagelarH6" required></td>  
+				 	</tr>
+					  
+				</tbody> 
+			</table>
+      <div class="form-group">
+        <label class="col-sm-12">Comentario</label>
+        <textarea ng-model="edtReaccion.comentario" class="col-sm-12" id="" cols="10" rows="5" required></textarea>
+      </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
+      </div>
+      
+      </form>
+   
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

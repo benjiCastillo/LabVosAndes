@@ -63,10 +63,10 @@ $app->group('/informesg',function(){
 				   	);
 	});
 
-	$this->delete('/{id}',function($req, $res, $args){
+	$this->delete('/{id}/{titulo}',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'aplication/json')
 				   ->write(
-				   		json_encode($this->model->InformesG->delete($args['id']))
+				   		json_encode($this->model->InformesG->delete($args['id'], $args['titulo']))
 				   		
 				   	);
 

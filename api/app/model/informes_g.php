@@ -94,13 +94,13 @@ class  InformesGModel
 		return $this->response->setResponse(true);		 
 	}
 	//eliminar
-	public function delete($id){
+	public function delete($id,$titulo){
 		
-		$this->db_pdo->multi_query(" CALL eliminarInforme('".$id.")");
+		$this->db_pdo->multi_query(" CALL eliminarInforme('".$id."','".$titulo."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
+			$res = array("message"=> $titulo,"response"=>true);
 			return $res;	 
 	}
 
