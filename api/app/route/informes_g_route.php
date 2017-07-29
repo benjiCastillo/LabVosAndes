@@ -29,19 +29,12 @@ $app->group('/informesg',function(){
 	$this->get('/{id}',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'aplication/json')
 				   ->write(
-				   		json_encode($this->model->InformesG->getInformesG($args['id']))
+				   		json_encode($this->model->InformesG->getInformeG($args['id']))
 				   		
 				   	);
 	});
 
 	$this->post('/',function($req, $res, $args){
-		// $r = UserValidation::validate($req->getParsedBody());
-
-		// if(!$r->response){
-		// 	return $res->withHeader('Content-type', 'aplication/json')
-		// 			   ->withStatus(422)
-		// 			   ->write(json_encode($r->errors));
-		// }
 
 		return $res->withHeader('Content-type', 'aplication/json')
 			       -> write(
@@ -63,14 +56,6 @@ $app->group('/informesg',function(){
 
 	$this->put('/{id}',function($req, $res, $args){
 
-		// $r = UserValidation::validate($req->getParsedBody());
-
-		// if(!$r->response){
-		// 	return $res->withHeader('Content-type', 'aplication/json')
-		// 			   ->withStatus(422)
-		// 			   ->write(json_encode($r->errors));
-		// }
-		
 		return $res->withHeader('Content-type', 'aplication/json')
 				   ->write(
 				   		json_encode($this->model->InformesG->update($req->getParsedBody(), $args['id'] ))

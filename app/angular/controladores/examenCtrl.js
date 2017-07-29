@@ -33,7 +33,8 @@ app.controller('examenCtrl', ['$scope','$routeParams','examenServices', function
 			
     }
 
-	    $scope.showPrint = function(idPaciente, idExamen, tipo){
+
+    $scope.showPrint = function(idPaciente, idExamen, tipo){
         // console.log(tipo)
         switch (tipo) {
             case 'Biometria Hematica':
@@ -46,7 +47,7 @@ app.controller('examenCtrl', ['$scope','$routeParams','examenServices', function
                 break;
             case 'Informe de Quimica Sanguinea':
                 console.log('este i qumi sanguinea');
-                window.open('http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
+                window.open('http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
                 break;
             case 'informe de Microbiologia':
                 console.log('este informe de Microbiologia');
