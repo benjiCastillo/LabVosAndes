@@ -111,6 +111,87 @@ var self ={
                        return d.promise;	 
 	
 				},
+				insertarBiometria : function(datos){
+					var d = $q.defer();
+					// console.log(datos);
+                    $http({
+                      method: 'POST',
+					  	url: 'http://localhost/LabVosAndes/api/public/biometria/insertBio/',
+                        data:{
+								_hematies:datos.hematies,
+								_hematocrito:datos.hematocrito,
+								_hemoglobina:datos.hemoglobina,
+								_leucocitos:datos.leucocito,
+								_vsg:datos.vsg,
+								_vcm:datos.vcm,
+								_hbcm:datos.hbcm,
+								_chbcm:datos.chbcm,
+								_comentario_hema:datos.comentario1,
+								_cayados:datos.cayados,
+								_neutrofilos:datos.neutrofilos,
+								_basofilo:datos.basofilo,
+								_eosinofilo:datos.eosinofilo,
+								_linfocito:datos.linfocito,
+								_monocito:datos.monocito,
+								_prolinfocito:datos.prolinfocito,
+								_cel_inmaduras:datos.celinmaduras,
+								_comentario_leuco:datos.comentario2
+						}
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								return d.resolve()	
+                            }, function errorCallback(response) {	
+								self.response 	= response.data
+								return d.resolve();
+                        });
+                       return d.promise;	 
+	
+				},
+				insertarReaccion : function(datos){
+					var d = $q.defer();
+					// console.log(datos);
+                    $http({
+                      method: 'POST',
+					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/',
+                        data:{
+								_paraA1:datos.pA20,
+								_paraA2:datos.pA40,
+								_paraA3:datos.pA80,
+								_paraA4:datos.pA160,
+								_paraA5:datos.pA320,
+								_paraA6:datos.pA400,
+								_paraB1:datos.pB20,
+								_paraB2:datos.pB40,
+								_paraB3:datos.pB80,
+								_paraB4:datos.pB160,
+								_paraB5:datos.pB320,
+								_paraB6:datos.pB400,
+								_somaticoO1:datos.s20,
+								_somaticoO2:datos.s40,
+								_somaticoO3:datos.s80,
+								_somaticoO4:datos.s160,
+								_somaticoO5:datos.s320,
+								_somaticoO6:datos.s400,
+								_flagelarH1:datos.f20,
+								_flagelarH2:datos.f40,
+								_flagelarH3:datos.f80,
+								_flagelarH4:datos.f160,
+								_flagelarH5:datos.f320,
+								_flagelarH6:datos.f400,
+								_comentario:datos.comentario
+						}
+                    	})
+                        .then(function successCallback(response) {
+								self.response 	= response.data;
+								return d.resolve()	
+                            }, function errorCallback(response) {	
+								self.response 	= response.data
+								return d.resolve();
+                        });
+                       return d.promise;	 
+	
+				},
 				listarMedicos : function(){
 						var d = $q.defer();
 				

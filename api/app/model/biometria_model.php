@@ -94,8 +94,7 @@ class  BiometriaModel
 														'".$data['_monocito']."',
 														'".$data['_prolinfocito']."',
 														'".$data['_cel_inmaduras']."',
-														'".$data['_comentario_leuco']."',
-														'".$data['_id_examen']."')");
+														'".$data['_comentario_leuco']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
