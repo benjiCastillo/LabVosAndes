@@ -31,6 +31,13 @@ $app->group('/examen',function(){
 				   		
 				   	);
 	});
+	$this->get('/listalltest/',function($req, $res, $args){
+		return $res->withHeader('Content-type', 'aplication/json')
+				   ->write(
+				   		json_encode($this->model->Examen->listAllTest())
+				   		
+				   	);
+	});
 
 	$this->get('/testListPac/{id}',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'aplication/json')
