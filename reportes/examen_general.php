@@ -95,11 +95,11 @@ $tabla1 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Color: asdawdsdgfasdgzxcbzdcvsfdvasd</td>
+                    <td>Color: </td>
                     <td>Ámbar</td>
                 </tr>
                 <tr>
-                    <td>Cantidad: asdawdasdadfdsagfgadfbadfbad</td>
+                    <td>Cantidad: </td>
                     <td></td>
                 </tr>
                 <tr>
@@ -107,7 +107,7 @@ $tabla1 = '<table>
                     <td>Suigéneris</td>
                 </tr>
                 <tr>
-                    <td>Aspecto: asdasdasdasdasd</td>
+                    <td>Aspecto: </td>
                     <td>Límpido</td>
                 </tr>
                 <tr>
