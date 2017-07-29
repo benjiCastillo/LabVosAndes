@@ -201,24 +201,31 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         switch (tipo) {
             case 'Biometria Hematica':
                 console.log('este Biometria Hematica');
+                window.location.href = 'http://localhost/LabVosAndes/reportes/biometria.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;
             case 'Informe General':
                 console.log('este	Informe General');
+                window.location.href = 'http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;
             case 'Informe de Quimica Sanguinea':
                 console.log('este i qumi sanguinea');
+                 window.location.href = 'http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;
             case 'informe de Microbiologia':
                 console.log('este informe de Microbiologia');
+                window.location.href = 'http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;
             case 'Informe de Parasitologia':
                 console.log('este Informe de Parasitologia');
+                 window.location.href = 'http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break; 
              case 'Analisis General':
                 console.log('Analisis General');
+                window.location.href = 'http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;
              case 'Reaccion de Widal':
                 console.log('Reaccion de Widal');
+                 window.location.href = 'http://localhost/LabVosAndes/reportes/reaccion_w.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
                 break;                          
         
             default:
