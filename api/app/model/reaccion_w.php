@@ -65,12 +65,36 @@ class  ReaccionWModel
 	//registrar
 
 	public function insert($data){
-		// $data['password'] = md5($data['password']);
-
-		$this->db_pdo->insertInto($this->table, $data)
-				 ->execute();
-
-		return $this->response->setResponse(true);
+		$this->db_pdo->multi_query(" CALL insertarReaccionW('".$data['_paraA1']."',
+														'".$data['_paraA2']."',
+														'".$data['_paraA3']."',
+														'".$data['_paraA4']."',
+														'".$data['_paraA5']."',
+														'".$data['_paraA6']."',
+														'".$data['_paraB1']."',
+														'".$data['_paraB2']."',
+														'".$data['_paraB3']."',
+														'".$data['_paraB4']."',
+														'".$data['_paraB5']."',
+														'".$data['_paraB6']."',
+														'".$data['_somaticoO1']."',
+														'".$data['_somaticoO2']."',
+														'".$data['_somaticoO3']."',
+														'".$data['_somaticoO4']."',
+														'".$data['_somaticoO5']."',
+														'".$data['_somaticoO6']."',
+														'".$data['_flagelarH1']."',
+														'".$data['_flagelarH2']."',
+														'".$data['_flagelarH3']."',
+														'".$data['_flagelarH4']."',
+														'".$data['_flagelarH5']."',
+														'".$data['_flagelarH6']."',
+														'".$data['_comentario']."')");
+			$res = $this->db_pdo->store_result();
+			$res = $res->fetch_array();
+			mysqli_close($this->db_pdo);
+			$res = array("message"=>$res[0],"response"=>true);
+			return $res;	
 		}
 	//actualizar
 	public function update($data, $id){
