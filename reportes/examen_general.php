@@ -88,64 +88,127 @@ $title = '<p><b>EXÁMEN GENERAL DE ORINA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
-$general = '<table>
-        <tr>
-            <td><b>Exámen Físico</b></td>
-            <td><b>Exámen Químico</b></td>
-            <td><b>Exámen Microscópico Sedimento</b></td>
-        </tr>
-        <tr>
-            <td>Color: '.$rows[1].'</td>
-            <td>Proteínas: '.$rows[9].'</td>
-            <td>Eritrocitos: '.$rows[16].'</td>
-        </tr>
-        <tr>
-            <td>Cantidad: '.$rows[2].'</td>
-            <td>Glucosa: '.$rows[10].'</td>
-            <td>Piocitos: '.$rows[17].'</td>
-        </tr>
-        <tr>
-            <td>Olor: '.$rows[3].'</td>
-            <td>Cetona: '.$rows[11].'</td>
-            <td>Leucocitos: '.$rows[18].'</td>
-        </tr>
-        <tr>
-            <td>Aspecto: '.$rows[4].'</td>
-            <td>Bilirrubina: '.$rows[12].'</td>
-            <td>Cilindros: '.$rows[19].'</td>
-        </tr>
-        <tr>
-            <td>Espuma: '.$rows[5].'</td>
-            <td>Sangre: '.$rows[13].'</td>
-            <td>Células: '.$rows[20].'</td>
-        </tr>
-        <tr>
-            <td>Sedimento: '.$rows[6].'</td>
-            <td>Nitritos: '.$rows[14].'</td>
-            <td>Cristales: '.$rows[21].'</td>
-        </tr>
-        <tr>
-            <td>Densidad: '.$rows[7].'</td>
-            <td>Urubilinógeno: '.$rows[15].'</td>
-            <td rowspan="2">Otros: '.$rows[22].'</td>
-        </tr>
-        <tr>
-            <td>Reacción: '.$rows[8].'</td>
-        </tr>
-    </table>
-    
-    <table>
+
+$tabla1 = '<table>
+                <tr>
+                    <td><b>Exámen Físico</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Color: asdawdsdgfasdgzxcbzdcvsfdvasd</td>
+                    <td>Ámbar</td>
+                </tr>
+                <tr>
+                    <td>Cantidad: </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Olor: </td>
+                    <td>Suigéneris</td>
+                </tr>
+                <tr>
+                    <td>Aspecto: asdasdasdasdasd</td>
+                    <td>Límpido</td>
+                </tr>
+                <tr>
+                    <td>Espuma: </td>
+                    <td>Blanca Fugaz</td>
+                </tr>
+                <tr>
+                    <td>Sedimento: </td>
+                    <td>Escaso o/nulo</td>
+                </tr>
+                <tr>
+                    <td>Densidad: </td>
+                    <td>1012 - 1030</td>
+                </tr>
+                <tr>
+                    <td>Reacción</td>
+                    <td>Ácida</td>
+                </tr>
+</table>';
+
+$tabla2 = '<table>
+                <tr>
+                    <td><b>Exámen Químico</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Proteínas: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Glucosa: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Cetona: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Bilirrubina: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Sangre: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Nitritos: </td>
+                    <td>No contiene</td>
+                </tr>
+                <tr>
+                    <td>Urubilinogeno: </td>
+                    <td>0,1 - 1 mg/dl</td>
+                </tr>
+</table>';
+
+$tabla3 = '<table>
+                <tr>
+                    <td><b>Exámen Microscópico Sedimento</b></td>
+                </tr>
+                <tr>
+                    <td>Eritrocitos: </td>
+                </tr>
+                <tr>
+                    <td>Piocitos: </td>
+                </tr>
+                <tr>
+                    <td>Leucocitos: </td>
+                </tr>
+                <tr>
+                    <td>Cilindros: </td>
+                </tr>
+                <tr>
+                    <td>Células</td>
+                </tr>
+                <tr>
+                    <td>Cristales: </td>
+                </tr>
+                <tr>
+                    <td>Otros: </td>
+                </tr>
+
+</table>';
+
+$tabla4 = '<table>
         
         <tr>
-            <br>
             <td><b>Exámen Bacteriológico Sedimento</b></td>
         </tr>
         <tr>
             <td>'.$rows[23].'</td>
         </tr>
     </table>';
+
 }
-$pdf->writeHTMLCell($w=190, $h=0, $x='10', $y='', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=80, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=70, $h=0, $x='79', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='92', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

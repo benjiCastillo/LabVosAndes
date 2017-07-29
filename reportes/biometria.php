@@ -93,46 +93,67 @@ foreach ($row as $rows){
 $biometria = '<table>
         <tr>
             <td><b>Hematimetría 3600 m.s.n.m.</b></td>
+            <td></td>
             <td><b>Leucograma</b></td>
+            <td></td>
         </tr>
         <tr>
-            <td>Hematíes: '.$rows[1].'</td>
+            <td>Hematíes: '.$rows[1].' mm3</td>
+            <td>H: 5`2 - 5`6; M: 5`2 - 5`4</td>
             <td>Cayados: '.$rows[10].'</td>
+            <td>1 - 5 %</td>
         </tr>
         <tr>
-            <td>Hematocrito: '.$rows[2].'</td>
+            <td>Hematocrito: '.$rows[2].' %</td>
+            <td>H: 49 - 53; M: 47 - 51</td>
             <td>Neutrófilos: '.$rows[11].'</td>
+            <td>50 - 70 %</td>
         </tr>
         <tr>
-            <td>Hemoglobina: '.$rows[3].'</td>
+            <td>Hemoglobina: '.$rows[3].' gr/dl</td>
+            <td>H: 16 +/- 1,5;M: 15 +/- 0,5</td>
             <td>Basófilo: '.$rows[12].'</td>
+            <td>0 - 1 %</td>
         </tr>
         <tr>
-            <td>Leucocito: '.$rows[4].'</td>
+            <td>Leucocito: '.$rows[4].'mm3</td>
+            <td>5,000 - 8,000</td>
             <td>Eosinofilo: '.$rows[13].'</td>
+            <td>1 - 3 %</td>
         </tr>
         <tr>
-            <td>V. S. G.: '.$rows[5].'</td>
+            <td>V. S. G.: '.$rows[5].' mm/hra</td>
+            <td>1 - 10</td>
             <td>Linfocito: '.$rows[14].'</td>
+            <td>25 - 35 %</td>
         </tr>
         <tr>
             <td></td>
+            <td></td>
             <td>Monocito: '.$rows[15].'</td>
+            <td>4 - 8 %</td>
         </tr>
         <tr>
             <td><b>Índices Hematimétricos</b></td>
+            <td></td>
             <td>Pro linfocito: '.$rows[16].'</td>
+            <td></td>
         </tr>
         <tr>
-            <td>V. C. M.: '.$rows[6].'</td>
+            <td>V. C. M.: '.$rows[6].' fl.</td>
+            <td>90 +/- 8</td>
             <td>Cel. Inmaduras: '.$rows[17].'</td>
+            <td></td>
         </tr>
         <tr>
-            <td>Hb. C. M.: '.$rows[7].'</td>
-            <td>Comentario: '.$rows[18].'</td>
+            <td>Hb. C. M.: '.$rows[7].' pg.</td>
+            <td>30 +/- 3</td>
+            <td rowspan="3">Comentario: '.$rows[18].'</td>
         </tr>
         <tr>
-            <td>C. Hb. C. M.: '.$rows[8].'</td>
+            <td>C. Hb. C. M.: '.$rows[8].' %</td>
+            <td>34 +/- 2</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -141,7 +162,7 @@ $biometria = '<table>
         </tr>
     </table>';
 }
-$pdf->writeHTMLCell($w=185, $h=0, $x='21', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=210, $h=0, $x='21', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 // $pdf->writeHTML($biometria, true, false, true, false, 'L');
 
 $pdf->SetFont('helvetica','',9);
