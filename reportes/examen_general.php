@@ -1,9 +1,6 @@
 <?php
-$id='10';
-$idp='28';
-// $id=$_POST[''];
-// $idp=$_POST[''];
-
+$id=$_GET["idExamen"];
+$idp=$_GET["idPaciente"];
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
@@ -11,7 +8,7 @@ require('conexion.php');
 
 $con=Conectar();
 
-$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, e.fecha FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
+$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
 $stmtp = $con->prepare($sqlp);
 $resultsp = $stmtp->execute(array($idp));
 $rowp = $stmtp->fetchAll();
@@ -91,74 +88,74 @@ foreach ($row as $rows){
 
 $tabla1 = '<table>
                 <tr>
-                    <td><b>Exámen Físico</b></td>
+                    <td colspan="2"><b>Exámen Físico</b></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Color: </td>
+                    <td>Color: '.$rows[1].'</td>
                     <td>Ámbar</td>
                 </tr>
                 <tr>
-                    <td>Cantidad: </td>
-                    <td></td>
+                    <td>Cantidad: '.$rows[2].'</td>
+                    <td>-</td>
                 </tr>
                 <tr>
-                    <td>Olor: </td>
+                    <td>Olor: '.$rows[3].'</td>
                     <td>Suigéneris</td>
                 </tr>
                 <tr>
-                    <td>Aspecto: </td>
+                    <td>Aspecto: '.$rows[4].'</td>
                     <td>Límpido</td>
                 </tr>
                 <tr>
-                    <td>Espuma: </td>
+                    <td>Espuma: '.$rows[5].'</td>
                     <td>Blanca Fugaz</td>
                 </tr>
                 <tr>
-                    <td>Sedimento: </td>
+                    <td>Sedimento: '.$rows[6].'</td>
                     <td>Escaso o/nulo</td>
                 </tr>
                 <tr>
-                    <td>Densidad: </td>
+                    <td>Densidad: '.$rows[7].'</td>
                     <td>1012 - 1030</td>
                 </tr>
                 <tr>
-                    <td>Reacción</td>
+                    <td>Reacción: '.$rows[8].'</td>
                     <td>Ácida</td>
                 </tr>
 </table>';
 
 $tabla2 = '<table>
                 <tr>
-                    <td><b>Exámen Químico</b></td>
+                    <td colspan="2"><b>Exámen Químico</b></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Proteínas: </td>
+                    <td>Proteínas: '.$rows[9].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Glucosa: </td>
+                    <td>Glucosa: '.$rows[10].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Cetona: </td>
+                    <td>Cetona: '.$rows[11].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Bilirrubina: </td>
+                    <td>Bilirrubina: '.$rows[12].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Sangre: </td>
+                    <td>Sangre: '.$rows[13].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Nitritos: </td>
+                    <td>Nitritos: '.$rows[14].'</td>
                     <td>No contiene</td>
                 </tr>
                 <tr>
-                    <td>Urubilinogeno: </td>
+                    <td>Urubilinogeno: '.$rows[15].'</td>
                     <td>0,1 - 1 mg/dl</td>
                 </tr>
 </table>';
@@ -168,27 +165,26 @@ $tabla3 = '<table>
                     <td><b>Exámen Microscópico Sedimento</b></td>
                 </tr>
                 <tr>
-                    <td>Eritrocitos: </td>
+                    <td>Eritrocitos: '.$rows[16].'</td>
                 </tr>
                 <tr>
-                    <td>Piocitos: </td>
+                    <td>Piocitos: '.$rows[17].'</td>
                 </tr>
                 <tr>
-                    <td>Leucocitos: </td>
+                    <td>Leucocitos: '.$rows[18].'</td>
                 </tr>
                 <tr>
-                    <td>Cilindros: </td>
+                    <td>Cilindros: '.$rows[19].'</td>
                 </tr>
                 <tr>
-                    <td>Células</td>
+                    <td>Células: '.$rows[20].'</td>
                 </tr>
                 <tr>
-                    <td>Cristales: </td>
+                    <td>Cristales: '.$rows[21].'</td>
                 </tr>
                 <tr>
-                    <td>Otros: </td>
+                    <td>Otros: '.$rows[22].'</td>
                 </tr>
-
 </table>';
 
 $tabla4 = '<table>
@@ -200,17 +196,16 @@ $tabla4 = '<table>
             <td>'.$rows[23].'</td>
         </tr>
     </table>';
-
 }
-$pdf->writeHTMLCell($w=80, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=130, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=70, $h=0, $x='79', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=120, $h=0, $x='79', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-// $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='0', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-$pdf->Ln(15);
-$pdf->writeHTML($tabla4, true, false, true, false, 'L');
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='90', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+// $pdf->Ln(15);
+// $pdf->writeHTML($tabla4, true, false, true, false, 'L');
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

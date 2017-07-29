@@ -1,9 +1,6 @@
 <?php
-$id='1';
-$idp='28';
-// $id=$_POST[''];
-// $idp=$_POST[''];
-
+$id=$_GET["idExamen"];
+$idp=$_GET["idPaciente"];
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
@@ -11,7 +8,7 @@ require('conexion.php');
 
 $con=Conectar();
 
-$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, e.fecha FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
+$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
 $stmtp = $con->prepare($sqlp);
 $resultsp = $stmtp->execute(array($idp));
 $rowp = $stmtp->fetchAll();
@@ -90,79 +87,100 @@ $title = '<p><b>BIOMETRÍA HEMÁTICA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
-$biometria = '<table>
-        <tr>
-            <td><b>Hematimetría 3600 m.s.n.m.</b></td>
-            <td></td>
-            <td><b>Leucograma</b></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Hematíes: '.$rows[1].' mm3</td>
-            <td>H: 5`2 - 5`6; M: 5`2 - 5`4</td>
-            <td>Cayados: '.$rows[10].'</td>
-            <td>1 - 5 %</td>
-        </tr>
-        <tr>
-            <td>Hematocrito: '.$rows[2].' %</td>
-            <td>H: 49 - 53; M: 47 - 51</td>
-            <td>Neutrófilos: '.$rows[11].'</td>
-            <td>50 - 70 %</td>
-        </tr>
-        <tr>
-            <td>Hemoglobina: '.$rows[3].' gr/dl</td>
-            <td>H: 16 +/- 1,5;M: 15 +/- 0,5</td>
-            <td>Basófilo: '.$rows[12].'</td>
-            <td>0 - 1 %</td>
-        </tr>
-        <tr>
-            <td>Leucocito: '.$rows[4].'mm3</td>
-            <td>5,000 - 8,000</td>
-            <td>Eosinofilo: '.$rows[13].'</td>
-            <td>1 - 3 %</td>
-        </tr>
-        <tr>
-            <td>V. S. G.: '.$rows[5].' mm/hra</td>
-            <td>1 - 10</td>
-            <td>Linfocito: '.$rows[14].'</td>
-            <td>25 - 35 %</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Monocito: '.$rows[15].'</td>
-            <td>4 - 8 %</td>
-        </tr>
-        <tr>
-            <td><b>Índices Hematimétricos</b></td>
-            <td></td>
-            <td>Pro linfocito: '.$rows[16].'</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>V. C. M.: '.$rows[6].' fl.</td>
-            <td>90 +/- 8</td>
-            <td>Cel. Inmaduras: '.$rows[17].'</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Hb. C. M.: '.$rows[7].' pg.</td>
-            <td>30 +/- 3</td>
-            <td rowspan="3">Comentario: '.$rows[18].'</td>
-        </tr>
-        <tr>
-            <td>C. Hb. C. M.: '.$rows[8].' %</td>
-            <td>34 +/- 2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Comentario: '.$rows[9].'</td>
-            <td></td>
-        </tr>
-    </table>';
+$tabla1 = '<table>
+                <tr>
+                    <td colspan="2"><b>Hematimetría 3600 m.s.n.m.</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Hematíes: mm3</td>
+                    <td>H: 5`2 - 5`6; M: 5`2 - 5`4</td>
+                </tr>
+                <tr>
+                    <td>Hematocrito: %</td>
+                    <td>H: 49 - 53; M: 47 - 51 </td>
+                </tr>
+                <tr>
+                    <td>Hemoglobina: gr/dl</td>
+                    <td>H: 16 +/- 1,5; M: 15 +/- 0,5</td>
+                </tr>
+                <tr>
+                    <td>Leucocito: mm3</td>
+                    <td>5,000 - 8,000 </td>
+                </tr>
+                <tr>
+                    <td>V. S. G.: mm/hra</td>
+                    <td>1 - 10</td>
+                </tr>
+                <tr>
+                    <br>
+                    <td colspan="2"><b>Índices Hematimétricos</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>V. C. M.: fl.</td>
+                    <td>90 +/- 8</td>
+                </tr>
+                <tr>
+                    <td>Hb. C. M.: pg.</td>
+                    <td>30 +/- 3</td>
+                </tr>
+                <tr>
+                    <td>C. Hb. C. M.: %</td>
+                    <td>34 +/- 2</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Comentario: </td>
+                    <td></td>
+                </tr>
+</table>';
+$tabla2 = '<table>
+                <tr>
+                    <td colspan="2"><b>Leucograma</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cayados: </td>
+                    <td>1 - 5 %</td>
+                </tr>
+                <tr>
+                    <td>Neutrófilos: </td>
+                    <td>50 - 70 %</td>
+                </tr>
+                <tr>
+                    <td>Basófilo: </td>
+                    <td>0 - 1 %</td>
+                </tr>
+                <tr>
+                    <td>Eosinófilo: </td>
+                    <td>1 - 3 %</td>
+                </tr>
+                <tr>
+                    <td>Linfocito: </td>
+                    <td>25 - 35 %</td>
+                </tr>
+                <tr>
+                    <td>Monocito: </td>
+                    <td>4 - 8 %</td>
+                </tr>
+                <tr>
+                    <td>Pro linfocito: </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cel. Inmaduras: </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Comentario: </td>
+                    <td></td>
+                </tr>
+</table>';
 }
-$pdf->writeHTMLCell($w=210, $h=0, $x='21', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=140, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=130, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
 // $pdf->writeHTML($biometria, true, false, true, false, 'L');
 
 $pdf->SetFont('helvetica','',9);
