@@ -99,7 +99,7 @@ $tabla1 = '<table>
                     <td>Ámbar</td>
                 </tr>
                 <tr>
-                    <td>Cantidad: </td>
+                    <td>Cantidad: asdawdasdadfdsagfgadfbadfbad</td>
                     <td></td>
                 </tr>
                 <tr>
@@ -208,7 +208,9 @@ $pdf->writeHTMLCell($w=70, $h=0, $x='79', $y='42', $tabla2, $border=0, $ln=1, $f
 
 $pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='0', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+// $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='0', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->Ln(15);
+$pdf->writeHTML($tabla4, true, false, true, false, 'L');
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
