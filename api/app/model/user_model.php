@@ -32,7 +32,8 @@ class  UserModel
 			return $res;
     }
 	public function insert($data){
-		    $this->db_pdo->multi_query(" CALL CALL login(	'".$data['_user']."',
+		    $this->db_pdo->multi_query("CALL insertUser('".$data['_nombre']."',
+													'".$data['_user']."',
 													'".$data['_password']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
