@@ -78,7 +78,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'AnalisisG_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',11);
 $title = '<p><b>ANÁLISIS GENERAL</b></p>';

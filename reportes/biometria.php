@@ -79,7 +79,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'Biometria_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 
 $pdf->SetFont('helvetica','',11);
@@ -93,23 +93,23 @@ $tabla1 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Hematíes: mm3</td>
+                    <td>Hematíes: '.$rows[1].' mm3</td>
                     <td>H: 5`2 - 5`6; M: 5`2 - 5`4</td>
                 </tr>
                 <tr>
-                    <td>Hematocrito: %</td>
+                    <td>Hematocrito: '.$rows[2].' %</td>
                     <td>H: 49 - 53; M: 47 - 51 </td>
                 </tr>
                 <tr>
-                    <td>Hemoglobina: gr/dl</td>
+                    <td>Hemoglobina: '.$rows[3].' gr/dl</td>
                     <td>H: 16 +/- 1,5; M: 15 +/- 0,5</td>
                 </tr>
                 <tr>
-                    <td>Leucocito: mm3</td>
+                    <td>Leucocito: '.$rows[4].' mm3</td>
                     <td>5,000 - 8,000 </td>
                 </tr>
                 <tr>
-                    <td>V. S. G.: mm/hra</td>
+                    <td>V. S. G.: '.$rows[5].' mm/hra</td>
                     <td>1 - 10</td>
                 </tr>
                 <tr>
@@ -118,19 +118,19 @@ $tabla1 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>V. C. M.: fl.</td>
+                    <td>V. C. M.: '.$rows[6].' fl.</td>
                     <td>90 +/- 8</td>
                 </tr>
                 <tr>
-                    <td>Hb. C. M.: pg.</td>
+                    <td>Hb. C. M.: '.$rows[7].' pg.</td>
                     <td>30 +/- 3</td>
                 </tr>
                 <tr>
-                    <td>C. Hb. C. M.: %</td>
+                    <td>C. Hb. C. M.: '.$rows[8].' %</td>
                     <td>34 +/- 2</td>
                 </tr>
                 <tr>
-                    <td colspan="2">Comentario: </td>
+                    <td colspan="2">Comentario: '.$rows[9].'</td>
                     <td></td>
                 </tr>
 </table>';
@@ -140,39 +140,39 @@ $tabla2 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Cayados: </td>
+                    <td>Cayados: '.$rows[10].'</td>
                     <td>1 - 5 %</td>
                 </tr>
                 <tr>
-                    <td>Neutrófilos: </td>
+                    <td>Neutrófilos: '.$rows[11].'</td>
                     <td>50 - 70 %</td>
                 </tr>
                 <tr>
-                    <td>Basófilo: </td>
+                    <td>Basófilo: '.$rows[12].'</td>
                     <td>0 - 1 %</td>
                 </tr>
                 <tr>
-                    <td>Eosinófilo: </td>
+                    <td>Eosinófilo: '.$rows[13].'</td>
                     <td>1 - 3 %</td>
                 </tr>
                 <tr>
-                    <td>Linfocito: </td>
+                    <td>Linfocito: '.$rows[14].'</td>
                     <td>25 - 35 %</td>
                 </tr>
                 <tr>
-                    <td>Monocito: </td>
+                    <td>Monocito: '.$rows[15].'</td>
                     <td>4 - 8 %</td>
                 </tr>
                 <tr>
-                    <td>Pro linfocito: </td>
+                    <td>Pro linfocito: '.$rows[16].'</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Cel. Inmaduras: </td>
+                    <td>Cel. Inmaduras: '.$rows[17].'</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Comentario: </td>
+                    <td colspan="2">Comentario: '.$rows[18].'</td>
                     <td></td>
                 </tr>
 </table>';
