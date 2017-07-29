@@ -78,15 +78,18 @@
                                     <th>Nombre Medico</th>
                                     <th>Fecha</th>
                                     <th>Ver</th> 
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="examen in examenPaciente">
+                                <tr ng-repeat="examen in examenPaciente ">
                                     <td>{{ $index+1 }}</td>
                                     <td>{{ examen.tipo }}</td>
                                     <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
-                                    <td>{{ examen.fecha }}</td>
-                                    <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button>{{ }}</td>
+                                    <td>{{ examen.fecha | date : "dd-MM-y"}}</td>
+                                    <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button></td>
+                                    <td> <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button></td>
+                                    
                                 </tr> 
                             </tbody>
                         </table>
@@ -102,3 +105,8 @@
 <div ng-include="'paciente/modal-insertar-general.html'"></div>
 <div ng-include="'paciente/modal-inserta-biometria.html'"></div>
 <div ng-include="'paciente/modal-insertar-reaccion.html'"></div>
+
+<div ng-include="'paciente/editar/reaccion.html'"></div>
+<div ng-include="'paciente/editar/general.html'"></div>
+<div ng-include="'paciente/editar/informe.html'"></div>
+<div ng-include="'paciente/editar/biometria.html'"></div>

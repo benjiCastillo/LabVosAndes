@@ -235,7 +235,55 @@ var self ={
 								self.response 	= response.data
                         });
                        return d.promise;	
+				},
+				listarInforme : function(id){
+						var d = $q.defer();
+						console.log(id)
+                    $http({
+                      method: 'GET',
+					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+id,
+                    	})
+                        .then(function successCallback(response) {
+
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+
+                            	return d.resolve()	
+
+								self.response 	= response.data
+                        });
+                       return d.promise;	
+				},
+				editarInforme : function(data){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+data.id,
+						  data:{
+								nombre:data.nombre,
+								contenido:data.contenido
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
 				}
+				
 
 
 	}
