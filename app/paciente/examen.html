@@ -81,11 +81,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="examen in examenPaciente">
+                                <tr ng-repeat="examen in examenPaciente ">
                                     <td>{{ $index+1 }}</td>
                                     <td>{{ examen.tipo }}</td>
                                     <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
-                                    <td>{{ examen.fecha }}</td>
+                                    <td>{{ examen.fecha | date : "dd-MM-y"}}</td>
                                     <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button>{{ }}</td>
                                 </tr> 
                             </tbody>
