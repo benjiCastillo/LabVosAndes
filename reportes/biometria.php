@@ -178,9 +178,9 @@ $tabla2 = '<table>
                 </tr>
 </table>';
 }
-$pdf->writeHTMLCell($w=140, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=140, $h=0, $x='12', $y='42', utf8_encode($tabla1), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=130, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=130, $h=0, $x='120', $y='42', utf8_encode($tabla2), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 // $pdf->writeHTML($biometria, true, false, true, false, 'L');
 

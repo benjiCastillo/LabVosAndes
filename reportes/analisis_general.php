@@ -92,7 +92,7 @@ $general = '<table>
                 </tr>
             </table>';
 }
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', utf8_encode($general), $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

@@ -202,13 +202,13 @@ $tabla4 = '<table>
         </tr>
     </table>';
 }
-$pdf->writeHTMLCell($w=130, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=130, $h=0, $x='5', $y='42', utf8_encode($tabla1), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=120, $h=0, $x='79', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=120, $h=0, $x='79', $y='42', utf8_encode($tabla2), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', utf8_encode($tabla3), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='90', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='90', utf8_encode($tabla4), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 // $pdf->Ln(15);
 // $pdf->writeHTML($tabla4, true, false, true, false, 'L');
 
