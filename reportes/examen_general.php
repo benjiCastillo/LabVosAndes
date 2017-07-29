@@ -39,8 +39,8 @@ $pdf->SetFont('helvetica', '', 12);
 $pdf->SetLeftMargin(15);
 $pdf->AddPage();
 
-$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-$pdf->SetFillColor(59,78,20);
+// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+// $pdf->SetFillColor(59,78,20);
 $pdf->SetTextColor(37,65,98);
 
 $image_file = K_PATH_IMAGES.'logovosandes.jpg';
@@ -229,7 +229,7 @@ $pdf->writeHTMLCell($w=110, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, 
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='', utf8_encode($otros), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 
-$pdf->Ln(1);
+$pdf->Ln(5);
 $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', utf8_encode($bact), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
