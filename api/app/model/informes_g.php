@@ -96,7 +96,7 @@ class  InformesGModel
 	//eliminar
 	public function delete($id){
 		
-		$this->db_pdo->multi_query(" CALL eliminarInforme('".$id."')");
+		$this->db_pdo->multi_query(" CALL eliminarInforme('".$id.")");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);

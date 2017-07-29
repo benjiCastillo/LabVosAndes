@@ -256,6 +256,33 @@ var self ={
                         });
                        return d.promise;	
 				},
+				editarInforme : function(data){
+					var d = $q.defer();
+				
+                    $http({
+                      method: 'PUT',
+					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+data.id,
+						  data:{
+								nombre:data.nombre,
+								contenido:data.contenido
+						}
+                    	})
+                        .then(function successCallback(response) {
+                                // ok
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data;
+								
+								return d.resolve()	
+                            }, function errorCallback(response) {
+                            // ko
+                            	return d.resolve()	
+                                // self.cargado		= true;
+    							// self.cargando		= false;
+								self.response 	= response.data
+                        });
+                       return d.promise;	 
+				},
 				eliminarInforme : function(user){
 					var d = $q.defer();
 				
