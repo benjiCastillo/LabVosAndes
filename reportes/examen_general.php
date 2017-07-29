@@ -1,6 +1,6 @@
 <?php
-$id=$_GET["idExamen"];
-$idp=$_GET["idPaciente"];
+$id="10";
+$idp="28";
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
@@ -78,7 +78,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',11);
 $title = '<p><b>EXÁMEN GENERAL DE ORINA</b></p>';
