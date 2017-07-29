@@ -1,6 +1,6 @@
 <?php
-$id="147";
-$idp="28";
+$id=$_GET["idExamen"];
+$idp=$_GET["idPaciente"];
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
