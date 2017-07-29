@@ -89,6 +89,7 @@
                                     <td>{{ examen.fecha | date : "dd-MM-y"}}</td>
                                     <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button></td>
                                     <td> <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button></td>
+                                    <td> <button class="btn btn-danger" ng-click="showDelete(paciente.id,examen.id_tipo, examen.tipo)">Eliminar</button></td>
                                     
                                 </tr> 
                             </tbody>
@@ -110,3 +111,8 @@
 <div ng-include="'paciente/editar/general.html'"></div>
 <div ng-include="'paciente/editar/informe.html'"></div>
 <div ng-include="'paciente/editar/biometria.html'"></div>
+
+<div ng-include="'paciente/eliminar/reaccion.html'"></div>
+<div ng-include="'paciente/eliminar/general.html'"></div>
+<div ng-include="'paciente/eliminar/informe.html'"></div>
+<div ng-include="'paciente/eliminar/biometria.html'"></div>

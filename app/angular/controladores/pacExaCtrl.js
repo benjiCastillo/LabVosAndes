@@ -205,11 +205,11 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
                 break;
             case 'Informe General':
                 console.log('este	Informe General');
-               window.open('http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
+               window.open('http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
                 break;
             case 'Informe de Quimica Sanguinea':
                 console.log('este i qumi sanguinea');
-                window.open('http://localhost/LabVosAndes/reportes/analisis_general_orina.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
+                window.open('http://localhost/LabVosAndes/reportes/analisis_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen);
                 break;
             case 'informe de Microbiologia':
                 console.log('este informe de Microbiologia');
@@ -306,6 +306,71 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         })
     }
 
+    /** Eliminar */
+
+    $scope.showDelete = function(idPaciente, idExamen, tipo){
+        // console.log(tipo)
+        switch (tipo) {
+            case 'Biometria Hematica':
+                console.log('este Biometria Hematica');
+                $("#modal-insertar-general").modal();
+                    break;
+            case 'Informe General':
+                $scope.eliminarInforme(idExamen,tipo);
+                console.log('este	Informe General');
+                
+                    break;
+            case 'Informe de Quimica Sanguinea':
+                $scope.eliminarInforme(idExamen,tipo);
+                console.log('este i qumi sanguinea');
+               
+               
+                break;
+            case 'informe de Microbiologia':
+                $scope.eliminarInforme(idExamen,tipo);
+                console.log('este informe de Microbiologia');
+               
+              
+                    break;
+            case 'Informe de Parasitologia':
+                $scope.eliminarInforme(idExamen,tipo);
+                console.log('este Informe de Parasitologia');
+              
+               
+                    break; 
+             case 'Analisis General':
+                console.log('Analisis General');
+                $("#modal-insertar-general").modal();
+                    break;
+             case 'Reaccion de Widal':
+                console.log('Reaccion de Widal');
+                $("#modal-insertar-general").modal();
+                     break;                          
+        
+            default:
+                break;
+        }
+        console.log(idPaciente+' '+idExamen)
+        // window.location.href = 'http://localhost/LabVosAndes/reportes/examen_general.php?idPaciente='+idPaciente+'&idExamen='+idExamen;
+    }
+
+    $scope.elmInforme = {};
+    //Obtener informes
+    $scope.eliminarInforme = function(id, titulo){
+      
+            $scope.elmInforme.titulo= titulo;
+            $scope.elmInforme.id= id;
+                $("#eliminar-informe").modal();
+     
+    }
+    $scope.deleteInforme = function(data){
+            pacientesExamenServices.eliminarInforme(data).then(function(){
+            $scope.informeEliminado = pacientesExamenServices.response;
+            console.log($scope.informeEliminado)
+            $("#eliminar-informe").modal("hide");
+             $scope.listarExaPac($scope.paciente.id);
+        })
+    }
 
 }])
 
