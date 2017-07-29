@@ -9,20 +9,17 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/testList/',
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/listalltest/',
                     	})
                         .then(function successCallback(response) {
-                                // ok
-                                // self.cargado		= true;
-    							// self.cargando		= false;
+
 								self.response 	= response.data;
 								
 								return d.resolve()	
                             }, function errorCallback(response) {
                             // ko
                             	return d.resolve()	
-                                // self.cargado		= true;
-    							// self.cargando		= false;
+
 								self.response 	= response.data
                         });
                        return d.promise;	 

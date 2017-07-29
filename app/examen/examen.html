@@ -11,9 +11,12 @@
 			</div>
 		</div>
 		<div class="box-body">
-		<label for="#">Buscar</label>
-			<input type="text" class="form-control" placeholder="Buscar" ng-model="buscadorExamen" required>
-			<table class="table table-hover table-striped" > 
+		<span ng-show="cargandoExamenes">Cargando..</span>
+		<span ng-show="noExistenExamenes">No existen Examenes aun..</span>
+		<br>
+		<label for="#" ng-show="examenesCargado">Buscar</label>
+			<input ng-show="examenesCargado" type="text" class="form-control" placeholder="Buscar" ng-model="buscadorExamen" required>
+			<table ng-show="examenesCargado" class="table table-hover table-striped" > 
 				<thead>
 				 <tr> 
 				 	<th>Examen</th> 
@@ -24,10 +27,11 @@
 				</thead> 
 				<tbody>
 				 	<tr ng-repeat="examen in examenes  | filter:buscadorExamen">
-				 		 <td> {{ examen.tipo_examen }}</td> 
-				 		 <td> {{ examen.NombrePac }}  {{ examen.ApellidosPac }} </td> 
-                         <td> {{ examen.NombreMed }} {{ examen.ApellidosMed }} </td> 
-                         <td> {{ examen.fecha }} </td> 
+				 		 <td> {{ examen.tipo }}</td> 
+				 		 <td> {{ examen.nombrePaciente }}  {{ examen.apellidosPaciente }} </td> 
+                         <td> {{ examen.nombreMed }} {{ examen.apellidosMed }} </td> 
+                         <td> {{ examen.fecha }} </td>
+						 <td> <button class="btn btn-info" ng-click="showPrint(examen.id_paciente,examen.id_tipo, examen.tipo)">Imprimir</button>{{ }}</td>
 				 	</tr> 
 				</tbody> 
 			</table>
