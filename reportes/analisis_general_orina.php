@@ -1,5 +1,5 @@
 <?php
-$id='10';
+$id='100';
 $idp='28';
 // $id=$_POST[''];
 // $idp=$_POST[''];
@@ -16,7 +16,7 @@ $stmtp = $con->prepare($sqlp);
 $resultsp = $stmtp->execute(array($idp));
 $rowp = $stmtp->fetchAll();
 
-$sql = 'SELECT * FROM examen_general WHERE id=?';
+$sql = 'SELECT * FROM informes_g WHERE id=?';
 $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
@@ -24,9 +24,9 @@ $row = $stmt->fetchAll();
 $pdf = new TCPDF('P', PDF_UNIT, 'LETTER', true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Dra. María Luz Nina Colque');
-$pdf->SetTitle('Exámen General de Orina');
+$pdf->SetTitle('Análisis General de Orina');
 $pdf->SetSubject('Vos Andes');
-$pdf->SetKeywords('Reporte, Vos Andes, General, Orina');
+$pdf->SetKeywords('Reporte, Vos Andes, Análisis, General, Orina');
 $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -79,73 +79,22 @@ $initData = '<table>
                     <td>Fecha: '.$rows1[5].'</td>
                 </tr>
             </table>'; 
-    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
+    $nombre = 'AnalisisO_'.$rows1[0].'_'.$rows1[1]; 
 }
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',11);
-$title = '<p><b>EXÁMEN GENERAL DE ORINA</b></p>';
+$title = '<p><b>ANÁLISIS GENERAL DE ORINA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
 $general = '<table>
-        <tr>
-            <td><b>Exámen Físico</b></td>
-            <td><b>Exámen Químico</b></td>
-            <td><b>Exámen Microscópico Sedimento</b></td>
-        </tr>
-        <tr>
-            <td>Color: '.$rows[1].'</td>
-            <td>Proteínas: '.$rows[9].'</td>
-            <td>Eritrocitos: '.$rows[16].'</td>
-        </tr>
-        <tr>
-            <td>Cantidad: '.$rows[2].'</td>
-            <td>Glucosa: '.$rows[10].'</td>
-            <td>Piocitos: '.$rows[17].'</td>
-        </tr>
-        <tr>
-            <td>Olor: '.$rows[3].'</td>
-            <td>Cetona: '.$rows[11].'</td>
-            <td>Leucocitos: '.$rows[18].'</td>
-        </tr>
-        <tr>
-            <td>Aspecto: '.$rows[4].'</td>
-            <td>Bilirrubina: '.$rows[12].'</td>
-            <td>Cilindros: '.$rows[19].'</td>
-        </tr>
-        <tr>
-            <td>Espuma: '.$rows[5].'</td>
-            <td>Sangre: '.$rows[13].'</td>
-            <td>Células: '.$rows[20].'</td>
-        </tr>
-        <tr>
-            <td>Sedimento: '.$rows[6].'</td>
-            <td>Nitritos: '.$rows[14].'</td>
-            <td>Cristales: '.$rows[21].'</td>
-        </tr>
-        <tr>
-            <td>Densidad: '.$rows[7].'</td>
-            <td>Urubilinógeno: '.$rows[15].'</td>
-            <td rowspan="2">Otros: '.$rows[22].'</td>
-        </tr>
-        <tr>
-            <td>Reacción: '.$rows[8].'</td>
-        </tr>
-    </table>
-    
-    <table>
-        
-        <tr>
-            <br>
-            <td><b>Exámen Bacteriológico Sedimento</b></td>
-        </tr>
-        <tr>
-            <td>'.$rows[23].'</td>
-        </tr>
-    </table>';
+                <tr>
+                    <td><b>Prueba Inmunológica de Embarazo en suero hCG: </b>'.$rows[2].'</td>
+                </tr>
+            </table>';
 }
-$pdf->writeHTMLCell($w=190, $h=0, $x='10', $y='', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

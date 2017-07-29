@@ -1,9 +1,8 @@
 <?php
-$id='10';
+$id='1';
 $idp='28';
 // $id=$_POST[''];
 // $idp=$_POST[''];
-
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
@@ -16,17 +15,18 @@ $stmtp = $con->prepare($sqlp);
 $resultsp = $stmtp->execute(array($idp));
 $rowp = $stmtp->fetchAll();
 
-$sql = 'SELECT * FROM examen_general WHERE id=?';
+$sql = 'SELECT * FROM reaccion_w WHERE id=?';
 $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
+// $custom_layout = array('215.9', '107.9');
 $pdf = new TCPDF('P', PDF_UNIT, 'LETTER', true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Dra. María Luz Nina Colque');
-$pdf->SetTitle('Exámen General de Orina');
+$pdf->SetTitle('Reacción de Widal');
 $pdf->SetSubject('Vos Andes');
-$pdf->SetKeywords('Reporte, Vos Andes, General, Orina');
+$pdf->SetKeywords('Reporte, Vos Andes, Reacción, Widal');
 $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -79,73 +79,70 @@ $initData = '<table>
                     <td>Fecha: '.$rows1[5].'</td>
                 </tr>
             </table>'; 
-    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
+    $nombre = 'ReaccionW_'.$rows1[0].'_'.$rows1[1]; 
 }
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
+
 $pdf->SetFont('helvetica','',11);
-$title = '<p><b>EXÁMEN GENERAL DE ORINA</b></p>';
+$title = '<p><b>REACCIÓN DE WIDAL</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
-$general = '<table>
+$biometria = '<table>
         <tr>
-            <td><b>Exámen Físico</b></td>
-            <td><b>Exámen Químico</b></td>
-            <td><b>Exámen Microscópico Sedimento</b></td>
+            <td><b>Dilución</b></td>
+            <td><b>1/20</b></td>
+            <td><b>1/40</b></td>
+            <td><b>1/80</b></td>
+            <td><b>1/160</b></td>
+            <td><b>1/320</b></td>
+            <td><b>1/400</b></td>
         </tr>
         <tr>
-            <td>Color: '.$rows[1].'</td>
-            <td>Proteínas: '.$rows[9].'</td>
-            <td>Eritrocitos: '.$rows[16].'</td>
+            <td><b>Paratyphi "A"</b></td>
+            <td>'.$rows[1].'</td>
+            <td>'.$rows[2].'</td>
+            <td>'.$rows[3].'</td>
+            <td>'.$rows[4].'</td>
+            <td>'.$rows[5].'</td>
+            <td>'.$rows[6].'</td>
         </tr>
         <tr>
-            <td>Cantidad: '.$rows[2].'</td>
-            <td>Glucosa: '.$rows[10].'</td>
-            <td>Piocitos: '.$rows[17].'</td>
+            <td><b>Paratyphi "B"</b></td>
+            <td>'.$rows[7].'</td>
+            <td>'.$rows[8].'</td>
+            <td>'.$rows[9].'</td>
+            <td>'.$rows[10].'</td>
+            <td>'.$rows[11].'</td>
+            <td>'.$rows[12].'</td>
         </tr>
         <tr>
-            <td>Olor: '.$rows[3].'</td>
-            <td>Cetona: '.$rows[11].'</td>
-            <td>Leucocitos: '.$rows[18].'</td>
+            <td><b>Somático "O"</b></td>
+            <td>'.$rows[13].'</td>
+            <td>'.$rows[14].'</td>
+            <td>'.$rows[15].'</td>
+            <td>'.$rows[16].'</td>
+            <td>'.$rows[17].'</td>
+            <td>'.$rows[18].'</td>
         </tr>
         <tr>
-            <td>Aspecto: '.$rows[4].'</td>
-            <td>Bilirrubina: '.$rows[12].'</td>
-            <td>Cilindros: '.$rows[19].'</td>
-        </tr>
-        <tr>
-            <td>Espuma: '.$rows[5].'</td>
-            <td>Sangre: '.$rows[13].'</td>
-            <td>Células: '.$rows[20].'</td>
-        </tr>
-        <tr>
-            <td>Sedimento: '.$rows[6].'</td>
-            <td>Nitritos: '.$rows[14].'</td>
-            <td>Cristales: '.$rows[21].'</td>
-        </tr>
-        <tr>
-            <td>Densidad: '.$rows[7].'</td>
-            <td>Urubilinógeno: '.$rows[15].'</td>
-            <td rowspan="2">Otros: '.$rows[22].'</td>
-        </tr>
-        <tr>
-            <td>Reacción: '.$rows[8].'</td>
-        </tr>
-    </table>
-    
-    <table>
-        
-        <tr>
-            <br>
-            <td><b>Exámen Bacteriológico Sedimento</b></td>
-        </tr>
-        <tr>
+            <td><b>Flagelar "H"</b></td>
+            <td>'.$rows[19].'</td>
+            <td>'.$rows[20].'</td>
+            <td>'.$rows[21].'</td>
+            <td>'.$rows[22].'</td>
             <td>'.$rows[23].'</td>
+            <td>'.$rows[24].'</td>
         </tr>
     </table>';
+    $com = $rows[25];
 }
-$pdf->writeHTMLCell($w=190, $h=0, $x='10', $y='', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
+
+$pdf->Ln(4);
+$comentario = '<div>Comentario: '.$com.'asdwefgfdgdfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfbdfbsdgsdgfsdgad</div>';
+$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
