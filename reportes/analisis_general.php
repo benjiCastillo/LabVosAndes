@@ -88,7 +88,7 @@ $pdf->Ln(1);
 foreach ($row as $rows){
 $general = '<table>
                 <tr>
-                    <td><b>Grupo Sanguíneo Factor RH: </b>'.$rows[2].'</td>
+                    <td>'.$rows[2].'</td>
                 </tr>
             </table>';
 }

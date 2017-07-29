@@ -137,7 +137,7 @@ $biometria = '<table>
     </table>';
     $com = $rows[25];
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', utf8_encode($biometria), $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
 
 $pdf->Ln(4);
 $comentario = '<div>Comentario: '.$com.'</div>';

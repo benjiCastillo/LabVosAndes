@@ -93,124 +93,145 @@ foreach ($row as $rows){
 
 $tabla1 = '<table>
                 <tr>
-                    <td colspan="2"><b>Exámen Físico</b></td>
+                    <td colspan="3"><b>Exámen Físico</b></td>
+                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Color: '.$rows[1].'</td>
-                    <td style="color: rgb(58,137,159)">Ámbar</td>
+                    <td width="75">Color: </td>
+                    <td width="60">'.$rows[1].'</td>
+                    <td width="90" style="color: rgb(58,137,159)">Ámbar</td>
                 </tr>
                 <tr>
-                    <td>Cantidad: '.$rows[2].'</td>
+                    <td>Cantidad: </td>
+                    <td>'.$rows[2].'</td>
                     <td style="color: rgb(58,137,159)"></td>
                 </tr>
                 <tr>
-                    <td>Olor: '.$rows[3].'</td>
+                    <td>Olor: </td>
+                    <td>'.$rows[3].'</td>
                     <td style="color: rgb(58,137,159)">Suigéneris</td>
                 </tr>
                 <tr>
-                    <td>Aspecto: '.$rows[4].'</td>
+                    <td>Aspecto: </td>
+                    <td>'.$rows[4].'</td>
                     <td style="color: rgb(58,137,159)">Límpido</td>
                 </tr>
                 <tr>
-                    <td>Espuma: '.$rows[5].'</td>
+                    <td>Espuma: </td>
+                    <td>'.$rows[5].'</td>
                     <td style="color: rgb(58,137,159)">Blanca Fugaz</td>
                 </tr>
                 <tr>
-                    <td>Sedimento: '.$rows[6].'</td>
+                    <td>Sedimento: </td>
+                    <td>'.$rows[6].'</td>
                     <td style="color: rgb(58,137,159)">Escaso o/nulo</td>
                 </tr>
                 <tr>
-                    <td>Densidad: '.$rows[7].'</td>
+                    <td>Densidad: </td>
+                    <td>'.$rows[7].'</td>
                     <td style="color: rgb(58,137,159)">1012 - 1030</td>
                 </tr>
                 <tr>
-                    <td>Reacción: '.$rows[8].'</td>
+                    <td>Reacción: </td>
+                    <td>'.$rows[8].'</td>
                     <td style="color: rgb(58,137,159)">Ácida</td>
                 </tr>
 </table>';
 
 $tabla2 = '<table>
                 <tr>
-                    <td colspan="2"><b>Exámen Químico</b></td>
+                    <td colspan="3"><b>Exámen Químico</b></td>
+                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Proteínas: '.$rows[9].'</td>
+                    <td td width="95">Proteínas: </td>
+                    <td td width="60">'.$rows[9].'</td>
+                    <td width="90" style="color: rgb(58,137,159)">No contiene</td>
+                </tr>
+                <tr>
+                    <td>Glucosa: </td>
+                    <td>'.$rows[10].'</td>
                     <td style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
-                    <td>Glucosa: '.$rows[10].'</td>
+                    <td>Cetona: </td>
+                    <td>'.$rows[11].'</td>
                     <td style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
-                    <td>Cetona: '.$rows[11].'</td>
+                    <td>Bilirrubina: </td>
+                    <td>'.$rows[12].'</td>
                     <td style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
-                    <td>Bilirrubina: '.$rows[12].'</td>
+                    <td>Sangre: </td>
+                    <td>'.$rows[13].'</td>
                     <td style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
-                    <td>Sangre: '.$rows[13].'</td>
+                    <td>Nitritos: </td>
+                    <td>'.$rows[14].'</td>
                     <td style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
-                    <td>Nitritos: '.$rows[14].'</td>
-                    <td style="color: rgb(58,137,159)">No contiene</td>
-                </tr>
-                <tr>
-                    <td>Urubilinogeno: '.$rows[15].'</td>
+                    <td>Urubilinogeno: </td>
+                    <td>'.$rows[15].'</td>
                     <td style="color: rgb(58,137,159)">0,1 - 1 mg/dl</td>
                 </tr>
 </table>';
 
 $tabla3 = '<table>
                 <tr>
-                    <td><b>Exámen Microscópico Sedimento</b></td>
+                    <td colspan="2"><b>Exámen Microscópico Sedimento</b></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>Eritrocitos: '.$rows[16].'</td>
+                    <td td width="75">Eritrocitos: </td>
+                    <td td width="60">'.$rows[16].'</td>
                 </tr>
                 <tr>
-                    <td>Piocitos: '.$rows[17].'</td>
+                    <td>Piocitos: </td>
+                    <td>'.$rows[17].'</td>
                 </tr>
                 <tr>
-                    <td>Leucocitos: '.$rows[18].' pcm</td>
+                    <td>Leucocitos: </td>
+                    <td>'.$rows[18].' pcm</td>
                 </tr>
                 <tr>
-                    <td>Cilindros: '.$rows[19].'</td>
+                    <td>Cilindros: </td>
+                    <td>'.$rows[19].'</td>
                 </tr>
                 <tr>
-                    <td>Células: '.$rows[20].'</td>
+                    <td>Células: </td>
+                    <td>'.$rows[20].'</td>
                 </tr>
                 <tr>
-                    <td>Cristales: '.$rows[21].' pcm</td>
-                </tr>
-                <tr>
-                    <td>Otros: '.$rows[22].'</td>
+                    <td>Cristales: </td>
+                    <td>'.$rows[21].' pcm</td>
                 </tr>
 </table>';
 
-$tabla4 = '<table>
-        
-        <tr>
-            <td><b>Exámen Bacteriológico Sedimento</b></td>
-        </tr>
-        <tr>
-            <td>'.$rows[23].'</td>
-        </tr>
-    </table>';
+$otros = '<p>Otros: '.$rows[22].'</p>';
+
+$tabla4 = '<p><b>Exámen Bacteriológico Sedimento</b></p>';
+
+$bact = '<p>'.$rows[23].'</p>';
 }
-$pdf->writeHTMLCell($w=130, $h=0, $x='5', $y='42', utf8_encode($tabla1), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=120, $h=0, $x='79', $y='42', utf8_encode($tabla2), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='73', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=80, $h=0, $x='145', $y='42', utf8_encode($tabla3), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=110, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='90', utf8_encode($tabla4), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-// $pdf->Ln(15);
-// $pdf->writeHTML($tabla4, true, false, true, false, 'L');
+$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='', utf8_encode($otros), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+
+$pdf->Ln(1);
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', utf8_encode($bact), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont('helvetica','',9);

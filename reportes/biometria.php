@@ -2,9 +2,10 @@
 $id=$_GET["idExamen"];
 $idp=$_GET["idPaciente"];
 
-header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
+
+header('Content-Type: text/html; charset=ISO-8859-1');
 
 $con=Conectar();
 
@@ -90,97 +91,118 @@ $pdf->Ln(1);
 foreach ($row as $rows){
 $tabla1 = '<table>
                 <tr>
-                    <td colspan="2"><b>Hematimetría 3600 m.s.n.m.</b></td>
+                    <td colspan="3"><b>Hematimetría 3600 m.s.n.m.</b></td>
+                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Hematíes: '.$rows[1].' mm3</td>
-                    <td style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
+                    <td>Hematíes: </td>
+                    <td>'.$rows[1].' mm3</td>
+                    <td width="165" style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
                 </tr>
                 <tr>
-                    <td>Hematocrito: '.$rows[2].' %</td>
+                    <td>Hematocrito: </td>
+                    <td>'.$rows[2].' %</td>
                     <td style="color: rgb(58,137,159)">H: 49 - 53; M: 47 - 51 </td>
                 </tr>
                 <tr>
-                    <td>Hemoglobina: '.$rows[3].' gr/dl</td>
+                    <td>Hemoglobina: </td>
+                    <td>'.$rows[3].' gr/dl</td>
                     <td style="color: rgb(58,137,159)">H: 16 +/- 1,5; M: 15 +/- 0,5</td>
                 </tr>
                 <tr>
-                    <td>Leucocito: '.$rows[4].' mm3</td>
+                    <td>Leucocito: </td>
+                    <td>'.$rows[4].' mm3</td>
                     <td style="color: rgb(58,137,159)">5,000 - 8,000 </td>
                 </tr>
                 <tr>
-                    <td>V. S. G.: '.$rows[5].' mm/hra</td>
+                    <td>V. S. G.: </td>
+                    <td>'.$rows[5].' mm/hra</td>
                     <td style="color: rgb(58,137,159)">1 - 10</td>
                 </tr>
                 <tr>
                     <br>
-                    <td colspan="2"><b>Índices Hematimétricos</b></td>
+                    <td colspan="3"><b>Índices Hematimétricos</b></td>
+                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>V. C. M.: '.$rows[6].' fl.</td>
+                    <td>V. C. M.: </td>
+                    <td>'.$rows[6].' fl.</td>
                     <td style="color: rgb(58,137,159)">90 +/- 8</td>
                 </tr>
                 <tr>
-                    <td>Hb. C. M.: '.$rows[7].' pg.</td>
+                    <td>Hb. C. M.: </td>
+                    <td>'.$rows[7].' pg.</td>
                     <td style="color: rgb(58,137,159)">30 +/- 3</td>
                 </tr>
                 <tr>
-                    <td>C. Hb. C. M.: '.$rows[8].' %</td>
+                    <td>C. Hb. C. M.: </td>
+                    <td>'.$rows[8].' %</td>
                     <td style="color: rgb(58,137,159)">34 +/- 2</td>
                 </tr>
-                <tr>
-                    <td colspan="2">Comentario: '.$rows[9].'</td>
-                    <td style="color: rgb(58,137,159)"></td>
-                </tr>
 </table>';
+
+$comentariohema = '<p>Comentario: '.$rows[9].'</p>';
+
 $tabla2 = '<table>
                 <tr>
-                    <td colspan="2"><b>Leucograma</b></td>
+                    <td colspan="3"><b>Leucograma</b></td>
+                    <td></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Cayados: '.$rows[10].'</td>
+                    <td>Cayados: </td>
+                    <td>'.$rows[10].'</td>
                     <td style="color: rgb(58,137,159)">1 - 5 %</td>
                 </tr>
                 <tr>
-                    <td>Neutrófilos: '.$rows[11].'</td>
+                    <td>Neutrófilos: </td>
+                    <td>'.$rows[11].'</td>
                     <td style="color: rgb(58,137,159)">50 - 70 %</td>
                 </tr>
                 <tr>
-                    <td>Basófilo: '.$rows[12].'</td>
+                    <td>Basófilo: </td>
+                    <td>'.$rows[12].'</td>
                     <td style="color: rgb(58,137,159)">0 - 1 %</td>
                 </tr>
                 <tr>
-                    <td>Eosinófilo: '.$rows[13].'</td>
+                    <td>Eosinófilo: </td>
+                    <td>'.$rows[13].'</td>
                     <td style="color: rgb(58,137,159)">1 - 3 %</td>
                 </tr>
                 <tr>
-                    <td>Linfocito: '.$rows[14].'</td>
+                    <td>Linfocito: </td>
+                    <td>'.$rows[14].'</td>
                     <td style="color: rgb(58,137,159)">25 - 35 %</td>
                 </tr>
                 <tr>
-                    <td>Monocito: '.$rows[15].'</td>
+                    <td>Monocito: </td>
+                    <td>'.$rows[15].'</td>
                     <td style="color: rgb(58,137,159)">4 - 8 %</td>
                 </tr>
                 <tr>
-                    <td>Pro linfocito: '.$rows[16].'</td>
+                    <td>Pro linfocito: </td>
+                    <td>'.$rows[16].'</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Cel. Inmaduras: '.$rows[17].'</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Comentario: '.$rows[18].'</td>
+                    <td>Cel. Inmaduras: </td>
+                    <td>'.$rows[17].'</td>
                     <td></td>
                 </tr>
 </table>';
-}
-$pdf->writeHTMLCell($w=140, $h=0, $x='12', $y='42', utf8_encode($tabla1), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=130, $h=0, $x='120', $y='42', utf8_encode($tabla2), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$comentarileuco = '<p>Comentario: '.$rows[18].'</p>';
+
+}
+$pdf->writeHTMLCell($w=150, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=95, $h=0, $x='12', $y='', utf8_encode($comentariohema), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=150, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=85, $h=0, $x='120', $y='', utf8_encode($comentarileuco), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 // $pdf->writeHTML($biometria, true, false, true, false, 'L');
 
