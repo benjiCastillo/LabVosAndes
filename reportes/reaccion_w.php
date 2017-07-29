@@ -141,7 +141,7 @@ $biometria = '<table>
 $pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
 
 $pdf->Ln(4);
-$comentario = '<div>Comentario: '.$com.'asdwefgfdgdfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfgfdgdfbdfbsdgsdgfsdgfbdfbsdgsdgfsdgad</div>';
+$comentario = '<div>Comentario: '.$com.'</div>';
 $pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
