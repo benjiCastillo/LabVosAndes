@@ -79,7 +79,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',11);
 $title = '<p><b>ANÁLISIS GENERAL</b></p>';
@@ -92,7 +92,7 @@ $general = '<table>
                 </tr>
             </table>';
 }
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='47', utf8_encode($general), $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='47', $general, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',9);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

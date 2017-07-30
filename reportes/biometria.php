@@ -82,7 +82,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 
 $pdf->SetFont('helvetica','',11);
@@ -199,11 +199,11 @@ $comentarileuco = '<p>Comentario: '.$rows[18].'</p>';
 }
 $pdf->writeHTMLCell($w=150, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=95, $h=0, $x='12', $y='', utf8_encode($comentariohema), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=95, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->writeHTMLCell($w=150, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=85, $h=0, $x='120', $y='', utf8_encode($comentarileuco), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=85, $h=0, $x='120', $y='', $comentarileuco, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 // $pdf->writeHTML($biometria, true, false, true, false, 'L');
 

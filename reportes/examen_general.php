@@ -82,7 +82,7 @@ $initData = '<table>
             </table>'; 
     $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', utf8_encode($initData), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 /*aca*/
 
 
@@ -226,13 +226,13 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='73', $y='42', $tabla2, $border=0, $ln=1, $fi
 
 $pdf->writeHTMLCell($w=110, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='', utf8_encode($otros), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='', $otros, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 
 $pdf->Ln(5);
 $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', utf8_encode($bact), $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $bact, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont('helvetica','',9);
