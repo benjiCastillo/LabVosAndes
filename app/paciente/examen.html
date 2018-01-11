@@ -1,105 +1,120 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-    <div class="well">
-        <p><b>Paciente: </b> <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span></p>
-        <p><b>Edad: </b> <span>{{ paciente.edad }}</span></p>
-        <p><b>Sexo: </b><span>{{ paciente.sexo }}</span></p>
-        <br>
-         <div class="form-group">
-            <label for="miembroInput" class="text-info">Medico</label>    
-                <select  class="form-control" ng-model="medico">
-                    <option   ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+        <div class="well">
+            <p>
+                <b>Paciente: </b>
+                <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
+            </p>
+            <p>
+                <b>Edad: </b>
+                <span>{{ paciente.edad }}</span>
+            </p>
+            <p>
+                <b>Sexo: </b>
+                <span>{{ paciente.sexo }}</span>
+            </p>
+            <br>
+            <div class="form-group">
+                <label for="miembroInput" class="text-info">Medico</label>
+                <select class="form-control" ng-model="medico">
+                    <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                 </select>
-         </div>       
-    <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>
-    </div>
-    <section class="animate fadeIn" ng-show="verExamenes"> 
-        <div class="row">
-            <h2 class="text-primary">Elija Examen</h2>
-            <div class="col-md-4" ng-click="modalInsertarBio('Biometria')">
-                <div class="well well-examen">
-                    Biometria
-                </div>
             </div>
-            <div class="col-md-4" ng-click="modalInsertarExamenGeneral('Analisis General')">
-                <div class="well well-examen">
-                    Analisis General
-                </div>
-            </div>
-            <div class="col-md-4" ng-click="modalInsertarReaccion('Reaccio de Widal')">
-                <div class="well well-examen">
-                    Reaccion de Widal
-                </div>
-            </div>
+            <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>
         </div>
-
-        <div class="row">
-            <div class="col-md-4" ng-click="modalInsertarInfo('Informe General')">
-                <div class="well well-examen">
-                    Informe - General
-                 </div>
-            </div>
-            <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Quimica Sanguinea')">
-                <div class="well well-examen well-examen">
-                     Informe - Quimica Sanguinea
-                </div>
-            </div>
-            <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Parasitologia')">
-                <div class="well well-examen">
-                     Informe - Parasitologia
-                </div>
-            </div>
-            
-        </div>
-        <div class="row">
-            <div class="col-md-4" ng-click="modalInsertarInfo('informe de Microbiologia')">
-                <div class="well well-examen">
-                    Informe - Microbiologia
-                </div>
-            </div>
-             
-        </div>
-    </section>
-
-    <section>
-        <div class="row">
-            <div class="col-md-16">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h2 class="text-info">Examenes</h2>
+        <section class="animate fadeIn" ng-show="verExamenes">
+            <div class="row">
+                <h2 class="text-primary">Elija Examen</h2>
+                <div class="col-md-4" ng-click="modalInsertarBio('Biometria')">
+                    <div class="well well-examen">
+                        Biometria
                     </div>
-                    <div class="box-body">
-                        <p ng-show="cargandoDatosExamenes">Cargando Datos </p>
-                        <p ng-show="noExistenExamenes">No Existen Examenes Aun</p>
-                        <table class="table table-hover" ng-show="verExamenesPaciente">
-                            <thead>
-                                <tr>
-                                    <th>Nro</th>
-                                    <th>Nombre</th>
-                                    <th>Nombre Medico</th>
-                                    <th>Fecha</th>
-                                    <th>Ver</th> 
-                                    <th>Editar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="examen in examenPaciente ">
-                                    <td>{{ $index+1 }}</td>
-                                    <td>{{ examen.tipo }}</td>
-                                    <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
-                                    <td>{{ examen.fecha | date : "dd-MM-y"}}</td>
-                                    <td> <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button></td>
-                                    <td> <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button></td>
-                                    <td> <button class="btn btn-danger" ng-click="showDelete(paciente.id,examen.id_tipo, examen.tipo)">Eliminar</button></td>
-                                    
-                                </tr> 
-                            </tbody>
-                        </table>
+                </div>
+                <div class="col-md-4" ng-click="modalInsertarExamenGeneral('Analisis General')">
+                    <div class="well well-examen">
+                        Analisis General
+                    </div>
+                </div>
+                <div class="col-md-4" ng-click="modalInsertarReaccion('Reaccio de Widal')">
+                    <div class="well well-examen">
+                        Reaccion de Widal
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <div class="row">
+                <div class="col-md-4" ng-click="modalInsertarInfo('Informe General')">
+                    <div class="well well-examen">
+                        Informe - General
+                    </div>
+                </div>
+                <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Quimica Sanguinea')">
+                    <div class="well well-examen well-examen">
+                        Informe - Quimica Sanguinea
+                    </div>
+                </div>
+                <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Parasitologia')">
+                    <div class="well well-examen">
+                        Informe - Parasitologia
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4" ng-click="modalInsertarInfo('informe de Microbiologia')">
+                    <div class="well well-examen">
+                        Informe - Microbiologia
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="row">
+                <div class="col-md-16">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h2 class="text-info">Examenes</h2>
+                        </div>
+                        <div class="box-body">
+                            <p ng-show="cargandoDatosExamenes">Cargando Datos </p>
+                            <p ng-show="noExistenExamenes">No Existen Examenes Aun</p>
+                            <table class="table table-hover" ng-show="verExamenesPaciente">
+                                <thead>
+                                    <tr>
+                                        <th>Nro</th>
+                                        <th>Nombre</th>
+                                        <th>Nombre Medico</th>
+                                        <th>Fecha</th>
+                                        <th>Ver</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="examen in examenPaciente ">
+                                        <td>{{ $index+1 }}</td>
+                                        <td>{{ examen.tipo }}</td>
+                                        <td>{{ examen.nombreMed }} {{ examen.apellidosMed }}</td>
+                                        <td>{{ examen.fecha | date : "dd-MM-y"}}</td>
+                                        <td>
+                                            <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger" ng-click="showDelete(paciente.id,examen.id_tipo, examen.tipo)">Eliminar</button>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 

@@ -4,34 +4,36 @@
 
 
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-         <h4 class="modal-title">{{accion}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">{{accion}}</h4>
       </div>
-      <form  name="frmmedico"
-             ng-submit="editar( medicoSel,frmmedico)" 
-             novalidate="novalidate" 
-      >
-      <div class="modal-body">
-                <div class="form-group">
-                  <label>Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" ng-model="medicoSel.nombre" required>
-                </div>
-      </div>
-      
-
-      <div class="modal-footer">
-        <div class="progress animated fadeIn" ng-show="medicoEditado.respuesta.err">
-            <div class="indeterminate"></div>
+      <form name="frmmedico" ng-submit="editar( medicoSel,frmmedico)" novalidate="novalidate">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="medicoSel.nombre" required>
+          </div>
         </div>
-        <center>
-          <div ng-show="medicoEditado.respuesta.cargado" id="exito" class="animated bounceIn" > </div>
-        </center>
- 
 
-        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Editar</button>
-      </div>
-      
+
+        <div class="modal-footer">
+          <div class="progress animated fadeIn" ng-show="medicoEditado.respuesta.err">
+            <div class="indeterminate"></div>
+          </div>
+          <center>
+            <div ng-show="medicoEditado.respuesta.cargado" id="exito" class="animated bounceIn"> </div>
+          </center>
+
+
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Editar</button>
+        </div>
+
       </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>

@@ -18,15 +18,6 @@ var app = angular.module( 'facturacionApp',[
 		]);
 
 
-angular.module('jcs-autoValidate')
-.run([
-	'defaultErrorMessageResolver',
-	function (defaultErrorMessageResolver){
-		defaultErrorMessageResolver.setI18nFileRootPath('angular/lib');
-		defaultErrorMessageResolver.setCulture('es-co');
-	}
-]);
-
 app.controller('mainCtrl', ['$scope', 'Configuracion','Mensajes', 'Notificaciones', function($scope, Configuracion,Mensajes, Notificaciones){
 	
 	$scope.config = {};

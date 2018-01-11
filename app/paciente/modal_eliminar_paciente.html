@@ -4,26 +4,31 @@
 
 
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-         <h4 class="modal-title">Eliminar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Eliminar</h4>
       </div>
-      <form 
-             ng-submit="eliminar( pacienteElim )" 
-      >
-      <div class="modal-body">
+      <form ng-submit="eliminar( pacienteElim )">
+        <div class="modal-body">
           <h3 class="text-danger">Desea Realmente Eliminar los Datos?</h3>
-          <p><span class="text-info">Nombre: </span>{{ pacienteElim.nombre }}</p>
-          <p><span class="text-info">Apellido: </span>{{ pacienteElim.apellidos }}</p>
+          <p>
+            <span class="text-info">Nombre: </span>{{ pacienteElim.nombre }}</p>
+          <p>
+            <span class="text-info">Apellido: </span>{{ pacienteElim.apellidos }}</p>
 
-            
-      </div>
-      
 
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-danger"> <i class="fa fa-save"></i> Eliminar</button>
-      </div>
-      
+        </div>
+
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger">
+            <i class="fa fa-save"></i> Eliminar</button>
+        </div>
+
       </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>

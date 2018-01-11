@@ -1,52 +1,62 @@
-
 <section class="row fadeInDown animated">
-<div class="col-md-8 col-md-offset-2">
-	<div class="box">
-		<div class="box-header with-border">
-			<h3 class="text-primary box-title">Pacientes</h3>
-			<div class="box-tools">
-				<div class="input-group">
-					<a ng-click="insertarModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar Paciente</a>
+	<div class="col-md-8 col-md-offset-2">
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="text-primary box-title">Pacientes</h3>
+				<div class="box-tools">
+					<div class="input-group">
+						<a ng-click="insertarModal()" class="btn btn-success">
+							<i class="fa fa-plus"></i> Agregar Paciente</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="box-body">
-		<span class="animate fadeIn" ng-show="noExistenPacientes">No existen pacientes aun..</span>
-		<span class="animate fadeIn" ng-show="cargandoPacientes">Cargando..</span>
-				<table class="table table-hover table-striped" ng-show="pacientesCargado"> 
-					<label for="#"  ng-show="pacientesCargado">Buscar</label>
-					<input type="text" class="form-control" placeholder="Buscar"  ng-show="pacientesCargado" ng-model="buscador" required>
+			<div class="box-body">
+				<span class="animate fadeIn" ng-show="noExistenPacientes">No existen pacientes aun..</span>
+				<span class="animate fadeIn" ng-show="cargandoPacientes">Cargando..</span>
+				<table class="table table-hover table-striped" ng-show="pacientesCargado">
+					<label for="#" ng-show="pacientesCargado">Buscar</label>
+					<input type="text" class="form-control" placeholder="Buscar" ng-show="pacientesCargado" ng-model="buscador" required>
 					<thead>
-					<tr> 
-						<th>Nombre</th>
-						<th>Apellidos</th> 
-						<th>Edad</th>
-						<th>Sexo</th>
-						<th>Editar</th>
-						<th>Eliminar</th>
-						<th>Crear Examen</th> 
-					</tr> 
-					</thead> 
+						<tr>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Edad</th>
+							<th>Sexo</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+							<th>Crear Examen</th>
+						</tr>
+					</thead>
 					<tbody>
-	<!--					
+						<!--					
 						{{ pacientes | json }}-->
 						<tr ng-repeat="paciente in pacientes | filter:buscador">
-							<td> {{ paciente.nombre }}</td> 
-							<td> {{ paciente.apellidos }}</td> 
+							<td> {{ paciente.nombre }}</td>
+							<td> {{ paciente.apellidos }}</td>
 							<td> {{ paciente.edad }}</td>
 							<td> {{ paciente.sexo }}</td>
-							<td> <a class="btn btn-info" ng-click="mostrarEditar( paciente )"><i class="fa fa-edit"></i>Editar</a> </td>
-							<td> <a class="btn btn-danger" ng-click="mostrarEliminar( paciente )"><i class="fa fa-remove"></i>Eliminar</a> </td> 
-							<td> <a class="btn btn-primary" ng-click="crearExamen( paciente )"><i class="fa fa-flask"></i></a> </td>  
-						</tr> 
-					</tbody> 
+							<td>
+								<a class="btn btn-info" ng-click="mostrarEditar( paciente )">
+									<i class="fa fa-edit"></i>Editar</a>
+							</td>
+							<td>
+								<a class="btn btn-danger" ng-click="mostrarEliminar( paciente )">
+									<i class="fa fa-remove"></i>Eliminar</a>
+							</td>
+							<td>
+								<a class="btn btn-primary" ng-click="crearExamen( paciente )">
+									<i class="fa fa-flask"></i>
+								</a>
+							</td>
+						</tr>
+					</tbody>
 				</table>
-		</div>
-		<div class="box-footer clearfix">
+			</div>
+			<div class="box-footer clearfix">
 
-		</div>	
+			</div>
+		</div>
 	</div>
-</div>
 
 </section>
 
