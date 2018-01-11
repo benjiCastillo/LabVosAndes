@@ -1,10 +1,14 @@
 <?php
-$id=$_GET["idExamen"];
-$idp=$_GET["idPaciente"];
+// $id=$_GET["idExamen"];
+// $idp=$_GET["idPaciente"];
+
+$id=18;
+$idp=28;
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
+require('createPDF.php');
 
 $con=Conectar();
 
@@ -18,23 +22,7 @@ $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
-$pdf = new TCPDF('P', PDF_UNIT, 'LETTER', true, 'UTF-8', false);
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Dra. María Luz Nina Colque');
-$pdf->SetTitle('Exámen General de Orina');
-$pdf->SetSubject('Vos Andes');
-$pdf->SetKeywords('Reporte, Vos Andes, General, Orina');
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetAutoPageBreak(TRUE, '0');
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-if (@file_exists(dirname(__FILE__).'/tcpdf/example/lang/spa.php')) {
-    require_once(dirname(__FILE__).'/tcpdf/example/lang/spa.php');
-    $pdf->setLanguageArray($l);
-}
+$pdf = createPDF();
 $pdf->SetFont('helvetica', '', 12);
 $pdf->SetLeftMargin(15);
 $pdf->AddPage();
@@ -62,31 +50,32 @@ $pdf->Line(152.5, 19.5, 199, 19.5, $style);
 $style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
 $pdf->Line(2, 22, 212, 22, $style1);
 
+$pdf->SetFont('helvetica', '', 9);
 // set alpha to semi-transparency
 $pdf->SetAlpha(1);
 
 // draw jpeg image
-$pdf->Image(K_PATH_IMAGES.'fondo.jpg', 48, 25, 120, 80, '', '', '', true, 200);
+$pdf->Image(K_PATH_IMAGES.'fondo.jpg', 48, 37, 120, 80, '', '', '', true, 200);
 
 $pdf->Ln(8);
 foreach ($rowp as $rows1){
 $initData = '<table>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Nombre: </FONT>'.$rows1[0].' '.$rows1[1].'</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Paciente: </FONT>'.$rows1[0].' '.$rows1[1].'</p></td>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.$rows1[2].'</p></td>
                 </tr>
                 <tr>
                     <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>'.$rows1[3].' '.$rows1[4].'</p></td>
                     <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>'.$rows1[5].'</p></td>
                 </tr>
-            </table>'; 
-    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
+            </table>';
+    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1];
 }
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 /*aca*/
 
 
-$pdf->SetFont('helvetica','',11);
+$pdf->SetFont('helvetica','',9);
 $title = '<p><b>EXÁMEN GENERAL DE ORINA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
@@ -99,8 +88,8 @@ $tabla1 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td width="75">Color: </td>
-                    <td width="60">'.$rows[1].'</td>
+                    <td width="65">Color: </td>
+                    <td width="90">'.$rows[1].'</td>
                     <td width="90" style="color: rgb(58,137,159)">Ámbar</td>
                 </tr>
                 <tr>
@@ -138,7 +127,7 @@ $tabla1 = '<table>
                     <td>'.$rows[8].'</td>
                     <td style="color: rgb(58,137,159)">Ácida</td>
                 </tr>
-</table>';
+</table><br>';
 
 $tabla2 = '<table>
                 <tr>
@@ -147,9 +136,9 @@ $tabla2 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td td width="95">Proteínas: </td>
-                    <td td width="60">'.$rows[9].'</td>
-                    <td width="90" style="color: rgb(58,137,159)">No contiene</td>
+                    <td td width="85">Proteínas: </td>
+                    <td td width="90">'.$rows[9].'</td>
+                    <td width="70" style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
                     <td>Glucosa: </td>
@@ -189,8 +178,8 @@ $tabla3 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td td width="75">Eritrocitos: </td>
-                    <td td width="60">'.$rows[16].'</td>
+                    <td td width="70">Eritrocitos: </td>
+                    <td td width="140">'.$rows[16].'</td>
                 </tr>
                 <tr>
                     <td>Piocitos: </td>
@@ -198,7 +187,7 @@ $tabla3 = '<table>
                 </tr>
                 <tr>
                     <td>Leucocitos: </td>
-                    <td>'.$rows[18].' pcm</td>
+                    <td>'.$rows[18].'</td>
                 </tr>
                 <tr>
                     <td>Cilindros: </td>
@@ -210,32 +199,33 @@ $tabla3 = '<table>
                 </tr>
                 <tr>
                     <td>Cristales: </td>
-                    <td>'.$rows[21].' pcm</td>
+                    <td>'.$rows[21].'</td>
+                </tr>
+                <tr>
+                    <td>Otros: </td>
+                    <td>'.nl2br($rows[22]).'</td>
                 </tr>
 </table>';
 
-$otros = '<p>Otros: '.$rows[22].'</p>';
-
-$tabla4 = '<p><b>Exámen Bacteriológico Sedimento</b></p>';
-
-$bact = '<p>'.$rows[23].'</p>';
+$tabla4 = '<table>
+                <tr>
+                    <td><b>Exámen Bacteriológico Sedimento</b></td>
+                </tr>
+                <tr>
+                    <td>'.nl2br($rows[23]).'</td>
+                </tr>
+            </table>';
 }
 $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='73', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-
-$pdf->writeHTMLCell($w=110, $h=0, $x='145', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-
-$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='', $otros, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-
-
-$pdf->Ln(5);
 $pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='5', $y='', $bact, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='73', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+$pdf->writeHTMLCell($w=200, $h=0, $x='147', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetTextColor(0,0,0);
-$pdf->SetFont('helvetica','',9);
+$pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>
         </div>';

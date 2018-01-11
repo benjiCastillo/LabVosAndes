@@ -5,6 +5,7 @@ $idp=$_GET["idPaciente"];
 header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
+require('createPDF.php');
 
 $con=Conectar();
 
@@ -18,29 +19,11 @@ $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
-$pdf = new TCPDF('P', PDF_UNIT, 'LETTER', true, 'UTF-8', false);
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Dra. María Luz Nina Colque');
-$pdf->SetTitle('Análisis General de Orina');
-$pdf->SetSubject('Vos Andes');
-$pdf->SetKeywords('Reporte, Vos Andes, Análisis, General, Orina');
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetAutoPageBreak(TRUE, '0');
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-if (@file_exists(dirname(__FILE__).'/tcpdf/example/lang/spa.php')) {
-    require_once(dirname(__FILE__).'/tcpdf/example/lang/spa.php');
-    $pdf->setLanguageArray($l);
-}
+$pdf = createPDF();
 $pdf->SetFont('helvetica', '', 12);
 $pdf->SetLeftMargin(15);
 $pdf->AddPage();
 
-// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-// $pdf->SetFillColor(59,78,20);
 $pdf->SetTextColor(37,65,98);
 
 $image_file = K_PATH_IMAGES.'logovosandes.jpg';

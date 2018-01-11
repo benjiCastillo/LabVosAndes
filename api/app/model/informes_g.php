@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Model;
 
@@ -32,12 +32,12 @@ class  InformesGModel
 						 ->orderBy('id DESC')
 						 ->fetchAll();
 	//  return $data = $this->db_pdo->query('select * from '.$this->table)
-	//					 			->fetchAll();				   						 
+	//					 			->fetchAll();
 	}
 
 	//listar paginado
 	//parametros de limite, pagina
-	public function paginated($l, $p){	
+	public function paginated($l, $p){
 		$p = $p*$l;
 		$data = $this->db->from($this->table)
 						 ->limit($l)
@@ -54,13 +54,13 @@ class  InformesGModel
 			'data'	=>   $data,
 			'total' =>   $total
 
-		];				  						 
+		];
 	}
 	//obtener
 	public function getInformeG($id){
 
 		return $data = $this->db->from($this->table, $id)
-								->fetch();  						 
+								->fetch();
 	}
 	//registrar
 
@@ -88,24 +88,21 @@ class  InformesGModel
 	//actualizar
 	public function update($data, $id){
 
-		$this->db->update($this->table, $data, $id)	
+		$this->db->update($this->table, $data, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 	//eliminar
 	public function delete($id,$titulo){
-		
 		$this->db_pdo->multi_query(" CALL eliminarInforme('".$id."','".$titulo."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
 			$res = array("message"=> $titulo,"response"=>true);
-			return $res;	 
+			return $res;
 	}
 
-
 }
-
 
  ?>
