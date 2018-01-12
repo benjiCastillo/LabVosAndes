@@ -1,25 +1,25 @@
-var app = angular.module( 'facturacionApp',[ 
-		'ngRoute','jcs-autoValidate',
-		'facturacionApp.configuracion',
-		'facturacionApp.mensajes',
-		'facturacionApp.notificaciones',
-		'facturacionApp.pacientesCtrl',
-		'facturacionApp.medicosCtrl',
-		'facturacionApp.dashboardCtrl',
-		'facturacionApp.informeCtrl',
-		'facturacionApp.examenCtrl',
-		'facturacionApp.pacExaCtrl',
-		'facturacionApp.pacientesServices',
-		'facturacionApp.medicosServices',
-		'facturacionApp.informeServices',
-		'facturacionApp.examenServices',
-		'facturacionApp.pacientesExamenServices',
-		
-		]);
+var app = angular.module('facturacionApp', [
+	'ngRoute', 'jcs-autoValidate',
+	'facturacionApp.configuracion',
+	'facturacionApp.mensajes',
+	'facturacionApp.notificaciones',
+	'facturacionApp.pacientesCtrl',
+	'facturacionApp.medicosCtrl',
+	'facturacionApp.dashboardCtrl',
+	'facturacionApp.informeCtrl',
+	'facturacionApp.examenCtrl',
+	'facturacionApp.pacExaCtrl',
+	'facturacionApp.pacientesServices',
+	'facturacionApp.medicosServices',
+	'facturacionApp.informeServices',
+	'facturacionApp.examenServices',
+	'facturacionApp.pacientesExamenServices',
+
+]);
 
 
-app.controller('mainCtrl', ['$scope', 'Configuracion','Mensajes', 'Notificaciones', function($scope, Configuracion,Mensajes, Notificaciones){
-	
+app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones', function ($scope, Configuracion, Mensajes, Notificaciones) {
+
 	$scope.config = {};
 	$scope.mensajes = Mensajes.mensajes;
 	$scope.notificaciones = Notificaciones.notificaciones;
@@ -32,15 +32,15 @@ app.controller('mainCtrl', ['$scope', 'Configuracion','Mensajes', 'Notificacione
 	$scope.usuario = JSON.parse(user);
 
 
-	Configuracion.cargar().then( function(){
+	Configuracion.cargar().then(function () {
 		$scope.config = Configuracion.config;
 	});
 
 
-	$scope.activar = function(menu, submenu, titulo, subtitulo){
+	$scope.activar = function (menu, submenu, titulo, subtitulo) {
 		$scope.Mdashboard = "";
-		$scope.Mpaciente  = "";
-		$scope.Mmedico    = "";
+		$scope.Mpaciente = "";
+		$scope.Mmedico = "";
 
 		$scope[menu] = 'active';
 		$scope.titulo = titulo;
@@ -56,44 +56,44 @@ app.controller('mainCtrl', ['$scope', 'Configuracion','Mensajes', 'Notificacione
 // ================================================
 //   Rutas
 // ================================================
-app.config([ '$routeProvider', function($routeProvider){
+app.config(['$routeProvider', function ($routeProvider) {
 
 	$routeProvider
-		.when('/',{
+		.when('/', {
 			templateUrl: 'dashboard/dashboard.html',
 			controller: 'dashboardCtrl'
 		})
-		.when('/paciente/',{
+		.when('/paciente/', {
 			templateUrl: 'paciente/paciente.html',
-			controller : 'pacientesCtrl'
+			controller: 'pacientesCtrl'
 		})
-		.when('/paciente/examen/',{
+		.when('/paciente/examen/', {
 			templateUrl: 'paciente/examen.html',
-			controller : 'pacExaCtrl'
+			controller: 'pacExaCtrl'
 		})
-		.when('/medico/:pag',{
+		.when('/medico/:pag', {
 			templateUrl: 'medico/medico.html',
-			controller : 'medicosCtrl'
+			controller: 'medicosCtrl'
 		})
-		.when('/biometria/:pag',{
+		.when('/biometria/:pag', {
 			templateUrl: 'examen/biometria.html',
-			controller : 'biometriaCtrl'
+			controller: 'biometriaCtrl'
 		})
-		.when('/examen_general/:pag',{
+		.when('/examen_general/:pag', {
 			templateUrl: 'examen/examen_general.html',
-			controller : 'examen_generalCtrl'
+			controller: 'examen_generalCtrl'
 		})
-		.when('/informe/:pag',{
+		.when('/informe/:pag', {
 			templateUrl: 'examen/informe.html',
-			controller : 'informeCtrl'
+			controller: 'informeCtrl'
 		})
-		.when('/reaccion_widal/:pag',{
+		.when('/reaccion_widal/:pag', {
 			templateUrl: 'examen/reaccion_widal.html',
-			controller : 'reaccionCtrl'
+			controller: 'reaccionCtrl'
 		})
-		.when('/examen/:pag',{
+		.when('/examen/:pag', {
 			templateUrl: 'examen/examen.html',
-			controller : 'examenCtrl'
+			controller: 'examenCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -105,11 +105,11 @@ app.config([ '$routeProvider', function($routeProvider){
 // ================================================
 //   Filtros
 // ================================================
-app.filter( 'quitarletra', function(){
+app.filter('quitarletra', function () {
 
-	return function(palabra){
-		if( palabra ){
-			if( palabra.length > 1)
+	return function (palabra) {
+		if (palabra) {
+			if (palabra.length > 1)
 				return palabra.substr(1);
 			else
 				return palabra;
@@ -117,17 +117,17 @@ app.filter( 'quitarletra', function(){
 	}
 })
 
-.filter( 'mensajecorto', function(){
+	.filter('mensajecorto', function () {
 
-	return function(mensaje){
-		if( mensaje ){
-			if( mensaje.length > 35)
-				return mensaje.substr(0,35) + "...";
-			else
-				return mensaje;
+		return function (mensaje) {
+			if (mensaje) {
+				if (mensaje.length > 35)
+					return mensaje.substr(0, 35) + "...";
+				else
+					return mensaje;
+			}
 		}
-	}
-})
+	})
 
 
 

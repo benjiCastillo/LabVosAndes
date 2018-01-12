@@ -170,6 +170,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
             } 
 		});
     }
+
 //listar examen paciente
     $scope.listarExaPac = function(id){
         $scope.cargandoDatosExamenes = true;
@@ -193,6 +194,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         })
          }, 1000);
     }
+
     $scope.listarExaPac($scope.paciente.id);
     $scope.listarMedicos();
 
