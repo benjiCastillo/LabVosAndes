@@ -7,7 +7,7 @@ function login(){
     $('#incorrecto').css('display','none');
     $('#correcto').css('display','none');
     $('#cargando').css('display','block');
-    $.post("http://localhost:8000/LabVosAndes/api/public/user/login",
+    $.post("http://localhost/LabVosAndes/api/public/user/login",
     {
         _user: user,
         _password: password
@@ -41,7 +41,7 @@ function saveUser(){
          $('#testInput').text('Cargando ..');   
         if(clave == 'vosandes'){
             $('#testInput').text('');
-            $.post("http://localhost:8000/LabVosAndes/api/public/user/",
+            $.post("http://localhost/LabVosAndes/api/public/user/",
             {   _nombre:nombre,
                 _user: user,
                 _password: pwd1
