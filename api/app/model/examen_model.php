@@ -83,15 +83,19 @@ class  ExamenModel
 			return $res;
 	}
 
-	public function listarExamenes(){
-		$this->db_pdo->multi_query(" CALL listarExamenes()");
+	public function listarExamenes($id){
+		$this->db_pdo->multi_query(" CALL listarExamenes(".$id.")");
 			$res = $this->db_pdo->store_result();
 			while($fila = $res->fetch_assoc()){
 				$arreglo[] = $fila;
 			}
 			$res = $arreglo;
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res,"response"=>true);
+			if ($res[0]['respuesta'] == 'El paciente no tiene exámenes') {
+				$res = array("message"=>$res[0]['respuesta'],"response"=>true);
+			} else {
+				$res = array("message"=>$res,"response"=>true);
+			}
 			return $res;
 	}
 
@@ -107,7 +111,8 @@ class  ExamenModel
 			}
 		}
 		if ($res == null) {
-			$res = array("message"=>"No existen exámenes", "response"=>true);
+			return $this->response->setResponse(true, '', 400);
+			// $res = array("message"=>"No existen exámenes", "response"=>true);
 		}
 		return $res;
 	}
