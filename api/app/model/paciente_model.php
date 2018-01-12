@@ -71,7 +71,6 @@ class  PacienteModel
 	//registrar
 
 	public function insert($data){
-
 		//$this->db->insertInto($this->table, $data)
 		//		 ->execute();
 		$this->db_pdo->multi_query(" CALL insertarPaciente(	'".$data['_nombre']."',

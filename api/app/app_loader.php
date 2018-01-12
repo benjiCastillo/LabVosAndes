@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $base = __DIR__ .'/../app/';
 
@@ -20,4 +20,4 @@ foreach ($folders as $f) {
 }
 
 
- ?> 
+ ?>

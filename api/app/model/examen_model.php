@@ -95,58 +95,23 @@ class  ExamenModel
 			return $res;
 	}
 
-	public function listarExamenesPac($data){
-
-			$this->db_pdo->multi_query(" CALL listarExamenesPac(".$data.")");
-			$res = $this->db_pdo->store_result();
-			while($fila = $res->fetch_assoc()){
-				$arreglo[] = $fila;
+	public function listarExamenesPaciente($id) {
+		$tests = array('examen_general', 'biometria', 'informes_g', 'reaccion_w');
+		foreach ($tests as $test) {
+			$data = $this->db->from($test)
+			->where('id_examen', $id)
+			->fetch();
+			if ($data != false) {
+				$data->nombre = $test;
+				$res[] = $data;
 			}
-			$res = $arreglo;
-			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res,"response"=>true);
-			return $res;
-
+		}
+		if ($res == null) {
+			$res = array("message"=>"No existen exámenes", "response"=>true);
+		}
+		return $res;
 	}
 
-	public function insertarTipo($data){
-
-		//$this->db->insertInto($this->table, $data)
-		//		 ->execute();
-		$this->db_pdo->multi_query(" CALL insertarTipo('".$data['_tipo']."',
-														'".$data['_id_examen']."',
-														'".$data['_id_tipo']."')");
-			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
-			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
-	}
-	//listar todos los examens
-	public function listAllTest(){
-
-		$this->db_pdo->multi_query(" CALL listExa()");
-			$res = $this->db_pdo->store_result();
-			while($fila = $res->fetch_assoc()){
-				$arreglo[] = $fila;
-			}
-			$res = $arreglo;
-			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res,"response"=>true);
-			return $res;
-	}
-	//Listar tipo de examen por id de examen
-	public function listExamenPaciente($id){
-		$this->db_pdo->multi_query(" CALL listarExamenPaciente('".$id."')");
-			$res = $this->db_pdo->store_result();
-			while($fila = $res->fetch_assoc()){
-				$arreglo[] = $fila;
-			}
-			$res = $arreglo;
-			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res,"response"=>true);
-			return $res;
-	}
 	//actualizar
 	public function update($data, $id){
 

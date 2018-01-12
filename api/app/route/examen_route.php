@@ -31,24 +31,11 @@ $app->group('/examen',function(){
 				   		json_encode($this->model->Examen->getExamen($args['id']))
 				   	);
 	});
-	$this->get('/listalltest/',function($req, $res, $args){
-		return $res->withHeader('Content-type', 'application/json')
-				   ->write(
-				   		json_encode($this->model->Examen->listAllTest())
-				   	);
-	});
 
-	$this->get('/testListPac/{id}',function($req, $res, $args){
+	$this->get('/{id}/examenesPaciente',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
-				   		json_encode($this->model->Examen->listarExamenesPac($args['id']))
-				   	);
-	});
-	/* Listar examenes por id de examen */
-	$this->get('/listExamenPaciente/{id}',function($req, $res, $args){
-		return $res->withHeader('Content-type', 'application/json')
-				   ->write(
-				   		json_encode($this->model->Examen->listExamenPaciente($args['id']))
+				   		json_encode($this->model->Examen->listarExamenesPaciente($args['id']))
 				   	);
 	});
 
@@ -57,14 +44,6 @@ $app->group('/examen',function(){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
 						json_encode($this->model->Examen->insert($req->getParsedBody()))
-
-				   	);
-	});
-
-	$this->post('/insertType/',function($req, $res, $args){
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
-						json_encode($this->model->Examen->insertarTipo($req->getParsedBody()))
 
 				   	);
 	});
