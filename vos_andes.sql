@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-01-2018 a las 02:11:11
+-- Tiempo de generación: 12-01-2018 a las 05:56:25
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -40,7 +40,7 @@ DECLARE _current_date TIMESTAMP(6);
             INSERT INTO examen(fecha, id_medico, id_paciente) VALUES(_current_date, _id_medico, _id_paciente);
 			SELECT id from examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente AND fecha = _current_date;
 		ELSE
-			SELECT "El paciente no existe" AS respuesta;
+			SELECT 'El paciente no existe' AS respuesta;
 		END IF;    
 	ELSE
 		SELECT "El medico no existe" AS respuesta;
@@ -77,9 +77,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(5
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` ()  BEGIN
-	SELECT e.id, e.tipo_examen, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
-    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente ORDER BY e.fecha DESC;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` (`_id_paciente` INT)  BEGIN
+IF (SELECT EXISTS (SELECT * FROM examen WHERE id_paciente = _id_paciente))THEN
+	SELECT e.id, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
+    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente WHERE id_paciente = _id_paciente ORDER BY e.fecha DESC;
+ELSE
+	SELECT 'El paciente no tiene exámenes' as respuesta;
+END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
@@ -147,7 +151,8 @@ CREATE TABLE `examen` (
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
 (78, '2018-01-12 00:21:44.000000', 10, 28),
-(79, '2018-01-12 00:22:17.327302', 10, 28);
+(79, '2018-01-12 00:22:17.327302', 10, 28),
+(80, '2018-01-12 05:36:12.607534', 10, 29);
 
 -- --------------------------------------------------------
 
@@ -391,7 +396,7 @@ ALTER TABLE `biometria`
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
