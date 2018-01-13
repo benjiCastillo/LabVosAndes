@@ -1,9 +1,11 @@
 <?php
-$id=$_GET["idExamen"];
-$idp=$_GET["idPaciente"];
-
+// $id=$_GET["idExamen"];
+// $idp=$_GET["idPaciente"];
+$id=17;
+$idp=28;
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
+require('createPDF.php');
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 
@@ -19,36 +21,17 @@ $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
-// $custom_layout = array('215.9', '107.9');
-$pdf = new TCPDF('P', PDF_UNIT, 'LETTER', true, 'UTF-8', false);
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Dra. María Luz Nina Colque');
-$pdf->SetTitle('Exámen Biometría Hemática');
-$pdf->SetSubject('Vos Andes');
-$pdf->SetKeywords('Reporte, Vos Andes, Biometria Hemática');
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetAutoPageBreak(TRUE, '0');
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-if (@file_exists(dirname(__FILE__).'/tcpdf/example/lang/spa.php')) {
-    require_once(dirname(__FILE__).'/tcpdf/example/lang/spa.php');
-    $pdf->setLanguageArray($l);
-}
+$pdf = createPDF();
 $pdf->SetFont('helvetica', '', 12);
 $pdf->SetLeftMargin(15);
 $pdf->AddPage();
-// $pdf->SetFont('helvetica', 'B', 9);
-// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-// $pdf->SetFillColor(59,78,20);
+
 $pdf->SetTextColor(37,65,98);
 
 $image_file = K_PATH_IMAGES.'logovosandes.jpg';
 $pdf->Image($image_file, 30, 2, 20, '', 'JPG', '', 'T', false, 200, '', false, false, 0, false, false, false);
 $pdf->Ln(3);
-// $pdf->Cell(0, 15, '                         LABORATORIO DE ANÁLISIS CLÍNICO "VOS ANDES"', 0, false, 'L', 0, '', 0, false, 'M', 'M');
+
 $titleP = '<p><b>LABORATORIO DE ANÁLISIS CLÍNICO</b> <b style="color: rgb(150,0,0)">"VOS ANDES"</b></p>';
 $pdf->writeHTML($titleP, true, false, false, false, 'C');
 $pdf->Ln(2);
@@ -62,30 +45,31 @@ $pdf->Line(152.5, 19.5, 199, 19.5, $style);
 $style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
 $pdf->Line(2, 22, 212, 22, $style1);
 
+
+$pdf->SetFont('helvetica', '', 9);
 // set alpha to semi-transparency
 $pdf->SetAlpha(1);
 
 // draw jpeg image
-$pdf->Image(K_PATH_IMAGES.'fondo.jpg', 48, 25, 120, 80, '', '', '', true, 200);
+$pdf->Image(K_PATH_IMAGES.'fondo.jpg', 48, 37, 120, 80, '', '', '', true, 200);
 
 $pdf->Ln(8);
 foreach ($rowp as $rows1){
 $initData = '<table>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Nombre: </FONT>'.$rows1[0].' '.$rows1[1].'</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Paciente: </FONT>'.$rows1[0].' '.$rows1[1].'</p></td>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.$rows1[2].'</p></td>
                 </tr>
                 <tr>
                     <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>'.$rows1[3].' '.$rows1[4].'</p></td>
                     <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>'.$rows1[5].'</p></td>
                 </tr>
-            </table>'; 
-    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
+            </table>';
+    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1];
 }
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-
-$pdf->SetFont('helvetica','',11);
+$pdf->SetFont('helvetica','',9);
 $title = '<p><b>BIOMETRÍA HEMÁTICA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
@@ -142,9 +126,21 @@ $tabla1 = '<table>
                     <td>'.$rows[8].' %</td>
                     <td style="color: rgb(58,137,159)">34 +/- 2</td>
                 </tr>
-</table>';
+</table><br>';
 
-$comentariohema = '<p>Comentario: '.$rows[9].'</p>';
+if($rows[9] != '' ){
+    $comentariohema = '<table>
+    <tr>
+        <td><b>Comentario</b></td>
+    </tr>
+    <tr>
+        <td><p>'.nl2br($rows[9]).'</p></td>
+    </tr>
+</table>';
+}
+else{
+    $comentariohema = '';
+}
 
 $tabla2 = '<table>
                 <tr>
@@ -153,9 +149,9 @@ $tabla2 = '<table>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Cayados: </td>
-                    <td>'.$rows[10].'</td>
-                    <td style="color: rgb(58,137,159)">1 - 5 %</td>
+                    <td width="110">Cayados: </td>
+                    <td width="80">'.$rows[10].'</td>
+                    <td width="50" style="color: rgb(58,137,159)">1 - 5 %</td>
                 </tr>
                 <tr>
                     <td>Neutrófilos: </td>
@@ -192,26 +188,39 @@ $tabla2 = '<table>
                     <td>'.$rows[17].'</td>
                     <td></td>
                 </tr>
+</table><br>';
+
+if($rows[18] != ''){
+    $comentarileuco = '<table>
+    <tr>
+        <td><b>Comentario</b></td>
+    </tr>
+    <tr>
+        <td><p>'.nl2br($rows[18]).'</p></td>
+    </tr>
 </table>';
-
-$comentarileuco = '<p>Comentario: '.$rows[18].'</p>';
-
+}
+else{
+    $comentarileuco = '';
+    }
 }
 $pdf->writeHTMLCell($w=150, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=95, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+if($comentariohema != ''){
+    $pdf->writeHTMLCell($w=0, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
+}
 
 $pdf->writeHTMLCell($w=150, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=85, $h=0, $x='120', $y='', $comentarileuco, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+if($comentarileuco != ''){
+    $pdf->writeHTMLCell($w=85, $h=0, $x='120', $y='', $comentarileuco, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
+}
 
-// $pdf->writeHTML($biometria, true, false, true, false, 'L');
-
-$pdf->SetFont('helvetica','',9);
+$pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='122', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
-
 $pdf->Output($nombre.'.pdf', 'I');
+
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Model;
 
@@ -36,14 +36,14 @@ class  PacienteModel
 		 return $respuesta;
 		}else{
 		 return $data;
-		}				 
+		}
 	//  return $data = $this->db_pdo->query('select * from '.$this->table)
-	//					 			->fetchAll();				   						 
+	//					 			->fetchAll();
 	}
 
 	//listar paginado
 	//parametros de limite, pagina
-	public function paginated($l, $p){	
+	public function paginated($l, $p){
 		$p = $p*$l;
 		$data = $this->db->from($this->table)
 						 ->limit($l)
@@ -60,18 +60,17 @@ class  PacienteModel
 			'data'	=>   $data,
 			'total' =>   $total
 
-		];				  						 
+		];
 	}
 	//obtener
 	public function getPaciente($id){
 
 		return $data = $this->db->from($this->table, $id)
-								->fetch();  						 
+								->fetch();
 	}
 	//registrar
 
 	public function insert($data){
-
 		//$this->db->insertInto($this->table, $data)
 		//		 ->execute();
 		$this->db_pdo->multi_query(" CALL insertarPaciente(	'".$data['_nombre']."',
@@ -82,23 +81,23 @@ class  PacienteModel
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
 			$res = array("message"=>$res[0],"response"=>true);
-			return $res;				
+			return $res;
 	}
 	//actualizar
 	public function update($data, $id){
 
-		$this->db->update($this->table, $data, $id)	
+		$this->db->update($this->table, $data, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 	//eliminar
 	public function delete($id){
 
-		$this->db->deleteFrom($this->table, $id)	
+		$this->db->deleteFrom($this->table, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 
 

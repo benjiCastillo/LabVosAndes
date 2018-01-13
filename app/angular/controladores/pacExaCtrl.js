@@ -178,9 +178,9 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
             
        
         pacientesExamenServices.listarExaPac(id).then(function(){
-            $scope.examenPaciente = pacientesExamenServices.response.message;
+            $scope.examenPaciente = pacientesExamenServices.response;
             console.log($scope.examenPaciente);
-            $scope.cargandoDatosExamenes = false;
+            $scope.cargandoDatosExamenes = false;   
             if($scope.examenPaciente[0].respuesta){
                 if($scope.examenPaciente[0].respuesta == 0){
                     $scope.noExistenExamenes = true;

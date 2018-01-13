@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Model;
 
@@ -6,7 +6,7 @@ use App\Lib\Response,
 	App\Lib\Security;
 
 /**
-* Modelo usuario
+* Modelo user
 */
 class  UserModel
 {
@@ -39,27 +39,25 @@ class  UserModel
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
 			$res = array("message"=>$res[0],"response"=>true);
-			return $res;				
+			return $res;
 	}
 	//actualizar
 	public function update($data, $id){
 
-		$this->db->update($this->table, $data, $id)	
+		$this->db->update($this->table, $data, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 	//eliminar
 	public function delete($id){
 
-		$this->db->deleteFrom($this->table, $id)	
+		$this->db->deleteFrom($this->table, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 
-
 }
-
 
  ?>

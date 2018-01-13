@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Model;
 
@@ -6,7 +6,7 @@ use App\Lib\Response,
 	App\Lib\Security;
 
 /**
-* Modelo usuario
+* Modelo reaccion widal
 */
 class  ReaccionWModel
 {
@@ -32,12 +32,12 @@ class  ReaccionWModel
 						 ->orderBy('id DESC')
 						 ->fetchAll();
 	//  return $data = $this->db_pdo->query('select * from '.$this->table)
-	//					 			->fetchAll();				   						 
+	//					 			->fetchAll();
 	}
 
 	//listar paginado
 	//parametros de limite, pagina
-	public function paginated($l, $p){	
+	public function paginated($l, $p){
 		$p = $p*$l;
 		$data = $this->db->from($this->table)
 						 ->limit($l)
@@ -54,13 +54,13 @@ class  ReaccionWModel
 			'data'	=>   $data,
 			'total' =>   $total
 
-		];				  						 
+		];
 	}
 	//obtener
 	public function getReaccionW($id){
 
 		return $data = $this->db->from($this->table, $id)
-								->fetch();  						 
+								->fetch();
 	}
 	//registrar
 
@@ -94,28 +94,23 @@ class  ReaccionWModel
 			$res = $res->fetch_array();
 			mysqli_close($this->db_pdo);
 			$res = array("message"=>$res[0],"response"=>true);
-			return $res;	
+			return $res;
 		}
 	//actualizar
 	public function update($data, $id){
 
-		$this->db->update($this->table, $data, $id)	
+		$this->db->update($this->table, $data, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 	//eliminar
 	public function delete($id){
+		$this->db->deleteFrom($this->table, $id)
+			->execute();
 
-			$this->db_pdo->multi_query(" CALL eliminarReaccion('".$id."')");
-			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
-			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;		 	 
+		return $this->response->setResponse(true);
 	}
-
-
 }
 
  ?>

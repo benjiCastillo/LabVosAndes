@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
+<<<<<<< HEAD
 -- Tiempo de generación: 11-01-2018 a las 15:29:36
+=======
+-- Tiempo de generación: 12-01-2018 a las 05:56:25
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -26,34 +30,6 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarBiometria` (IN `_id_examen` INT)  BEGIN
-	SET SQL_SAFE_UPDATES=0;
-	DELETE FROM examen_tipo WHERE id_tipo = _id_examen AND tipo = 'Biometria Hematica';
-    DELETE FROM biometria WHERE id = _id_examen;
-    SELECT 0 as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarGeneral` (IN `_id_examen` INT)  BEGIN
-	SET SQL_SAFE_UPDATES=0;
-	DELETE FROM examen_tipo WHERE id_tipo = _id_examen AND tipo = 'Analisis General';
-    DELETE FROM examen_general WHERE id = _id_examen;
-    SELECT 0 as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarInforme` (IN `_id_examen` INT, IN `_tipo` VARCHAR(100))  BEGIN
-SET SQL_SAFE_UPDATES=0;
-	DELETE FROM examen_tipo WHERE id_tipo = _id_examen  AND  tipo = _tipo ;
-    DELETE FROM informes_g WHERE id = _id_examen;
-    SELECT 0 as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarReaccion` (IN `_id_examen` INT)  BEGIN
-	SET SQL_SAFE_UPDATES=0;
-	DELETE FROM examen_tipo WHERE id_tipo = _id_examen  AND  tipo = 'Reaccion de Widal' ;
-    DELETE FROM reaccion_w WHERE id = _id_examen;
-    SELECT 0 as respuesta;
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarBiometria` (IN `_hematies` VARCHAR(10), IN `_hematocrito` VARCHAR(10), IN `_hemoglobina` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_vsg` VARCHAR(10), IN `_vcm` VARCHAR(10), IN `_hbcm` VARCHAR(10), IN `_chbcm` VARCHAR(10), IN `_comentario_hema` VARCHAR(400), IN `_cayados` VARCHAR(10), IN `_neutrofilos` VARCHAR(10), IN `_basofilo` VARCHAR(10), IN `_eosinofilo` VARCHAR(10), IN `_linfocito` VARCHAR(10), IN `_monocito` VARCHAR(10), IN `_prolinfocito` VARCHAR(10), IN `_cel_inmaduras` VARCHAR(10), IN `_comentario_leuco` VARCHAR(400))  BEGIN
 		INSERT INTO biometria(hematies, hematocrito, hemoglobina, leucocitos, vsg, vcm, hbcm, chbcm, comentario_hema, cayados, neutrofilos, basofilo, eosinofilo, linfocito, monocito, prolinfocito, cel_inmaduras, comentario_leuco) 
 		VALUES(_hematies, _hematocrito, _hemoglobina, _leucocitos, _vsg, _vcm, _hbcm, _chbcm, _comentario_hema, _cayados, _neutrofilos, _basofilo, _eosinofilo, _linfocito, _monocito, _prolinfocito, _cel_inmaduras, _comentario_leuco);
@@ -61,6 +37,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarBiometria` (IN `_hematies` 
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
+<<<<<<< HEAD
 DECLARE _id_examen INT;
 	    IF (SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
         	IF ( SELECT EXISTS (SELECT * FROM examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente AND date(fecha) = curdate() ))THEN 
@@ -73,6 +50,19 @@ DECLARE _id_examen INT;
             END IF;    
    			ELSE
                 SELECT 0 as respuesta;
+=======
+DECLARE _current_date TIMESTAMP(6);
+	IF (SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
+		IF ( SELECT EXISTS (SELECT * FROM paciente WHERE id = _id_paciente))THEN 
+			SET _current_date = (SELECT sysdate(6));
+            INSERT INTO examen(fecha, id_medico, id_paciente) VALUES(_current_date, _id_medico, _id_paciente);
+			SELECT id from examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente AND fecha = _current_date;
+		ELSE
+			SELECT 'El paciente no existe' AS respuesta;
+		END IF;    
+	ELSE
+		SELECT "El medico no existe" AS respuesta;
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
     END IF;
 END$$
 
@@ -97,64 +87,29 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VA
 		SELECT @@identity AS respuesta;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTipo` (IN `_tipo` VARCHAR(50), IN `_id_examen` INT, IN `_id_tipo` INT)  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM examen WHERE id = _id_examen))THEN
-		INSERT INTO examen_tipo(tipo, id_examen, id_tipo) VALUES(_tipo, _id_examen, _id_tipo);
-        SELECT 1 AS respuesta;
-    ELSE
-		SELECT 0 AS respuesta;
-    END IF;
-END$$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
 	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user))THEN
 		SELECT 0 AS respuesta;
     ELSE
-        INSERT INTO usuario(nombre, user,password, fecha) VALUES(_nombre, _user, _password,NOW());
+        INSERT INTO usuario(nombre, user, password, fecha) VALUES(_nombre, _user, _password, NOW());
         SELECT 1 AS respuesta;
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` ()  BEGIN
-	SELECT e.id, e.tipo_examen, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
-    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente ORDER BY e.fecha DESC;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenesPac` (IN `_id_examen` INT)  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM examen_tipo WHERE id_examen = _id_examen))THEN
-		SELECT * FROM examen_tipo WHERE id_examen = _id_examen;
-    ELSE
-		SELECT 0 AS respuesta;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenPaciente` (IN `idin` INT)  BEGIN
-	IF(SELECT EXISTS(	SELECT et.tipo as tipo, m.nombre as nombreMed, m.apellidos as apellidosMed, et.id_tipo as id_tipo, e.fecha as fecha   FROM examen_tipo et inner join examen e on et.id_examen = e.id 
-						      inner join medico m on m.id = e.id_medico
- WHERE e.id_paciente  = idin))THEN
-	SELECT et.tipo as tipo, m.nombre as nombreMed, m.apellidos as apellidosMed, et.id_tipo as id_tipo, date_format(e.fecha, '%d/%m/%y') as fecha   FROM examen_tipo et inner join examen e on et.id_examen = e.id 
-						      inner join medico m on m.id = e.id_medico
- WHERE e.id_paciente  = idin ORDER BY e.fecha DESC;
-    ELSE
-		SELECT 0 AS respuesta;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listExa` ()  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM examen_tipo))THEN
-    SELECT et.tipo as tipo, m.nombre as nombreMed, m.apellidos as apellidosMed, et.id_tipo as id_tipo, date_format(e.fecha, '%d/%m/%y') as fecha, p.nombre as nombrePaciente, p.apellidos as apellidosPaciente, p.id as id_paciente   FROM examen_tipo et inner join examen e on et.id_examen = e.id 
-						      inner join medico m on m.id = e.id_medico 
-                              inner join paciente p on e.id_paciente = p.id; 
-	ELSE
-		SELECT 0 AS respuesta;
-    END IF;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` (`_id_paciente` INT)  BEGIN
+IF (SELECT EXISTS (SELECT * FROM examen WHERE id_paciente = _id_paciente))THEN
+	SELECT e.id, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
+    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente WHERE id_paciente = _id_paciente ORDER BY e.fecha DESC;
+ELSE
+	SELECT 'El paciente no tiene exámenes' as respuesta;
+END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
 	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user AND password = _password))THEN
         SELECT * FROM usuario WHERE user = _user AND password = _password;
     ELSE
-		SELECT 0 AS respuesta;
+		SELECT 'Credenciales incorrectas' AS respuesta;
     END IF;
 END$$
 
@@ -194,7 +149,11 @@ CREATE TABLE `biometria` (
 --
 
 INSERT INTO `biometria` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `id_examen`) VALUES
+<<<<<<< HEAD
 (17, '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', 0);
+=======
+(17, '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '', '8', '8', '8', '', 1);
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 -- --------------------------------------------------------
 
@@ -204,7 +163,7 @@ INSERT INTO `biometria` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucoc
 
 CREATE TABLE `examen` (
   `id` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `id_medico` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -214,10 +173,9 @@ CREATE TABLE `examen` (
 --
 
 INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(46, '2017-07-29 06:14:11', 11, 29),
-(47, '2017-07-29 06:33:11', 10, 28),
-(48, '2017-07-29 06:36:42', 10, 29),
-(49, '2017-07-29 06:43:33', 11, 28);
+(78, '2018-01-12 00:21:44.000000', 10, 28),
+(79, '2018-01-12 00:22:17.327302', 10, 28),
+(80, '2018-01-12 05:36:12.607534', 10, 29);
 
 -- --------------------------------------------------------
 
@@ -258,9 +216,15 @@ CREATE TABLE `examen_general` (
 --
 
 INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `id_examen`) VALUES
+<<<<<<< HEAD
 (18, '1', '2', '3', '4', '5', '6', '7', '8', '9', '6', '7', '5', '4', '2', '4', '8', '5', '6', '5', '6', '5', 'Este es un comentario genial', 'Este es otro comentario genial', 0),
 (19, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 0),
 (20, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 0);
+=======
+(18, '1', '2', '3', '4', '5', '6', '7', '8', '9', '6', '7', '5', '4', '2', '4', '8', '5', '6', '5', '6', '5', 'Este es un comentario genial', 'Este es otro comentario genial', 1),
+(19, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 2),
+(20, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 3);
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 -- --------------------------------------------------------
 
@@ -280,8 +244,13 @@ CREATE TABLE `informes_g` (
 --
 
 INSERT INTO `informes_g` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
+<<<<<<< HEAD
 (143, 'Informe de Quimica Sanguinea', 'Quimica Sanguinea', 0),
 (144, 'Informe de Parasitologia', 'Parasitologia', 0);
+=======
+(143, 'Informe de Quimica Sanguinea', 'Quimica Sanguinea', 1),
+(144, 'Informe de Parasitologia', 'Parasitologia', 3);
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 -- --------------------------------------------------------
 
@@ -367,7 +336,11 @@ CREATE TABLE `reaccion_w` (
 --
 
 INSERT INTO `reaccion_w` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `id_examen`) VALUES
+<<<<<<< HEAD
 (9, '20', '40', '80', '160', '320', '400', '21', '41', '81', '161', '321', '401', '22', '42', '82', '162', '322', '402', '23', '43', '83', '163', '323', '403', 'Este es un comentario !!', 0);
+=======
+(9, '20', '40', '80', '160', '320', '400', '21', '41', '81', '161', '321', '401', '22', '42', '82', '162', '322', '402', '23', '43', '83', '163', '323', '403', 'Este es un comentario !!', 1);
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 -- --------------------------------------------------------
 
@@ -455,25 +428,41 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `biometria`
 --
 ALTER TABLE `biometria`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 --
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+>>>>>>> 664bc92c5cf0baa11bf75d8cc41d6d5da9a72fc4
 
 --
 -- AUTO_INCREMENT de la tabla `medico`

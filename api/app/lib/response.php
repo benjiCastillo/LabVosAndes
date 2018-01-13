@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Lib;
 
@@ -8,7 +8,7 @@ namespace App\Lib;
 class Response
 {
 	public $result  	= null;
-	public $response  	=false;
+	public $response  	= false;
 	public $message		='Ocurrio un Error!';
 	public $errors		=[];
 

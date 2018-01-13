@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Model;
 
@@ -30,18 +30,18 @@ class  MedicoModel
 
 				$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
-						 ->fetchAll();	
+						 ->fetchAll();
 				if(empty($data)){
 		 			$respuesta = array('respuesta' => 0 );
 		 			return $respuesta;
 				}else{
 		 			return $data;
-				}			   						 
+				}
 	}
 
 	//listar paginado
 	//parametros de limite, pagina
-	public function paginated($l, $p){	
+	public function paginated($l, $p){
 		$p = $p*$l;
 		$data = $this->db->from($this->table)
 						 ->limit($l)
@@ -58,13 +58,13 @@ class  MedicoModel
 			'data'	=>   $data,
 			'total' =>   $total
 
-		];				  						 
+		];
 	}
 	//obtener
 	public function getMedico($id){
 
 		return $data = $this->db->from($this->table, $id)
-								->fetch();  						 
+								->fetch();
 	}
 	//registrar
 
@@ -79,22 +79,20 @@ class  MedicoModel
 	//actualizar
 	public function update($data, $id){
 
-		$this->db->update($this->table, $data, $id)	
+		$this->db->update($this->table, $data, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 	//eliminar
 	public function delete($id){
 
-		$this->db->deleteFrom($this->table, $id)	
+		$this->db->deleteFrom($this->table, $id)
 				 ->execute();
 
-		return $this->response->setResponse(true);		 
+		return $this->response->setResponse(true);
 	}
 
-
 }
-
 
  ?>
