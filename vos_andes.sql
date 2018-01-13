@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-01-2018 a las 15:51:27
+-- Tiempo de generación: 13-01-2018 a las 23:39:48
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -141,26 +141,6 @@ CREATE TABLE `biometria` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `biometria`
---
-
-INSERT INTO `biometria` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `id_examen`) VALUES
-(17, '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '', '8', '8', '8', '', 1),
-(22, '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', 3),
-(23, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 4),
-(24, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 5),
-(25, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 6),
-(26, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 8),
-(27, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 9),
-(28, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 10),
-(29, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 11),
-(30, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 12),
-(31, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 112),
-(32, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 20),
-(33, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 21),
-(34, '', '3', '', '', '', '', '3', '3', '3', '3', '3', '3', '3', '3', '3', '', '', '3', 22);
-
 -- --------------------------------------------------------
 
 --
@@ -173,18 +153,6 @@ CREATE TABLE `examen` (
   `id_medico` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `examen`
---
-
-INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(78, '2018-01-12 00:21:44.000000', 10, 28),
-(79, '2018-01-12 00:22:17.327302', 10, 28),
-(80, '2018-01-12 05:36:12.607534', 10, 29),
-(81, '2018-01-13 15:34:41.993591', 10, 28),
-(82, '2018-01-13 15:34:54.250136', 10, 28),
-(83, '2018-01-13 15:35:25.309285', 10, 28);
 
 -- --------------------------------------------------------
 
@@ -220,15 +188,6 @@ CREATE TABLE `examen_general` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `examen_general`
---
-
-INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `id_examen`) VALUES
-(18, '1', '2', '3', '4', '5', '6', '7', '8', '9', '6', '7', '5', '4', '2', '4', '8', '5', '6', '5', '6', '5', 'Este es un comentario genial', 'Este es otro comentario genial', 1),
-(19, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 2),
-(20, '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', '7', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -242,16 +201,6 @@ CREATE TABLE `informes_g` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `informes_g`
---
-
-INSERT INTO `informes_g` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
-(143, 'Informe de Quimica Sanguinea', 'Quimica Sanguinea', 1),
-(144, 'Informe de Parasitologia', 'Parasitologia', 3),
-(145, '1', '2', 4),
-(146, '1', '1', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -264,14 +213,6 @@ CREATE TABLE `medico` (
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `medico`
---
-
-INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
-(10, 'Erwin', 'Mendez'),
-(11, 'Harold', 'Castillo');
-
 -- --------------------------------------------------------
 
 --
@@ -283,22 +224,8 @@ CREATE TABLE `paciente` (
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
   `edad` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL,
-  `estado` char(1) COLLATE utf8_spanish2_ci NOT NULL DEFAULT '1'
+  `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `paciente`
---
-
-INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `estado`) VALUES
-(28, 'Benjamin', 'Castillo Eguez', '2 meses', 'M', '1'),
-(29, 'Diego', 'Escalante Antezana', '23 años', 'M', '1'),
-(30, '12e3e', '12ewe', '1e', 'm', '1'),
-(31, '12e3e', '12ewe', '1e', 'm', '1'),
-(32, '12e3e', '12ewe', '1e', 'm', '1'),
-(33, '12e3e', '12ewe', '1e', 'm', '1'),
-(34, '12e3e', '12ewe', '1e', 'm', '1');
 
 -- --------------------------------------------------------
 
@@ -336,14 +263,6 @@ CREATE TABLE `reaccion_w` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `reaccion_w`
---
-
-INSERT INTO `reaccion_w` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `id_examen`) VALUES
-(9, '20', '40', '80', '160', '320', '400', '21', '41', '81', '161', '321', '401', '22', '42', '82', '162', '322', '402', '23', '43', '83', '163', '323', '403', 'Este es un comentario !!', 1),
-(10, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '11', '1', '1', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -355,7 +274,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(50) NOT NULL,
   `user` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `fecha` datetime NOT NULL
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -363,17 +282,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
-(4, 'Benjamin Castillo Eguez', 'benji', '1234', '2017-07-05 00:00:00'),
-(5, 'Diego Escalante Antezana', 'Diego', '12345', '2017-07-27 23:41:08'),
-(6, 'Benjamin Castillo', 'benji2', '1234', '2017-07-27 23:50:34'),
-(7, 'Harold Castillo Eguez', 'harold', '1234', '2017-07-27 23:54:54'),
-(8, 'Harold Castillo Eguez', 'harold2', '1234', '2017-07-28 00:14:14'),
-(9, 'Erwin Mendez Mejia', 'pollo', '1234', '2017-07-28 11:37:58'),
-(10, 'erwin111', 'polloloco', '1234', '2018-01-12 23:54:12'),
-(11, '1234', '1234', '1234', '2018-01-13 11:01:40'),
-(12, '1234', '12345', '1234', '2018-01-13 11:02:03'),
-(13, '1234', '123456', '1234', '2018-01-13 11:02:42'),
-(14, '1234', '1234567', '1234', '2018-01-13 11:03:57');
+(15, 'admin', 'admin', '1234', '0000-00-00 00:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -483,7 +392,7 @@ ALTER TABLE `reaccion_w`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

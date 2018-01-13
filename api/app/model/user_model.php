@@ -29,7 +29,7 @@ class  UserModel
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			if ($res['error']==true) {
+			if (isset($res['error'])) {
 				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
 			}
 			return $this->response->setResponse(true, $res, '0');
@@ -42,7 +42,7 @@ class  UserModel
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			if ($res['error']==true) {
+			if (isset($res['error'])) {
 				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
 			}
 			return $this->response->setResponse(true, $res['respuesta'], '0');
