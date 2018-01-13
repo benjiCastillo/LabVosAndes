@@ -7,15 +7,14 @@ namespace App\Lib;
 */
 class Response
 {
-	public $result  	= null;
 	public $response  	= false;
 	public $message		='Ocurrio un Error!';
-	public $errors		=[];
+	public $error		= false;
 
-	public function SetResponse($response, $m = ''){
+	public function SetResponse($response, $m , $err){
 		$this->response = $response;
 		$this->message = $m;
-
+		$this->error = $err;
 		if(!$response && $m = '') $this->response ='Ocurrio un Error inesperado';
 
 		return $this;

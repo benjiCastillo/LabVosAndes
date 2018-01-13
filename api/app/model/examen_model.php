@@ -111,8 +111,8 @@ class  ExamenModel
 			}
 		}
 		if ($res == null) {
-			return $this->response->setResponse(true, '', 400);
-			// $res = array("message"=>"No existen exámenes", "response"=>true);
+			// return $this->response->setResponse(true, '', 400);
+			$res = array("message"=>"No existen exámenes", "response"=>true);
 		}
 		return $res;
 	}

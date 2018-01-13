@@ -17,14 +17,6 @@ $app->group('/biometria',function(){
 				   	);
 	});
 
-	$this->post('/',function($req, $res, $args){
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
-						json_encode($this->model->Biometria->insert($req->getParsedBody()))
-
-				   	);
-	});
-
 	$this->post('/insertBio/',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(

@@ -94,13 +94,17 @@ class  BiometriaModel
 														'".$data['_monocito']."',
 														'".$data['_prolinfocito']."',
 														'".$data['_cel_inmaduras']."',
-														'".$data['_comentario_leuco']."')");
+														'".$data['_comentario_leuco']."',
+														'".$data['_id_examen']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
-	}
+			// if ($res["error"]==true) {
+			// 	return $this->response->setResponse(true, $res['id'], $res[0]);
+			// } else {
+			// 	return $this->response->setResponse(true, $res[1], $res[0]);
+			// }
+		}
 
 	//actualizar
 	public function update($data, $id){

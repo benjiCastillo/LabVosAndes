@@ -10,10 +10,12 @@ $app->group('/examen',function(){
 				   	);
 	});
 
-	$this->get('/{id}/listaExamenes',function($req, $res, $args){
+	$this->get('/{id}/listaExamenes/',function($req, $res, $args){
+		$content = json_encode($this->model->Examen->listarExamenes($args['id']));
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
-				   		json_encode($this->model->Examen->listarExamenes($args['id']))
+					   $content
+				   		// json_encode($this->model->Examen->listarExamenes($args['id']))
 				   	);
 	});
 
@@ -24,7 +26,7 @@ $app->group('/examen',function(){
 				   	);
 	});
 
-	$this->get('/{id}/examenesPaciente',function($req, $res, $args){
+	$this->get('/{id}/examenesPaciente/',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
 				   		json_encode($this->model->Examen->listarExamenesPaciente($args['id']))
