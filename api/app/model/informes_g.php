@@ -74,16 +74,16 @@ class  InformesGModel
 		}
 
 	public function insertarInformeG($data){
-
-		//$this->db->insertInto($this->table, $data)
-		//		 ->execute();
 		$this->db_pdo->multi_query(" CALL insertarInformeG('".$data['_nombre']."',
-														'".$data['_contenido']."')");
+														'".$data['_contenido']."',
+														'".$data['_id_examen']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
 	}
 	//actualizar
 	public function update($data, $id){

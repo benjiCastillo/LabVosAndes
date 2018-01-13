@@ -22,26 +22,32 @@ class  UserModel
 		$this->response = new Response();
 		$this->security = new Security();
 	}
+
     public function login($data){
 		    $this->db_pdo->multi_query("CALL login(	'".$data['_user']."',
 													'".$data['_password']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res,"response"=>true);
-			return $res;
-    }
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, $res, '0');
+	}
+
 	public function insert($data){
 		    $this->db_pdo->multi_query("CALL insertUser('".$data['_nombre']."',
 													'".$data['_user']."',
 													'".$data['_password']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, $res['respuesta'], '0');
 	}
-	//actualizar
+
 	public function update($data, $id){
 
 		$this->db->update($this->table, $data, $id)

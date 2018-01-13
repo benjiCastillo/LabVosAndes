@@ -89,12 +89,15 @@ class  ReaccionWModel
 														'".$data['_flagelarH4']."',
 														'".$data['_flagelarH5']."',
 														'".$data['_flagelarH6']."',
-														'".$data['_comentario']."')");
+														'".$data['_comentario']."',
+														'".$data['_id_examen']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
 		}
 	//actualizar
 	public function update($data, $id){

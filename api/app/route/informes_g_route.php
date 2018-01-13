@@ -18,21 +18,20 @@ $app->group('/informesg',function(){
 	});
 
 	$this->post('/',function($req, $res, $args){
-
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
-						json_encode($this->model->InformesG->insert($req->getParsedBody()))
-
-				   	);
-	});
-
-	$this->post('/insertReport/',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
 						json_encode($this->model->InformesG->insertarInformeG($req->getParsedBody()))
 
 				   	);
 	});
+
+	// $this->post('/insertReport/',function($req, $res, $args){
+	// 	return $res->withHeader('Content-type', 'application/json')
+	// 		       -> write(
+	// 					json_encode($this->model->InformesG->insertarInformeG($req->getParsedBody()))
+
+	// 			   	);
+	// });
 
 	$this->put('/{id}',function($req, $res, $args){
 
