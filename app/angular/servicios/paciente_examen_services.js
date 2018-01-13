@@ -202,7 +202,7 @@ var self ={
                         .then(function successCallback(response) {
                                 // ok
                                 // self.cargado		= true;
-    							// self.cargando		= false;
+							
 								self.response 	= response.data;
 								
 								return d.resolve()	
@@ -216,22 +216,27 @@ var self ={
                        return d.promise;	
 	
 				},
-				listarExaPac : function(id){
-						var d = $q.defer();
-						console.log(id)
+				listarExamenes: function(id){
+					var d = $q.defer();
+				
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/listExamenPaciente/'+id,
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/29/listaExamenes',
                     	})
                         .then(function successCallback(response) {
-
+                                // ok
+                                // self.cargado		= true;
+								// self.cargando		= false;
+									console.log("data");
+								console.log(response.data)
 								self.response 	= response.data;
 								
 								return d.resolve()	
                             }, function errorCallback(response) {
-
+                            // ko
                             	return d.resolve()	
-
+                                // self.cargado		= true;
+    							// self.cargando		= false;
 								self.response 	= response.data
                         });
                        return d.promise;	
