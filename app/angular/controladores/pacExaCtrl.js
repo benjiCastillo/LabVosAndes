@@ -12,7 +12,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
      $scope.verExamenesPaciente = false;
      $scope.cargandoDatosExamenes = false;
      $scope.noExistenExamenes = false;
-     
+     $scope.ifmedExists = '';
      $scope.informe = {};
      $scope.examenGeneral = {}; 
      $scope.informe.nombre = "Informe";
@@ -35,6 +35,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
         pacientesExamenServices.listarMedicos().then(function(){
             $scope.medicos = pacientesExamenServices.response;
             console.log($scope.medicos)
+            if($scope.medicos.respuesta === 0){$scope.ifmedExists = "Debe Introducir un medico"}
 		});
      }
     // escucha el select del medico       
@@ -176,7 +177,7 @@ app.controller('pacExaCtrl', ['$scope','$routeParams','$window','pacientesExamen
     $scope.listarExaPac = function(id){
         pacientesExamenServices.listarExamenes(id).then(function(){
 
-            
+            console.log(pacientesExamenServices.response)
         })
     }
 

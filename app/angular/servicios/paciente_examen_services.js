@@ -221,14 +221,9 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/29/listaExamenes',
+					  	url: 'http://localhost/LabVosAndes/api/public/examen/'+id+'/listaExamenes/',
                     	})
                         .then(function successCallback(response) {
-                                // ok
-                                // self.cargado		= true;
-								// self.cargando		= false;
-									console.log("data");
-								console.log(response.data)
 								self.response 	= response.data;
 								
 								return d.resolve()	

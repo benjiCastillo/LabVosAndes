@@ -20,6 +20,7 @@
                     <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                 </select>
             </div>
+            <span>{{ ifmedExists }}</span>
             <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Elegir Examen</button>
         </div>
         <section class="animate fadeIn" ng-show="verExamenes">

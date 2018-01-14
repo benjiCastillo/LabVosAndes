@@ -19,7 +19,7 @@ app.controller('pacientesCtrl', ['$scope','$routeParams','$window','pacientesSer
             $scope.paciente.visible = true;
                 pacientesServices.listar().then(function(){
 				$scope.response = pacientesServices.response;
-                console.log($scope.response.respuesta)
+                console.log($scope.response)
                 $scope.cargandoPacientes = false;
 
                 if ($scope.response.respuesta == 0){
