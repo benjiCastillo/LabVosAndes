@@ -79,9 +79,7 @@ class  ExamenModel
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			// $res = array("message"=>$res[0],"response"=>true);
-			// return $res;
-			if ($res['error']==true) {
+			if (isset($res['error'])) {
 				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
 			}
 			return $this->response->setResponse(true, $res, '0');
@@ -95,13 +93,7 @@ class  ExamenModel
 			}
 			$res = $arreglo;
 			mysqli_close($this->db_pdo);
-			// if ($res[0]['respuesta'] == 'El paciente no tiene exámenes') {
-			// 	$res = array("message"=>$res[0]['respuesta'],"response"=>true);
-			// } else {
-			// 	$res = array("message"=>$res,"response"=>true);
-			// }
-			// return $res;
-			if ($res[0]['error']==true) {
+			if (isset($res[0]['error'])) {
 				return $this->response->setResponse(true, $res[0]['respuesta'], $res[0]['error']);
 			}
 			return $this->response->setResponse(true, $res, '0');
@@ -119,9 +111,9 @@ class  ExamenModel
 			}
 		}
 		if ($res == null) {
-			return $this->response->setResponse(true, 'No existen exámenes', '1');;
+			return $this->response->setResponse(true, 'No existen exámenes', '1');
 		}
-		return $this->response->setResponse(true, $res, '0');;
+		return $this->response->setResponse(true, $res, '0');
 	}
 
 	//actualizar

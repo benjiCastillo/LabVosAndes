@@ -21,7 +21,6 @@ $app->group('/biometria',function(){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
 						json_encode($this->model->Biometria->insertBio($req->getParsedBody()))
-
 				   	);
 	});
 
@@ -37,7 +36,6 @@ $app->group('/biometria',function(){
 				   ->write(
 				   		json_encode($this->model->Biometria->delete($args['id']))
 				   	);
-
 	});
 });
 
