@@ -17,7 +17,7 @@ $app->group('/biometria',function(){
 				   	);
 	});
 
-	$this->post('/insertBio/',function($req, $res, $args){
+	$this->post('/',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
 						json_encode($this->model->Biometria->insertBio($req->getParsedBody()))

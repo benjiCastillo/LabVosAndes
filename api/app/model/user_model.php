@@ -2,8 +2,7 @@
 
 namespace App\Model;
 
-use App\Lib\Response,
-	App\Lib\Security;
+use App\Lib\Response;
 
 /**
 * Modelo user
@@ -11,6 +10,7 @@ use App\Lib\Response,
 class  UserModel
 {
 	private $db;
+	private $db_pdo;
 	private $table = 'usuario';
 	private $response;
 
@@ -20,7 +20,6 @@ class  UserModel
 		$this->db 		= $db;
 		$this->db_pdo   = $db_pdo;
 		$this->response = new Response();
-		$this->security = new Security();
 	}
 
     public function login($data){
@@ -36,7 +35,7 @@ class  UserModel
 	}
 
 	public function insert($data){
-		    $this->db_pdo->multi_query("CALL insertUser('".$data['_nombre']."',
+		    $this->db_pdo->multi_query("CALL insertarUser('".$data['_nombre']."',
 													'".$data['_user']."',
 													'".$data['_password']."')");
 			$res = $this->db_pdo->store_result();
@@ -48,20 +47,31 @@ class  UserModel
 			return $this->response->setResponse(true, $res['respuesta'], '0');
 	}
 
+	//actualizar
 	public function update($data, $id){
+		$oldData = $this->db->from($this->table, $id)
+		->fetch();
 
-		$this->db->update($this->table, $data, $id)
-				 ->execute();
+		if ($oldData != null) {
+			$this->db->update($this->table, $data, $id)
+			->execute();
 
-		return $this->response->setResponse(true);
+   			return $this->response->setResponse(true, 'El registro se actualizó correctamente', '0');
+		}
+		return $this->response->setResponse(true, 'Error al actualizar, el registro no existe', '1');
 	}
 	//eliminar
 	public function delete($id){
+		$data = $this->db->from($this->table, $id)
+		->fetch();
 
-		$this->db->deleteFrom($this->table, $id)
-				 ->execute();
+		if ($data != null) {
+			$this->db->deleteFrom($this->table, $id)
+			->execute();
 
-		return $this->response->setResponse(true);
+			return $this->response->setResponse(true, 'Registro eliminado', '0');
+		}
+		return $this->response->setResponse(true, 'Error al eliminar, el registro no existe', '1');
 	}
 
 }

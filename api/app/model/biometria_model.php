@@ -2,8 +2,7 @@
 
 namespace App\Model;
 
-use App\Lib\Response,
-	App\Lib\Security;
+use App\Lib\Response;
 
 /**
 * Modelo biometria
@@ -20,19 +19,17 @@ class  BiometriaModel
 		$this->db 		= $db;
 		$this->db_pdo   = $db_pdo;
 		$this->response = new Response();
-		$this->security = new Security();
 	}
-
-	//var $l => 'limit', $p => 'pagina'
 
 	//lista_total
 	public function listar(){
-
-		return $data = $this->db->from($this->table)
+		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
-	//  return $data = $this->db_pdo->query('select * from '.$this->table)
-	//					 			->fetchAll();
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
+		}
+		return $this->response->setResponse(true, 'No existen datos', '1');
 	}
 
 	//listar paginado
@@ -58,25 +55,16 @@ class  BiometriaModel
 	}
 	//obtener
 	public function getBiometria($id){
-
-		return $data = $this->db->from($this->table, $id)
+		$data = $this->db->from($this->table, $id)
 								->fetch();
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
+		}
+		return $this->response->setResponse(true, 'Registro no encontrado', '1');
 	}
 	//registrar
 
-	public function insert($data){
-		// $data['password'] = md5($data['password']);
-
-		$this->db_pdo->insertInto($this->table, $data)
-				 ->execute();
-
-		return $this->response->setResponse(true);
-		}
-
-		public function insertBio($data){
-
-		//$this->db->insertInto($this->table, $data)
-		//		 ->execute();
+	public function insertBio($data){
 		$this->db_pdo->multi_query(" CALL insertarBiometria('".$data['_hematies']."',
 														'".$data['_hematocrito']."',
 														'".$data['_hemoglobina']."',
@@ -107,19 +95,29 @@ class  BiometriaModel
 
 	//actualizar
 	public function update($data, $id){
+		$oldData = $this->db->from($this->table, $id)
+		->fetch();
 
+		if ($oldData != null) {
+			$this->db->update($this->table, $data, $id)
+			->execute();
 
-		$this->db->update($this->table, $data, $id)
-				 ->execute();
-
-		return $this->response->setResponse(true);
+   			return $this->response->setResponse(true, 'El registro se actualizó correctamente', '0');
+		}
+		return $this->response->setResponse(true, 'Error al actualizar, el registro no existe', '1');
 	}
 	//eliminar
 	public function delete($id){
-		$this->db->deleteFrom($this->table, $id)
+		$data = $this->db->from($this->table, $id)
+		->fetch();
+
+		if ($data != null) {
+			$this->db->deleteFrom($this->table, $id)
 			->execute();
 
-		return $this->response->setResponse(true);
+			return $this->response->setResponse(true, 'Registro eliminado', '0');
+		}
+		return $this->response->setResponse(true, 'Error al eliminar, el registro no existe', '1');
 	}
 
 }

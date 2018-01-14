@@ -2,8 +2,7 @@
 
 namespace App\Model;
 
-use App\Lib\Response,
-	App\Lib\Security;
+use App\Lib\Response;
 
 /**
 * Modelo paciente
@@ -11,6 +10,7 @@ use App\Lib\Response,
 class  PacienteModel
 {
 	private $db;
+	private $db_pdo;
 	private $table = 'paciente';
 	private $response;
 
@@ -20,25 +20,17 @@ class  PacienteModel
 		$this->db 		= $db;
 		$this->db_pdo   = $db_pdo;
 		$this->response = new Response();
-		$this->security = new Security();
 	}
-
-	//var $l => 'limit', $p => 'pagina'
 
 	//lista_total
 	public function listar(){
-
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
-		if(empty($data)){
-		 $respuesta = array('respuesta' => 0 );
-		 return $respuesta;
-		}else{
-		 return $data;
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
 		}
-	//  return $data = $this->db_pdo->query('select * from '.$this->table)
-	//					 			->fetchAll();
+		return $this->response->setResponse(true, 'No existen datos', '1');
 	}
 
 	//listar paginado
@@ -65,9 +57,13 @@ class  PacienteModel
 	//obtener
 	public function getPaciente($id){
 
-		return $data = $this->db->from($this->table, $id)
+		$data = $this->db->from($this->table, $id)
 								->fetch();
-	}
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
+		}
+		return $this->response->setResponse(true, 'Registro no encontrado', '1');
+							}
 	//registrar
 
 	public function insert($data){
@@ -78,26 +74,33 @@ class  PacienteModel
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			if ($res['error']==true) {
-				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
-			}
 			return $this->response->setResponse(true, $res['respuesta'], $res['error']);
 	}
 	//actualizar
 	public function update($data, $id){
+		$oldData = $this->db->from($this->table, $id)
+		->fetch();
 
-		$this->db->update($this->table, $data, $id)
-				 ->execute();
+		if ($oldData != null) {
+			$this->db->update($this->table, $data, $id)
+			->execute();
 
-		return $this->response->setResponse(true);
+   			return $this->response->setResponse(true, 'El registro se actualizó correctamente', '0');
+		}
+		return $this->response->setResponse(true, 'Error al actualizar, el registro no existe', '1');
 	}
 	//eliminar
 	public function delete($id){
+		$data = $this->db->from($this->table, $id)
+		->fetch();
 
-		$this->db->deleteFrom($this->table, $id)
-				 ->execute();
+		if ($data != null) {
+			$this->db->deleteFrom($this->table, $id)
+			->execute();
 
-		return $this->response->setResponse(true);
+			return $this->response->setResponse(true, 'Registro eliminado', '0');
+		}
+		return $this->response->setResponse(true, 'Error al eliminar, el registro no existe', '1');
 	}
 
 

@@ -21,26 +21,7 @@ $app->group('/examengeneral',function(){
 
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
-						json_encode($this->model->ExamenGeneral->insert($req->getParsedBody()))
-
-				   	);
-	});
-
-	$this->post('/insertGeneralTest/',function($req, $res, $args){
-
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
 						json_encode($this->model->ExamenGeneral->insertGeneralTest($req->getParsedBody()))
-
-				   	);
-	});
-
-	$this->post('/read/',function($req, $res, $args){
-
-
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
-						json_encode($this->model->ExamenGeneral->readExamenGeneral($req->getParsedBody()))
 
 				   	);
 	});
