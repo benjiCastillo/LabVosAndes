@@ -77,10 +77,14 @@ class  ExamenModel
 		$this->db_pdo->multi_query("CALL insertarExamen('".$data['_id_medico']."',
 														'".$data['_id_paciente']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
+			// $res = array("message"=>$res[0],"response"=>true);
+			// return $res;
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, $res, '0');
 	}
 
 	public function listarExamenes($id){
@@ -91,12 +95,16 @@ class  ExamenModel
 			}
 			$res = $arreglo;
 			mysqli_close($this->db_pdo);
-			if ($res[0]['respuesta'] == 'El paciente no tiene exámenes') {
-				$res = array("message"=>$res[0]['respuesta'],"response"=>true);
-			} else {
-				$res = array("message"=>$res,"response"=>true);
+			// if ($res[0]['respuesta'] == 'El paciente no tiene exámenes') {
+			// 	$res = array("message"=>$res[0]['respuesta'],"response"=>true);
+			// } else {
+			// 	$res = array("message"=>$res,"response"=>true);
+			// }
+			// return $res;
+			if ($res[0]['error']==true) {
+				return $this->response->setResponse(true, $res[0]['respuesta'], $res[0]['error']);
 			}
-			return $res;
+			return $this->response->setResponse(true, $res, '0');
 	}
 
 	public function listarExamenesPaciente($id) {
@@ -111,10 +119,9 @@ class  ExamenModel
 			}
 		}
 		if ($res == null) {
-			// return $this->response->setResponse(true, '', 400);
-			$res = array("message"=>"No existen exámenes", "response"=>true);
+			return $this->response->setResponse(true, 'No existen exámenes', '1');;
 		}
-		return $res;
+		return $this->response->setResponse(true, $res, '0');;
 	}
 
 	//actualizar

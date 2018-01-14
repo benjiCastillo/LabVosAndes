@@ -99,12 +99,15 @@ class  ExamenGeneralModel
 														'".$data['_celulas']."',
 														'".$data['_cristales']."',
 														'".$data['_otros']."',
-														'".$data['_exa_bac_sed']."')");
+														'".$data['_exa_bac_sed']."',
+														'".$data['_id_examen']."')");
 			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_array();
+			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			$res = array("message"=>$res[0],"response"=>true);
-			return $res;
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
 	}
 
 	//actualizar

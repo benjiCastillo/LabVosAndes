@@ -11,11 +11,10 @@ $app->group('/examen',function(){
 	});
 
 	$this->get('/{id}/listaExamenes/',function($req, $res, $args){
-		$content = json_encode($this->model->Examen->listarExamenes($args['id']));
+		// $content = json_encode($this->model->Examen->listarExamenes($args['id']));
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
-					   $content
-				   		// json_encode($this->model->Examen->listarExamenes($args['id']))
+				   		json_encode($this->model->Examen->listarExamenes($args['id']))
 				   	);
 	});
 
@@ -30,15 +29,6 @@ $app->group('/examen',function(){
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
 				   		json_encode($this->model->Examen->listarExamenesPaciente($args['id']))
-				   	);
-	});
-
-	$this->post('/',function($req, $res, $args){
-
-		return $res->withHeader('Content-type', 'application/json')
-			       -> write(
-						json_encode($this->model->Examen->insert($req->getParsedBody()))
-
 				   	);
 	});
 

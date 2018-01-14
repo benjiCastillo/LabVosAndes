@@ -99,11 +99,10 @@ class  BiometriaModel
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			// if ($res["error"]==true) {
-			// 	return $this->response->setResponse(true, $res['id'], $res[0]);
-			// } else {
-			// 	return $this->response->setResponse(true, $res[1], $res[0]);
-			// }
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
 		}
 
 	//actualizar
