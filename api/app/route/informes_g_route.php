@@ -25,14 +25,6 @@ $app->group('/informesg',function(){
 				   	);
 	});
 
-	// $this->post('/insertReport/',function($req, $res, $args){
-	// 	return $res->withHeader('Content-type', 'application/json')
-	// 		       -> write(
-	// 					json_encode($this->model->InformesG->insertarInformeG($req->getParsedBody()))
-
-	// 			   	);
-	// });
-
 	$this->put('/{id}',function($req, $res, $args){
 
 		return $res->withHeader('Content-type', 'application/json')
@@ -41,10 +33,10 @@ $app->group('/informesg',function(){
 				   	);
 	});
 
-	$this->delete('/{id}/{titulo}',function($req, $res, $args){
+	$this->delete('/{id}',function($req, $res, $args){
 		return $res->withHeader('Content-type', 'application/json')
 				   ->write(
-				   		json_encode($this->model->InformesG->delete($args['id'], $args['titulo']))
+				   		json_encode($this->model->InformesG->delete($args['id']))
 				   	);
 	});
 });

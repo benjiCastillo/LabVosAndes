@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-01-2018 a las 23:39:48
+-- Tiempo de generación: 14-01-2018 a las 23:30:59
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -34,6 +34,11 @@ ELSE
 	VALUES(_hematies, _hematocrito, _hemoglobina, _leucocitos, _vsg, _vcm, _hbcm, _chbcm, _comentario_hema, _cayados, _neutrofilos, _basofilo, _eosinofilo, _linfocito, _monocito, _prolinfocito, _cel_inmaduras, _comentario_leuco, _id_examen);
 	SELECT false as error, id FROM biometria WHERE id_examen=_id_examen;
 END IF;		
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarDoctor` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75))  BEGIN
+	INSERT INTO medico(nombre, apellidos) VALUES(_nombre, _apellidos);
+    SELECT false as error, 'Médico insertado correctamente' as respuesta;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
@@ -82,6 +87,20 @@ ELSE
 	VALUES (_paraA1, _paraA2, _paraA3, _paraA4, _paraA5, _paraA6, _paraB1, _paraB2, _paraB3, _paraB4, _paraB5, _paraB6, _somaticoO1, _somaticoO2, _somaticoO3, _somaticoO4, _somaticoO5, _somaticoO6, _flagelarH1, _flagelarH2, _flagelarH3, _flagelarH4, _flagelarH5, _flagelarH6,_comentario,_id_examen);
 	SELECT false as error, id FROM reaccion_w WHERE id_examen = _id_examen;
 END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
+	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user))THEN
+		SELECT true as error, 'El nombre de usuario ya existe' AS respuesta;
+    ELSE
+        INSERT INTO usuario(nombre, user, password, fecha) VALUES(_nombre, _user, _password, NOW());
+        SELECT 'Usuario creado' AS respuesta;
+    END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertDcotor` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75))  BEGIN
+	INSERT INTO medico(nombre, apellidos) VALUES(_nombre, _apellidos);
+    SELECT false as error, 'Médico insertado correctamente' as respuesta;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
@@ -350,7 +369,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `biometria`
 --
 ALTER TABLE `biometria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `examen`
@@ -362,37 +381,37 @@ ALTER TABLE `examen`
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `informes_g`
 --
 ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
 ALTER TABLE `reaccion_w`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
