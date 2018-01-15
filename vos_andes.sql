@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-01-2018 a las 23:30:59
+-- Tiempo de generación: 14-01-2018 a las 23:58:27
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -74,7 +74,7 @@ ELSE
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75), IN `_edad` VARCHAR(3), IN `_sexo` CHAR(1))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75), IN `_edad` VARCHAR(15), IN `_sexo` CHAR(1))  BEGIN
 	INSERT INTO paciente(nombre, apellidos, edad, sexo) VALUES(_nombre, _apellidos, _edad, _sexo);
     SELECT false as error, 'Paciente insertado correctamente' as respuesta;
 END$$
@@ -242,7 +242,7 @@ CREATE TABLE `paciente` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
-  `edad` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
+  `edad` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
