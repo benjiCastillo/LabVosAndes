@@ -68,7 +68,7 @@
 
 			</div>
 		</section>
-		<!-- <div class="box">
+		<div class="box">
 			<div class="box-header with-border">
 				<h3 class="text-primary box-title">Examenes</h3>
 			</div>
@@ -81,25 +81,20 @@
 				<table ng-show="examenesCargado" class="table table-hover table-striped">
 					<thead>
 						<tr>
-							<th>Examen</th>
-							<th>Paciente</th>
-							<th>Medico</th>
-							<th>Fecha</th>
+							<th>Prueba</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="examen in examenes  | filter:buscadorExamen">
-							<td> {{ examen.tipo }}</td>
-							<td> {{ examen.nombrePaciente }} {{ examen.apellidosPaciente }} </td>
-							<td> {{ examen.nombreMed }} {{ examen.apellidosMed }} </td>
-							<td> {{ examen.fecha }} </td>
+							<td> {{ examen.nombre }}</td>
 							<td>
-								<button class="btn btn-info" ng-click="showPrint(examen.id_paciente,examen.id_tipo, examen.tipo)">Imprimir</button>{{ }}</td>
+								<button class="btn btn-info" ng-click="showPrint(examen.id)">Imprimir</button>{{ }}
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-		</div> -->
+		</div>
 	</div>
 
 </section>

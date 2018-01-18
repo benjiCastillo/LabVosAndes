@@ -74,11 +74,12 @@ class  ExamenModel
 
 	public function listarExamenesPaciente($id) {
 		$tests = array('examen_general', 'biometria', 'informes_g', 'reaccion_w');
+		$res = null;
 		foreach ($tests as $test) {
 			$data = $this->db->from($test)
 			->where('id_examen', $id)
 			->fetch();
-			$res = null;
+			
 			if ($data != false) {
 				$data->nombre = $test;
 				$res[] = $data;

@@ -8,9 +8,10 @@ app.controller('examenCtrl', ['$scope', '$routeParams', '$window', 'examenServic
 
 
 
-    // $scope.cargandoExamenes = true;
-    // $scope.examenesCargado = false;
-    // $scope.noExistenExamenes = false;
+    $scope.cargandoExamenes = true;
+    $scope.examenesCargado = false;
+    $scope.noExistenExamenes = false;
+
     $scope.paciente = $sessionStorage.data;
     $scope.idExamen = $routeParams.id;
     console.log($scope.idExamen);
@@ -23,24 +24,25 @@ app.controller('examenCtrl', ['$scope', '$routeParams', '$window', 'examenServic
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: 'true' };
         return date.toLocaleDateString('es-ES', options);
     }
-    // $scope.listar = function () {
-    //     examenServices.listar().then(function () {
-    //         $scope.cargandoExamenes = false;
-    //         $scope.examenes = examenServices.response;
-    //         if ($scope.examenes.message[0].respuesta) {
-    //             console.log('respuesta');
-    //             $scope.examenes = [];
-    //             $scope.examenesCargado = false;
-    //             $scope.noExistenExamenes = true;
-    //         } else {
-    //             $scope.examenesCargado = true;
-    //             $scope.examenes = $scope.examenes.message;
-    //             $scope.noExistenExamenes = false;
-    //         }
-    //         console.log($scope.examenes);
-    //     });
+    $scope.listar = function (id) {
+        examenServices.listar(id).then(function () {
+            $scope.cargandoExamenes = false;
+            $scope.examenes = examenServices.response;
+            console.log($scope.examenes)
+            if ($scope.examenes.error == 0) {
+    
+                console.log('respuesta')
+                $scope.examenes = $scope.examenes.message;
+                $scope.examenesCargado = true;
+            } else {
+                console.log("algo anda mal");
+                $scope.noExistenExamenes = true;
+            }
+       
+        });
 
-    // }
+    }
+    $scope.listar( $scope.idExamen )
     /*  MODALES */
     //modal insertar Examen General
     $scope.modalInsertarExamenGeneral = function (examenGeneral) {

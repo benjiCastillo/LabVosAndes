@@ -4,12 +4,12 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 
 	var self = {
-		listar: function () {
+		listar: function (id) {
 			var d = $q.defer();
 
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/examen/listalltest/',
+				url: 'http://localhost/LabVosAndes/api/public/examen/'+id+'/examenesPaciente/',
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;

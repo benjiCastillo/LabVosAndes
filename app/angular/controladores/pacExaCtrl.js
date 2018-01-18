@@ -65,9 +65,10 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
         pacientesExamenServices.insertarExamen($scope.examen).then(function () {
             $scope.responseInsertExa = pacientesExamenServices.response;
             console.log($scope.responseInsertExa);
-            if ($scope.responseInsertExa.message != 0) {
+            if ($scope.responseInsertExa.error == 0) {
                 $scope.verExamenes = true;
                 $sessionStorage.idExamen = $scope.responseInsertExa.message;
+                $scope.listarExaPac($scope.paciente.id)
             }
         });
     }
