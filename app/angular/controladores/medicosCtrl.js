@@ -17,15 +17,15 @@ app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', functi
                 
 				$scope.response = medicosServices.response;
                 $scope.cargandoMedicos = false;
-
-                if ($scope.response.respuesta == 0){
+                console.log($scope.response)
+                if ($scope.response.error == 1){
                     console.log('no hay medicos');
                     $scope.noExistenMedicos = true;
                     $scope.medicosCargado = false;
                 }else{
                     $scope.medicosCargado = true;
                     $scope.noExistenMedicos = false;
-                    $scope.medicos = $scope.response;
+                    $scope.medicos = $scope.response.message;
                 }
 			});
     }
@@ -33,6 +33,7 @@ app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', functi
     $scope.listar();
     
 	$scope.insertarModal = function(){
+            $scope.medico = {};
 			$("#modal-medico").modal();
     }
 	
@@ -42,6 +43,7 @@ app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', functi
 		    $scope.response = medicosServices.response;
             console.log($scope.response);
             $("#modal-medico").modal("hide");
+             
              $scope.listar();
 		});
 

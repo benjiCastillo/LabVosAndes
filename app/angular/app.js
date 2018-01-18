@@ -91,7 +91,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'examen/reaccion_widal.html',
 			controller: 'reaccionCtrl'
 		})
-		.when('/examen/:pag', {
+		.when('/examen/:id/:name/:ape/:fecha', {
 			templateUrl: 'examen/examen.html',
 			controller: 'examenCtrl'
 		})

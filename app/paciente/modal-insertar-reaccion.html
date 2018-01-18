@@ -33,9 +33,11 @@
 											<input class="form-control" type="text" ng-model="reaccion.pA20">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA40"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.pA40">
+										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA80"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.pA80">
+										</td>
 										<td>
 											<input class="form-control" type="text" ng-model="reaccion.pA160">
 										</td>
@@ -70,11 +72,15 @@
 									<tr>
 										<td>Somatico "O"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s20"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.s20">
+										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s40"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.s40">
+										</td>
+
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s80"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.s80">
+										</td>
 										<td>
 											<input class="form-control" type="text" ng-model="reaccion.s160">
 										</td>
@@ -88,13 +94,17 @@
 									<tr>
 										<td>Flagelar "H"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f20"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.f20">
+										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f40"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.f40">
+										</td>
+										
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f80"> </td>
+											<input class="form-control" type="text" ng-model="reaccion.f80">
+										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f160">
+										<input class="form-control" type="text" ng-model="reaccion.f160">
 										</td>
 										<td>
 											<input class="form-control" type="text" ng-model="reaccion.f320">
@@ -116,7 +126,12 @@
 				</div>
 
 				<div class="modal-footer">
-
+					<p class="text-danger" ng-show="testReacError">
+						<b>La prueba ya fue registrada</b>
+					</p>
+					<p class="text-success" ng-show="testReacSuccess">
+						<b>Datos Almacenados Correctamente</b>
+					</p>
 					<button type="submit" class="btn btn-success">
 						<i class="fa fa-save"></i> Guardar</button>
 				</div>

@@ -13,14 +13,19 @@
         <div class="modal-body">
           <div class="form-group">
             <label>informe</label>
-            <textarea ng-model="informe.informe" class="form-control" id="" cols="30" rows="10" ></textarea>
+            <textarea ng-model="informe.informe" class="form-control" id="" cols="30" rows="10"></textarea>
           </div>
 
         </div>
 
 
         <div class="modal-footer">
-
+          <p class="text-danger" ng-show="testInfoError">
+            <b>La prueba ya fue registrada</b>
+          </p>
+          <p class="text-success" ng-show="testInfoSuccess">
+            <b>Datos Almacenados Correctamente</b>
+          </p>
           <button type="submit" class="btn btn-success">
             <i class="fa fa-save"></i> Guardar</button>
         </div>

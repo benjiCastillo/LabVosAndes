@@ -36,6 +36,7 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
     $scope.listar();
 
     $scope.insertarModal = function () {
+        $scope.pacienteInsertar = {};
         $("#modal-paciente").modal();
     }
     $scope.insertar = function (paciente) {

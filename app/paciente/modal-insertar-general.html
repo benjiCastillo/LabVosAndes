@@ -117,7 +117,12 @@
 
 
         <div class="modal-footer">
-
+          <p class="text-danger" ng-show="testGenError">
+            <b>La prueba ya fue registrada</b>
+          </p>
+          <p class="text-success" ng-show="testGenSuccess">
+            <b>Datos Almacenados Correctamente</b>
+          </p>
           <button type="submit" class="btn btn-success">
             <i class="fa fa-save"></i> Guardar</button>
         </div>

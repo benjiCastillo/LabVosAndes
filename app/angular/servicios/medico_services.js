@@ -12,8 +12,8 @@ var self ={
 					  	url: 'http://localhost/LabVosAndes/api/public/medico/',
                         // url: 'http://localhost/gitgrad/APIPOLLO/public/observation/read/',
                         data:{
-								nombre:datos.nombre,
-								apellidos:datos.apellidos
+								_nombre:datos.nombre,
+								_apellidos:datos.apellidos
 						}
                     	})
                         .then(function successCallback(response) {

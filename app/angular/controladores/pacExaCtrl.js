@@ -20,6 +20,7 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
     $scope.biometria.nombre = "Biometria";
     $scope.reaccion = {};
     $scope.reaccion.nombre = "Reaccion de Widal";
+    $scope.selectMed = true;
 
     $scope.alterSexo = function () {
         if ($scope.paciente.sexo == "M") {
@@ -35,7 +36,15 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
         pacientesExamenServices.listarMedicos().then(function () {
             $scope.medicos = pacientesExamenServices.response;
             console.log($scope.medicos)
-            if ($scope.medicos.respuesta === 0) { $scope.ifmedExists = "Debe Introducir un medico" }
+            if ($scope.medicos.error == 1) {
+                $scope.ifmedExists = "Debe Introducir un medico";
+                console.log("no hay medicos");
+                $scope.selectMed = true;
+            } else {
+                $scope.medicos = $scope.medicos.message;
+                console.log("que paso");
+                $scope.selectMed = true;
+            }
         });
     }
     // escucha el select del medico       
@@ -62,32 +71,7 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
             }
         });
     }
-    /*  MODALES */
-    //modal insertar Examen General
-    $scope.modalInsertarExamenGeneral = function (examenGeneral) {
-        $("#modal-insertar-general").modal();
-        $scope.examenGeneral.nombre = examenGeneral;
-        $scope.examenGeneral.id_examen = $sessionStorage.idExamen;
-    }
-    //modal insertar informe 
-    $scope.modalInsertarInfo = function (nombreInforme) {
-        console.log(nombreInforme);
-        $("#modal-insertar-informe").modal();
-        $scope.informe.nombre = nombreInforme;
-        $scope.informe.id_examen = $sessionStorage.idExamen;
-    }
-    //modal insentar biometria 
-    $scope.modalInsertarBio = function (nombre) {
-        console.log(nombre);
-        $("#modal-insertar-biometria").modal();
-        $scope.biometria.id_examen = $sessionStorage.idExamen;
-    }
-    //modal reaccion de widal
-    $scope.modalInsertarReaccion = function (nombre) {
-        console.log(nombre);
-        $("#modal-insertar-reaccion").modal();
-        $scope.reaccion.id_examen = $sessionStorage.idExamen;
-    }
+
 
     /* INSERTAR DATOS */
 
@@ -98,97 +82,24 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
             console.log($scope.insertTipo);
         });
     }
-    //insertar informe
-    $scope.insertarInforme = function (informe) {
-        pacientesExamenServices.insertarInforme(informe).then(function () {
-            $scope.insertInfo = pacientesExamenServices.response;
-            if ($scope.insertInfo.message != "0") {
-                $("#modal-insertar-informe").modal("hide");
-                console.log($scope.insertInfo.message);
-                //  console.log(informe);
-                $scope.tipo = {};
-                $scope.tipo.id_tipo = $scope.insertInfo.message;
-                $scope.tipo.tipo = informe.nombre;
-                $scope.tipo.id_examen = informe.id_examen;
-                console.log($scope.tipo);
-                $scope.insertarTipo($scope.tipo);
-                $scope.listarExaPac($scope.paciente.id);
-            }
-        });
-    }
-    //insetar biometria 
-    $scope.insertarBiometria = function (biometria) {
-        console.log(biometria);
-        pacientesExamenServices.insertarBiometria(biometria).then(function () {
-            $scope.insertInfo = pacientesExamenServices.response;
-            if ($scope.insertInfo.message != "0") {
-                $("#modal-insertar-biometria").modal("hide");
-                console.log($scope.insertInfo.message);
-                //  console.log(informe);
-                $scope.tipo = {};
-                $scope.tipo.id_tipo = $scope.insertInfo.message;
-                $scope.tipo.tipo = 'Biometria Hematica';
-                $scope.tipo.id_examen = $scope.biometria.id_examen;
-                console.log($scope.tipo);
-                $scope.insertarTipo($scope.tipo);
-                $scope.listarExaPac($scope.paciente.id);
-            }
-        });
-    }
-    //insertar examen general 
-    $scope.insertarExamenGeneral = function (biometria) {
-        pacientesExamenServices.insertarExamenGeneral(biometria).then(function () {
-            $scope.insertExaGen = pacientesExamenServices.response;
-            if ($scope.insertExaGen.message != "0") {
-                $("#modal-insertar-general").modal("hide");
-                console.log($scope.insertExaGen);
-                // console.log(informe);
-                $scope.tipo = {};
-                $scope.tipo.id_tipo = $scope.insertExaGen.message;
-                $scope.tipo.tipo = biometria.nombre;
-                $scope.tipo.id_examen = biometria.id_examen;
-                console.log($scope.tipo);
-                $scope.insertarTipo($scope.tipo);
-                $scope.listarExaPac($scope.paciente.id);
-            }
-        });
-    }
-    //insertar reaccion
-    $scope.insertarReaccion = function (reaccion) {
-        console.log(reaccion)
-        pacientesExamenServices.insertarReaccion(reaccion).then(function () {
-            $scope.reaccionR = pacientesExamenServices.response;
-            if ($scope.reaccionR.message != "0") {
-                $("#modal-insertar-reaccion").modal("hide");
-                console.log($scope.reaccionR);
-                // console.log(informe);
-                $scope.tipo = {};
-                $scope.tipo.id_tipo = $scope.reaccionR.message;
-                $scope.tipo.tipo = $scope.reaccion.nombre;
-                $scope.tipo.id_examen = reaccion.id_examen;
-                console.log($scope.tipo);
-                $scope.insertarTipo($scope.tipo);
-                $scope.listarExaPac($scope.paciente.id);
-            }
-        });
-    }
+
 
     //listar examen paciente
     $scope.listaExamenes = {};
 
     $scope.listarExaPac = function (id) {
-        $scope.cargandoDatosExamenes = true; 
+        $scope.cargandoDatosExamenes = true;
         pacientesExamenServices.listarExamenes(id).then(function () {
-            
+
             $scope.verExamenesPaciente = true;
             $scope.cargandoDatosExamenes = false;
             $scope.listaExamenes = pacientesExamenServices.response;
             console.log($scope.listaExamenes);
-            if($scope.listaExamenes.error == 1){
+            if ($scope.listaExamenes.error == 1) {
                 $scope.verExamenesPaciente = false;
                 $scope.cargandoDatosExamenes = false;
                 $scope.noExistenExamenes = true;
-            }else{
+            } else {
                 $scope.listaExamenes = $scope.listaExamenes.message;
             }
         })
@@ -200,10 +111,10 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
 
     /* function format date*/
 
-    $scope.formatDate = function(fecha){
+    $scope.formatDate = function (fecha) {
         var date = new Date(fecha);
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',hour:'numeric',minute:'numeric',second:'numeric',hour12:'true'};
-        return date.toLocaleDateString('es-ES',options);
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: 'true' };
+        return date.toLocaleDateString('es-ES', options);
     }
 
 

@@ -16,7 +16,7 @@
               </h4>
               <div class="form-group">
                 <label class="col-sm-4">Hematies</label>
-                <input type="text" class="col-sm-8" placeholder="Color" ng-model="biometria.hematies">
+                <input type="text" class="col-sm-8" placeholder="Color" value=" as" ng-model="biometria.hematies">
               </div>
               <div class="form-group">
                 <label class="col-sm-4">Hematocrito</label>
@@ -97,7 +97,8 @@
         </div>
 
         <div class="modal-footer">
-
+          <p class="text-danger" ng-show="testBioError"><b>La prueba ya fue registrada</b></p>
+          <p class="text-success" ng-show="testBioSuccess"><b>Datos Almacenados Correctamente</b></p>
           <button type="submit" class="btn btn-success">
             <i class="fa fa-save"></i> Guardar</button>
         </div>

@@ -65,6 +65,7 @@ class  BiometriaModel
 	//registrar
 
 	public function insertBio($data){
+		$res = null;
 		$this->db_pdo->multi_query(" CALL insertarBiometria('".$data['_hematies']."',
 														'".$data['_hematocrito']."',
 														'".$data['_hemoglobina']."',

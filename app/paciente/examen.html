@@ -14,62 +14,16 @@
                 <span>{{ paciente.sexo }}</span>
             </p>
             <br>
-            <div class="form-group">
+            <div class="form-group" ng-show="selectMed">
                 <label for="miembroInput" class="text-info">Medico</label>
                 <select class="form-control" ng-model="medico">
                     <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                 </select>
             </div>
             <span>{{ ifmedExists }}</span>
-            <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()">Crear Examen</button>
+            <button class="btn btn-block btn-success" ng-disabled="btnInsertarExa" ng-click="insertarExamen()" ng-show="selectMed">Crear Examen</button>
         </div>
-        <section class="animate fadeIn" ng-show="verExamenes">
-            <div class="row">
-                <h2 class="text-primary">Elija Examen</h2>
-                <div class="col-md-4" ng-click="modalInsertarBio('Biometria')">
-                    <div class="well well-examen">
-                        Biometria
-                    </div>
-                </div>
-                <div class="col-md-4" ng-click="modalInsertarExamenGeneral('Analisis General')">
-                    <div class="well well-examen">
-                        Analisis General
-                    </div>
-                </div>
-                <div class="col-md-4" ng-click="modalInsertarReaccion('Reaccio de Widal')">
-                    <div class="well well-examen">
-                        Reaccion de Widal
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-4" ng-click="modalInsertarInfo('Informe General')">
-                    <div class="well well-examen">
-                        Informe - General
-                    </div>
-                </div>
-                <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Quimica Sanguinea')">
-                    <div class="well well-examen well-examen">
-                        Informe - Quimica Sanguinea
-                    </div>
-                </div>
-                <div class="col-md-4" ng-click="modalInsertarInfo('Informe de Parasitologia')">
-                    <div class="well well-examen">
-                        Informe - Parasitologia
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-4" ng-click="modalInsertarInfo('informe de Microbiologia')">
-                    <div class="well well-examen">
-                        Informe - Microbiologia
-                    </div>
-                </div>
-
-            </div>
-        </section>
 
         <section>
             <div class="row">
@@ -87,7 +41,7 @@
                                         <th>Nro</th>
                                         <th>Nombre Medico</th>
                                         <th>Fecha</th>
-                                        <th>Ver</th>
+                                        <th>Ingresar</th>
                                         <th>Editar</th>
                                     </tr>
                                 </thead>
@@ -97,15 +51,11 @@
                                         <td>{{ examen.NombreMed }} {{ examen.ApellidosMed }}</td>
                                         <td>{{formatDate(examen.fecha)}}</td>
                                         <td>
-                                            <button class="btn btn-info" ng-click="showPrint(paciente.id,examen.id_tipo, examen.tipo)">Imprimir</button>
+                                            <a href="#/examen/{{examen.id}}/{{examen.NombreMed}}/{{examen.ApellidosMed }}/{{ examen.fecha}}" class="btn btn-info">Ingresar</a>
                                         </td>
                                         <td>
                                             <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button>
                                         </td>
-                                        <td>
-                                            <button class="btn btn-danger" ng-click="showDelete(paciente.id,examen.id_tipo, examen.tipo)">Eliminar</button>
-                                        </td>
-
                                     </tr>
                                 </tbody>
                             </table>
@@ -116,19 +66,3 @@
         </section>
     </div>
 </div>
-
-
-<div ng-include="'paciente/modal-insertar-informe.html'"></div>
-<div ng-include="'paciente/modal-insertar-general.html'"></div>
-<div ng-include="'paciente/modal-inserta-biometria.html'"></div>
-<div ng-include="'paciente/modal-insertar-reaccion.html'"></div>
-
-<div ng-include="'paciente/editar/reaccion.html'"></div>
-<div ng-include="'paciente/editar/general.html'"></div>
-<div ng-include="'paciente/editar/informe.html'"></div>
-<div ng-include="'paciente/editar/biometria.html'"></div>
-
-<div ng-include="'paciente/eliminar/reaccion.html'"></div>
-<div ng-include="'paciente/eliminar/general.html'"></div>
-<div ng-include="'paciente/eliminar/informe.html'"></div>
-<div ng-include="'paciente/eliminar/biometria.html'"></div>

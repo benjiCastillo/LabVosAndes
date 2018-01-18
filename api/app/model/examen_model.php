@@ -78,6 +78,7 @@ class  ExamenModel
 			$data = $this->db->from($test)
 			->where('id_examen', $id)
 			->fetch();
+			$res = null;
 			if ($data != false) {
 				$data->nombre = $test;
 				$res[] = $data;
