@@ -102,6 +102,7 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
                 $scope.noExistenExamenes = true;
             } else {
                 $scope.listaExamenes = $scope.listaExamenes.message;
+                $scope.noExistenExamenes = false;
             }
         })
     }
@@ -229,53 +230,10 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
         })
     }
 
-    //obtener biometria
-
-    $scope.listarBio = function (id) {
-        pacientesExamenServices.listarBio(id).then(function () {
-            $scope.edtBiometria = pacientesExamenServices.response;
-            console.log($scope.edtBiometria);
-            $("#editar-biometria").modal();
-        })
-    }
-    $scope.editarBio = function (data) {
-        pacientesExamenServices.editarBio(data).then(function () {
-            $scope.informeEditado = pacientesExamenServices.response;
-            $("#editar-biometria").modal("hide");
-        })
-    }
-    //obtener general
-
-    $scope.listarGen = function (id) {
-        pacientesExamenServices.listarGen(id).then(function () {
-            $scope.edtGeneral = pacientesExamenServices.response;
-            console.log($scope.edtGeneral);
-            $("#editar-general").modal();
-        })
-    }
-    $scope.editarGeneral = function (data) {
-        pacientesExamenServices.editarGeneral(data).then(function () {
-            $scope.generalEditado = pacientesExamenServices.response;
-            $("#editar-general").modal("hide");
-        })
-    }
+    
 
     //obtener reaccion
 
-    $scope.listarRea = function (id) {
-        pacientesExamenServices.listarRea(id).then(function () {
-            $scope.edtReaccion = pacientesExamenServices.response;
-            console.log($scope.edtReaccion);
-            $("#editar-reaccion").modal();
-        })
-    }
-    $scope.editarReaccion = function (data) {
-        pacientesExamenServices.editarReaccion(data).then(function () {
-            $scope.reaccionEditado = pacientesExamenServices.response;
-            console.log($scope.reaccionEditado)
-            $("#editar-reaccion").modal("hide");
-        })
-    }
 
     /** Eliminar */
 
@@ -340,52 +298,7 @@ app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExa
             $scope.listarExaPac($scope.paciente.id);
         })
     }
-    //eliminar Biometria
-    $scope.elmBiometria = {};
-    $scope.eliminarBiometria = function (id) {
-        $scope.elmBiometria.id = id;
-        $("#eliminar-biometria").modal();
-    }
 
-    $scope.deleteBiometria = function (data) {
-        pacientesExamenServices.eliminarBiometria(data).then(function () {
-            $scope.biometriaEliminado = pacientesExamenServices.response;
-            console.log($scope.biometriaEliminado)
-            $("#eliminar-biometria").modal("hide");
-            $scope.listarExaPac($scope.paciente.id);
-        })
-    }
-
-    //eliminar general
-    $scope.elmGeneral = {};
-    $scope.eliminarGeneral = function (id) {
-        $scope.elmGeneral.id = id;
-        $("#eliminar-general").modal();
-    }
-
-    $scope.deleteGeneral = function (data) {
-        pacientesExamenServices.eliminarGeneral(data).then(function () {
-            $scope.generalEliminado = pacientesExamenServices.response;
-            console.log($scope.generalEliminado)
-            $("#eliminar-general").modal("hide");
-            $scope.listarExaPac($scope.paciente.id);
-        })
-    }
-    //eliminar reaccion
-    $scope.elmReaccion = {};
-    $scope.eliminarReaccion = function (id) {
-        $scope.elmReaccion.id = id;
-        $("#eliminar-reaccion").modal();
-    }
-
-    $scope.deleteReaccion = function (data) {
-        pacientesExamenServices.eliminarReaccion(data).then(function () {
-            $scope.reaccionEliminado = pacientesExamenServices.response;
-            console.log($scope.reaccionEliminado)
-            $("#eliminar-reaccion").modal("hide");
-            $scope.listarExaPac($scope.paciente.id);
-        })
-    }
 
 
 }])

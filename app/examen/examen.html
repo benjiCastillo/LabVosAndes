@@ -86,9 +86,15 @@
 					</thead>
 					<tbody>
 						<tr ng-repeat="examen in examenes  | filter:buscadorExamen">
-							<td> {{ examen.nombre }}</td>
+							<td> {{ formatName(examen.nombre) }}</td>
 							<td>
-								<button class="btn btn-info" ng-click="showPrint(examen.id)">Imprimir</button>{{ }}
+								<button class="btn btn-info" ng-click="showPrint(examen.id)">Imprimir</button>
+							</td>
+							<td>
+								<button class="btn btn-primary" ng-click="editarPrueba(examen.id, examen.nombre)">Editar</button>
+							</td>
+							<td>
+								<button class="btn btn-danger" ng-click="eliminarPrueba(examen.id, examen.nombre)">Eliminar</button>
 							</td>
 						</tr>
 					</tbody>
