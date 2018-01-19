@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-01-2018 a las 03:36:12
+-- Tiempo de generación: 19-01-2018 a las 04:46:02
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -178,6 +178,13 @@ CREATE TABLE `biometria` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `biometria`
+--
+
+INSERT INTO `biometria` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `id_examen`) VALUES
+(1, '1', '1', '1', '1', '1', '1', '1', '11', 'a\'a\'sd\'w\'ásasdáw', '1', '1', '1', '1', '1', '1', '1', '', '1', 86);
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +239,13 @@ CREATE TABLE `examen_general` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `examen_general`
+--
+
+INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `id_examen`) VALUES
+(1, 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', 86);
+
 -- --------------------------------------------------------
 
 --
@@ -263,6 +277,13 @@ CREATE TABLE `microbiologia` (
   `contenido` text COLLATE utf8_spanish2_ci NOT NULL,
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `microbiologia`
+--
+
+INSERT INTO `microbiologia` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
+(6, '1', 'asdawdasdawdasda', 86);
 
 -- --------------------------------------------------------
 
@@ -298,6 +319,13 @@ CREATE TABLE `parasitologia` (
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `parasitologia`
+--
+
+INSERT INTO `parasitologia` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
+(2, '123raf', 'asdaw', 86);
+
 -- --------------------------------------------------------
 
 --
@@ -310,6 +338,13 @@ CREATE TABLE `quimica_sanguinea` (
   `contenido` text NOT NULL,
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `quimica_sanguinea`
+--
+
+INSERT INTO `quimica_sanguinea` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
+(1, 'ASDAW', 'SADAWDAS', 86);
 
 -- --------------------------------------------------------
 
@@ -334,7 +369,7 @@ CREATE TABLE `reaccion_w` (
   `somaticoO1` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `somaticoO2` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `somaticoO3` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `somaticoO4` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  `somaticoO4` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `somaticoO5` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `somaticoO6` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `flagelarH1` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
@@ -346,6 +381,13 @@ CREATE TABLE `reaccion_w` (
   `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
   `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `reaccion_w`
+--
+
+INSERT INTO `reaccion_w` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `id_examen`) VALUES
+(1, 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAASDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 86);
 
 -- --------------------------------------------------------
 
@@ -448,7 +490,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `biometria`
 --
 ALTER TABLE `biometria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `examen`
@@ -460,7 +502,7 @@ ALTER TABLE `examen`
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `medico`
@@ -472,7 +514,7 @@ ALTER TABLE `medico`
 -- AUTO_INCREMENT de la tabla `microbiologia`
 --
 ALTER TABLE `microbiologia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
@@ -484,19 +526,19 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT de la tabla `parasitologia`
 --
 ALTER TABLE `parasitologia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `quimica_sanguinea`
 --
 ALTER TABLE `quimica_sanguinea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
 ALTER TABLE `reaccion_w`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -522,10 +564,34 @@ ALTER TABLE `examen`
   ADD CONSTRAINT `examen_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
 
 --
+-- Filtros para la tabla `examen_general`
+--
+ALTER TABLE `examen_general`
+  ADD CONSTRAINT `examen_general_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+
+--
 -- Filtros para la tabla `microbiologia`
 --
 ALTER TABLE `microbiologia`
   ADD CONSTRAINT `microbiologia_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+
+--
+-- Filtros para la tabla `parasitologia`
+--
+ALTER TABLE `parasitologia`
+  ADD CONSTRAINT `parasitologia_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+
+--
+-- Filtros para la tabla `quimica_sanguinea`
+--
+ALTER TABLE `quimica_sanguinea`
+  ADD CONSTRAINT `quimica_sanguinea_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+
+--
+-- Filtros para la tabla `reaccion_w`
+--
+ALTER TABLE `reaccion_w`
+  ADD CONSTRAINT `reaccion_w_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
