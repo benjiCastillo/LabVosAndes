@@ -7,14 +7,12 @@ use App\Lib\Response;
 /**
 * Modelo usuario
 */
-class  MedicoModel
+class MedicoModel
 {
 	private $db;
 	private $db_pdo;
 	private $table = 'medico';
 	private $response;
-
-
 
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
@@ -24,6 +22,7 @@ class  MedicoModel
 
 	//lista_total
 	public function listar(){
+		$data = null;
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
@@ -57,6 +56,7 @@ class  MedicoModel
 	}
 	//obtener
 	public function getMedico($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
 		if ($data != null){
@@ -76,6 +76,7 @@ class  MedicoModel
 	}
 	//actualizar
 	public function update($data, $id){
+		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -89,6 +90,7 @@ class  MedicoModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 

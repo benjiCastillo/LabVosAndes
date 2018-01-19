@@ -5,15 +5,14 @@ namespace App\Model;
 use App\Lib\Response;
 
 /**
-* Modelo reaccion widal
+* Modelo usuario
 */
-class  ReaccionWModel
+class QuimicaSanguinea
 {
 	private $db;
-	private $table = 'reaccion_w';
+	private $db_pdo;
+	private $table = 'quimica_sanguinea';
 	private $response;
-
-
 
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
@@ -23,6 +22,7 @@ class  ReaccionWModel
 
 	//lista_total
 	public function listar(){
+		$data = null;
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
@@ -54,8 +54,8 @@ class  ReaccionWModel
 		];
 	}
 	//obtener
-	public function getReaccionW($id){
-
+	public function getQuimica($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
 		if ($data != null){
@@ -64,46 +64,23 @@ class  ReaccionWModel
 		return $this->response->setResponse(true, 'Registro no encontrado', '1');
 	}
 	//registrar
-
-	public function insert($data){
-		$this->db_pdo->multi_query(" CALL insertarReaccionW('".$data['_paraA1']."',
-														'".$data['_paraA2']."',
-														'".$data['_paraA3']."',
-														'".$data['_paraA4']."',
-														'".$data['_paraA5']."',
-														'".$data['_paraA6']."',
-														'".$data['_paraB1']."',
-														'".$data['_paraB2']."',
-														'".$data['_paraB3']."',
-														'".$data['_paraB4']."',
-														'".$data['_paraB5']."',
-														'".$data['_paraB6']."',
-														'".$data['_somaticoO1']."',
-														'".$data['_somaticoO2']."',
-														'".$data['_somaticoO3']."',
-														'".$data['_somaticoO4']."',
-														'".$data['_somaticoO5']."',
-														'".$data['_somaticoO6']."',
-														'".$data['_flagelarH1']."',
-														'".$data['_flagelarH2']."',
-														'".$data['_flagelarH3']."',
-														'".$data['_flagelarH4']."',
-														'".$data['_flagelarH5']."',
-														'".$data['_flagelarH6']."',
-														'".$data['_comentario']."',
+	public function insertarQuimica($data){
+		$this->db_pdo->multi_query(" CALL insertarQuimica('".$data['_nombre']."',
+														'".$data['_contenido']."',
 														'".$data['_id_examen']."')");
-			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_assoc();
-			mysqli_close($this->db_pdo);
-			if ($res['error']==true) {
-				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
-			}
-			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
+		$res = $this->db_pdo->store_result();
+		$res = $res->fetch_assoc();
+		mysqli_close($this->db_pdo);
+		if ($res['error']==true) {
+			return $this->response->setResponse(true, $res['respuesta'], $res['error']);
 		}
+		return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
+	}
 	//actualizar
 	public function update($data, $id){
+		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
-								->fetch();
+		->fetch();
 
 		if ($oldData != null) {
 			$this->db->update($this->table, $data, $id)
@@ -115,6 +92,7 @@ class  ReaccionWModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -126,6 +104,7 @@ class  ReaccionWModel
 		}
 		return $this->response->setResponse(true, 'Error al eliminar, el registro no existe', '1');
 	}
+
 }
 
  ?>

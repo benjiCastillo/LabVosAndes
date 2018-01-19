@@ -14,7 +14,6 @@ $app->group('/user',function(){
 		return $res->withHeader('Content-type', 'application/json')
 			       -> write(
 						json_encode($this->model->User->insert($req->getParsedBody()))
-
 				   	);
 	});
 

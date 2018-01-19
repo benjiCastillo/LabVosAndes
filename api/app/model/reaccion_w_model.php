@@ -5,13 +5,12 @@ namespace App\Model;
 use App\Lib\Response;
 
 /**
-* Modelo paciente
+* Modelo reaccion widal
 */
-class PacienteModel
+class ReaccionWModel
 {
 	private $db;
-	private $db_pdo;
-	private $table = 'paciente';
+	private $table = 'reaccion_w';
 	private $response;
 
 	public function __CONSTRUCT($db, $db_pdo){
@@ -54,7 +53,7 @@ class PacienteModel
 		];
 	}
 	//obtener
-	public function getPaciente($id){
+	public function getReaccionW($id){
 		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
@@ -62,24 +61,49 @@ class PacienteModel
 			return $this->response->setResponse(true, $data, '0');
 		}
 		return $this->response->setResponse(true, 'Registro no encontrado', '1');
-							}
+	}
 	//registrar
 
 	public function insert($data){
-		$this->db_pdo->multi_query(" CALL insertarPaciente(	'".$data['_nombre']."',
-													'".$data['_apellidos']."',
-													'".$data['_edad']."',
-													'".$data['_sexo']."')");
+		$this->db_pdo->multi_query(" CALL insertarReaccionW('".$data['_paraA1']."',
+														'".$data['_paraA2']."',
+														'".$data['_paraA3']."',
+														'".$data['_paraA4']."',
+														'".$data['_paraA5']."',
+														'".$data['_paraA6']."',
+														'".$data['_paraB1']."',
+														'".$data['_paraB2']."',
+														'".$data['_paraB3']."',
+														'".$data['_paraB4']."',
+														'".$data['_paraB5']."',
+														'".$data['_paraB6']."',
+														'".$data['_somaticoO1']."',
+														'".$data['_somaticoO2']."',
+														'".$data['_somaticoO3']."',
+														'".$data['_somaticoO4']."',
+														'".$data['_somaticoO5']."',
+														'".$data['_somaticoO6']."',
+														'".$data['_flagelarH1']."',
+														'".$data['_flagelarH2']."',
+														'".$data['_flagelarH3']."',
+														'".$data['_flagelarH4']."',
+														'".$data['_flagelarH5']."',
+														'".$data['_flagelarH6']."',
+														'".$data['_comentario']."',
+														'".$data['_id_examen']."')");
 			$res = $this->db_pdo->store_result();
 			$res = $res->fetch_assoc();
 			mysqli_close($this->db_pdo);
-			return $this->response->setResponse(true, $res['respuesta'], $res['error']);
-	}
+			if ($res['error']==true) {
+				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+			}
+			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
+		}
 	//actualizar
 	public function update($data, $id){
 		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
-		->fetch();
+								->fetch();
 
 		if ($oldData != null) {
 			$this->db->update($this->table, $data, $id)
@@ -103,9 +127,6 @@ class PacienteModel
 		}
 		return $this->response->setResponse(true, 'Error al eliminar, el registro no existe', '1');
 	}
-
-
 }
-
 
  ?>

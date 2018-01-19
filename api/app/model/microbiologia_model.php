@@ -5,13 +5,13 @@ namespace App\Model;
 use App\Lib\Response;
 
 /**
-* Modelo examen
+* Modelo microbiologia
 */
-class ExamenModel
+class Microbiologia
 {
 	private $db;
 	private $db_pdo;
-	private $table = 'examen';
+	private $table = 'microbiologia';
 	private $response;
 
 	public function __CONSTRUCT($db, $db_pdo){
@@ -20,6 +20,17 @@ class ExamenModel
 		$this->response = new Response();
 	}
 
+	//lista_total
+	public function listar(){
+		$data = null;
+		$data = $this->db->from($this->table)
+						 ->orderBy('id DESC')
+						 ->fetchAll();
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
+		}
+		return $this->response->setResponse(true, 'No existen datos', '1');
+	}
 
 	//listar paginado
 	//parametros de limite, pagina
@@ -42,53 +53,29 @@ class ExamenModel
 
 		];
 	}
-
-	/* INSERTAR EXAMEN */
-	public function insertTest($data){
-		$this->db_pdo->multi_query("CALL insertarExamen('".$data['_id_medico']."',
-														'".$data['_id_paciente']."')");
-			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_assoc();
-			mysqli_close($this->db_pdo);
-			if (isset($res['error'])) {
-				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
-			}
-			return $this->response->setResponse(true, $res, '0');
-	}
-
-	public function listarExamenes($id){
-		$this->db_pdo->multi_query(" CALL listarExamenes(".$id.")");
-			$res = $this->db_pdo->store_result();
-			while($fila = $res->fetch_assoc()){
-				$arreglo[] = $fila;
-			}
-			$res = $arreglo;
-			mysqli_close($this->db_pdo);
-			if (isset($res[0]['error'])) {
-				return $this->response->setResponse(true, $res[0]['respuesta'], $res[0]['error']);
-			}
-			return $this->response->setResponse(true, $res, '0');
-	}
-
-	public function listarExamenesPaciente($id) {
-		$tests = array('examen_general', 'biometria', 'informes_g', 'reaccion_w');
+	//obtener
+	public function getMicrobiologia($id){
 		$data = null;
-		$res = null;
-		foreach ($tests as $test) {
-			$data = $this->db->from($test)
-			->where('id_examen', $id)
-			->fetch();
-			if ($data != false) {
-				$data->nombre = $test;
-				$res[] = $data;
-			}
+		$data = $this->db->from($this->table, $id)
+								->fetch();
+		if ($data != null){
+			return $this->response->setResponse(true, $data, '0');
 		}
-		if ($res == null) {
-			return $this->response->setResponse(true, 'No existen exámenes', '1');
-		}
-		return $this->response->setResponse(true, $res, '0');
+		return $this->response->setResponse(true, 'Registro no encontrado', '1');
 	}
-
+	//registrar
+	public function insertarMicrobiologia($data){
+		$this->db_pdo->multi_query(" CALL insertarMicrobiologia('".$data['_nombre']."',
+														'".$data['_contenido']."',
+														'".$data['_id_examen']."')");
+		$res = $this->db_pdo->store_result();
+		$res = $res->fetch_assoc();
+		mysqli_close($this->db_pdo);
+		if ($res['error']==true) {
+			return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+		}
+		return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
+	}
 	//actualizar
 	public function update($data, $id){
 		$oldData = null;

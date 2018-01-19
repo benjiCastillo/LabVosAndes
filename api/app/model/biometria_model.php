@@ -13,8 +13,6 @@ class  BiometriaModel
 	private $table = 'biometria';
 	private $response;
 
-
-
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
 		$this->db_pdo   = $db_pdo;
@@ -23,6 +21,7 @@ class  BiometriaModel
 
 	//lista_total
 	public function listar(){
+		$data = null;
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
@@ -55,6 +54,7 @@ class  BiometriaModel
 	}
 	//obtener
 	public function getBiometria($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
 		if ($data != null){
@@ -95,6 +95,7 @@ class  BiometriaModel
 
 	//actualizar
 	public function update($data, $id){
+		$oldata = null;
 		$oldData = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -108,6 +109,7 @@ class  BiometriaModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 

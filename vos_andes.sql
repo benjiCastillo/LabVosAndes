@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-01-2018 a las 23:58:27
+-- Tiempo de generación: 19-01-2018 a las 03:36:12
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -65,18 +65,36 @@ ELSE
 END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarInformeG` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM informes_g WHERE id_examen = _id_examen)) THEN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarMicrobiologia` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
+IF (SELECT EXISTS(SELECT * FROM microbiologia WHERE id_examen = _id_examen)) THEN
 	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
 ELSE
-	INSERT INTO informes_g(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
-    SELECT false as error, id FROM informes_g WHERE id_examen = _id_examen;
+	INSERT INTO microbiologia(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
+    SELECT false as error, id FROM microbiologia WHERE id_examen = _id_examen;
 END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75), IN `_edad` VARCHAR(15), IN `_sexo` CHAR(1))  BEGIN
 	INSERT INTO paciente(nombre, apellidos, edad, sexo) VALUES(_nombre, _apellidos, _edad, _sexo);
     SELECT false as error, 'Paciente insertado correctamente' as respuesta;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarParasitologia` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
+IF (SELECT EXISTS(SELECT * FROM parasitologia WHERE id_examen = _id_examen)) THEN
+	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
+ELSE
+	INSERT INTO parasitologia(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
+    SELECT false as error, id FROM parasitologia WHERE id_examen = _id_examen;
+END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarQuimica` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
+IF (SELECT EXISTS(SELECT * FROM quimica_sanguinea WHERE id_examen = _id_examen)) THEN
+	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
+ELSE
+	INSERT INTO quimica_sanguinea(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
+    SELECT false as error, id FROM quimica_sanguinea WHERE id_examen = _id_examen;
+END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VARCHAR(15), IN `_paraA2` VARCHAR(15), IN `_paraA3` VARCHAR(15), IN `_paraA4` VARCHAR(15), IN `_paraA5` VARCHAR(15), IN `_paraA6` VARCHAR(15), IN `_paraB1` VARCHAR(15), IN `_paraB2` VARCHAR(15), IN `_paraB3` VARCHAR(15), IN `_paraB4` VARCHAR(15), IN `_paraB5` VARCHAR(15), IN `_paraB6` VARCHAR(15), IN `_somaticoO1` VARCHAR(15), IN `_somaticoO2` VARCHAR(15), IN `_somaticoO3` VARCHAR(15), IN `_somaticoO4` VARCHAR(15), IN `_somaticoO5` VARCHAR(15), IN `_somaticoO6` VARCHAR(15), IN `_flagelarH1` VARCHAR(15), IN `_flagelarH2` VARCHAR(15), IN `_flagelarH3` VARCHAR(15), IN `_flagelarH4` VARCHAR(15), IN `_flagelarH5` VARCHAR(15), IN `_flagelarH6` VARCHAR(15), IN `_comentario` TEXT, IN `_id_examen` INT)  BEGIN
@@ -112,7 +130,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(5
     END IF;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` (`_id_paciente` INT)  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` (IN `_id_paciente` INT)  BEGIN
 IF (SELECT EXISTS (SELECT * FROM examen WHERE id_paciente = _id_paciente))THEN
 	SELECT e.id, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
     INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente WHERE id_paciente = _id_paciente ORDER BY e.fecha DESC;
@@ -173,6 +191,13 @@ CREATE TABLE `examen` (
   `id_paciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `examen`
+--
+
+INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
+(86, '2018-01-15 01:18:25.601406', 18, 37);
+
 -- --------------------------------------------------------
 
 --
@@ -210,19 +235,6 @@ CREATE TABLE `examen_general` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `informes_g`
---
-
-CREATE TABLE `informes_g` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `contenido` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_examen` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `medico`
 --
 
@@ -230,6 +242,26 @@ CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `medico`
+--
+
+INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
+(18, '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `microbiologia`
+--
+
+CREATE TABLE `microbiologia` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `contenido` text COLLATE utf8_spanish2_ci NOT NULL,
+  `id_examen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -245,6 +277,39 @@ CREATE TABLE `paciente` (
   `edad` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`) VALUES
+(37, 'P', 'P', 'P', 'P');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parasitologia`
+--
+
+CREATE TABLE `parasitologia` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `contenido` text NOT NULL,
+  `id_examen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `quimica_sanguinea`
+--
+
+CREATE TABLE `quimica_sanguinea` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `contenido` text NOT NULL,
+  `id_examen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -318,20 +383,14 @@ ALTER TABLE `biometria`
 -- Indices de la tabla `examen`
 --
 ALTER TABLE `examen`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_medico` (`id_medico`),
+  ADD KEY `id_paciente` (`id_paciente`);
 
 --
 -- Indices de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`),
-  ADD KEY `id_examen_2` (`id_examen`);
-
---
--- Indices de la tabla `informes_g`
---
-ALTER TABLE `informes_g`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_examen` (`id_examen`);
 
@@ -342,18 +401,38 @@ ALTER TABLE `medico`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `microbiologia`
+--
+ALTER TABLE `microbiologia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`id_examen`);
+
+--
 -- Indices de la tabla `paciente`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `parasitologia`
+--
+ALTER TABLE `parasitologia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`id_examen`);
+
+--
+-- Indices de la tabla `quimica_sanguinea`
+--
+ALTER TABLE `quimica_sanguinea`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`id_examen`);
+
+--
 -- Indices de la tabla `reaccion_w`
 --
 ALTER TABLE `reaccion_w`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`),
-  ADD KEY `id_examen_2` (`id_examen`);
+  ADD KEY `id_examen` (`id_examen`);
 
 --
 -- Indices de la tabla `usuario`
@@ -369,49 +448,84 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `biometria`
 --
 ALTER TABLE `biometria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `examen`
 --
 ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_general`
 --
 ALTER TABLE `examen_general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT de la tabla `informes_g`
---
-ALTER TABLE `informes_g`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `microbiologia`
+--
+ALTER TABLE `microbiologia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de la tabla `parasitologia`
+--
+ALTER TABLE `parasitologia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `quimica_sanguinea`
+--
+ALTER TABLE `quimica_sanguinea`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reaccion_w`
 --
 ALTER TABLE `reaccion_w`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `biometria`
+--
+ALTER TABLE `biometria`
+  ADD CONSTRAINT `biometria_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `examen`
+--
+ALTER TABLE `examen`
+  ADD CONSTRAINT `examen_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id`),
+  ADD CONSTRAINT `examen_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
+
+--
+-- Filtros para la tabla `microbiologia`
+--
+ALTER TABLE `microbiologia`
+  ADD CONSTRAINT `microbiologia_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

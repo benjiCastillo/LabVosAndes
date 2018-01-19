@@ -7,14 +7,12 @@ use App\Lib\Response;
 /**
 * Modelo user
 */
-class  UserModel
+class UserModel
 {
 	private $db;
 	private $db_pdo;
 	private $table = 'usuario';
 	private $response;
-
-
 
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
@@ -49,6 +47,7 @@ class  UserModel
 
 	//actualizar
 	public function update($data, $id){
+		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -62,6 +61,7 @@ class  UserModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 

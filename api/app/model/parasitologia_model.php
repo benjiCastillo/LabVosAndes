@@ -7,14 +7,12 @@ use App\Lib\Response;
 /**
 * Modelo usuario
 */
-class  InformesGModel
+class Parasitologia
 {
 	private $db;
 	private $db_pdo;
-	private $table = 'informes_g';
+	private $table = 'parasitologia';
 	private $response;
-
-
 
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
@@ -24,6 +22,7 @@ class  InformesGModel
 
 	//lista_total
 	public function listar(){
+		$data = null;
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
@@ -55,7 +54,8 @@ class  InformesGModel
 		];
 	}
 	//obtener
-	public function getInformeG($id){
+	public function getParasitologia($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
 		if ($data != null){
@@ -64,20 +64,21 @@ class  InformesGModel
 		return $this->response->setResponse(true, 'Registro no encontrado', '1');
 	}
 	//registrar
-	public function insertarInformeG($data){
-		$this->db_pdo->multi_query(" CALL insertarInformeG('".$data['_nombre']."',
+	public function insertarParasitologia($data){
+		$this->db_pdo->multi_query(" CALL insertarParasitologia('".$data['_nombre']."',
 														'".$data['_contenido']."',
 														'".$data['_id_examen']."')");
-			$res = $this->db_pdo->store_result();
-			$res = $res->fetch_assoc();
-			mysqli_close($this->db_pdo);
-			if ($res['error']==true) {
-				return $this->response->setResponse(true, $res['respuesta'], $res['error']);
-			}
-			return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
+		$res = $this->db_pdo->store_result();
+		$res = $res->fetch_assoc();
+		mysqli_close($this->db_pdo);
+		if ($res['error']==true) {
+			return $this->response->setResponse(true, $res['respuesta'], $res['error']);
+		}
+		return $this->response->setResponse(true, array("id"=>$res['id']), $res['error']);
 	}
 	//actualizar
 	public function update($data, $id){
+		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -91,6 +92,7 @@ class  InformesGModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 

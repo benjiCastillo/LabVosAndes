@@ -6,14 +6,12 @@ use App\Lib\Response;
 /**
 * Modelo examen general
 */
-class  ExamenGeneralModel
+class ExamenGeneralModel
 {
 	private $db;
 	private $db_pdo;
 	private $table = 'examen_general';
 	private $response;
-
-
 
 	public function __CONSTRUCT($db, $db_pdo){
 		$this->db 		= $db;
@@ -23,6 +21,7 @@ class  ExamenGeneralModel
 
 	//lista_total
 	public function listar(){
+		$data = null;
 		$data = $this->db->from($this->table)
 						 ->orderBy('id DESC')
 						 ->fetchAll();
@@ -55,7 +54,7 @@ class  ExamenGeneralModel
 	}
 	//obtener
 	public function getExamenGeneral($id){
-
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 								->fetch();
 		if ($data != null){
@@ -100,6 +99,7 @@ class  ExamenGeneralModel
 
 	//actualizar
 	public function update($data, $id){
+		$oldData = null;
 		$oldData = $this->db->from($this->table, $id)
 		->fetch();
 
@@ -113,6 +113,7 @@ class  ExamenGeneralModel
 	}
 	//eliminar
 	public function delete($id){
+		$data = null;
 		$data = $this->db->from($this->table, $id)
 		->fetch();
 
