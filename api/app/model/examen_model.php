@@ -71,7 +71,7 @@ class ExamenModel
 	}
 
 	public function listarExamenesPaciente($id) {
-		$tests = array('examen_general', 'biometria', 'informes_g', 'reaccion_w');
+		$tests = array('examen_general', 'biometria', 'parasitologia', 'reaccion_w', 'microbiologia', 'quimica_sanguinea');
 		$data = null;
 		$res = null;
 		foreach ($tests as $test) {
