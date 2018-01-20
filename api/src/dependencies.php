@@ -61,6 +61,7 @@ $container['model']	= function($c){
 		'Paciente'	=>	new App\Model\PacienteModel($c->db,$c->db_mysqli),
 		'ReaccionW'	=>	new App\Model\ReaccionWModel($c->db,$c->db_mysqli),
 		'Microbiologia'	=>	new App\Model\Microbiologia($c->db,$c->db_mysqli),
+		'UserModel'	=>	new App\Model\UserModel($c->db,$c->db_mysqli),
 		'QuimicaSanguinea'	=>	new App\Model\QuimicaSanguinea($c->db,$c->db_mysqli)
 	];
 };
