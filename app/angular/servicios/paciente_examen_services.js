@@ -10,7 +10,7 @@ var self ={
 					console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/insertTest/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examen/insertTest/',
                         data:{
 								_id_medico:datos.id_medico,
 								_id_paciente:datos.id_paciente
@@ -31,7 +31,7 @@ var self ={
 					console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/informesg/insertReport/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/insertReport/',
                         data:{
 								_nombre:datos.nombre,
 								_contenido:datos.informe
@@ -52,7 +52,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/insertType/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examen/insertType/',
                         data:{
 								_id_examen:datos.id_examen,
 								_tipo:datos.tipo,
@@ -74,7 +74,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/insertGeneralTest/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/insertGeneralTest/',
                         data:{
 								_color:datos.color,
 								_cantidad:datos.cantidad,
@@ -116,7 +116,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/biometria/insertBio/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/insertBio/',
                         data:{
 								_hematies:datos.hematies,
 								_hematocrito:datos.hematocrito,
@@ -153,7 +153,7 @@ var self ={
 					// console.log(datos);
                     $http({
                       method: 'POST',
-					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/',
                         data:{
 								_paraA1:datos.pA20,
 								_paraA2:datos.pA40,
@@ -197,7 +197,7 @@ var self ={
 				
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/medico/',
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/medico/',
                     	})
                         .then(function successCallback(response) {
                                 // ok
@@ -221,7 +221,7 @@ var self ={
 						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examen/listExamenPaciente/'+id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examen/listExamenPaciente/'+id,
                     	})
                         .then(function successCallback(response) {
 
@@ -241,7 +241,7 @@ var self ={
 						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/'+id,
                     	})
                         .then(function successCallback(response) {
 
@@ -261,7 +261,7 @@ var self ={
 				
                     $http({
                       method: 'PUT',
-					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+data.id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/'+data.id,
 						  data:{
 								nombre:data.nombre,
 								contenido:data.contenido
@@ -288,7 +288,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://localhost/LabVosAndes/api/public/informesg/'+user.id+'/'+user.titulo
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/'+user.id+'/'+user.titulo
                     	})
                         .then(function successCallback(response) {
 								self.response 	= response.data;
@@ -306,7 +306,7 @@ var self ={
 						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/'+id,
                     	})
                         .then(function successCallback(response) {
 
@@ -326,7 +326,7 @@ var self ={
 				
                     $http({
                       method: 'PUT',
-					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+data.id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/'+data.id,
 						  data:{
 								hematies:data.hematies,
 								hematocrito:data.hematocrito,
@@ -370,7 +370,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://localhost/LabVosAndes/api/public/biometria/'+user.id
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/'+user.id
                     	})
                         .then(function successCallback(response) {
 								self.response 	= response.data;
@@ -388,7 +388,7 @@ var self ={
 						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/'+id,
                     	})
                         .then(function successCallback(response) {
 
@@ -408,7 +408,7 @@ var self ={
 				
                     $http({
                       method: 'PUT',
-					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+data.id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/'+data.id,
 						  data:{
 								color:data.color,
 								cantidad:data.cantidad,
@@ -457,7 +457,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://localhost/LabVosAndes/api/public/examengeneral/'+user.id
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/'+user.id
                     	})
                         .then(function successCallback(response) {
 								self.response 	= response.data;
@@ -475,7 +475,7 @@ var self ={
 				
                     $http({
                       method: 'DELETE',
-					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+user.id
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/'+user.id
                     	})
                         .then(function successCallback(response) {
 								self.response 	= response.data;
@@ -493,7 +493,7 @@ var self ={
 						console.log(id)
                     $http({
                       method: 'GET',
-					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/'+id,
                     	})
                         .then(function successCallback(response) {
 
@@ -513,7 +513,7 @@ var self ={
 				
                     $http({
                       method: 'PUT',
-					  	url: 'http://localhost/LabVosAndes/api/public/reaccionw/'+data.id,
+					  	url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/'+data.id,
 						  data:{
 								paraA1:data.paraA1,
 								paraA2:data.paraA2,

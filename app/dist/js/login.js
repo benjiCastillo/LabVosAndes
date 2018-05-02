@@ -7,7 +7,7 @@ function login(){
     $('#incorrecto').css('display','none');
     $('#correcto').css('display','none');
     $('#cargando').css('display','block');
-    $.post("http://localhost/LabVosAndes/api/public/user/login",
+    $.post("http://localhost/~edev/LabVosAndes/api/public/user/login",
     {
         _user: user,
         _password: password

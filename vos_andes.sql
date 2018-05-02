@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.6
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-01-2018 a las 04:46:02
--- Versión del servidor: 10.1.29-MariaDB
--- Versión de PHP: 7.2.0
+-- Tiempo de generación: 02-05-2018 a las 14:58:40
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -152,10 +152,10 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `biometria`
+-- Estructura de tabla para la tabla `biometria_pruebas`
 --
 
-CREATE TABLE `biometria` (
+CREATE TABLE `biometria_pruebas` (
   `id` int(11) NOT NULL,
   `hematies` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `hematocrito` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
@@ -175,43 +175,90 @@ CREATE TABLE `biometria` (
   `prolinfocito` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `cel_inmaduras` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `comentario_leuco` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `biometria`
+-- Volcado de datos para la tabla `biometria_pruebas`
 --
 
-INSERT INTO `biometria` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `id_examen`) VALUES
-(1, '1', '1', '1', '1', '1', '1', '1', '11', 'a\'a\'sd\'w\'ásasdáw', '1', '1', '1', '1', '1', '1', '1', '', '1', 86);
+INSERT INTO `biometria_pruebas` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `prueba_id`) VALUES
+(1, '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `examen`
+-- Estructura de tabla para la tabla `cultivos_pruebas`
 --
 
-CREATE TABLE `examen` (
+CREATE TABLE `cultivos_pruebas` (
   `id` int(11) NOT NULL,
-  `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `id_medico` int(11) NOT NULL,
-  `id_paciente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `examen`
---
-
-INSERT INTO `examen` (`id`, `fecha`, `id_medico`, `id_paciente`) VALUES
-(86, '2018-01-15 01:18:25.601406', 18, 37);
+  `leucocitos` varchar(20) NOT NULL,
+  `bacterias` text NOT NULL,
+  `esputo_as` varchar(35) NOT NULL,
+  `esputo_microorganismo_identificado` varchar(35) NOT NULL,
+  `antibioticos` varchar(20) NOT NULL,
+  `ampicilina_sulbactam` varchar(20) NOT NULL,
+  `eritromicina` varchar(20) NOT NULL,
+  `clindamicina` varchar(20) NOT NULL,
+  `tetraciclina` varchar(20) NOT NULL,
+  `vancomicina` varchar(20) NOT NULL,
+  `recuento_colonias` varchar(35) NOT NULL,
+  `agar_mac_conkey` varchar(50) NOT NULL,
+  `tincion_gram` varchar(35) NOT NULL,
+  `pruebas_bioquimicas` varchar(50) NOT NULL,
+  `urocultivo_microorganismo_identificado` varchar(35) NOT NULL,
+  `amoxicilina_ac_clavulanico` varchar(20) NOT NULL,
+  `gentamicina` varchar(20) NOT NULL,
+  `ciprofloxacino` varchar(20) NOT NULL,
+  `cefixima` varchar(20) NOT NULL,
+  `cotrimoxazol` varchar(20) NOT NULL,
+  `nitrofurantoina` varchar(20) NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `examen_general`
+-- Estructura de tabla para la tabla `espermograma_pruebas`
 --
 
-CREATE TABLE `examen_general` (
+CREATE TABLE `espermograma_pruebas` (
+  `id` int(11) NOT NULL,
+  `hora_recoleccion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hora_recepcion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `duracion_abstinencia` varchar(20) NOT NULL,
+  `aspecto` varchar(20) NOT NULL,
+  `color` varchar(20) NOT NULL,
+  `volumen` varchar(20) NOT NULL,
+  `viscosidad` varchar(20) NOT NULL,
+  `ph` varchar(20) NOT NULL,
+  `concentracion_espermatica` varchar(20) NOT NULL,
+  `caracteristicas_morfologicas` varchar(20) NOT NULL,
+  `espermatozoides_normales` varchar(20) NOT NULL,
+  `cabeza` varchar(20) NOT NULL,
+  `pieza_intermedia` varchar(20) NOT NULL,
+  `cola` varchar(20) NOT NULL,
+  `leucocitos` varchar(20) NOT NULL,
+  `celulas_germinales` varchar(20) NOT NULL,
+  `aglutinacion` varchar(20) NOT NULL,
+  `progresion_lineal_rapida` varchar(20) NOT NULL,
+  `progresion_lineal_lenta` varchar(20) NOT NULL,
+  `motilidad_no_progresiva` varchar(20) NOT NULL,
+  `inmoviles` varchar(20) NOT NULL,
+  `primera_hora` varchar(20) NOT NULL,
+  `segunda_hora` varchar(20) NOT NULL,
+  `tercera_hora` varchar(20) NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examen_general_pruebas`
+--
+
+CREATE TABLE `examen_general_pruebas` (
   `id` int(11) NOT NULL,
   `color` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `cantidad` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
@@ -236,62 +283,152 @@ CREATE TABLE `examen_general` (
   `cristales` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `otros` text COLLATE utf8_spanish2_ci NOT NULL,
   `exa_bac_sed` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `examen_general`
+-- Volcado de datos para la tabla `examen_general_pruebas`
 --
 
-INSERT INTO `examen_general` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `id_examen`) VALUES
-(1, 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', 'wefdf', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', '123123', 86);
+INSERT INTO `examen_general_pruebas` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `prueba_id`) VALUES
+(1, 'Amarillo', '500', 'wadasdawdasda', '\'a\'sẃ´wẃw´ñññ', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd', 'aaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññ\\n asdawd', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medico`
+-- Estructura de tabla para la tabla `hormonas_pruebas`
 --
 
-CREATE TABLE `medico` (
+CREATE TABLE `hormonas_pruebas` (
+  `id` int(11) NOT NULL,
+  `tsh` varchar(20) NOT NULL,
+  `t4_libre` varchar(20) NOT NULL,
+  `t4_total` varchar(20) NOT NULL,
+  `t3` varchar(20) NOT NULL,
+  `cisticercosis_resultado` varchar(20) NOT NULL,
+  `cisticercosis_cut_off` varchar(20) NOT NULL,
+  `comentario_cisticercosis` text NOT NULL,
+  `antigeno_carcino` varchar(20) NOT NULL,
+  `psa_total` varchar(20) NOT NULL,
+  `psa_libre` varchar(20) NOT NULL,
+  `relacion_psa_libre_total` varchar(20) NOT NULL,
+  `estradiol` varchar(20) NOT NULL,
+  `progesterona` varchar(20) NOT NULL,
+  `fsh` varchar(20) NOT NULL,
+  `lh` varchar(20) NOT NULL,
+  `prolactina` varchar(20) NOT NULL,
+  `testosterona` varchar(20) NOT NULL,
+  `ana` varchar(20) NOT NULL,
+  `testosterona_control_positivo` varchar(20) NOT NULL,
+  `testosterona_control_negativo` varchar(20) NOT NULL,
+  `celulas_le` varchar(20) NOT NULL,
+  `celulas_le_control_positivo` varchar(20) NOT NULL,
+  `celulas_le_control_negativo` varchar(20) NOT NULL,
+  `anticuerpos_resultado` varchar(20) NOT NULL,
+  `anticuerpos_cut_off` varchar(20) NOT NULL,
+  `comentario_anticuerpos` text NOT NULL,
+  `toxoplasmosis_lgm` varchar(20) NOT NULL,
+  `toxoplasmosis_lgg` varchar(20) NOT NULL,
+  `b_hcg_cuantitativo` varchar(20) NOT NULL,
+  `anti_nucleares` varchar(20) NOT NULL,
+  `anticuerpos_control_positivo` varchar(20) NOT NULL,
+  `anticuerpos_control_negativo` varchar(20) NOT NULL,
+  `celulas_hep` varchar(20) NOT NULL,
+  `control_positivo` varchar(20) NOT NULL,
+  `control_negativo` varchar(20) NOT NULL,
+  `conclusión` text NOT NULL,
+  `comentario_general` text NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `informe_pruebas`
+--
+
+CREATE TABLE `informe_pruebas` (
+  `id` int(11) NOT NULL,
+  `contenido` text NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `liquido_sinovial_pruebas`
+--
+
+CREATE TABLE `liquido_sinovial_pruebas` (
+  `id` int(11) NOT NULL,
+  `volumen` varchar(20) NOT NULL,
+  `proteinas_totales` varchar(20) NOT NULL,
+  `glucosa` varchar(20) NOT NULL,
+  `celulas` varchar(20) NOT NULL,
+  `coagulo_fibrina` varchar(20) NOT NULL,
+  `glicemia` varchar(20) NOT NULL,
+  `urea` varchar(20) NOT NULL,
+  `creatinina` varchar(20) NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medicos`
+--
+
+CREATE TABLE `medicos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `medico`
+-- Volcado de datos para la tabla `medicos`
 --
 
-INSERT INTO `medico` (`id`, `nombre`, `apellidos`) VALUES
-(18, '1', '1');
+INSERT INTO `medicos` (`id`, `nombre`, `apellidos`) VALUES
+(18, 'Son', 'Gokú');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `microbiologia`
+-- Estructura de tabla para la tabla `microbiologia_pruebas`
 --
 
-CREATE TABLE `microbiologia` (
+CREATE TABLE `microbiologia_pruebas` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `contenido` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `celulas_epitelio_vaginal` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `leucocitos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `piocitos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `celulas_clave` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `tricomona_vaginalis` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `flora_bacteriana` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `hifas_micoticas` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `prueba_koh` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `coco_bacilos_gram_positivos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `cocos_gram_positivos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `bacilos_gram_positivos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `bacilos_gram_negativos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `hifas_esporas_micoticas` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `microbiologia`
+-- Volcado de datos para la tabla `microbiologia_pruebas`
 --
 
-INSERT INTO `microbiologia` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
-(6, '1', 'asdawdasdawdasda', 86);
+INSERT INTO `microbiologia_pruebas` (`id`, `celulas_epitelio_vaginal`, `leucocitos`, `piocitos`, `celulas_clave`, `tricomona_vaginalis`, `flora_bacteriana`, `hifas_micoticas`, `prueba_koh`, `coco_bacilos_gram_positivos`, `cocos_gram_positivos`, `bacilos_gram_positivos`, `bacilos_gram_negativos`, `hifas_esporas_micoticas`, `prueba_id`) VALUES
+(6, 'rqweq', '1313', '53545', '3434', '343415', '6666', '556', '777', '555', '2626', '345345', '34534', '34534', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `paciente`
+-- Estructura de tabla para la tabla `pacientes`
 --
 
-CREATE TABLE `paciente` (
+CREATE TABLE `pacientes` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
@@ -300,59 +437,105 @@ CREATE TABLE `paciente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `paciente`
+-- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `paciente` (`id`, `nombre`, `apellidos`, `edad`, `sexo`) VALUES
-(37, 'P', 'P', 'P', 'P');
+INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`) VALUES
+(37, 'Erwin', 'Méndez', '23 m', 'M'),
+(38, 'asdf', 'asdf', '12', 'F');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parasitologia`
+-- Estructura de tabla para la tabla `parasitologia_pruebas`
 --
 
-CREATE TABLE `parasitologia` (
+CREATE TABLE `parasitologia_pruebas` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `contenido` text NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `consistencia` varchar(20) NOT NULL,
+  `color` varchar(20) NOT NULL,
+  `restos_alimenticios` varchar(20) NOT NULL,
+  `leucocitos` varchar(20) NOT NULL,
+  `comentario` text NOT NULL,
+  `sangre_oculta` varchar(20) NOT NULL,
+  `muestras` text NOT NULL,
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `parasitologia`
+-- Volcado de datos para la tabla `parasitologia_pruebas`
 --
 
-INSERT INTO `parasitologia` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
-(2, '123raf', 'asdaw', 86);
+INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`) VALUES
+(2, '', '', '', '', '', '', '', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `quimica_sanguinea`
+-- Estructura de tabla para la tabla `pruebas`
 --
 
-CREATE TABLE `quimica_sanguinea` (
+CREATE TABLE `pruebas` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `contenido` text NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `medico_id` int(11) NOT NULL,
+  `paciente_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pruebas`
+--
+
+INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`) VALUES
+(86, '2018-01-15 01:18:25.601406', 18, 37);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `quimica_sanguinea_pruebas`
+--
+
+CREATE TABLE `quimica_sanguinea_pruebas` (
+  `id` int(11) NOT NULL,
+  `glucemia` varchar(20) NOT NULL,
+  `urea` varchar(20) NOT NULL,
+  `creatinina` varchar(20) NOT NULL,
+  `acido_urico` varchar(20) NOT NULL,
+  `colesterol_total` varchar(20) NOT NULL,
+  `hdl_colesterol` varchar(20) NOT NULL,
+  `ldl_colesterol` varchar(20) NOT NULL,
+  `trigliceridos` varchar(20) NOT NULL,
+  `f_alcalina` varchar(20) NOT NULL,
+  `transaminasa_got` varchar(20) NOT NULL,
+  `transaminasa_gpt` varchar(20) NOT NULL,
+  `bilirrubina_total` varchar(20) NOT NULL,
+  `bilirrubina_directa` varchar(20) NOT NULL,
+  `bilirrubina_indirecta` varchar(20) NOT NULL,
+  `amilasa` varchar(20) NOT NULL,
+  `proteinas_totales` varchar(20) NOT NULL,
+  `albumina` varchar(20) NOT NULL,
+  `calcio` varchar(20) NOT NULL,
+  `cpk` varchar(20) NOT NULL,
+  `cpk_mb` varchar(20) NOT NULL,
+  `gamaglutamil_transpeptidasa` varchar(20) NOT NULL,
+  `prueba_inmunologica_embarazo` varchar(150) NOT NULL,
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `quimica_sanguinea`
+-- Volcado de datos para la tabla `quimica_sanguinea_pruebas`
 --
 
-INSERT INTO `quimica_sanguinea` (`id`, `nombre`, `contenido`, `id_examen`) VALUES
-(1, 'ASDAW', 'SADAWDAS', 86);
+INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`) VALUES
+(1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reaccion_w`
+-- Estructura de tabla para la tabla `reaccion_w_pruebas`
 --
 
-CREATE TABLE `reaccion_w` (
+CREATE TABLE `reaccion_w_pruebas` (
   `id` int(11) NOT NULL,
   `paraA1` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `paraA2` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
@@ -379,23 +562,56 @@ CREATE TABLE `reaccion_w` (
   `flagelarH5` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `flagelarH6` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
-  `id_examen` int(11) NOT NULL
+  `prueba_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `reaccion_w`
+-- Volcado de datos para la tabla `reaccion_w_pruebas`
 --
 
-INSERT INTO `reaccion_w` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `id_examen`) VALUES
-(1, 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAASDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 'SDAA', 86);
+INSERT INTO `reaccion_w_pruebas` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `prueba_id`) VALUES
+(1, '1', '12', '12/1000', '99998800', '9998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', 'Oxalato de calc', '99998800.0000', '99998800.0000', '1', 'sadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááá', 86);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `serologia_pruebas`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `serologia_pruebas` (
+  `id` int(11) NOT NULL,
+  `factor_reumatoide` varchar(20) NOT NULL,
+  `pcr` varchar(20) NOT NULL,
+  `asto` varchar(20) NOT NULL,
+  `aso` varchar(20) NOT NULL,
+  `k_plus` varchar(20) NOT NULL,
+  `na_plus` varchar(20) NOT NULL,
+  `cl_minus` varchar(20) NOT NULL,
+  `ca` varchar(20) NOT NULL,
+  `p` varchar(20) NOT NULL,
+  `chagas` varchar(20) NOT NULL,
+  `toxoplasmosis` varchar(20) NOT NULL,
+  `chagas_resultado` varchar(20) NOT NULL,
+  `chagas_elisa_cut_off` varchar(20) NOT NULL,
+  `chagas_comentario` text NOT NULL,
+  `tiempo_sangria` varchar(20) NOT NULL,
+  `tiempo_coagulacion` varchar(20) NOT NULL,
+  `tiempo_protrombina` varchar(20) NOT NULL,
+  `actividad_protrombina` varchar(20) NOT NULL,
+  `grupo_sanguineo` varchar(20) NOT NULL,
+  `factor_rh` varchar(20) NOT NULL,
+  `recuento_plaquetas` varchar(50) NOT NULL,
+  `agr_dis_plaquetaria` varchar(50) NOT NULL,
+  `prueba_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `user` varchar(50) NOT NULL,
@@ -404,10 +620,10 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
+INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
 (15, 'admin', 'admin', '1234', '0000-00-00 00:00:00');
 
 --
@@ -415,71 +631,107 @@ INSERT INTO `usuario` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
 --
 
 --
--- Indices de la tabla `biometria`
+-- Indices de la tabla `biometria_pruebas`
 --
-ALTER TABLE `biometria`
+ALTER TABLE `biometria_pruebas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
+  ADD KEY `id_examen` (`prueba_id`);
 
 --
--- Indices de la tabla `examen`
+-- Indices de la tabla `cultivos_pruebas`
 --
-ALTER TABLE `examen`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_medico` (`id_medico`),
-  ADD KEY `id_paciente` (`id_paciente`);
-
---
--- Indices de la tabla `examen_general`
---
-ALTER TABLE `examen_general`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
-
---
--- Indices de la tabla `medico`
---
-ALTER TABLE `medico`
+ALTER TABLE `cultivos_pruebas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `microbiologia`
+-- Indices de la tabla `espermograma_pruebas`
 --
-ALTER TABLE `microbiologia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
-
---
--- Indices de la tabla `paciente`
---
-ALTER TABLE `paciente`
+ALTER TABLE `espermograma_pruebas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `parasitologia`
+-- Indices de la tabla `examen_general_pruebas`
 --
-ALTER TABLE `parasitologia`
+ALTER TABLE `examen_general_pruebas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
+  ADD KEY `id_examen` (`prueba_id`);
 
 --
--- Indices de la tabla `quimica_sanguinea`
+-- Indices de la tabla `hormonas_pruebas`
 --
-ALTER TABLE `quimica_sanguinea`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
+ALTER TABLE `hormonas_pruebas`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `reaccion_w`
+-- Indices de la tabla `informe_pruebas`
 --
-ALTER TABLE `reaccion_w`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`id_examen`);
+ALTER TABLE `informe_pruebas`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `liquido_sinovial_pruebas`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `liquido_sinovial_pruebas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `medicos`
+--
+ALTER TABLE `medicos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `microbiologia_pruebas`
+--
+ALTER TABLE `microbiologia_pruebas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`prueba_id`);
+
+--
+-- Indices de la tabla `pacientes`
+--
+ALTER TABLE `pacientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `parasitologia_pruebas`
+--
+ALTER TABLE `parasitologia_pruebas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`prueba_id`);
+
+--
+-- Indices de la tabla `pruebas`
+--
+ALTER TABLE `pruebas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_medico` (`medico_id`),
+  ADD KEY `id_paciente` (`paciente_id`);
+
+--
+-- Indices de la tabla `quimica_sanguinea_pruebas`
+--
+ALTER TABLE `quimica_sanguinea_pruebas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`prueba_id`);
+
+--
+-- Indices de la tabla `reaccion_w_pruebas`
+--
+ALTER TABLE `reaccion_w_pruebas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_examen` (`prueba_id`);
+
+--
+-- Indices de la tabla `serologia_pruebas`
+--
+ALTER TABLE `serologia_pruebas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -487,63 +739,99 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `biometria`
+-- AUTO_INCREMENT de la tabla `biometria_pruebas`
 --
-ALTER TABLE `biometria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `examen`
---
-ALTER TABLE `examen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
-
---
--- AUTO_INCREMENT de la tabla `examen_general`
---
-ALTER TABLE `examen_general`
+ALTER TABLE `biometria_pruebas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `medico`
+-- AUTO_INCREMENT de la tabla `cultivos_pruebas`
 --
-ALTER TABLE `medico`
+ALTER TABLE `cultivos_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `espermograma_pruebas`
+--
+ALTER TABLE `espermograma_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `examen_general_pruebas`
+--
+ALTER TABLE `examen_general_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `hormonas_pruebas`
+--
+ALTER TABLE `hormonas_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `informe_pruebas`
+--
+ALTER TABLE `informe_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `liquido_sinovial_pruebas`
+--
+ALTER TABLE `liquido_sinovial_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `medicos`
+--
+ALTER TABLE `medicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `microbiologia`
+-- AUTO_INCREMENT de la tabla `microbiologia_pruebas`
 --
-ALTER TABLE `microbiologia`
+ALTER TABLE `microbiologia_pruebas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `paciente`
+-- AUTO_INCREMENT de la tabla `pacientes`
 --
-ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+ALTER TABLE `pacientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT de la tabla `parasitologia`
+-- AUTO_INCREMENT de la tabla `parasitologia_pruebas`
 --
-ALTER TABLE `parasitologia`
+ALTER TABLE `parasitologia_pruebas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `quimica_sanguinea`
+-- AUTO_INCREMENT de la tabla `pruebas`
 --
-ALTER TABLE `quimica_sanguinea`
+ALTER TABLE `pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT de la tabla `quimica_sanguinea_pruebas`
+--
+ALTER TABLE `quimica_sanguinea_pruebas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `reaccion_w`
+-- AUTO_INCREMENT de la tabla `reaccion_w_pruebas`
 --
-ALTER TABLE `reaccion_w`
+ALTER TABLE `reaccion_w_pruebas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `serologia_pruebas`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `serologia_pruebas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
@@ -551,47 +839,47 @@ ALTER TABLE `usuario`
 --
 
 --
--- Filtros para la tabla `biometria`
+-- Filtros para la tabla `biometria_pruebas`
 --
-ALTER TABLE `biometria`
-  ADD CONSTRAINT `biometria_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `biometria_pruebas`
+  ADD CONSTRAINT `biometria_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `examen`
+-- Filtros para la tabla `examen_general_pruebas`
 --
-ALTER TABLE `examen`
-  ADD CONSTRAINT `examen_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id`),
-  ADD CONSTRAINT `examen_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
+ALTER TABLE `examen_general_pruebas`
+  ADD CONSTRAINT `examen_general_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
 
 --
--- Filtros para la tabla `examen_general`
+-- Filtros para la tabla `microbiologia_pruebas`
 --
-ALTER TABLE `examen_general`
-  ADD CONSTRAINT `examen_general_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+ALTER TABLE `microbiologia_pruebas`
+  ADD CONSTRAINT `microbiologia_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
 
 --
--- Filtros para la tabla `microbiologia`
+-- Filtros para la tabla `parasitologia_pruebas`
 --
-ALTER TABLE `microbiologia`
-  ADD CONSTRAINT `microbiologia_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+ALTER TABLE `parasitologia_pruebas`
+  ADD CONSTRAINT `parasitologia_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
 
 --
--- Filtros para la tabla `parasitologia`
+-- Filtros para la tabla `pruebas`
 --
-ALTER TABLE `parasitologia`
-  ADD CONSTRAINT `parasitologia_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+ALTER TABLE `pruebas`
+  ADD CONSTRAINT `pruebas_ibfk_1` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id`),
+  ADD CONSTRAINT `pruebas_ibfk_2` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id`);
 
 --
--- Filtros para la tabla `quimica_sanguinea`
+-- Filtros para la tabla `quimica_sanguinea_pruebas`
 --
-ALTER TABLE `quimica_sanguinea`
-  ADD CONSTRAINT `quimica_sanguinea_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+ALTER TABLE `quimica_sanguinea_pruebas`
+  ADD CONSTRAINT `quimica_sanguinea_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
 
 --
--- Filtros para la tabla `reaccion_w`
+-- Filtros para la tabla `reaccion_w_pruebas`
 --
-ALTER TABLE `reaccion_w`
-  ADD CONSTRAINT `reaccion_w_ibfk_1` FOREIGN KEY (`id_examen`) REFERENCES `examen` (`id`);
+ALTER TABLE `reaccion_w_pruebas`
+  ADD CONSTRAINT `reaccion_w_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
