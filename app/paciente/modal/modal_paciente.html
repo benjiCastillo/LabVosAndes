@@ -13,38 +13,30 @@
         <div class="modal-body">
           <div class="form-group">
             <label>Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre" ng-model="pacienteInsertar.nombre" required>
+            <input type="text" class="form-control" placeholder="Nombre" ng-model="pacienteInsertar._nombre" required>
           </div>
 
           <div class="form-group">
             <label>Apellidos</label>
-            <input type="text" class="form-control" placeholder="Apellidos" ng-model="pacienteInsertar.apellidos" required>
+            <input type="text" class="form-control" placeholder="Apellidos" ng-model="pacienteInsertar._apellidos" required>
           </div>
 
           <div class="form-group">
             <label>Edad</label>
-            <input type="text" class="form-control" placeholder="Edad" ng-model="pacienteInsertar.edad" required>
+            <input type="text" class="form-control" placeholder="Edad" ng-model="pacienteInsertar._edad" required>
           </div>
 
           <div class="form-group">
             <label>Sexo</label>
-            <select name="sexoInput" class="form-control" ng-model="pacienteInsertar.sexo" required>
+            <select name="sexoInput" class="form-control" ng-model="pacienteInsertar._sexo" required>
               <option value="F">Femenino</option>
               <option value="M">Masculino</option>
             </select>
           </div>
-
-
         </div>
 
 
         <div class="modal-footer">
-          <!--<div class="progress animated fadeIn" ng-show="pacienteInsertarEditado.respuesta.err">
-            <div class="indeterminate"></div>
-        </div>-->
-          <!--<center>
-          <div ng-show="pacienteEditado.respuesta.cargado" id="exito" class="animated bounceIn" > </div>
-        </center>-->
           <button type="submit" class="btn btn-success">
             <i class="fa fa-save"></i> Guardar</button>
         </div>

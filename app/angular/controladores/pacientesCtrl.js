@@ -50,14 +50,12 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
     }
 
     $scope.mostrarEditar = function (paciente) {
-        // console.log(paciente);
         $scope.pacienteMod = paciente;
         console.log(paciente)
         $("#modal-editar-paciente").modal();
     }
 
     $scope.modificar = function (pacienteMod) {
-        console.log()
         pacientesServices.modificar(pacienteMod).then(function () {
             $scope.response = pacientesServices.response;
             console.log($scope.response);

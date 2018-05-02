@@ -11,20 +11,10 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			$http({
 				method: 'POST',
 				url: 'http://localhost/LabVosAndes/api/public/paciente/',
-				// url: 'http://localhost/gitgrad/APIPOLLO/public/observation/read/',
-				data: {
-					_nombre: datos.nombre,
-					_apellidos: datos.apellidos,
-					_edad: datos.edad,
-					_sexo: datos.sexo
-				}
+				data: datos
 			})
 				.then(function successCallback(response) {
-					// ok
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data;
-					// console.log("Service"+response);
 					return d.resolve()
 				}, function errorCallback(response) {
 
@@ -42,17 +32,11 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 				url: 'http://localhost/LabVosAndes/api/public/paciente/',
 			})
 				.then(function successCallback(response) {
-					// ok
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data;
 
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
 					return d.resolve()
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data
 				});
 			return d.promise;
@@ -64,25 +48,14 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			$http({
 				method: 'PUT',
 				url: 'http://localhost/LabVosAndes/api/public/paciente/' + user.id,
-				data: {
-					nombre: user.nombre,
-					apellidos: user.apellidos,
-					edad: user.edad,
-					sexo: user.sexo
-				}
+				data: user
 			})
 				.then(function successCallback(response) {
-					// ok
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data;
 
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
 					return d.resolve()
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data
 				});
 			return d.promise;
@@ -95,17 +68,10 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 				url: 'http://localhost/LabVosAndes/api/public/paciente/' + user.id
 			})
 				.then(function successCallback(response) {
-					// ok
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data;
-
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
 					return d.resolve()
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data
 				});
 			return d.promise;
