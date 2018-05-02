@@ -1,5 +1,6 @@
 <?php
-$id=$_GET["idExamen"];
+// $id=$_GET["idExamen"];
+$id=86;
 
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
@@ -59,27 +60,27 @@ $tabla1 = '<table>
                 </tr>
                 <tr>
                     <td>Hematíes: </td>
-                    <td>'.$rows[1].' mm3</td>
+                    <td>'.$rows[1].'</td>
                     <td width="165" style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
                 </tr>
                 <tr>
                     <td>Hematocrito: </td>
-                    <td>'.$rows[2].' %</td>
+                    <td>'.$rows[2].'</td>
                     <td style="color: rgb(58,137,159)">H: 49 - 53; M: 47 - 51 </td>
                 </tr>
                 <tr>
                     <td>Hemoglobina: </td>
-                    <td>'.$rows[3].' gr/dl</td>
+                    <td>'.$rows[3].'/dl</td>
                     <td style="color: rgb(58,137,159)">H: 16 +/- 1,5; M: 15 +/- 0,5</td>
                 </tr>
                 <tr>
                     <td>Leucocito: </td>
-                    <td>'.$rows[4].' mm3</td>
+                    <td>'.$rows[4].'</td>
                     <td style="color: rgb(58,137,159)">5,000 - 8,000 </td>
                 </tr>
                 <tr>
                     <td>V. S. G.: </td>
-                    <td>'.$rows[5].' mm/hra</td>
+                    <td>'.$rows[5].'</td>
                     <td style="color: rgb(58,137,159)">1 - 10</td>
                 </tr>
                 <tr>
@@ -90,17 +91,17 @@ $tabla1 = '<table>
                 </tr>
                 <tr>
                     <td>V. C. M.: </td>
-                    <td>'.$rows[6].' fl.</td>
+                    <td>'.$rows[6].'</td>
                     <td style="color: rgb(58,137,159)">90 +/- 8</td>
                 </tr>
                 <tr>
                     <td>Hb. C. M.: </td>
-                    <td>'.$rows[7].' pg.</td>
+                    <td>'.$rows[7].'</td>
                     <td style="color: rgb(58,137,159)">30 +/- 3</td>
                 </tr>
                 <tr>
                     <td>C. Hb. C. M.: </td>
-                    <td>'.$rows[8].' %</td>
+                    <td>'.$rows[8].'</td>
                     <td style="color: rgb(58,137,159)">34 +/- 2</td>
                 </tr>
 </table><br>';
@@ -184,7 +185,7 @@ else{
 $pdf->writeHTMLCell($w=150, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 if($comentariohema != ''){
-    $pdf->writeHTMLCell($w=0, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
+    $pdf->writeHTMLCell($w=100, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
 }
 
 $pdf->writeHTMLCell($w=150, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);

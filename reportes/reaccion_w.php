@@ -1,5 +1,5 @@
 <?php
-$id=$_GET["idExamen"];
+$id=86;
 
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
@@ -51,7 +51,7 @@ $title = '<p><b>REACCIÓN DE WIDAL</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
-$biometria = '<table>
+$biometria = '<table style="padding: 4px;">
         <tr>
             <td><b>Dilución</b></td>
             <td><b>1/20</b></td>
@@ -100,17 +100,19 @@ $biometria = '<table>
     </table>';
     $com = $rows[25];
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='15', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
 
 $pdf->Ln(4);
-$comentario = '<div>Comentario: '.$com.'</div>';
-$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$comentario = '<div><b>Comentario: </b>'.$com.'</div>';
+if ($com != ''){
+    $pdf->writeHTMLCell($w=180, $h=0, $x='19', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+}
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>
         </div>';
-$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='122', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='100', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->Output($nombre.'.pdf', 'I');
 ?>

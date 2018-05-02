@@ -1,5 +1,5 @@
 <?php
-$id=$_GET["idExamen"];
+$id=86;
 
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');

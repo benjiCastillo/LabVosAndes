@@ -1,5 +1,5 @@
 <?php
-$id=$_GET["idExamen"];
+$id=86;
 
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
@@ -53,7 +53,7 @@ $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
 
-$tabla1 = '<table>
+$examen_fisico = '<table>
                 <tr>
                     <td colspan="3"><b>Exámen Físico</b></td>
                     <td></td>
@@ -101,7 +101,7 @@ $tabla1 = '<table>
                 </tr>
 </table><br>';
 
-$tabla2 = '<table>
+$examen_quimico = '<table>
                 <tr>
                     <td colspan="3"><b>Exámen Químico</b></td>
                     <td></td>
@@ -144,7 +144,7 @@ $tabla2 = '<table>
                 </tr>
 </table>';
 
-$tabla3 = '<table>
+$examen_microscopico = '<table>
                 <tr>
                     <td colspan="2"><b>Exámen Microscópico Sedimento</b></td>
                     <td></td>
@@ -179,7 +179,7 @@ $tabla3 = '<table>
                 </tr>
 </table>';
 
-$tabla4 = '<table>
+$examen_bacteriologico = '<table>
                 <tr>
                     <td><b>Exámen Bacteriológico Sedimento</b></td>
                 </tr>
@@ -188,13 +188,13 @@ $tabla4 = '<table>
                 </tr>
             </table>';
 }
-$pdf->writeHTMLCell($w=0, $h=0, $x='7', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='7', $y='42', $examen_fisico, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='7', $y='', $tabla4, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=140, $h=0, $x='7', $y='', $examen_bacteriologico, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='77', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='77', $y='42', $examen_quimico, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->writeHTMLCell($w=200, $h=0, $x='151', $y='42', $tabla3, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$pdf->writeHTMLCell($w=100, $h=0, $x='151', $y='42', $examen_microscopico, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont('helvetica','',7);
