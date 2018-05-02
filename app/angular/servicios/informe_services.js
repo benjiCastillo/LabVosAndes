@@ -13,34 +13,6 @@ var self ={
 				'pag_anterior'  : 1,
 				'total_paginas' : 1,
 				'paginas'	    : [],
-
-				 // guardar: function( medico ){
-				 // 	var d = $q.defer()
-
-				 // 	$http.post('api/medicos/post-medico-guardar.php', medico)
-
-				 // 	.success(function(respuesta){
-				 	
-				 // 			self.cargarPagina(self.pag_actual)
-				 // 			d.resolve()	
-				 				
-				 // 	})		
-				 // 	return d.promise
-				 // },
-				 // eliminar: function( medico ){
-				 // 	var d = $q.defer()
-
-				 // 	$http.post('api/medicos/delete-medico-eliminar.php', medico)
-
-				 // 	.success(function(respuesta){
-				 	
-				 // 			self.cargarPagina(self.pag_actual)
-				 // 			d.resolve()	
-				 				
-				 // 	})		
-				 // 	return d.promise
-				 // },		
-
 				cargarPagina : function(pag){
 
 					var d = $q.defer()

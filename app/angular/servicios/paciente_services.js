@@ -10,7 +10,7 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/paciente/',
+				url: PATH+'public/paciente/',
 				data: datos
 			})
 				.then(function successCallback(response) {
@@ -29,7 +29,7 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/paciente/',
+				url: PATH+'public/paciente/',
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -47,7 +47,7 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 
 			$http({
 				method: 'PUT',
-				url: 'http://localhost/LabVosAndes/api/public/paciente/' + user.id,
+				url: PATH+'public/paciente/' + user.id,
 				data: user
 			})
 				.then(function successCallback(response) {
@@ -65,7 +65,7 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost/LabVosAndes/api/public/paciente/' + user.id
+				url: PATH+'public/paciente/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;

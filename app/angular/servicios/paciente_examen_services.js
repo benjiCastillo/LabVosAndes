@@ -10,11 +10,8 @@ app.factory('pacientesExamenServices', ['$http', '$q', '$rootScope', function ($
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/examen/insertTest/',
-				data: {
-					_id_medico: datos.id_medico,
-					_id_paciente: datos.id_paciente
-				}
+				url: PATH + 'public/examen/insertTest/',
+				data: datos
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -29,15 +26,10 @@ app.factory('pacientesExamenServices', ['$http', '$q', '$rootScope', function ($
 
 		insertarTipo: function (datos) {
 			var d = $q.defer();
-			// console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/examen/insertType/',
-				data: {
-					_id_examen: datos.id_examen,
-					_tipo: datos.tipo,
-					_id_tipo: datos.id_tipo
-				}
+				url: PATH + 'public/examen/insertType/',
+				data: datos
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -56,20 +48,13 @@ app.factory('pacientesExamenServices', ['$http', '$q', '$rootScope', function ($
 
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/medico/',
+				url: PATH + 'api/public/medico/',
 			})
 				.then(function successCallback(response) {
-					// ok
-					// self.cargado		= true;
-
 					self.response = response.data;
-
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
 					return d.resolve()
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data
 				});
 			return d.promise;
@@ -80,17 +65,13 @@ app.factory('pacientesExamenServices', ['$http', '$q', '$rootScope', function ($
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/examen/' + id + '/listaExamenes/',
+				url: PATH + 'api/public/examen/' + id + '/listaExamenes/',
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
-
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
 					return d.resolve()
-					// self.cargado		= true;
-					// self.cargando		= false;
 					self.response = response.data
 				});
 			return d.promise;

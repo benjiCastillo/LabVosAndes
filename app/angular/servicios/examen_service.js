@@ -2,14 +2,13 @@ var app = angular.module('facturacionApp.examenServices', [])
 
 app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
 
-
 	var self = {
 		listar: function (id) {
 			var d = $q.defer();
 
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/examen/'+id+'/examenesPaciente/',
+				url: PATH+'api/public/examen/'+id+'/examenesPaciente/',
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -26,7 +25,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/informesg/',
+				url: PATH+'api/public/informesg/',
 				data: {
 					_nombre: datos.nombre,
 					_contenido: datos.informe,
@@ -48,7 +47,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/examengeneral/',
+				url: PATH+'api/public/examengeneral/',
 				data: {
 					_color: datos.color,
 					_cantidad: datos.cantidad,
@@ -91,7 +90,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/biometria/',
+				url: PATH+'api/public/biometria/',
 				data: {
 					_hematies: datos.hematies,
 					_hematocrito: datos.hematocrito,
@@ -129,7 +128,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			// console.log(datos);
 			$http({
 				method: 'POST',
-				url: 'http://localhost/LabVosAndes/api/public/reaccionw/',
+				url: PATH+'api/public/reaccionw/',
 				data: {
 					_paraA1: datos.pA20,
 					_paraA2: datos.pA40,
@@ -174,7 +173,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/informesg/' + id,
+				url: PATH+'api/public/informesg/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -194,7 +193,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: 'http://localhost/LabVosAndes/api/public/informesg/' + data.id,
+				url: PATH+'api/public/informesg/' + data.id,
 				data: {
 					nombre: data.nombre,
 					contenido: data.contenido
@@ -221,7 +220,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost/LabVosAndes/api/public/informesg/' + user.id + '/' + user.titulo
+				url: PATH+'api/public/informesg/' + user.id + '/' + user.titulo
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -239,7 +238,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/biometria/' + id,
+				url: PATH+'api/public/biometria/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -259,7 +258,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: 'http://localhost/LabVosAndes/api/public/biometria/' + data.id,
+				url: PATH+'api/public/biometria/' + data.id,
 				data: {
 					hematies: data.hematies,
 					hematocrito: data.hematocrito,
@@ -303,7 +302,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost/LabVosAndes/api/public/biometria/' + user.id
+				url: PATH+'api/public/biometria/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -321,7 +320,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/examengeneral/' + id,
+				url: PATH+'api/public/examengeneral/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -341,7 +340,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: 'http://localhost/LabVosAndes/api/public/examengeneral/' + data.id,
+				url: PATH+'api/public/examengeneral/' + data.id,
 				data: {
 					color: data.color,
 					cantidad: data.cantidad,
@@ -390,7 +389,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost/LabVosAndes/api/public/examengeneral/' + user.id
+				url: PATH+'api/public/examengeneral/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -408,7 +407,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost/LabVosAndes/api/public/reaccionw/' + user.id
+				url: PATH+'api/public/reaccionw/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -426,7 +425,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: 'http://localhost/LabVosAndes/api/public/reaccionw/' + id,
+				url: PATH+'api/public/reaccionw/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -446,7 +445,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: 'http://localhost/LabVosAndes/api/public/reaccionw/' + data.id,
+				url: PATH+'api/public/reaccionw/' + data.id,
 				data: {
 					paraA1: data.paraA1,
 					paraA2: data.paraA2,
