@@ -21,7 +21,7 @@ return [
         'connectionString'  =>[
             'dns'   => 'mysql:host=localhost;dbname=vos_andes;charset=utf8',
             'user'  =>  'root',
-            'pass'  =>  '',
+            'pass'  =>  '1234',
             'name_db' => 'vos_andes',
             'host' => 'localhost'
         ]
