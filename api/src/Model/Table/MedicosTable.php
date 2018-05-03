@@ -18,6 +18,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Medico patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Medico[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Medico findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class MedicosTable extends Table
 {
@@ -35,6 +37,8 @@ class MedicosTable extends Table
         $this->setTable('medicos');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->hasMany('Pruebas', [
             'foreignKey' => 'medico_id'
@@ -64,6 +68,15 @@ class MedicosTable extends Table
             ->maxLength('apellidos', 75)
             ->requirePresence('apellidos', 'create')
             ->notEmpty('apellidos');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

@@ -43,11 +43,15 @@ class EspermogramaPruebasFixture extends TestFixture
         'segunda_hora' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'tercera_hora' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'prueba_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'created_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'modified_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
         '_options' => [
-            'engine' => 'InnoDB',
+            'engine' => 'MyISAM',
             'collation' => 'utf8_general_ci'
         ],
     ];
@@ -63,8 +67,8 @@ class EspermogramaPruebasFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'hora_recoleccion' => 1525238753,
-                'hora_recepcion' => 1525238753,
+                'hora_recoleccion' => 1525308957,
+                'hora_recepcion' => 1525308957,
                 'duracion_abstinencia' => 'Lorem ipsum dolor ',
                 'aspecto' => 'Lorem ipsum dolor ',
                 'color' => 'Lorem ipsum dolor ',
@@ -87,7 +91,11 @@ class EspermogramaPruebasFixture extends TestFixture
                 'primera_hora' => 'Lorem ipsum dolor ',
                 'segunda_hora' => 'Lorem ipsum dolor ',
                 'tercera_hora' => 'Lorem ipsum dolor ',
-                'prueba_id' => 1
+                'prueba_id' => 1,
+                'created' => '2018-05-03 00:55:57',
+                'modified' => '2018-05-03 00:55:57',
+                'created_by' => 1,
+                'modified_by' => 1
             ],
         ];
         parent::init();

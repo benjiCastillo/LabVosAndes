@@ -14,18 +14,42 @@ class HormonasPruebasController extends AppController
 {
 
     /**
-     * Index method
+     * List method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function list()
     {
-        $this->paginate = [
-            'contain' => ['Pruebas']
-        ];
-        $hormonasPruebas = $this->paginate($this->HormonasPruebas);
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
 
-        $this->set(compact('hormonasPruebas'));
+            $this->loadModel('Usuarios');
+            $count = $this->Usuarios->find('all', [
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->count();
+
+            if ($count) {
+                $hormonas = $this->HormonasPruebas->find('all');
+                $json = [
+                    'error' => 0,
+                    'message' => '',
+                    'data' => $hormonas
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+                ];
+            }
+
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
     }
 
     /**

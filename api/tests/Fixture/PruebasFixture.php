@@ -21,17 +21,15 @@ class PruebasFixture extends TestFixture
         'fecha' => ['type' => 'timestamp', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP(6)', 'comment' => '', 'precision' => null],
         'medico_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'paciente_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        '_indexes' => [
-            'id_medico' => ['type' => 'index', 'columns' => ['medico_id'], 'length' => []],
-            'id_paciente' => ['type' => 'index', 'columns' => ['paciente_id'], 'length' => []],
-        ],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'created_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'modified_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'pruebas_ibfk_1' => ['type' => 'foreign', 'columns' => ['medico_id'], 'references' => ['medicos', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'pruebas_ibfk_2' => ['type' => 'foreign', 'columns' => ['paciente_id'], 'references' => ['pacientes', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
-            'engine' => 'InnoDB',
+            'engine' => 'MyISAM',
             'collation' => 'utf8_spanish2_ci'
         ],
     ];
@@ -47,9 +45,13 @@ class PruebasFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'fecha' => 1525238753,
+                'fecha' => 1525308957,
                 'medico_id' => 1,
-                'paciente_id' => 1
+                'paciente_id' => 1,
+                'created' => '2018-05-03 00:55:57',
+                'modified' => '2018-05-03 00:55:57',
+                'created_by' => 1,
+                'modified_by' => 1
             ],
         ];
         parent::init();

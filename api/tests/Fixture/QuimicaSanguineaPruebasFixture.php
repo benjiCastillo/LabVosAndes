@@ -41,15 +41,18 @@ class QuimicaSanguineaPruebasFixture extends TestFixture
         'gamaglutamil_transpeptidasa' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'prueba_inmunologica_embarazo' => ['type' => 'string', 'length' => 150, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'prueba_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'created_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'modified_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
             'id_examen' => ['type' => 'index', 'columns' => ['prueba_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'quimica_sanguinea_pruebas_ibfk_1' => ['type' => 'foreign', 'columns' => ['prueba_id'], 'references' => ['pruebas', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
-            'engine' => 'InnoDB',
+            'engine' => 'MyISAM',
             'collation' => 'utf8_general_ci'
         ],
     ];
@@ -87,7 +90,11 @@ class QuimicaSanguineaPruebasFixture extends TestFixture
                 'cpk_mb' => 'Lorem ipsum dolor ',
                 'gamaglutamil_transpeptidasa' => 'Lorem ipsum dolor ',
                 'prueba_inmunologica_embarazo' => 'Lorem ipsum dolor sit amet',
-                'prueba_id' => 1
+                'prueba_id' => 1,
+                'created' => '2018-05-03 00:55:57',
+                'modified' => '2018-05-03 00:55:57',
+                'created_by' => 1,
+                'modified_by' => 1
             ],
         ];
         parent::init();

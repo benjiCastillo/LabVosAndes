@@ -16,6 +16,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Usuario patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Usuario[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Usuario findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsuariosTable extends Table
 {
@@ -33,6 +35,8 @@ class UsuariosTable extends Table
         $this->setTable('usuarios');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -66,9 +70,22 @@ class UsuariosTable extends Table
             ->notEmpty('password');
 
         $validator
+            ->scalar('token')
+            ->maxLength('token', 100)
+            ->allowEmpty('token');
+
+        $validator
             ->dateTime('fecha')
-            ->requirePresence('fecha', 'create')
-            ->notEmpty('fecha');
+            ->allowEmpty('fecha');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

@@ -30,6 +30,10 @@ use Cake\ORM\Entity;
  * @property string $recuento_plaquetas
  * @property string $agr_dis_plaquetaria
  * @property int $prueba_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Prueba $prueba
  */
@@ -69,6 +73,10 @@ class SerologiaPrueba extends Entity
         'recuento_plaquetas' => true,
         'agr_dis_plaquetaria' => true,
         'prueba_id' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'prueba' => true
     ];
 }

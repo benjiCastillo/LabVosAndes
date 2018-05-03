@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-05-2018 a las 14:58:40
+-- Tiempo de generación: 03-05-2018 a las 14:47:10
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -175,15 +175,19 @@ CREATE TABLE `biometria_pruebas` (
   `prolinfocito` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `cel_inmaduras` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `comentario_leuco` text COLLATE utf8_spanish2_ci NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `biometria_pruebas`
 --
 
-INSERT INTO `biometria_pruebas` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `prueba_id`) VALUES
-(1, '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', 86);
+INSERT INTO `biometria_pruebas` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -214,8 +218,12 @@ CREATE TABLE `cultivos_pruebas` (
   `cefixima` varchar(20) NOT NULL,
   `cotrimoxazol` varchar(20) NOT NULL,
   `nitrofurantoina` varchar(20) NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -249,8 +257,12 @@ CREATE TABLE `espermograma_pruebas` (
   `primera_hora` varchar(20) NOT NULL,
   `segunda_hora` varchar(20) NOT NULL,
   `tercera_hora` varchar(20) NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -283,15 +295,19 @@ CREATE TABLE `examen_general_pruebas` (
   `cristales` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `otros` text COLLATE utf8_spanish2_ci NOT NULL,
   `exa_bac_sed` text COLLATE utf8_spanish2_ci NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `examen_general_pruebas`
 --
 
-INSERT INTO `examen_general_pruebas` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `prueba_id`) VALUES
-(1, 'Amarillo', '500', 'wadasdawdasda', '\'a\'sẃ´wẃw´ñññ', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd', 'aaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññ\\n asdawd', 86);
+INSERT INTO `examen_general_pruebas` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'Amarillo', '500', 'wadasdawdasda', '\'a\'sẃ´wẃw´ñññ', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd', 'aaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññ\\n asdawd', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -338,8 +354,12 @@ CREATE TABLE `hormonas_pruebas` (
   `control_negativo` varchar(20) NOT NULL,
   `conclusión` text NOT NULL,
   `comentario_general` text NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -350,8 +370,12 @@ CREATE TABLE `hormonas_pruebas` (
 CREATE TABLE `informe_pruebas` (
   `id` int(11) NOT NULL,
   `contenido` text NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -369,8 +393,12 @@ CREATE TABLE `liquido_sinovial_pruebas` (
   `glicemia` varchar(20) NOT NULL,
   `urea` varchar(20) NOT NULL,
   `creatinina` varchar(20) NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -381,15 +409,19 @@ CREATE TABLE `liquido_sinovial_pruebas` (
 CREATE TABLE `medicos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `medicos`
 --
 
-INSERT INTO `medicos` (`id`, `nombre`, `apellidos`) VALUES
-(18, 'Son', 'Gokú');
+INSERT INTO `medicos` (`id`, `nombre`, `apellidos`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(18, 'Son', 'Gokú', '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -412,15 +444,19 @@ CREATE TABLE `microbiologia_pruebas` (
   `bacilos_gram_positivos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
   `bacilos_gram_negativos` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
   `hifas_esporas_micoticas` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `microbiologia_pruebas`
 --
 
-INSERT INTO `microbiologia_pruebas` (`id`, `celulas_epitelio_vaginal`, `leucocitos`, `piocitos`, `celulas_clave`, `tricomona_vaginalis`, `flora_bacteriana`, `hifas_micoticas`, `prueba_koh`, `coco_bacilos_gram_positivos`, `cocos_gram_positivos`, `bacilos_gram_positivos`, `bacilos_gram_negativos`, `hifas_esporas_micoticas`, `prueba_id`) VALUES
-(6, 'rqweq', '1313', '53545', '3434', '343415', '6666', '556', '777', '555', '2626', '345345', '34534', '34534', 86);
+INSERT INTO `microbiologia_pruebas` (`id`, `celulas_epitelio_vaginal`, `leucocitos`, `piocitos`, `celulas_clave`, `tricomona_vaginalis`, `flora_bacteriana`, `hifas_micoticas`, `prueba_koh`, `coco_bacilos_gram_positivos`, `cocos_gram_positivos`, `bacilos_gram_positivos`, `bacilos_gram_negativos`, `hifas_esporas_micoticas`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(6, 'rqweq', '1313', '53545', '3434', '343415', '6666', '556', '777', '555', '2626', '345345', '34534', '34534', 86, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -433,16 +469,20 @@ CREATE TABLE `pacientes` (
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
   `edad` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`) VALUES
-(37, 'Erwin', 'Méndez', '23 m', 'M'),
-(38, 'asdf', 'asdf', '12', 'F');
+INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(37, 'Erwin', 'Méndez', '23 m', 'M', '0000-00-00 00:00:00', NULL, 0, 0),
+(38, 'asdf', 'asdf', '12', 'F', '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -459,15 +499,19 @@ CREATE TABLE `parasitologia_pruebas` (
   `comentario` text NOT NULL,
   `sangre_oculta` varchar(20) NOT NULL,
   `muestras` text NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parasitologia_pruebas`
 --
 
-INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`) VALUES
-(2, '', '', '', '', '', '', '', 86);
+INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(2, '', '', '', '', '', '', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -479,15 +523,19 @@ CREATE TABLE `pruebas` (
   `id` int(11) NOT NULL,
   `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `medico_id` int(11) NOT NULL,
-  `paciente_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `paciente_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `pruebas`
 --
 
-INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`) VALUES
-(86, '2018-01-15 01:18:25.601406', 18, 37);
+INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(86, '2018-01-15 01:18:25.601406', 18, 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -519,15 +567,19 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
   `cpk_mb` varchar(20) NOT NULL,
   `gamaglutamil_transpeptidasa` varchar(20) NOT NULL,
   `prueba_inmunologica_embarazo` varchar(150) NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `quimica_sanguinea_pruebas`
 --
 
-INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`) VALUES
-(1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86);
+INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -562,15 +614,19 @@ CREATE TABLE `reaccion_w_pruebas` (
   `flagelarH5` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `flagelarH6` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `reaccion_w_pruebas`
 --
 
-INSERT INTO `reaccion_w_pruebas` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `prueba_id`) VALUES
-(1, '1', '12', '12/1000', '99998800', '9998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', 'Oxalato de calc', '99998800.0000', '99998800.0000', '1', 'sadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááá', 86);
+INSERT INTO `reaccion_w_pruebas` (`id`, `paraA1`, `paraA2`, `paraA3`, `paraA4`, `paraA5`, `paraA6`, `paraB1`, `paraB2`, `paraB3`, `paraB4`, `paraB5`, `paraB6`, `somaticoO1`, `somaticoO2`, `somaticoO3`, `somaticoO4`, `somaticoO5`, `somaticoO6`, `flagelarH1`, `flagelarH2`, `flagelarH3`, `flagelarH4`, `flagelarH5`, `flagelarH6`, `comentario`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, '1', '12', '12/1000', '99998800', '9998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', '99998800', 'Oxalato de calc', '99998800.0000', '99998800.0000', '1', 'sadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááásadawdasd!@@$T#$Yñññññññééééé´aáááá', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -602,8 +658,12 @@ CREATE TABLE `serologia_pruebas` (
   `factor_rh` varchar(20) NOT NULL,
   `recuento_plaquetas` varchar(50) NOT NULL,
   `agr_dis_plaquetaria` varchar(50) NOT NULL,
-  `prueba_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prueba_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -615,16 +675,21 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `user` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password` varchar(100) NOT NULL,
+  `token` varchar(100) DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
-(15, 'admin', 'admin', '1234', '0000-00-00 00:00:00');
+INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `token`, `fecha`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(19, 'morty', 'admin', '$2y$10$L/3ByAh6tboaPzzLKPtYauSmtgEXA3cr06Nk4i6OWFFiuN6ZOOuQu', '$2y$10$1C2oin0r1nKEHS9A.WwpguFqdTn00KoMmEK78mfFVJtXPSwS5XQAC', '2018-05-03 03:35:04', '2018-05-03 03:35:04', '2018-05-03 03:40:22', 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -634,8 +699,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `fecha`) VALUES
 -- Indices de la tabla `biometria_pruebas`
 --
 ALTER TABLE `biometria_pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`prueba_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cultivos_pruebas`
@@ -653,8 +717,7 @@ ALTER TABLE `espermograma_pruebas`
 -- Indices de la tabla `examen_general_pruebas`
 --
 ALTER TABLE `examen_general_pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`prueba_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `hormonas_pruebas`
@@ -684,8 +747,7 @@ ALTER TABLE `medicos`
 -- Indices de la tabla `microbiologia_pruebas`
 --
 ALTER TABLE `microbiologia_pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`prueba_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pacientes`
@@ -697,16 +759,13 @@ ALTER TABLE `pacientes`
 -- Indices de la tabla `parasitologia_pruebas`
 --
 ALTER TABLE `parasitologia_pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`prueba_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_medico` (`medico_id`),
-  ADD KEY `id_paciente` (`paciente_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `quimica_sanguinea_pruebas`
@@ -719,8 +778,7 @@ ALTER TABLE `quimica_sanguinea_pruebas`
 -- Indices de la tabla `reaccion_w_pruebas`
 --
 ALTER TABLE `reaccion_w_pruebas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_examen` (`prueba_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `serologia_pruebas`
@@ -832,54 +890,7 @@ ALTER TABLE `serologia_pruebas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `biometria_pruebas`
---
-ALTER TABLE `biometria_pruebas`
-  ADD CONSTRAINT `biometria_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `examen_general_pruebas`
---
-ALTER TABLE `examen_general_pruebas`
-  ADD CONSTRAINT `examen_general_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
-
---
--- Filtros para la tabla `microbiologia_pruebas`
---
-ALTER TABLE `microbiologia_pruebas`
-  ADD CONSTRAINT `microbiologia_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
-
---
--- Filtros para la tabla `parasitologia_pruebas`
---
-ALTER TABLE `parasitologia_pruebas`
-  ADD CONSTRAINT `parasitologia_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
-
---
--- Filtros para la tabla `pruebas`
---
-ALTER TABLE `pruebas`
-  ADD CONSTRAINT `pruebas_ibfk_1` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id`),
-  ADD CONSTRAINT `pruebas_ibfk_2` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id`);
-
---
--- Filtros para la tabla `quimica_sanguinea_pruebas`
---
-ALTER TABLE `quimica_sanguinea_pruebas`
-  ADD CONSTRAINT `quimica_sanguinea_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
-
---
--- Filtros para la tabla `reaccion_w_pruebas`
---
-ALTER TABLE `reaccion_w_pruebas`
-  ADD CONSTRAINT `reaccion_w_pruebas_ibfk_1` FOREIGN KEY (`prueba_id`) REFERENCES `pruebas` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -41,11 +41,15 @@ class SerologiaPruebasFixture extends TestFixture
         'recuento_plaquetas' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'agr_dis_plaquetaria' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'prueba_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'created_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'modified_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
         '_options' => [
-            'engine' => 'InnoDB',
+            'engine' => 'MyISAM',
             'collation' => 'utf8_general_ci'
         ],
     ];
@@ -83,7 +87,11 @@ class SerologiaPruebasFixture extends TestFixture
                 'factor_rh' => 'Lorem ipsum dolor ',
                 'recuento_plaquetas' => 'Lorem ipsum dolor sit amet',
                 'agr_dis_plaquetaria' => 'Lorem ipsum dolor sit amet',
-                'prueba_id' => 1
+                'prueba_id' => 1,
+                'created' => '2018-05-03 00:55:57',
+                'modified' => '2018-05-03 00:55:57',
+                'created_by' => 1,
+                'modified_by' => 1
             ],
         ];
         parent::init();
