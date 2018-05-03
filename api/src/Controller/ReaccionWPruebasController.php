@@ -33,7 +33,11 @@ class ReaccionWPruebasController extends AppController
             ])->count();
 
             if ($count) {
-                $reaccion = $this->ReaccionWPruebas->find('all');
+                $reaccion = $this->ReaccionWPruebas->find('all', [
+                    'conditions' => [
+                        'prueba_id' => $data['prueba_id']
+                    ]
+                ])->first();
                 $json = [
                     'error' => 0,
                     'message' => '',
@@ -185,14 +189,44 @@ class ReaccionWPruebasController extends AppController
      */
     public function delete($id = null)
     {
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
         $this->request->allowMethod(['post', 'delete']);
-        $reaccionWPrueba = $this->ReaccionWPruebas->get($id);
-        if ($this->ReaccionWPruebas->delete($reaccionWPrueba)) {
-            $this->Flash->success(__('The reaccion w prueba has been deleted.'));
-        } else {
-            $this->Flash->error(__('The reaccion w prueba could not be deleted. Please, try again.'));
-        }
+        $json = [];
 
-        return $this->redirect(['action' => 'index']);
+        $data = $this->request->getData();
+
+        $this->loadModel('Usuarios');
+        $user = $this->Usuarios->find('all', [
+            'fields' => ['id'],
+            'conditions' => [
+                'user' => $data['user'],
+                'token' => $data['token']
+            ]
+        ])->first();
+
+        if(!empty($user)) {
+            $registry = $this->ReaccionWPruebas->get($id);
+            if ($this->ReaccionWPruebas->delete($registry)) {
+                $json = [
+                    'error' => 0,
+                    'message' => 'El registro se eliminó correctamente'
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'El registro no pudo eliminarse correctamente'
+                ];
+            }
+
+        } else {
+            $json = [
+                'error' => 1,
+                'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+            ];
+        }
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 }
