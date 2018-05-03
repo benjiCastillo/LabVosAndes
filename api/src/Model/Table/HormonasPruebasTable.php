@@ -18,6 +18,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\HormonasPrueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\HormonasPrueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\HormonasPrueba findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class HormonasPruebasTable extends Table
 {
@@ -35,6 +37,8 @@ class HormonasPruebasTable extends Table
         $this->setTable('hormonas_pruebas');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Pruebas', [
             'foreignKey' => 'prueba_id',
@@ -271,6 +275,15 @@ class HormonasPruebasTable extends Table
             ->scalar('comentario_general')
             ->requirePresence('comentario_general', 'create')
             ->notEmpty('comentario_general');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

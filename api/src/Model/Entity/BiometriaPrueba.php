@@ -26,6 +26,10 @@ use Cake\ORM\Entity;
  * @property string $cel_inmaduras
  * @property string $comentario_leuco
  * @property int $prueba_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Prueba $prueba
  */
@@ -61,6 +65,10 @@ class BiometriaPrueba extends Entity
         'cel_inmaduras' => true,
         'comentario_leuco' => true,
         'prueba_id' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'prueba' => true
     ];
 }

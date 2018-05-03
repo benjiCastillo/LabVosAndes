@@ -11,6 +11,10 @@ use Cake\ORM\Entity;
  * @property string $apellidos
  * @property string $edad
  * @property string $sexo
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Prueba[] $pruebas
  */
@@ -31,6 +35,10 @@ class Paciente extends Entity
         'apellidos' => true,
         'edad' => true,
         'sexo' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'pruebas' => true
     ];
 }

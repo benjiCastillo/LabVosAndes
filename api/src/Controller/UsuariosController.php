@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Usuarios Controller
@@ -49,10 +50,12 @@ class UsuariosController extends AppController
     public function add()
     {
         $this->autoRender = false;
-        $this->response->type('json');
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         $usuario = $this->Usuarios->newEntity();
         if ($this->request->is('post')) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
+            $usuario->created_by = 0;
             $saved_user = $this->Usuarios->save($usuario);
             if ($saved_user) {
                 $json = [
@@ -60,16 +63,15 @@ class UsuariosController extends AppController
                     'message' => 'El usuario se registro correctamente',
                     'data' => $saved_user->id
                 ];
-                $this->response->body(json_encode($json));
-                return $this->response;
             } else {
                 $json = [
                     'error' => 1,
-                    'message' => 'El usuario no pudo registrarse',
+                    'message' => $usuario->getErrors(),
                 ];
-                $this->response->body(json_encode($json));
-                return $this->response;
             }
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
         }
     }
 
@@ -115,5 +117,49 @@ class UsuariosController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function auth()
+    {
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id', 'password', 'user'],
+                'conditions' => [
+                    'user' => $data['user']
+                ]
+            ])->first();
+
+            if($user) {
+                $hasher = new DefaultPasswordHasher();
+                if ($hasher->check($data['password'], $user->password)) {
+                    $user->token = (new DefaultPasswordHasher)->hash($data['user'] . '|' . time());
+                    $this->Usuarios->save($user);
+                    $json = [
+                        'error' => 0,
+                        'message' => 'Autenticado',
+                        'data' => ['token' => $user->token, 'user_id' => $user->id]
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'message' => 'Datos incorrectos'
+                    ];
+                }
+
+
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'El usuario no esta registrado'
+                ];
+            }
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
     }
 }

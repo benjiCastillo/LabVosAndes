@@ -18,6 +18,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\LiquidoSinovialPrueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\LiquidoSinovialPrueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\LiquidoSinovialPrueba findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class LiquidoSinovialPruebasTable extends Table
 {
@@ -35,6 +37,8 @@ class LiquidoSinovialPruebasTable extends Table
         $this->setTable('liquido_sinovial_pruebas');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Pruebas', [
             'foreignKey' => 'prueba_id',
@@ -101,6 +105,15 @@ class LiquidoSinovialPruebasTable extends Table
             ->maxLength('creatinina', 20)
             ->requirePresence('creatinina', 'create')
             ->notEmpty('creatinina');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

@@ -18,6 +18,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\MicrobiologiaPrueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\MicrobiologiaPrueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\MicrobiologiaPrueba findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class MicrobiologiaPruebasTable extends Table
 {
@@ -35,6 +37,8 @@ class MicrobiologiaPruebasTable extends Table
         $this->setTable('microbiologia_pruebas');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Pruebas', [
             'foreignKey' => 'prueba_id',
@@ -131,6 +135,15 @@ class MicrobiologiaPruebasTable extends Table
             ->maxLength('hifas_esporas_micoticas', 20)
             ->requirePresence('hifas_esporas_micoticas', 'create')
             ->notEmpty('hifas_esporas_micoticas');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

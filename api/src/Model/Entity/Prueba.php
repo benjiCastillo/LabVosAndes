@@ -10,6 +10,10 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $fecha
  * @property int $medico_id
  * @property int $paciente_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Medico $medico
  * @property \App\Model\Entity\Paciente $paciente
@@ -42,6 +46,10 @@ class Prueba extends Entity
         'fecha' => true,
         'medico_id' => true,
         'paciente_id' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'medico' => true,
         'paciente' => true,
         'biometria_pruebas' => true,

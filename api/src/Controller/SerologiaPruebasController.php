@@ -14,18 +14,42 @@ class SerologiaPruebasController extends AppController
 {
 
     /**
-     * Index method
+     * List method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function list()
     {
-        $this->paginate = [
-            'contain' => ['Pruebas']
-        ];
-        $serologiaPruebas = $this->paginate($this->SerologiaPruebas);
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
 
-        $this->set(compact('serologiaPruebas'));
+            $this->loadModel('Usuarios');
+            $count = $this->Usuarios->find('all', [
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->count();
+
+            if ($count) {
+                $serologia = $this->Serologia->find('all');
+                $json = [
+                    'error' => 0,
+                    'message' => '',
+                    'data' => $serologia
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+                ];
+            }
+
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
     }
 
     /**

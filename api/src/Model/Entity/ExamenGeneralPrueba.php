@@ -31,6 +31,10 @@ use Cake\ORM\Entity;
  * @property string $otros
  * @property string $exa_bac_sed
  * @property int $prueba_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Prueba $prueba
  */
@@ -71,6 +75,10 @@ class ExamenGeneralPrueba extends Entity
         'otros' => true,
         'exa_bac_sed' => true,
         'prueba_id' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'prueba' => true
     ];
 }

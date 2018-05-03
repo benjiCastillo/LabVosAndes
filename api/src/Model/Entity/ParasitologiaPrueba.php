@@ -15,6 +15,10 @@ use Cake\ORM\Entity;
  * @property string $sangre_oculta
  * @property string $muestras
  * @property int $prueba_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property int $created_by
+ * @property int $modified_by
  *
  * @property \App\Model\Entity\Prueba $prueba
  */
@@ -39,6 +43,10 @@ class ParasitologiaPrueba extends Entity
         'sangre_oculta' => true,
         'muestras' => true,
         'prueba_id' => true,
+        'created' => true,
+        'modified' => true,
+        'created_by' => true,
+        'modified_by' => true,
         'prueba' => true
     ];
 }

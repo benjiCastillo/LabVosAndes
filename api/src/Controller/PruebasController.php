@@ -14,18 +14,54 @@ class PruebasController extends AppController
 {
 
     /**
-     * Index method
+     * List method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function list()
     {
-        $this->paginate = [
-            'contain' => ['Medicos', 'Pacientes']
-        ];
-        $pruebas = $this->paginate($this->Pruebas);
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
 
-        $this->set(compact('pruebas'));
+            $this->loadModel('Usuarios');
+            $count = $this->Usuarios->find('all', [
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->count();
+
+            if ($count) {
+                $pruebas = $this->Pruebas->find('all', [
+                    'conditions' => [
+                        'paciente_id' => $data['paciente_id']
+                    ]
+                ]);
+                if ($pruebas->count() > 0){
+                    $json = [
+                        'error' => 0,
+                        'message' => '',
+                        'data' => $pruebas
+                    ];
+                } else {
+                    $json = [
+                        'error' => 0,
+                        'message' => 'No existen examenes',
+                    ];
+                }
+
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+                ];
+            }
+
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
     }
 
     /**

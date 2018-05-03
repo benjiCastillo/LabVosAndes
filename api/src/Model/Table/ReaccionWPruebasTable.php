@@ -18,6 +18,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\ReaccionWPrueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\ReaccionWPrueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\ReaccionWPrueba findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ReaccionWPruebasTable extends Table
 {
@@ -35,6 +37,8 @@ class ReaccionWPruebasTable extends Table
         $this->setTable('reaccion_w_pruebas');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Pruebas', [
             'foreignKey' => 'prueba_id',
@@ -202,6 +206,15 @@ class ReaccionWPruebasTable extends Table
             ->scalar('comentario')
             ->requirePresence('comentario', 'create')
             ->notEmpty('comentario');
+
+        $validator
+            ->integer('created_by')
+            ->requirePresence('created_by', 'create')
+            ->notEmpty('created_by');
+
+        $validator
+            ->integer('modified_by')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }

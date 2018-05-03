@@ -14,18 +14,42 @@ class MicrobiologiaPruebasController extends AppController
 {
 
     /**
-     * Index method
+     * List method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function list()
     {
-        $this->paginate = [
-            'contain' => ['Pruebas']
-        ];
-        $microbiologiaPruebas = $this->paginate($this->MicrobiologiaPruebas);
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
 
-        $this->set(compact('microbiologiaPruebas'));
+            $this->loadModel('Usuarios');
+            $count = $this->Usuarios->find('all', [
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->count();
+
+            if ($count) {
+                $micro = $this->Microbiologia->find('all');
+                $json = [
+                    'error' => 0,
+                    'message' => '',
+                    'data' => $micro
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+                ];
+            }
+
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
     }
 
     /**
