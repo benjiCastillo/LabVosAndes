@@ -56,12 +56,12 @@ class UsuariosController extends AppController
         if ($this->request->is('post')) {
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->getData());
             $usuario->created_by = 0;
-            $saved_user = $this->Usuarios->save($usuario);
-            if ($saved_user) {
+            $saved = $this->Usuarios->save($usuario);
+            if ($saved) {
                 $json = [
                     'error' => 0,
                     'message' => 'El usuario se registro correctamente',
-                    'data' => $saved_user->id
+                    'data' => $saved->id
                 ];
             } else {
                 $json = [
@@ -149,8 +149,6 @@ class UsuariosController extends AppController
                         'message' => 'Datos incorrectos'
                     ];
                 }
-
-
             } else {
                 $json = [
                     'error' => 1,

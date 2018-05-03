@@ -81,35 +81,32 @@ class PacientesController extends AppController
         if ($this->request->is('post')) {
             $data = $this->request->getData();
 
-            $this->loadModel('Users');
+            $this->loadModel('Usuarios');
             $user = $this->Usuarios->find('all', [
-                'fields' => ['id'],
+                // 'fields' => ['id'],
                 'conditions' => [
                     'user' => $data['user'],
                     'token' => $data['token']
                 ]
-            ]);
+            ])->first();
 
-            if ($user->count()) {
-                $paciente = $this->Entries->newEntity();
-                $paciente->nombre = $data['nombre'];
-                $paciente->apellidos = $data['apellidos'];
-                $paciente->edad = $data['edad'];
-                $paciente->sexo = $data['sexo'];
-                $paciente->created_by = $user->id;
-                $saved_pac = $this->Pacientes->save($paciente);
-                if ($saved_pac) {
+            if (!empty($user)) {
+                $data['created_by'] = $user->id;
+                $paciente = $this->Pacientes->newEntity();
+                $paciente = $this->Pacientes->patchEntity($paciente, $data);
+                $saved = $this->Pacientes->save($paciente);
+                if ($saved) {
                     $json = [
                         'error' => 0,
                         'save' => 1,
-                        'message' => 'Partida almacenada',
-                        'data' => $saved_pac
+                        'message' => 'Paciente registrado correctamente',
+                        'data' => $saved->id
                     ];
                 } else {
                     $json = [
                         'error' => 1,
                         'save' => 0,
-                        'message' => 'La Partida no fue almacenada'
+                        'message' => 'El paciente no pudo ser registrado'
                     ];
                 }
             } else {

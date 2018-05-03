@@ -75,17 +75,50 @@ class MedicosController extends AppController
      */
     public function add()
     {
-        $medico = $this->Medicos->newEntity();
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         if ($this->request->is('post')) {
-            $medico = $this->Medicos->patchEntity($medico, $this->request->getData());
-            if ($this->Medicos->save($medico)) {
-                $this->Flash->success(__('The medico has been saved.'));
+            $data = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            $this->loadModel('Usuarios');
+            $user = $this->Usuarios->find('all', [
+                // 'fields' => ['id'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->first();
+
+            if (!empty($user)) {
+                $data['created_by'] = $user->id;
+                $medico = $this->Medicos->newEntity();
+                $medico = $this->Medicos->patchEntity($medico, $data);
+                $saved = $this->Medicos->save($medico);
+                if ($saved) {
+                    $json = [
+                        'error' => 0,
+                        'save' => 1,
+                        'message' => 'Médico registrado correctamente',
+                        'data' => $saved->id
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'save' => 0,
+                        'message' => 'El médico no pudo ser registrado'
+                    ];
+                }
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otro dispositivo.',
+                ];
             }
-            $this->Flash->error(__('The medico could not be saved. Please, try again.'));
         }
-        $this->set(compact('medico'));
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     /**

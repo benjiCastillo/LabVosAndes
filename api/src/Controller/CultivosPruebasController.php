@@ -75,18 +75,50 @@ class CultivosPruebasController extends AppController
      */
     public function add()
     {
-        $cultivosPrueba = $this->CultivosPruebas->newEntity();
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         if ($this->request->is('post')) {
-            $cultivosPrueba = $this->CultivosPruebas->patchEntity($cultivosPrueba, $this->request->getData());
-            if ($this->CultivosPruebas->save($cultivosPrueba)) {
-                $this->Flash->success(__('The cultivos prueba has been saved.'));
+            $data = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            $this->loadModel('Usuarios');
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->first();
+
+            if (!empty($user)) {
+                $data['created_by'] = $user->id;
+                $cultivos = $this->CultivosPruebas->newEntity();
+                $cultivos = $this->CultivosPruebas->patchEntity($cultivos, $data);
+                $saved = $this->CultivosPruebas->save($cultivos);
+                if ($saved) {
+                    $json = [
+                        'error' => 0,
+                        'save' => 1,
+                        'message' => 'Prueba registrada correctamente',
+                        'data' => $saved->id
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'save' => 0,
+                        'message' => 'La prueba no pudo ser registrada'
+                    ];
+                }
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otro dispositivo.',
+                ];
             }
-            $this->Flash->error(__('The cultivos prueba could not be saved. Please, try again.'));
         }
-        $pruebas = $this->CultivosPruebas->Pruebas->find('list', ['limit' => 200]);
-        $this->set(compact('cultivosPrueba', 'pruebas'));
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     /**

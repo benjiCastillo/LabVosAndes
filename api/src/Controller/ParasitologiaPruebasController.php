@@ -75,18 +75,50 @@ class ParasitologiaPruebasController extends AppController
      */
     public function add()
     {
-        $parasitologiaPrueba = $this->ParasitologiaPruebas->newEntity();
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         if ($this->request->is('post')) {
-            $parasitologiaPrueba = $this->ParasitologiaPruebas->patchEntity($parasitologiaPrueba, $this->request->getData());
-            if ($this->ParasitologiaPruebas->save($parasitologiaPrueba)) {
-                $this->Flash->success(__('The parasitologia prueba has been saved.'));
+            $data = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            $this->loadModel('Usuarios');
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->first();
+
+            if (!empty($user)) {
+                $data['created_by'] = $user->id;
+                $parasito = $this->ParasitologiaPruebas->newEntity();
+                $parasito = $this->ParasitologiaPruebas->patchEntity($parasito, $data);
+                $saved = $this->ParasitologiaPruebas->save($parasito);
+                if ($saved) {
+                    $json = [
+                        'error' => 0,
+                        'save' => 1,
+                        'message' => 'Prueba registrada correctamente',
+                        'data' => $saved->id
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'save' => 0,
+                        'message' => 'La prueba no pudo ser registrada'
+                    ];
+                }
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otro dispositivo.',
+                ];
             }
-            $this->Flash->error(__('The parasitologia prueba could not be saved. Please, try again.'));
         }
-        $pruebas = $this->ParasitologiaPruebas->Pruebas->find('list', ['limit' => 200]);
-        $this->set(compact('parasitologiaPrueba', 'pruebas'));
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     /**
