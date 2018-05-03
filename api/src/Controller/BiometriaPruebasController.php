@@ -83,7 +83,7 @@ class BiometriaPruebasController extends AppController
 
             $this->loadModel('Usuarios');
             $user = $this->Usuarios->find('all', [
-                // 'fields' => ['id'],
+                'fields' => ['id'],
                 'conditions' => [
                     'user' => $data['user'],
                     'token' => $data['token']
@@ -130,20 +130,51 @@ class BiometriaPruebasController extends AppController
      */
     public function edit($id = null)
     {
-        $biometriaPrueba = $this->BiometriaPruebas->get($id, [
+        $biometria = $this->BiometriaPruebas->get($id, [
             'contain' => []
         ]);
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $biometriaPrueba = $this->BiometriaPruebas->patchEntity($biometriaPrueba, $this->request->getData());
-            if ($this->BiometriaPruebas->save($biometriaPrueba)) {
-                $this->Flash->success(__('The biometria prueba has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $data = $this->request->getData();
+            $this->loadModel('Usuarios');
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->first();
+            if (!empty($user)) {
+                $data['modified_by'] = $user->id;
+                $biometria = $this->BiometriaPruebas->newEntity();
+                $biometria = $this->BiometriaPruebas->patchEntity($biometria, $data);
+                $saved = $this->BiometriaPruebas->save($biometria);
+                if ($saved) {
+                    $json = [
+                        'error' => 0,
+                        'save' => 1,
+                        'message' => 'Prueba editada correctamente',
+                        'data' => $saved->id
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'save' => 0,
+                        'message' => 'La prueba no pudo ser editada'
+                    ];
+                }
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otro dispositivo.',
+                ];
             }
-            $this->Flash->error(__('The biometria prueba could not be saved. Please, try again.'));
         }
-        $pruebas = $this->BiometriaPruebas->Pruebas->find('list', ['limit' => 200]);
-        $this->set(compact('biometriaPrueba', 'pruebas'));
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     /**

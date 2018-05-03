@@ -133,16 +133,47 @@ class MedicosController extends AppController
         $medico = $this->Medicos->get($id, [
             'contain' => []
         ]);
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $medico = $this->Medicos->patchEntity($medico, $this->request->getData());
-            if ($this->Medicos->save($medico)) {
-                $this->Flash->success(__('The medico has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $data = $this->request->getData();
+            $this->loadModel('Usuarios');
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->first();
+            if (!empty($user)) {
+                $data['modified_by'] = $user->id;
+                $medico = $this->Medicos->patchEntity($medico, $data);
+                $saved = $this->Medicos->save($medico);
+                if ($saved) {
+                    $json = [
+                        'error' => 0,
+                        'save' => 1,
+                        'message' => 'Médico editado correctamente',
+                        'data' => $saved->id
+                    ];
+                } else {
+                    $json = [
+                        'error' => 1,
+                        'save' => 0,
+                        'message' => 'El médico no pudo ser editado'
+                    ];
+                }
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otro dispositivo.',
+                ];
             }
-            $this->Flash->error(__('The medico could not be saved. Please, try again.'));
         }
-        $this->set(compact('medico'));
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     /**
