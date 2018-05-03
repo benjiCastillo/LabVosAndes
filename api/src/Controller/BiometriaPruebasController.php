@@ -33,7 +33,11 @@ class BiometriaPruebasController extends AppController
             ])->count();
 
             if ($count) {
-                $biometria = $this->BiometriaPruebas->find('all');
+                $biometria = $this->BiometriaPruebas->find('all', [
+                    'conditions' => [
+                        'prueba_id' => $data['prueba_id']
+                    ]
+                ])->first();
                 $json = [
                     'error' => 0,
                     'message' => '',
@@ -186,14 +190,44 @@ class BiometriaPruebasController extends AppController
      */
     public function delete($id = null)
     {
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
         $this->request->allowMethod(['post', 'delete']);
-        $biometriaPrueba = $this->BiometriaPruebas->get($id);
-        if ($this->BiometriaPruebas->delete($biometriaPrueba)) {
-            $this->Flash->success(__('The biometria prueba has been deleted.'));
-        } else {
-            $this->Flash->error(__('The biometria prueba could not be deleted. Please, try again.'));
-        }
+        $json = [];
 
-        return $this->redirect(['action' => 'index']);
+        $data = $this->request->getData();
+
+        $this->loadModel('Usuarios');
+        $user = $this->Usuarios->find('all', [
+            'fields' => ['id'],
+            'conditions' => [
+                'user' => $data['user'],
+                'token' => $data['token']
+            ]
+        ])->first();
+
+        if(!empty($user)) {
+            $registry = $this->BiometriaPruebas->get($id);
+            if ($this->BiometriaPruebas->delete($registry)) {
+                $json = [
+                    'error' => 0,
+                    'message' => 'El registro se eliminó correctamente'
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'El registro no pudo eliminarse correctamente'
+                ];
+            }
+
+        } else {
+            $json = [
+                'error' => 1,
+                'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+            ];
+        }
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 }

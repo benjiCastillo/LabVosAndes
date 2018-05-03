@@ -108,15 +108,45 @@ class UsuariosController extends AppController
      */
     public function delete($id = null)
     {
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
         $this->request->allowMethod(['post', 'delete']);
-        $usuario = $this->Usuarios->get($id);
-        if ($this->Usuarios->delete($usuario)) {
-            $this->Flash->success(__('The usuario has been deleted.'));
-        } else {
-            $this->Flash->error(__('The usuario could not be deleted. Please, try again.'));
-        }
+        $json = [];
 
-        return $this->redirect(['action' => 'index']);
+        $data = $this->request->getData();
+
+        $this->loadModel('Usuarios');
+        $user = $this->Usuarios->find('all', [
+            'fields' => ['id'],
+            'conditions' => [
+                'user' => $data['user'],
+                'token' => $data['token']
+            ]
+        ])->first();
+
+        if(!empty($user)) {
+            $usuario = $this->Usuarios->get($id);
+            if ($this->Usuarios->delete($usuario)) {
+                $json = [
+                    'error' => 0,
+                    'message' => 'El registro se eliminó correctamente'
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'El registro no pudo eliminarse correctamente'
+                ];
+            }
+
+        } else {
+            $json = [
+                'error' => 1,
+                'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+            ];
+        }
+        $body = $this->response->getBody();
+        $body->write(json_encode($json));
+        return $this->response->withBody($body);
     }
 
     public function auth()
