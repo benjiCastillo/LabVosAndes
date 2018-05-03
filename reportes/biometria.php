@@ -1,8 +1,7 @@
 <?php
 // $id=$_GET["idExamen"];
-// $idp=$_GET["idPaciente"];
-$id=17;
-$idp=28;
+$id=86;
+
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
 require('createPDF.php');
@@ -11,40 +10,19 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
 $con=Conectar();
 
-$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
-$stmtp = $con->prepare($sqlp);
-$resultsp = $stmtp->execute(array($idp));
+$sqle = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE e.id=?';
+$stmtp = $con->prepare($sqle);
+$resultsp = $stmtp->execute(array($id));
 $rowp = $stmtp->fetchAll();
 
-$sql = 'SELECT * FROM biometria WHERE id=?';
+$sql = 'SELECT * FROM biometria WHERE id_examen=?';
 $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
-$pdf = createPDF();
-$pdf->SetFont('helvetica', '', 12);
-$pdf->SetLeftMargin(15);
-$pdf->AddPage();
-
-$pdf->SetTextColor(37,65,98);
-
-$image_file = K_PATH_IMAGES.'logovosandes.jpg';
-$pdf->Image($image_file, 30, 2, 20, '', 'JPG', '', 'T', false, 200, '', false, false, 0, false, false, false);
-$pdf->Ln(3);
-
-$titleP = '<p><b>LABORATORIO DE ANÁLISIS CLÍNICO</b> <b style="color: rgb(150,0,0)">"VOS ANDES"</b></p>';
-$pdf->writeHTML($titleP, true, false, false, false, 'C');
-$pdf->Ln(2);
-$pdf->SetFont('helvetica', '', 11);
-$pdf->Cell(0, 15, '                                  Dir.: Av. Camacho esq. Oruro Clínica 1º de mayo        Telf.: 62-23510', 0, false, 'L', 0, '', 0, false, 'M', 'M');
-$pdf->Ln(5);
-$pdf->Cell(0, 15, '                                  Cel.: 72414698        E-mail: labvosandes@gmail.com        Emergencias las 24 horas.', 0, false, 'L', 0, '', 0, false, 'M', 'M');
-
-$style = array('width' => 0.3, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
-$pdf->Line(152.5, 19.5, 199, 19.5, $style);
-$style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
-$pdf->Line(2, 22, 212, 22, $style1);
-
+$con = null;
+$title = 'Exámen Biometría Hemática';
+$pdf = createPDF($title);
 
 $pdf->SetFont('helvetica', '', 9);
 // set alpha to semi-transparency
@@ -82,27 +60,27 @@ $tabla1 = '<table>
                 </tr>
                 <tr>
                     <td>Hematíes: </td>
-                    <td>'.$rows[1].' mm3</td>
+                    <td>'.$rows[1].'</td>
                     <td width="165" style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
                 </tr>
                 <tr>
                     <td>Hematocrito: </td>
-                    <td>'.$rows[2].' %</td>
+                    <td>'.$rows[2].'</td>
                     <td style="color: rgb(58,137,159)">H: 49 - 53; M: 47 - 51 </td>
                 </tr>
                 <tr>
                     <td>Hemoglobina: </td>
-                    <td>'.$rows[3].' gr/dl</td>
+                    <td>'.$rows[3].'/dl</td>
                     <td style="color: rgb(58,137,159)">H: 16 +/- 1,5; M: 15 +/- 0,5</td>
                 </tr>
                 <tr>
                     <td>Leucocito: </td>
-                    <td>'.$rows[4].' mm3</td>
+                    <td>'.$rows[4].'</td>
                     <td style="color: rgb(58,137,159)">5,000 - 8,000 </td>
                 </tr>
                 <tr>
                     <td>V. S. G.: </td>
-                    <td>'.$rows[5].' mm/hra</td>
+                    <td>'.$rows[5].'</td>
                     <td style="color: rgb(58,137,159)">1 - 10</td>
                 </tr>
                 <tr>
@@ -113,17 +91,17 @@ $tabla1 = '<table>
                 </tr>
                 <tr>
                     <td>V. C. M.: </td>
-                    <td>'.$rows[6].' fl.</td>
+                    <td>'.$rows[6].'</td>
                     <td style="color: rgb(58,137,159)">90 +/- 8</td>
                 </tr>
                 <tr>
                     <td>Hb. C. M.: </td>
-                    <td>'.$rows[7].' pg.</td>
+                    <td>'.$rows[7].'</td>
                     <td style="color: rgb(58,137,159)">30 +/- 3</td>
                 </tr>
                 <tr>
                     <td>C. Hb. C. M.: </td>
-                    <td>'.$rows[8].' %</td>
+                    <td>'.$rows[8].'</td>
                     <td style="color: rgb(58,137,159)">34 +/- 2</td>
                 </tr>
 </table><br>';
@@ -207,7 +185,7 @@ else{
 $pdf->writeHTMLCell($w=150, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 if($comentariohema != ''){
-    $pdf->writeHTMLCell($w=0, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
+    $pdf->writeHTMLCell($w=100, $h=0, $x='12', $y='', $comentariohema, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);    
 }
 
 $pdf->writeHTMLCell($w=150, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);

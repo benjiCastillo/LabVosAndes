@@ -1,49 +1,28 @@
 <?php
-$id=$_GET["idExamen"];
-$idp=$_GET["idPaciente"];
+$id=86;
 
-header('Content-Type: text/html; charset=ISO-8859-1');
 require_once('tcpdf/tcpdf.php');
 require('conexion.php');
+require('createPDF.php');
 
 $con=Conectar();
 
-$sqlp = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE p.id=?';
-$stmtp = $con->prepare($sqlp);
-$resultsp = $stmtp->execute(array($idp));
+$sqle = 'SELECT p.nombre, p.apellidos, p.edad, m.nombre, m.apellidos, DATE_FORMAT(e.fecha, "%d-%m-%Y") FROM examen e INNER JOIN paciente p ON e.id_paciente=p.id INNER JOIN medico m ON e.id_medico=m.id WHERE e.id=?';
+$stmtp = $con->prepare($sqle);
+$resultsp = $stmtp->execute(array($id));
 $rowp = $stmtp->fetchAll();
 
-$sql = 'SELECT * FROM reaccion_w WHERE id=?';
+$sql = 'SELECT * FROM reaccion_w WHERE id_examen=?';
 $stmt = $con->prepare($sql);
 $results = $stmt->execute(array($id));
 $row = $stmt->fetchAll();
 
-$pdf = createPDF();
-$pdf->SetFont('helvetica', '', 12);
-$pdf->SetLeftMargin(15);
-$pdf->AddPage();
+$con = null;
 
-// $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-// $pdf->SetFillColor(59,78,20);
-$pdf->SetTextColor(37,65,98);
+$title = 'Reacción de Widal';
+$pdf = createPDF($title);
 
-$image_file = K_PATH_IMAGES.'logovosandes.jpg';
-$pdf->Image($image_file, 30, 2, 20, '', 'JPG', '', 'T', false, 200, '', false, false, 0, false, false, false);
-$pdf->Ln(3);
-
-$titleP = '<p><b>LABORATORIO DE ANÁLISIS CLÍNICO</b> <b style="color: rgb(150,0,0)">"VOS ANDES"</b></p>';
-$pdf->writeHTML($titleP, true, false, false, false, 'C');
-$pdf->Ln(2);
-$pdf->SetFont('helvetica', '', 11);
-$pdf->Cell(0, 15, '                                  Dir.: Av. Camacho esq. Oruro Clínica 1º de mayo        Telf.: 62-23510', 0, false, 'L', 0, '', 0, false, 'M', 'M');
-$pdf->Ln(5);
-$pdf->Cell(0, 15, '                                  Cel.: 72414698        E-mail: labvosandes@gmail.com        Emergencias las 24 horas.', 0, false, 'L', 0, '', 0, false, 'M', 'M');
-
-$style = array('width' => 0.3, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
-$pdf->Line(152.5, 19.5, 199, 19.5, $style);
-$style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
-$pdf->Line(2, 22, 212, 22, $style1);
-
+$pdf->SetFont('helvetica', '', 9);
 // set alpha to semi-transparency
 $pdf->SetAlpha(1);
 
@@ -61,18 +40,18 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>'.$rows1[3].' '.$rows1[4].'</p></td>
                     <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>'.$rows1[5].'</p></td>
                 </tr>
-            </table>'; 
-    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1]; 
+            </table>';
+    $nombre = 'GeneralO_'.$rows1[0].'_'.$rows1[1];
 }
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 
-$pdf->SetFont('helvetica','',11);
+$pdf->SetFont('helvetica','',9);
 $title = '<p><b>REACCIÓN DE WIDAL</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 foreach ($row as $rows){
-$biometria = '<table>
+$biometria = '<table style="padding: 4px;">
         <tr>
             <td><b>Dilución</b></td>
             <td><b>1/20</b></td>
@@ -121,17 +100,19 @@ $biometria = '<table>
     </table>';
     $com = $rows[25];
 }
-$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
+$pdf->writeHTMLCell($w=180, $h=0, $x='15', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
 
 $pdf->Ln(4);
-$comentario = '<div>Comentario: '.$com.'</div>';
-$pdf->writeHTMLCell($w=180, $h=0, $x='18', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+$comentario = '<div><b>Comentario: </b>'.$com.'</div>';
+if ($com != ''){
+    $pdf->writeHTMLCell($w=180, $h=0, $x='19', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+}
 
-$pdf->SetFont('helvetica','',9);
+$pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>
         </div>';
-$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='122', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='100', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->Output($nombre.'.pdf', 'I');
 ?>

@@ -1,0 +1,56 @@
+<?php
+namespace App\Model\Entity;
+
+use Cake\ORM\Entity;
+
+/**
+ * MicrobiologiaPrueba Entity
+ *
+ * @property int $id
+ * @property string $celulas_epitelio_vaginal
+ * @property string $leucocitos
+ * @property string $piocitos
+ * @property string $celulas_clave
+ * @property string $tricomona_vaginalis
+ * @property string $flora_bacteriana
+ * @property string $hifas_micoticas
+ * @property string $prueba_koh
+ * @property string $coco_bacilos_gram_positivos
+ * @property string $cocos_gram_positivos
+ * @property string $bacilos_gram_positivos
+ * @property string $bacilos_gram_negativos
+ * @property string $hifas_esporas_micoticas
+ * @property int $prueba_id
+ *
+ * @property \App\Model\Entity\Prueba $prueba
+ */
+class MicrobiologiaPrueba extends Entity
+{
+
+    /**
+     * Fields that can be mass assigned using newEntity() or patchEntity().
+     *
+     * Note that when '*' is set to true, this allows all unspecified fields to
+     * be mass assigned. For security purposes, it is advised to set '*' to false
+     * (or remove it), and explicitly make individual fields accessible as needed.
+     *
+     * @var array
+     */
+    protected $_accessible = [
+        'celulas_epitelio_vaginal' => true,
+        'leucocitos' => true,
+        'piocitos' => true,
+        'celulas_clave' => true,
+        'tricomona_vaginalis' => true,
+        'flora_bacteriana' => true,
+        'hifas_micoticas' => true,
+        'prueba_koh' => true,
+        'coco_bacilos_gram_positivos' => true,
+        'cocos_gram_positivos' => true,
+        'bacilos_gram_positivos' => true,
+        'bacilos_gram_negativos' => true,
+        'hifas_esporas_micoticas' => true,
+        'prueba_id' => true,
+        'prueba' => true
+    ];
+}
