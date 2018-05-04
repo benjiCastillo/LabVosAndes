@@ -7,10 +7,9 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 
 		insertar: function (datos) {
 			var d = $q.defer();
-			console.log(datos);
 			$http({
 				method: 'POST',
-				url: PATH+'public/paciente/',
+				url: PATH + 'pacientes/add',
 				data: datos
 			})
 				.then(function successCallback(response) {
@@ -24,16 +23,18 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			return d.promise;
 
 		},
-		listar: function () {
+		listar: function (data) {
 			var d = $q.defer();
-
 			$http({
-				method: 'GET',
-				url: PATH+'public/paciente/',
+				method: 'POST',
+				url: PATH + 'pacientes/list',
+				data: {
+					user: data.user,
+					token: data.data.token
+				}
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
-
 					return d.resolve()
 				}, function errorCallback(response) {
 					return d.resolve()
@@ -42,13 +43,12 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			return d.promise;
 
 		},
-		modificar: function (user) {
+		modificar: function (data) {
 			var d = $q.defer();
-
 			$http({
 				method: 'PUT',
-				url: PATH+'public/paciente/' + user.id,
-				data: user
+				url: PATH + 'pacientes/edit/' + data.id,
+				data: data
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -60,12 +60,12 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 				});
 			return d.promise;
 		},
-		eliminar: function (user) {
+		eliminar: function (data) {
 			var d = $q.defer();
-
 			$http({
-				method: 'DELETE',
-				url: PATH+'public/paciente/' + user.id
+				method: 'POST',
+				url: PATH + 'pacientes/delete/' + data.id,
+				data: data
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;

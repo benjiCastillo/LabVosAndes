@@ -8,10 +8,10 @@ function login() {
     $('#incorrecto').css('display', 'none');
     $('#correcto').css('display', 'none');
     $('#cargando').css('display', 'block');
-    $.post("http://localhost/LabVosAndes/api/public/user/login",
+    $.post("http://localhost/LabVosAndes/api/usuarios/auth",
         {
-            _user: user,
-            _password: password
+            user: user,
+            password: password
         },
         function (data, status) {
             $('#cargando').css('display', 'none');
@@ -19,8 +19,9 @@ function login() {
                 $('#incorrecto').css('display', 'block');
             } else {
                 $('#correcto').css('display', 'block');
-                var dataUser = data.message;
-                sessionStorage.setItem('user', JSON.stringify(dataUser));
+                data.user = user;
+                
+                sessionStorage.setItem('user', JSON.stringify(data));
                 window.location.href = 'app';
             }
         });
@@ -37,11 +38,11 @@ function saveUser() {
             $('#testInput').text('Cargando ..');
             if (clave == 'vosandes') {
                 $('#testInput').text('');
-                $.post("http://localhost/LabVosAndes/api/public/user/",
+                $.post("http://localhost/LabVosAndes/api/usuarios/add",
                     {
-                        _nombre: nombre,
-                        _user: user,
-                        _password: pwd1
+                        nombre: nombre,
+                        user: user,
+                        password: pwd1
                     },
                     function (data, status) {
                         if (data.error == 0) {
@@ -85,9 +86,7 @@ function showLogIn() {
 
 // util
 function pwdTest(pwd1, pwd2) {
-    if (pwd1 == pwd2) return true;
-    else
-        return false;
+    return (pwd1 == pwd2) ? true : false;
 }
 function inputTest(nombre, user, password, password2, clave) {
     var cont = 0;

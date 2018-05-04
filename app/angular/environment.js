@@ -1,1 +1,1 @@
-var PATH = "http://localhost/LabVosAndes/";
+var PATH = "http://localhost/LabVosAndes/api/";

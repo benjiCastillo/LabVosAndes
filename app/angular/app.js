@@ -27,10 +27,10 @@ app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificacion
 	$scope.titulo = "";
 	$scope.subtitulo = "";
 
-	//console.log( $scope.notificaciones );
 	var user = sessionStorage.getItem('user');
-	$scope.usuario = JSON.parse(user);
-
+	var user = JSON.parse(user)
+	console.log(user.user)
+	$scope.user = user;
 
 	Configuracion.cargar().then(function () {
 		$scope.config = Configuracion.config;

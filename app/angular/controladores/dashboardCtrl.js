@@ -6,6 +6,8 @@ app.controller('dashboardCtrl', ['$scope','$sessionStorage', function($scope,$se
 	$scope.activar('Mdashboard','', 'Inicio', 'Datos')
 	
 	var user = sessionStorage.getItem('user');
-	$scope.user = JSON.parse(user);
+	var user = JSON.parse(user)
+	console.log(user.user)
+	$scope.user = user;
 	
 }])

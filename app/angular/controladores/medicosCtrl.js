@@ -1,85 +1,88 @@
 var app = angular.module('facturacionApp.medicosCtrl', []);
 
 // controlador clientes
-app.controller('medicosCtrl', ['$scope','$routeParams','medicosServices', function($scope,$routeParams, medicosServices){
-	
-	var pag = $routeParams.pag
-	$scope.medicos = [];
-    $scope.medicos.respuesta = "";
-	$scope.nro = 1;
+app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', function ($scope, $routeParams, medicosServices) {
+
+    var user = sessionStorage.getItem('user');
+    user = JSON.parse(user)
+    $scope.user = user;
+
+    var pag = $routeParams.pag
+    $scope.medicos = [];
+    $scope.nro = 1;
     $scope.noExistenMedicos = false;
     $scope.cargandoMedicos = true;
     $scope.medicosCargado = false;
-	
-    $scope.listar = function(){
+
+
+    $scope.listar = function (user) {
         $scope.pacientesMedicos = true;
-			medicosServices.listar().then(function(){
-                
-				$scope.response = medicosServices.response;
-                $scope.cargandoMedicos = false;
-                console.log($scope.response)
-                if ($scope.response.error == 1){
-                    console.log('no hay medicos');
-                    $scope.noExistenMedicos = true;
-                    $scope.medicosCargado = false;
-                }else{
-                    $scope.medicosCargado = true;
-                    $scope.noExistenMedicos = false;
-                    $scope.medicos = $scope.response.message;
-                }
-			});
+        medicosServices.listar(user).then(function () {
+
+            $scope.response = medicosServices.response;
+            $scope.cargandoMedicos = false;
+
+            if ($scope.response.error == 1) {
+    
+                $scope.noExistenMedicos = true;
+                $scope.medicosCargado = false;
+            } else {
+                $scope.medicosCargado = true;
+                $scope.noExistenMedicos = false;
+                $scope.medicos = $scope.response.data;
+            }
+        });
     }
 
-    $scope.listar();
-    
-	$scope.insertarModal = function(){
-            $scope.medico = {};
-			$("#modal-medico").modal();
+    $scope.listar($scope.user);
+
+    $scope.insertarModal = function () {
+        $scope.medico = {};
+        $("#modal-medico").modal();
     }
-	
-	$scope.insertar = function(medico){
-		console.log(medico);
-		 medicosServices.insertar(medico).then(function(){
-		    $scope.response = medicosServices.response;
-            console.log($scope.response);
+
+    $scope.insertar = function (medico) {
+        medico.user = $scope.user.user;
+        medico.token = $scope.user.data.token;
+        medicosServices.insertar(medico).then(function () {
+            $scope.response = medicosServices.response;
+
             $("#modal-medico").modal("hide");
-             
-             $scope.listar();
-		});
+            $scope.listar($scope.user);
+        });
 
-	}
-    
-    $scope.mostrarEditar = function(medico){
-        // console.log(medico);
+    }
+
+    $scope.mostrarEditar = function (medico) {
         $scope.medico = medico
         $("#modal-editar-medico").modal();
     }
 
-    $scope.modificar = function(medicoMod){
-		console.log(medicoMod)
-        medicosServices.modificar(medicoMod).then(function(){
-		    $scope.response = medicosServices.response;
-            console.log($scope.response);
+    $scope.modificar = function (medicoMod) {
+        medicoMod.user = $scope.user.user;
+        medicoMod.token = $scope.user.data.token;
+        medicosServices.modificar(medicoMod).then(function () {
+            $scope.response = medicosServices.response;
+
             $("#modal-editar-medico").modal("hide");
-             $scope.listar();
-		});        
+            $scope.listar($scope.user);
+        });
     }
 
-	$scope.mostrarEliminar = function(medico){
-        // console.log(medico);
+    $scope.mostrarEliminar = function (medico) {
         $scope.medico = medico;
-		console.log(medico)
         $("#modal-medico-eliminar").modal();
     }
 
-	$scope.eliminar = function(medico){
-		console.log(medico)
-        medicosServices.eliminar(medico).then(function(){
-		    $scope.response = medicosServices.response;
-            console.log($scope.response);
+    $scope.eliminar = function (medico) {
+        medico.user = $scope.user.user;
+        medico.token = $scope.user.data.token;
+        medicosServices.eliminar(medico).then(function () {
+            $scope.response = medicosServices.response;
+
             $("#modal-medico-eliminar").modal("hide");
-             $scope.listar();
-		});        
+            $scope.listar($scope.user);
+        });
     }
 
 
