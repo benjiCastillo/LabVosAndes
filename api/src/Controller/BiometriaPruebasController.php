@@ -230,4 +230,17 @@ class BiometriaPruebasController extends AppController
         $body->write(json_encode($json));
         return $this->response->withBody($body);
     }
+
+    public function printBiometriaPruebas($id = null) {
+        $this->loadModel('Pruebas');
+        $prueba = $this->Pruebas->find()
+                        ->contain(['Pacientes', 'Medicos', 'BiometriaPruebas'])
+                        ->where(['Pruebas.id' => $id])
+                        ->first();
+        // debug($biometria);
+        $this->viewBuilder()->setLayout('ajax');
+        $this->response = $this->response->withType('pdf');
+        $this->set('prueba', $prueba);
+        $this->render('/Reports/biometria');
+    }
 }

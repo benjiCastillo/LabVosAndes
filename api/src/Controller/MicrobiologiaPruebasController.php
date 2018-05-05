@@ -229,4 +229,17 @@ class MicrobiologiaPruebasController extends AppController
         $body->write(json_encode($json));
         return $this->response->withBody($body);
     }
+
+    public function printMicrobiologiaPruebas($id = null) {
+        $this->loadModel('Pruebas');
+        $prueba = $this->Pruebas->find()
+                        ->contain(['Pacientes', 'Medicos', 'MicroBiologiaPruebas'])
+                        ->where(['Pruebas.id' => $id])
+                        ->first();
+        // debug($prueba);
+        $this->viewBuilder()->setLayout('ajax');
+        $this->response = $this->response->withType('pdf');
+        $this->set('prueba', $prueba);
+        $this->render('/Reports/microbiologia');
+    }
 }
