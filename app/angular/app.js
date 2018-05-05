@@ -1,19 +1,20 @@
-var app = angular.module('facturacionApp', [
+var app = angular.module('vosandesApp', [
 	'ngRoute', 'jcs-autoValidate',
-	'facturacionApp.configuracion',
-	'facturacionApp.mensajes',
-	'facturacionApp.notificaciones',
-	'facturacionApp.pacientesCtrl',
-	'facturacionApp.medicosCtrl',
-	'facturacionApp.dashboardCtrl',
-	'facturacionApp.informeCtrl',
-	'facturacionApp.examenCtrl',
-	'facturacionApp.pacExaCtrl',
-	'facturacionApp.pacientesServices',
-	'facturacionApp.medicosServices',
-	'facturacionApp.informeServices',
-	'facturacionApp.examenServices',
-	'facturacionApp.pacientesExamenServices',
+	'vosandesApp.configuracion',
+	'vosandesApp.mensajes',
+	'vosandesApp.notificaciones',
+	'vosandesApp.pacientesCtrl',
+	'vosandesApp.medicosCtrl',
+	'vosandesApp.dashboardCtrl',
+	'vosandesApp.informeCtrl',
+	'vosandesApp.pruebasCtrl',
+	'vosandesApp.pacExaCtrl',
+	'vosandesApp.pacientesServices',
+	'vosandesApp.medicosServices',
+	'vosandesApp.informeServices',
+	'vosandesApp.pruebasServices',
+	'vosandesApp.pacientesExamenServices',
+	'angularMoment'
 
 ]);
 
@@ -67,9 +68,9 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'paciente/paciente.html',
 			controller: 'pacientesCtrl'
 		})
-		.when('/paciente/examen/', {
-			templateUrl: 'paciente/examen.html',
-			controller: 'pacExaCtrl'
+		.when('/paciente/pruebas/', {
+			templateUrl: 'pruebas/pruebas.html',
+			controller: 'pruebasCtrl'
 		})
 		.when('/medico/:pag', {
 			templateUrl: 'medico/medico.html',

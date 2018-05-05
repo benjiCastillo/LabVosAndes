@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.informeCtrl', []);
+var app = angular.module('vosandesApp.informeCtrl', []);
 
 // controlador clientes
 app.controller('informeCtrl', ['$scope','$routeParams','informeServices', function($scope,$routeParams, informeServices){

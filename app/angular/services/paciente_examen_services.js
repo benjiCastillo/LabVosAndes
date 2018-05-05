@@ -1,35 +1,62 @@
-var app = angular.module('facturacionApp.examenServices', [])
+var app = angular.module('vosandesApp.pacientesExamenServices', [])
 
-app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
+app.factory('pacientesExamenServices', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
+
 
 	var self = {
-		listar: function (id) {
-			var d = $q.defer();
 
+		insertarExamen: function (datos) {
+			var d = $q.defer();
+			console.log(datos);
 			$http({
-				method: 'GET',
-				url: PATH+'api/public/examen/'+id+'/examenesPaciente/',
+				method: 'POST',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examen/insertTest/',
+				data: {
+					_id_medico: datos.id_medico,
+					_id_paciente: datos.id_paciente
+				}
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
 					return d.resolve()
 				}, function errorCallback(response) {
-					// ko
-					return d.resolve()
 					self.response = response.data
+					return d.resolve();
 				});
 			return d.promise;
+
 		},
 		insertarInforme: function (datos) {
 			var d = $q.defer();
 			console.log(datos);
 			$http({
 				method: 'POST',
-				url: PATH+'api/public/informesg/',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/insertReport/',
 				data: {
 					_nombre: datos.nombre,
-					_contenido: datos.informe,
-					_id_examen:datos.id_examen
+					_contenido: datos.informe
+				}
+			})
+				.then(function successCallback(response) {
+					self.response = response.data;
+					return d.resolve()
+				}, function errorCallback(response) {
+					self.response = response.data
+					return d.resolve();
+				});
+			return d.promise;
+
+		},
+		insertarTipo: function (datos) {
+			var d = $q.defer();
+			// console.log(datos);
+			$http({
+				method: 'POST',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examen/insertType/',
+				data: {
+					_id_examen: datos.id_examen,
+					_tipo: datos.tipo,
+					_id_tipo: datos.id_tipo
 				}
 			})
 				.then(function successCallback(response) {
@@ -44,10 +71,10 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 		},
 		insertarExamenGeneral: function (datos) {
 			var d = $q.defer();
-			console.log(datos);
+			// console.log(datos);
 			$http({
 				method: 'POST',
-				url: PATH+'api/public/examengeneral/',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/insertGeneralTest/',
 				data: {
 					_color: datos.color,
 					_cantidad: datos.cantidad,
@@ -71,8 +98,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 					_celulas: datos.celulas,
 					_cristales: datos.cristales,
 					_otros: datos.otros1,
-					_exa_bac_sed: datos.otros2,
-					_id_examen:datos.id_examen
+					_exa_bac_sed: datos.otros2
 				}
 			})
 				.then(function successCallback(response) {
@@ -87,10 +113,10 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 		},
 		insertarBiometria: function (datos) {
 			var d = $q.defer();
-			console.log(datos);
+			// console.log(datos);
 			$http({
 				method: 'POST',
-				url: PATH+'api/public/biometria/',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/insertBio/',
 				data: {
 					_hematies: datos.hematies,
 					_hematocrito: datos.hematocrito,
@@ -109,8 +135,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 					_monocito: datos.monocito,
 					_prolinfocito: datos.prolinfocito,
 					_cel_inmaduras: datos.celinmaduras,
-					_comentario_leuco: datos.comentario2,
-					_id_examen:datos.id_examen
+					_comentario_leuco: datos.comentario2
 				}
 			})
 				.then(function successCallback(response) {
@@ -128,7 +153,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			// console.log(datos);
 			$http({
 				method: 'POST',
-				url: PATH+'api/public/reaccionw/',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/',
 				data: {
 					_paraA1: datos.pA20,
 					_paraA2: datos.pA40,
@@ -154,8 +179,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 					_flagelarH4: datos.f160,
 					_flagelarH5: datos.f320,
 					_flagelarH6: datos.f400,
-					_comentario: datos.comentario,
-					_id_examen:datos.id_examen
+					_comentario: datos.comentario
 				}
 			})
 				.then(function successCallback(response) {
@@ -168,12 +192,56 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			return d.promise;
 
 		},
+		listarMedicos: function () {
+			var d = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/medico/',
+			})
+				.then(function successCallback(response) {
+					// ok
+					// self.cargado		= true;
+					// self.cargando		= false;
+					self.response = response.data;
+
+					return d.resolve()
+				}, function errorCallback(response) {
+					// ko
+					return d.resolve()
+					// self.cargado		= true;
+					// self.cargando		= false;
+					self.response = response.data
+				});
+			return d.promise;
+
+		},
+		listarExaPac: function (id) {
+			var d = $q.defer();
+			console.log(id)
+			$http({
+				method: 'GET',
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examen/listExamenPaciente/' + id,
+			})
+				.then(function successCallback(response) {
+
+					self.response = response.data;
+
+					return d.resolve()
+				}, function errorCallback(response) {
+
+					return d.resolve()
+
+					self.response = response.data
+				});
+			return d.promise;
+		},
 		listarInforme: function (id) {
 			var d = $q.defer();
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: PATH+'api/public/informesg/' + id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -193,7 +261,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: PATH+'api/public/informesg/' + data.id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/' + data.id,
 				data: {
 					nombre: data.nombre,
 					contenido: data.contenido
@@ -220,7 +288,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: PATH+'api/public/informesg/' + user.id + '/' + user.titulo
+				url: 'http://localhost/~edev/LabVosAndes/api/public/informesg/' + user.id + '/' + user.titulo
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -238,7 +306,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: PATH+'api/public/biometria/' + id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -258,7 +326,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: PATH+'api/public/biometria/' + data.id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/' + data.id,
 				data: {
 					hematies: data.hematies,
 					hematocrito: data.hematocrito,
@@ -302,7 +370,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: PATH+'api/public/biometria/' + user.id
+				url: 'http://localhost/~edev/LabVosAndes/api/public/biometria/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -320,7 +388,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: PATH+'api/public/examengeneral/' + id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -340,7 +408,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: PATH+'api/public/examengeneral/' + data.id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/' + data.id,
 				data: {
 					color: data.color,
 					cantidad: data.cantidad,
@@ -389,7 +457,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: PATH+'api/public/examengeneral/' + user.id
+				url: 'http://localhost/~edev/LabVosAndes/api/public/examengeneral/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -407,7 +475,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'DELETE',
-				url: PATH+'api/public/reaccionw/' + user.id
+				url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/' + user.id
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -425,7 +493,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 			console.log(id)
 			$http({
 				method: 'GET',
-				url: PATH+'api/public/reaccionw/' + id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/' + id,
 			})
 				.then(function successCallback(response) {
 
@@ -445,7 +513,7 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 
 			$http({
 				method: 'PUT',
-				url: PATH+'api/public/reaccionw/' + data.id,
+				url: 'http://localhost/~edev/LabVosAndes/api/public/reaccionw/' + data.id,
 				data: {
 					paraA1: data.paraA1,
 					paraA2: data.paraA2,
@@ -491,6 +559,11 @@ app.factory('examenServices', ['$http', '$q', '$rootScope', function ($http, $q,
 				});
 			return d.promise;
 		}
+
+
+
 	}
+
+
 	return self;
 }])

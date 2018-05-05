@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.medicosCtrl', []);
+var app = angular.module('vosandesApp.medicosCtrl', []);
 
 // controlador clientes
 app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', function ($scope, $routeParams, medicosServices) {
@@ -46,7 +46,6 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
         medico.token = $scope.user.data.token;
         medicosServices.insertar(medico).then(function () {
             $scope.response = medicosServices.response;
-
             $("#modal-medico").modal("hide");
             $scope.listar($scope.user);
         });

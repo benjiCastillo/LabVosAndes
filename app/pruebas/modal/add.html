@@ -1,0 +1,36 @@
+<div class="modal fade" id="modal-pruebas-add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Crear Prueba</h4>
+            </div>
+            <form name="frmPruebaInsertar" ng-submit="insertar(medico)">
+                <div class="modal-body">
+
+                    <p>{{ paciente.nombre }}</p>
+                    <p>{{ paciente.edad }}</p>
+                    <p ng-if="paciente.sexo == 'F' ">Femenino</p>
+                    <p ng-if="paciente.sexo == 'M' ">Masculino</p>
+
+                    <div class="form-group">
+                        <label for="miembroInput" class="text-info">Elija un Médico</label>
+                        <select class="form-control" ng-model="medico" required>
+                            <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

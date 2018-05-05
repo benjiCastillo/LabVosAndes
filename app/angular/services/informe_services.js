@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.informeServices',[])
+var app = angular.module('vosandesApp.informeServices',[])
 
 app.factory('informeServices', ['$http','$q','$rootScope', function($http,$q,$rootScope){
 

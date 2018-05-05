@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.pacExaCtrl', ['ngStorage']);
+var app = angular.module('vosandesApp.pacExaCtrl', ['ngStorage']);
 
 // controlador clientes
 app.controller('pacExaCtrl', ['$scope', '$routeParams', '$window', 'pacientesExamenServices', '$sessionStorage', function ($scope, $routeParams, $$window, pacientesExamenServices, $sessionStorage) {

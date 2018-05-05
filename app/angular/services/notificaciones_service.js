@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.notificaciones',[]);
+var app = angular.module('vosandesApp.notificaciones',[]);
 
 
 app.factory('Notificaciones', ['$http', '$q', function($http, $q){

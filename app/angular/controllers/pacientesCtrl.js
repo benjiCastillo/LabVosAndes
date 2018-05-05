@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.pacientesCtrl', ['ngStorage']);
+var app = angular.module('vosandesApp.pacientesCtrl', ['ngStorage']);
 
 // controlador clientes
 app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientesServices', '$sessionStorage', function ($scope, $routeParams, $window, pacientesServices, $sessionStorage) {
@@ -84,8 +84,8 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
     }
 
     $scope.crearExamen = function (paciente) {
-        $sessionStorage.data = paciente;
-        $window.location.href = '#/paciente/examen/';
+        $sessionStorage.paciente = paciente;
+        $window.location.href = '#/paciente/pruebas/';
     }
 
 }])

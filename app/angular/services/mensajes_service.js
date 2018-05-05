@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.mensajes',[]);
+var app = angular.module('vosandesApp.mensajes',[]);
 
 
 app.factory('Mensajes', ['$http', '$q', function($http, $q){

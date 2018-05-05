@@ -1,4 +1,4 @@
-var app = angular.module('facturacionApp.dashboardCtrl', []);
+var app = angular.module('vosandesApp.dashboardCtrl', []);
 
 // controlador clientes
 app.controller('dashboardCtrl', ['$scope','$sessionStorage', function($scope,$sessionStorage){
