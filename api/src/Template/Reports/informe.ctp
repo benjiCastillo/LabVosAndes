@@ -26,19 +26,25 @@ $initData = '<table>
                 </tr>
                 <tr>
                     <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
                 </tr>
             </table>';
 
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->SetFont('helvetica','',9);
+$pdf->SetFont('helvetica','',12);
 $title = '<p><b>EXÁMEN GENERAL</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
-$informe = '<p>' . $prueba->informe_pruebas[0]->contenido . '</p>';
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='60', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$informe = '';
+if($prueba->informe_pruebas[0]->grupo_sanguineo != '')
+    $informe = '<p><b>Grupo Sanguineo: </b>' . $prueba->informe_pruebas[0]->grupo_sanguineo . '</p>';
+
+if($prueba->informe_pruebas[0]->factor_rh != '')
+    $informe .= '<p><b>Factor Rh: </b>' . $prueba->informe_pruebas[0]->factor_rh . '</p>';
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='65', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
@@ -46,7 +52,7 @@ $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
-$nombre = Text::slug('examen-general-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
+$nombre = Text::slug(date('Y-m-d h-i-s') . '-' .'informe-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
 $pdf->Output($nombre . '.pdf', 'I');
 
 ?>
