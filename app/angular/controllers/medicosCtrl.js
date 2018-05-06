@@ -23,12 +23,12 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
             $scope.cargandoMedicos = false;
 
             if ($scope.response.error == 1) {
-    
-                $scope.noExistenMedicos = true;
                 $scope.medicosCargado = false;
             } else {
                 $scope.medicosCargado = true;
-                $scope.noExistenMedicos = false;
+                if ($scope.response.data.length == 0) {
+                    $scope.noExistenMedicos = true;
+                }
                 $scope.medicos = $scope.response.data;
             }
         });
@@ -49,7 +49,6 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
             $("#modal-medico").modal("hide");
             $scope.listar($scope.user);
         });
-
     }
 
     $scope.mostrarEditar = function (medico) {

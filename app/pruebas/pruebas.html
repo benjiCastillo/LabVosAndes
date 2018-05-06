@@ -35,27 +35,31 @@
                         </div>
                         <div class="box-body">
                             <p ng-show="loadData">Cargando Datos </p>
-                            <p ng-show="notData">No Existen Examenes Aun</p>
+                            <p>{{ msgPruebas }}</p>
                             <table class="table table-hover" ng-show="!notData">
                                 <thead>
                                     <tr>
                                         <th>Nro</th>
-                                        <th>Nombre Medico</th>
                                         <th>Fecha</th>
                                         <th>Ingresar</th>
+                                        <th>Eliminar</th>
                                         <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="examen in listaExamenes ">
+                                    <tr ng-repeat="prueba in listPruebas ">
                                         <td>{{ $index+1 }}</td>
-                                        <td>{{ examen.NombreMed }} {{ examen.ApellidosMed }}</td>
-                                        <td>{{formatDate(examen.fecha)}}</td>
+                                        <td>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</td>
                                         <td>
-                                            <a href="#/examen/{{examen.id}}/{{examen.NombreMed}}/{{examen.ApellidosMed }}/{{ examen.fecha}}" class="btn btn-info">Ingresar</a>
+                                            <button ng-click="crearPruebas( prueba )"
+                                                class="btn btn-info">Ingresar</button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-success" ng-click="showEdit(paciente.id,examen.id_tipo, examen.tipo)">Editar</button>
+                                            <a class="btn btn-danger" ng-click="mostrarEliminar( prueba )">
+                                                <i class="fa fa-remove"></i>Eliminar</a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" ng-click="showEdit(paciente.id,listPruebas.id_tipo, listPruebas.tipo)">Editar</button>
                                         </td>
                                     </tr>
                                 </tbody>

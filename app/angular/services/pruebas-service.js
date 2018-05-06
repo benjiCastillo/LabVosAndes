@@ -39,6 +39,22 @@ app.factory('pruebasServices', ['$http', '$q', '$rootScope', function ($http, $q
 					self.response = response.data
 				});
 			return d.promise;
+		},
+		eliminar: function (data) {
+			var d = $q.defer();
+			$http({
+				method: 'POST',
+				url: PATH + 'pruebas/delete/' + data.id,
+				data: data
+			})
+				.then(function successCallback(response) {
+					self.response = response.data;
+					return d.resolve()
+				}, function errorCallback(response) {
+					return d.resolve()
+					self.response = response.data
+				});
+			return d.promise;
 		}
 	}
 	return self;

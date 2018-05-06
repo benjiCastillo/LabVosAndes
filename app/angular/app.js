@@ -9,6 +9,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.informeCtrl',
 	'vosandesApp.pruebasCtrl',
 	'vosandesApp.pacExaCtrl',
+	'vosandesApp.createpruebasCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
 	'vosandesApp.informeServices',
@@ -72,6 +73,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'pruebas/pruebas.html',
 			controller: 'pruebasCtrl'
 		})
+		.when('/paciente/pruebas/create', {
+			templateUrl: 'create-pruebas/create-pruebas.html',
+			controller: 'createpruebasCtrl'
+		})
 		.when('/medico/:pag', {
 			templateUrl: 'medico/medico.html',
 			controller: 'medicosCtrl'
@@ -102,7 +107,9 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-
+app.run(function (amMoment) {
+	amMoment.changeLocale('es');
+});
 // ================================================
 //   Filtros
 // ================================================
@@ -117,6 +124,9 @@ app.filter('quitarletra', function () {
 		}
 	}
 })
+
+
+
 
 	.filter('mensajecorto', function () {
 

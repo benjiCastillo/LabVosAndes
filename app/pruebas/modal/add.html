@@ -9,12 +9,10 @@
             </div>
             <form name="frmPruebaInsertar" ng-submit="insertar(medico)">
                 <div class="modal-body">
-
                     <p>{{ paciente.nombre }}</p>
                     <p>{{ paciente.edad }}</p>
                     <p ng-if="paciente.sexo == 'F' ">Femenino</p>
                     <p ng-if="paciente.sexo == 'M' ">Masculino</p>
-
                     <div class="form-group">
                         <label for="miembroInput" class="text-info">Elija un Médico</label>
                         <select class="form-control" ng-model="medico" required>
