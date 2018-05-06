@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-05-2018 a las 14:47:10
+-- Tiempo de generación: 06-05-2018 a las 14:45:34
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -201,7 +201,6 @@ CREATE TABLE `cultivos_pruebas` (
   `bacterias` text NOT NULL,
   `esputo_as` varchar(35) NOT NULL,
   `esputo_microorganismo_identificado` varchar(35) NOT NULL,
-  `antibioticos` varchar(20) NOT NULL,
   `ampicilina_sulbactam` varchar(20) NOT NULL,
   `eritromicina` varchar(20) NOT NULL,
   `clindamicina` varchar(20) NOT NULL,
@@ -225,6 +224,13 @@ CREATE TABLE `cultivos_pruebas` (
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `cultivos_pruebas`
+--
+
+INSERT INTO `cultivos_pruebas` (`id`, `leucocitos`, `bacterias`, `esputo_as`, `esputo_microorganismo_identificado`, `ampicilina_sulbactam`, `eritromicina`, `clindamicina`, `tetraciclina`, `vancomicina`, `recuento_colonias`, `agar_mac_conkey`, `tincion_gram`, `pruebas_bioquimicas`, `urocultivo_microorganismo_identificado`, `amoxicilina_ac_clavulanico`, `gentamicina`, `ciprofloxacino`, `cefixima`, `cotrimoxazol`, `nitrofurantoina`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, '', '', '', '', '', '', '', '', 'dwada', '', '', '', '', '', '3aedf', '3faf3', '', '3r3r', 'avzv', 'qqqwf', 86, '2018-05-04 00:00:00', NULL, 0, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -247,8 +253,7 @@ CREATE TABLE `espermograma_pruebas` (
   `cabeza` varchar(20) NOT NULL,
   `pieza_intermedia` varchar(20) NOT NULL,
   `cola` varchar(20) NOT NULL,
-  `leucocitos` varchar(20) NOT NULL,
-  `celulas_germinales` varchar(20) NOT NULL,
+  `otras_celulas` text NOT NULL,
   `aglutinacion` varchar(20) NOT NULL,
   `progresion_lineal_rapida` varchar(20) NOT NULL,
   `progresion_lineal_lenta` varchar(20) NOT NULL,
@@ -263,6 +268,13 @@ CREATE TABLE `espermograma_pruebas` (
   `created_by` int(11) NOT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `espermograma_pruebas`
+--
+
+INSERT INTO `espermograma_pruebas` (`id`, `hora_recoleccion`, `hora_recepcion`, `duracion_abstinencia`, `aspecto`, `color`, `volumen`, `viscosidad`, `ph`, `concentracion_espermatica`, `caracteristicas_morfologicas`, `espermatozoides_normales`, `cabeza`, `pieza_intermedia`, `cola`, `otras_celulas`, `aglutinacion`, `progresion_lineal_rapida`, `progresion_lineal_lenta`, `motilidad_no_progresiva`, `inmoviles`, `primera_hora`, `segunda_hora`, `tercera_hora`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, '2018-05-04 19:03:13', '2018-05-04 19:03:13', '50 años', 'wdawdawda', 'swadasdaw', 'wdadas', 'á{æ{æ;éé\'ñ', 'á{æ{æ;éé\'ñ', 'á{æ{æ;éé\'ñ', 'á{æ{æ;éé\'ñ', 'á{æ{æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', '', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 'á2æ3æ;éé\'ñ', 86, '2018-05-04 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -307,7 +319,7 @@ CREATE TABLE `examen_general_pruebas` (
 --
 
 INSERT INTO `examen_general_pruebas` (`id`, `color`, `cantidad`, `olor`, `aspecto`, `espuma`, `sedimento`, `densidad`, `reaccion`, `proteinas`, `glucosa`, `cetona`, `bilirrubina`, `sangre`, `nitritos`, `urubilinogeno`, `eritrocitos`, `piocitos`, `leucocitos`, `cilindros`, `celulas`, `cristales`, `otros`, `exa_bac_sed`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'Amarillo', '500', 'wadasdawdasda', '\'a\'sẃ´wẃw´ñññ', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd', 'aaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññ\\n asdawd', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'Amarillo', '500', 'áááéééííí', '\'a\'sẃ´wẃw´ñññ', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', 'wadasdawdasda', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000', '100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd100000000.0000awdawdawda\\nasdwadawd \\na asdawdawadawdasdasd', 'aaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññaaace lfpfek2!\"·$·%Y$&UY$ ááá ;;;ññññññññ\\n asdawd', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -352,7 +364,7 @@ CREATE TABLE `hormonas_pruebas` (
   `celulas_hep` varchar(20) NOT NULL,
   `control_positivo` varchar(20) NOT NULL,
   `control_negativo` varchar(20) NOT NULL,
-  `conclusión` text NOT NULL,
+  `conclusion` varchar(20) NOT NULL,
   `comentario_general` text NOT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -360,6 +372,13 @@ CREATE TABLE `hormonas_pruebas` (
   `created_by` int(11) NOT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `hormonas_pruebas`
+--
+
+INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `testosterona_control_positivo`, `testosterona_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -369,13 +388,21 @@ CREATE TABLE `hormonas_pruebas` (
 
 CREATE TABLE `informe_pruebas` (
   `id` int(11) NOT NULL,
-  `contenido` text NOT NULL,
+  `grupo_sanguineo` varchar(20) NOT NULL,
+  `factor_rh` varchar(20) NOT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `informe_pruebas`
+--
+
+INSERT INTO `informe_pruebas` (`id`, `grupo_sanguineo`, `factor_rh`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'awdadw', 'sefsdfsef', 86, '2018-05-04 00:00:00', '2018-05-04 00:00:00', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -400,6 +427,13 @@ CREATE TABLE `liquido_sinovial_pruebas` (
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `liquido_sinovial_pruebas`
+--
+
+INSERT INTO `liquido_sinovial_pruebas` (`id`, `volumen`, `proteinas_totales`, `glucosa`, `celulas`, `coagulo_fibrina`, `glicemia`, `urea`, `creatinina`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíiááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -421,7 +455,8 @@ CREATE TABLE `medicos` (
 --
 
 INSERT INTO `medicos` (`id`, `nombre`, `apellidos`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(18, 'Son', 'Gokú', '0000-00-00 00:00:00', NULL, 0, 0);
+(18, 'Son', 'Gokú', '0000-00-00 00:00:00', NULL, 0, 0),
+(19, 'dr thor', 'el del martillo', '2018-05-03 15:21:08', '2018-05-03 15:21:08', 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -482,7 +517,8 @@ CREATE TABLE `pacientes` (
 
 INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `created`, `modified`, `created_by`, `modified_by`) VALUES
 (37, 'Erwin', 'Méndez', '23 m', 'M', '0000-00-00 00:00:00', NULL, 0, 0),
-(38, 'asdf', 'asdf', '12', 'F', '0000-00-00 00:00:00', NULL, 0, 0);
+(38, 'asdf', 'asdf', '12', 'F', '0000-00-00 00:00:00', NULL, 0, 0),
+(39, 'lolo', 'el gilipollas', '45 m', 'M', '2018-05-03 15:14:24', '2018-05-03 15:14:24', 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -511,7 +547,7 @@ CREATE TABLE `parasitologia_pruebas` (
 --
 
 INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(2, '', '', '', '', '', '', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(2, 'awdasd', 'áa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -579,7 +615,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
 --
 
 INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', '', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññúawááééññú', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -665,6 +701,13 @@ CREATE TABLE `serologia_pruebas` (
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `serologia_pruebas`
+--
+
+INSERT INTO `serologia_pruebas` (`id`, `factor_reumatoide`, `pcr`, `asto`, `aso`, `k_plus`, `na_plus`, `cl_minus`, `ca`, `p`, `chagas`, `toxoplasmosis`, `chagas_resultado`, `chagas_elisa_cut_off`, `chagas_comentario`, `tiempo_sangria`, `tiempo_coagulacion`, `tiempo_protrombina`, `actividad_protrombina`, `grupo_sanguineo`, `factor_rh`, `recuento_plaquetas`, `agr_dis_plaquetaria`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', '', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -683,13 +726,6 @@ CREATE TABLE `usuarios` (
   `created_by` int(11) NOT NULL,
   `modified_by` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `token`, `fecha`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(19, 'morty', 'admin', '$2y$10$L/3ByAh6tboaPzzLKPtYauSmtgEXA3cr06Nk4i6OWFFiuN6ZOOuQu', '$2y$10$1C2oin0r1nKEHS9A.WwpguFqdTn00KoMmEK78mfFVJtXPSwS5XQAC', '2018-05-03 03:35:04', '2018-05-03 03:35:04', '2018-05-03 03:40:22', 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -806,13 +842,13 @@ ALTER TABLE `biometria_pruebas`
 -- AUTO_INCREMENT de la tabla `cultivos_pruebas`
 --
 ALTER TABLE `cultivos_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `espermograma_pruebas`
 --
 ALTER TABLE `espermograma_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_general_pruebas`
@@ -824,25 +860,25 @@ ALTER TABLE `examen_general_pruebas`
 -- AUTO_INCREMENT de la tabla `hormonas_pruebas`
 --
 ALTER TABLE `hormonas_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `informe_pruebas`
 --
 ALTER TABLE `informe_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `liquido_sinovial_pruebas`
 --
 ALTER TABLE `liquido_sinovial_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `microbiologia_pruebas`
@@ -854,7 +890,7 @@ ALTER TABLE `microbiologia_pruebas`
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `parasitologia_pruebas`
@@ -884,7 +920,7 @@ ALTER TABLE `reaccion_w_pruebas`
 -- AUTO_INCREMENT de la tabla `serologia_pruebas`
 --
 ALTER TABLE `serologia_pruebas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
