@@ -9,6 +9,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.informeCtrl',
 	'vosandesApp.pruebasCtrl',
 	'vosandesApp.pacExaCtrl',
+	'vosandesApp.biometriaCtrl',
 	'vosandesApp.createpruebasCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
@@ -81,25 +82,9 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'medico/medico.html',
 			controller: 'medicosCtrl'
 		})
-		.when('/biometria/:pag', {
-			templateUrl: 'examen/biometria.html',
+		.when('/paciente/pruebas/create/biometria', {
+			templateUrl: 'pruebas-examenes/biometria/biometria.html',
 			controller: 'biometriaCtrl'
-		})
-		.when('/examen_general/:pag', {
-			templateUrl: 'examen/examen_general.html',
-			controller: 'examen_generalCtrl'
-		})
-		.when('/informe/:pag', {
-			templateUrl: 'examen/informe.html',
-			controller: 'informeCtrl'
-		})
-		.when('/reaccion_widal/:pag', {
-			templateUrl: 'examen/reaccion_widal.html',
-			controller: 'reaccionCtrl'
-		})
-		.when('/examen/:id/:name/:ape/:fecha', {
-			templateUrl: 'examen/examen.html',
-			controller: 'examenCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'

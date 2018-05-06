@@ -20,5 +20,9 @@ app.controller('createpruebasCtrl', ['$scope', '$routeParams', '$window', 'prueb
     $scope.dataQueryMed.data.token = $scope.user.data.token
 
 
+    $scope.crearPruebas = function (prueba) {
+        alert(prueba)
+        $window.location.href = '#/paciente/pruebas/create/'+prueba;
+    }
 
 }])

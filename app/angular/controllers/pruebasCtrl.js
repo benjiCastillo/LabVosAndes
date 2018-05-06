@@ -54,10 +54,6 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
             data.user = $scope.user.user;
             data.medico_id = parseInt(medico);
             data.paciente_id = $scope.paciente.id;
-            data.fecha = moment(new Date().toISOString()).format('YYYY-MM-DD HH:mm:ss');
-            // data.fecha = new Date().toLocaleString();
-            // console.log(data);
-
             pruebasServices.insertar(data).then(function () {
                 var response = pruebasServices.response;
                 //  console.log(response);
@@ -103,7 +99,6 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
         $sessionStorage.prueba = prueba;
         $window.location.href = '#/paciente/pruebas/create';
     }
-
 
     $scope.listarMedicos($scope.dataQueryMed)
 
