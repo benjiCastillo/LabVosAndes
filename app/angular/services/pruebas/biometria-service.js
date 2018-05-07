@@ -40,9 +40,6 @@ app.factory('biometriaServices', ['$http', '$q', '$rootScope', function ($http, 
 
         },
         modificar: function (data) {
-            console.log("EDITANDO")
-            console.log(data);
-            console.log(data.id);
             var d = $q.defer();
             $http({
                 method: 'PUT',

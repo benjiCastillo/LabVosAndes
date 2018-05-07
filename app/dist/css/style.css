@@ -376,3 +376,6 @@
     display: block;
     text-align: center;
 }
+.text-margin-left{
+  margin-left: 50px;
+}

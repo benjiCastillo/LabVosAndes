@@ -5,71 +5,50 @@
             <p>
                 <b>Paciente: </b>
                 <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
-            </p>
-            <p>
-                <b>Edad: </b>
+                <b class="text-margin-left">Edad: </b>
                 <span>{{ paciente.edad }}</span>
-            </p>
-            <p>
-                <b>Sexo: </b>
+                <b class="text-margin-left">Sexo: </b>
                 <span ng-if="paciente.sexo == 'M' ">Masculino</span>
                 <span ng-if="paciente.sexo == 'F' ">Femenino</span>
-            </p>
-            <p>
+                <br>
                 <b>Fecha de Prueba: </b>
                 <span>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
             </p>
+            <a class="btn btn-info" ng-if="!notData" ng-click="mostrarEditar( listBiometria )">
+                <i class="fa fa-edit"></i>Editar</a>
+            <a class="btn btn-danger" ng-if="!notData" ng-click="mostrarEliminar( listBiometria )">
+                <i class="fa fa-remove"></i>Eliminar</a>
         </div>
 
 
-        <section>
-            <div class="row">
-                <div class="col-md-16">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="text-primary box-title">Biometría</h3>
-                            <div class="box-tools">
-                                <div class="input-group">
-                                    <a ng-click="insertarModal()" class="btn btn-success">
-                                        <i class="fa fa-plus"></i> Agregar Biometría</a>
-                                </div>
+    </div>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="text-primary box-title">Prueba</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group">
+                                <a ng-click="insertarModal()" ng-if="notData" class="btn btn-success">
+                                    <i class="fa fa-plus"></i> Agregar Biometría</a>
                             </div>
                         </div>
-                        <div class="box-body">
-                            <span class="animate fadeIn" ng-show="notData">No existen pruebas de biometría aún..</span>
-                            <span class="animate fadeIn" ng-show="loadData">Cargando..</span>
-                            <label for="#" ng-show="biometriaLoad">Buscar</label>
-                            <input type="text" ng-show="biometriaLoad" class="form-control" placeholder="Buscar" ng-model="buscadorMedico" required>
-                            <table class="table table-hover table-striped" ng-show="biometriaLoad">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Apellidos</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> {{ listBiometria.id }} </td>
-                                        <td> {{ listBiometria.id }} </td>
-                                        <td>
-                                            <a class="btn btn-info" ng-click="mostrarEditar( listBiometria )">
-                                                <i class="fa fa-edit"></i>Editar</a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger" ng-click="mostrarEliminar( medico )">
-                                                <i class="fa fa-remove"></i>Eliminar</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+
+                    </div>
+                    <div class="box-body">
+                        <p ng-if="notData">No tiene prueba de biometría.</p>
+                          <section id="section-pdf">
+
+                          </section>
+                        <!-- <embed ng-if="!notData" ng-src="{{ PATH }}" id="biometria-pdf" width="100%" height="400px"> -->
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </div>
 <div ng-include="'pruebas-examenes/biometria/add.html'"></div>
 <div ng-include="'pruebas-examenes/biometria/edit.html'"></div>
+<div ng-include="'pruebas-examenes/biometria/delete.html'"></div>

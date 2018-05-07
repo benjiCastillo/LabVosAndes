@@ -25,14 +25,13 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
         comentario_leuco: ""
     }
 
-
-
-
     var user = sessionStorage.getItem('user');
     user = JSON.parse(user)
     $scope.user = user;
     $scope.paciente = $sessionStorage.paciente;
     $scope.prueba = $sessionStorage.prueba;
+    $scope.PATH = 'http://localhost/LabVosAndes/api/biometria-pruebas/printBiometriaPruebas/' + $scope.prueba.id;
+    console.log()
     $scope.dataQuery = new Object();
     // $scope.dataQueryMed = new Object();
     $scope.loadData = false;
@@ -43,10 +42,7 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
     $scope.dataQuery.user = $scope.user.user;
     $scope.dataQuery.token = $scope.user.data.token;
     $scope.dataQuery.prueba_id = $scope.prueba.id;
-    console.log($scope.dataQuery);
-    // $scope.dataQueryMed.user = $scope.user.user;
-    // $scope.dataQueryMed.data = {};
-    // $scope.dataQueryMed.data.token = $scope.user.data.token
+
 
 
     $scope.listar = function (data) {
@@ -60,12 +56,14 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
                 $scope.notData = true;
             } else {
                 $scope.pacientesCargado = true;
-                if ($scope.response.data == 0) {
+                if ($scope.response.data == null) {
                     $scope.notData = true;
                 } else {
+                    $scope.notData = false;
                     $scope.listBiometria = $scope.response.data;
                     $scope.msgPruebas = $scope.response.message;
                     $scope.biometriaLoad = true;
+                    createEmbed("biometria");
                 }
 
             }
@@ -80,74 +78,79 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
     $scope.insertarModal = function () {
         $scope.medico = {};
         $("#modal-insertar-biometria").modal();
-        //console.log($scope.dataQueryMed);
     }
     $scope.insertar = function (biometria) {
         biometria.prueba_id = $scope.prueba.id;
         biometria.token = $scope.user.data.token;
         biometria.user = $scope.user.user;
-        // console.log(biometria);
-        biometriaServices.insertar(biometria).then(function () {
-            var response = biometriaServices.response;
-            console.log(response);
-            $("#modal-insertar-biometria").modal("hide");
-            $scope.listar($scope.dataQuery);
-        });
+        console.log(biometria);
+        // biometriaServices.insertar(biometria).then(function () {
+        //     var response = biometriaServices.response;
+        //     console.log(response);
+        //     $("#modal-insertar-biometria").modal("hide");
+        //     // $window.location.reload();
+        //     $scope.listar($scope.dataQuery);
+        // });
 
     }
 
     $scope.mostrarEditar = function (biometria) {
         $scope.edtBiometria = biometria;
-        $("#modal-editar-biometria").modal();
+        $("#modal-edit-biometria").modal();
     }
 
     $scope.edit = function (pacienteMod) {
         pacienteMod.user = $scope.user.user;
         pacienteMod.token = $scope.user.data.token;
-        // console.log(pacienteMod);
         biometriaServices.modificar(pacienteMod).then(function () {
             $scope.response = biometriaServices.response;
             console.log($scope.response);
-            $("#modal-editar-biometria").modal("hide");
+            $("#modal-edit-biometria").modal("hide");
             $scope.listar($scope.dataQuery);
         });
     }
 
-    // $scope.mostrarEliminar = function (prueba) {
-    //     $("#modal-pruebas-delete").modal();
-    //     $scope.dataPrueba = prueba;
-    // }
+    $scope.mostrarEliminar = function (prueba) {
+        $("#modal-biometria-delete").modal();
+        $scope.dataBiometria = prueba;
+    }
 
-    // $scope.eliminar = function (dataPrueba) {
-    //     // console.log(dataPrueba)
-    //     var prueba = new Object();
-    //     prueba.id = dataPrueba.id;
-    //     prueba.user = $scope.user.user;
-    //     prueba.token = $scope.user.data.token;
-    //     pruebasServices.eliminar(prueba).then(function () {
-    //         $scope.response = pruebasServices.response;
-    //         $("#modal-pruebas-delete").modal("hide");
-    //         $scope.listar($scope.dataQuery);
-    //     });
-    // }
-    // // obtenerMedicos
-    // $scope.listarMedicos = function (data) {
-    //     medicosServices.listar(data).then(function () {
-    //         $scope.medicos = medicosServices.response.data;
-    //         // console.log($scope.medicos.length)
-    //         if ($scope.medicos.length == 0) {
-    //             alert("No existen médicos registrados, registre médicos para registrar un prueba")
-    //         }
-    //     });
-    // }
+    $scope.eliminar = function (dataBiometria) {
 
-    // $scope.crearPruebas = function (prueba) {
-    //     $sessionStorage.prueba = prueba;
-    //     $window.location.href = '#/paciente/pruebas/create';
-    // }
+        var biometria = new Object();
+        biometria.id = dataBiometria.id;
+        biometria.user = $scope.user.user;
+        biometria.token = $scope.user.data.token;
+        biometriaServices.eliminar(biometria).then(function () {
+            $scope.response = biometriaServices.response;
+            $("#modal-biometria-delete").modal("hide");
+            $scope.listar($scope.dataQuery);
+            deleteElement('biometria')
+        });
+    }
 
-    // $scope.listarMedicos($scope.dataQueryMed)
+    function newElement(type) {
+        var pdf = document.createElement("embed");
+        pdf.setAttribute("src", $scope.PATH);
+        pdf.setAttribute("width", "100%");
+        pdf.setAttribute("id", "pdf-" + type);
+        pdf.setAttribute("height", "400px");
+        var div_element = document.getElementById("section-pdf");
+        div_element.appendChild(pdf);
+    }
 
+    function createEmbed(type) {
+        if (document.getElementById('pdf-' + type)) {
+            deleteElement(type)
+            newElement(type);
+        } else {
+            newElement(type);
+        }
+    }
 
+    function deleteElement(type) {
+        var el = document.getElementById('pdf-' + type);
+        el.parentNode.removeChild(el);
+    }
 
 }])

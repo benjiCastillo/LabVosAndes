@@ -8,6 +8,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.dashboardCtrl',
 	'vosandesApp.informeCtrl',
 	'vosandesApp.pruebasCtrl',
+	'vosandesApp.examenGeneralCtrl',
 	'vosandesApp.pacExaCtrl',
 	'vosandesApp.biometriaCtrl',
 	'vosandesApp.createpruebasCtrl',
@@ -17,6 +18,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.pruebasServices',
 	'vosandesApp.pacientesExamenServices',
 	'vosandesApp.biometriaServices',
+	'vosandesApp.examenGeneralServices',
 	'angularMoment'
 
 ]);
@@ -87,6 +89,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'pruebas-examenes/biometria/biometria.html',
 			controller: 'biometriaCtrl'
 		})
+		.when('/paciente/pruebas/create/examen-general', {
+			templateUrl: 'pruebas-examenes/examen-general/examen-general.html',
+			controller: 'examenGeneralCtrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		})
@@ -145,11 +151,3 @@ app.filter('quitarletra', function () {
 			}
 		}
 	})
-
-
-
-
-
-
-
-

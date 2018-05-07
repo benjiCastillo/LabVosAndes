@@ -56,7 +56,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
             data.paciente_id = $scope.paciente.id;
             pruebasServices.insertar(data).then(function () {
                 var response = pruebasServices.response;
-                //  console.log(response);
+                console.log(response);
                 $("#modal-pruebas-add").modal("hide");
                 $scope.listar($scope.dataQuery);
             });
