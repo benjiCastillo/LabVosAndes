@@ -61,127 +61,101 @@ class CultivosPruebasTable extends Table
         $validator
             ->scalar('leucocitos')
             ->maxLength('leucocitos', 20)
-            ->requirePresence('leucocitos', 'create')
-            ->notEmpty('leucocitos');
+            ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('bacterias')
-            ->requirePresence('bacterias', 'create')
-            ->notEmpty('bacterias');
+            ->allowEmpty('bacterias');
 
         $validator
             ->scalar('esputo_as')
             ->maxLength('esputo_as', 35)
-            ->requirePresence('esputo_as', 'create')
-            ->notEmpty('esputo_as');
+            ->allowEmpty('esputo_as');
 
         $validator
             ->scalar('esputo_microorganismo_identificado')
             ->maxLength('esputo_microorganismo_identificado', 35)
-            ->requirePresence('esputo_microorganismo_identificado', 'create')
-            ->notEmpty('esputo_microorganismo_identificado');
-
-        $validator
-            ->scalar('antibioticos')
-            ->maxLength('antibioticos', 20)
-            ->requirePresence('antibioticos', 'create')
-            ->notEmpty('antibioticos');
+            ->allowEmpty('esputo_microorganismo_identificado');
 
         $validator
             ->scalar('ampicilina_sulbactam')
             ->maxLength('ampicilina_sulbactam', 20)
-            ->requirePresence('ampicilina_sulbactam', 'create')
-            ->notEmpty('ampicilina_sulbactam');
+            ->allowEmpty('ampicilina_sulbactam');
 
         $validator
             ->scalar('eritromicina')
             ->maxLength('eritromicina', 20)
-            ->requirePresence('eritromicina', 'create')
-            ->notEmpty('eritromicina');
+            ->allowEmpty('eritromicina');
 
         $validator
             ->scalar('clindamicina')
             ->maxLength('clindamicina', 20)
-            ->requirePresence('clindamicina', 'create')
-            ->notEmpty('clindamicina');
+            ->allowEmpty('clindamicina');
 
         $validator
             ->scalar('tetraciclina')
             ->maxLength('tetraciclina', 20)
-            ->requirePresence('tetraciclina', 'create')
-            ->notEmpty('tetraciclina');
+            ->allowEmpty('tetraciclina');
 
         $validator
             ->scalar('vancomicina')
             ->maxLength('vancomicina', 20)
-            ->requirePresence('vancomicina', 'create')
-            ->notEmpty('vancomicina');
+            ->allowEmpty('vancomicina');
 
         $validator
             ->scalar('recuento_colonias')
             ->maxLength('recuento_colonias', 35)
-            ->requirePresence('recuento_colonias', 'create')
-            ->notEmpty('recuento_colonias');
+            ->allowEmpty('recuento_colonias');
 
         $validator
             ->scalar('agar_mac_conkey')
             ->maxLength('agar_mac_conkey', 50)
-            ->requirePresence('agar_mac_conkey', 'create')
-            ->notEmpty('agar_mac_conkey');
+            ->allowEmpty('agar_mac_conkey');
 
         $validator
             ->scalar('tincion_gram')
             ->maxLength('tincion_gram', 35)
-            ->requirePresence('tincion_gram', 'create')
-            ->notEmpty('tincion_gram');
+            ->allowEmpty('tincion_gram');
 
         $validator
             ->scalar('pruebas_bioquimicas')
             ->maxLength('pruebas_bioquimicas', 50)
-            ->requirePresence('pruebas_bioquimicas', 'create')
-            ->notEmpty('pruebas_bioquimicas');
+            ->allowEmpty('pruebas_bioquimicas');
 
         $validator
             ->scalar('urocultivo_microorganismo_identificado')
             ->maxLength('urocultivo_microorganismo_identificado', 35)
-            ->requirePresence('urocultivo_microorganismo_identificado', 'create')
-            ->notEmpty('urocultivo_microorganismo_identificado');
+            ->allowEmpty('urocultivo_microorganismo_identificado');
 
         $validator
             ->scalar('amoxicilina_ac_clavulanico')
             ->maxLength('amoxicilina_ac_clavulanico', 20)
-            ->requirePresence('amoxicilina_ac_clavulanico', 'create')
-            ->notEmpty('amoxicilina_ac_clavulanico');
+            ->allowEmpty('amoxicilina_ac_clavulanico');
 
         $validator
             ->scalar('gentamicina')
             ->maxLength('gentamicina', 20)
-            ->requirePresence('gentamicina', 'create')
-            ->notEmpty('gentamicina');
+            ->allowEmpty('gentamicina');
 
         $validator
             ->scalar('ciprofloxacino')
             ->maxLength('ciprofloxacino', 20)
-            ->requirePresence('ciprofloxacino', 'create')
-            ->notEmpty('ciprofloxacino');
+            ->allowEmpty('ciprofloxacino');
 
         $validator
             ->scalar('cefixima')
             ->maxLength('cefixima', 20)
-            ->requirePresence('cefixima', 'create')
-            ->notEmpty('cefixima');
+            ->allowEmpty('cefixima');
 
         $validator
             ->scalar('cotrimoxazol')
             ->maxLength('cotrimoxazol', 20)
-            ->requirePresence('cotrimoxazol', 'create')
-            ->notEmpty('cotrimoxazol');
+            ->allowEmpty('cotrimoxazol');
 
         $validator
             ->scalar('nitrofurantoina')
             ->maxLength('nitrofurantoina', 20)
-            ->requirePresence('nitrofurantoina', 'create')
-            ->notEmpty('nitrofurantoina');
+            ->allowEmpty('nitrofurantoina');
 
         $validator
             ->integer('created_by')

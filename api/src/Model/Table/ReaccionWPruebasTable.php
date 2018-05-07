@@ -60,152 +60,127 @@ class ReaccionWPruebasTable extends Table
 
         $validator
             ->scalar('paraA1')
-            ->maxLength('paraA1', 15)
-            ->requirePresence('paraA1', 'create')
-            ->notEmpty('paraA1');
+            ->maxLength('paraA1', 20)
+            ->allowEmpty('paraA1');
 
         $validator
             ->scalar('paraA2')
-            ->maxLength('paraA2', 15)
-            ->requirePresence('paraA2', 'create')
-            ->notEmpty('paraA2');
+            ->maxLength('paraA2', 20)
+            ->allowEmpty('paraA2');
 
         $validator
             ->scalar('paraA3')
-            ->maxLength('paraA3', 15)
-            ->requirePresence('paraA3', 'create')
-            ->notEmpty('paraA3');
+            ->maxLength('paraA3', 20)
+            ->allowEmpty('paraA3');
 
         $validator
             ->scalar('paraA4')
-            ->maxLength('paraA4', 15)
-            ->requirePresence('paraA4', 'create')
-            ->notEmpty('paraA4');
+            ->maxLength('paraA4', 20)
+            ->allowEmpty('paraA4');
 
         $validator
             ->scalar('paraA5')
-            ->maxLength('paraA5', 15)
-            ->requirePresence('paraA5', 'create')
-            ->notEmpty('paraA5');
+            ->maxLength('paraA5', 20)
+            ->allowEmpty('paraA5');
 
         $validator
             ->scalar('paraA6')
-            ->maxLength('paraA6', 15)
-            ->requirePresence('paraA6', 'create')
-            ->notEmpty('paraA6');
+            ->maxLength('paraA6', 20)
+            ->allowEmpty('paraA6');
 
         $validator
             ->scalar('paraB1')
-            ->maxLength('paraB1', 15)
-            ->requirePresence('paraB1', 'create')
-            ->notEmpty('paraB1');
+            ->maxLength('paraB1', 20)
+            ->allowEmpty('paraB1');
 
         $validator
             ->scalar('paraB2')
-            ->maxLength('paraB2', 15)
-            ->requirePresence('paraB2', 'create')
-            ->notEmpty('paraB2');
+            ->maxLength('paraB2', 20)
+            ->allowEmpty('paraB2');
 
         $validator
             ->scalar('paraB3')
-            ->maxLength('paraB3', 15)
-            ->requirePresence('paraB3', 'create')
-            ->notEmpty('paraB3');
+            ->maxLength('paraB3', 20)
+            ->allowEmpty('paraB3');
 
         $validator
             ->scalar('paraB4')
-            ->maxLength('paraB4', 15)
-            ->requirePresence('paraB4', 'create')
-            ->notEmpty('paraB4');
+            ->maxLength('paraB4', 20)
+            ->allowEmpty('paraB4');
 
         $validator
             ->scalar('paraB5')
-            ->maxLength('paraB5', 15)
-            ->requirePresence('paraB5', 'create')
-            ->notEmpty('paraB5');
+            ->maxLength('paraB5', 20)
+            ->allowEmpty('paraB5');
 
         $validator
             ->scalar('paraB6')
-            ->maxLength('paraB6', 15)
-            ->requirePresence('paraB6', 'create')
-            ->notEmpty('paraB6');
+            ->maxLength('paraB6', 20)
+            ->allowEmpty('paraB6');
 
         $validator
             ->scalar('somaticoO1')
-            ->maxLength('somaticoO1', 15)
-            ->requirePresence('somaticoO1', 'create')
-            ->notEmpty('somaticoO1');
+            ->maxLength('somaticoO1', 20)
+            ->allowEmpty('somaticoO1');
 
         $validator
             ->scalar('somaticoO2')
-            ->maxLength('somaticoO2', 15)
-            ->requirePresence('somaticoO2', 'create')
-            ->notEmpty('somaticoO2');
+            ->maxLength('somaticoO2', 20)
+            ->allowEmpty('somaticoO2');
 
         $validator
             ->scalar('somaticoO3')
-            ->maxLength('somaticoO3', 15)
-            ->requirePresence('somaticoO3', 'create')
-            ->notEmpty('somaticoO3');
+            ->maxLength('somaticoO3', 20)
+            ->allowEmpty('somaticoO3');
 
         $validator
             ->scalar('somaticoO4')
-            ->maxLength('somaticoO4', 15)
-            ->requirePresence('somaticoO4', 'create')
-            ->notEmpty('somaticoO4');
+            ->maxLength('somaticoO4', 20)
+            ->allowEmpty('somaticoO4');
 
         $validator
             ->scalar('somaticoO5')
-            ->maxLength('somaticoO5', 15)
-            ->requirePresence('somaticoO5', 'create')
-            ->notEmpty('somaticoO5');
+            ->maxLength('somaticoO5', 20)
+            ->allowEmpty('somaticoO5');
 
         $validator
             ->scalar('somaticoO6')
-            ->maxLength('somaticoO6', 15)
-            ->requirePresence('somaticoO6', 'create')
-            ->notEmpty('somaticoO6');
+            ->maxLength('somaticoO6', 20)
+            ->allowEmpty('somaticoO6');
 
         $validator
             ->scalar('flagelarH1')
-            ->maxLength('flagelarH1', 15)
-            ->requirePresence('flagelarH1', 'create')
-            ->notEmpty('flagelarH1');
+            ->maxLength('flagelarH1', 20)
+            ->allowEmpty('flagelarH1');
 
         $validator
             ->scalar('flagelarH2')
-            ->maxLength('flagelarH2', 15)
-            ->requirePresence('flagelarH2', 'create')
-            ->notEmpty('flagelarH2');
+            ->maxLength('flagelarH2', 20)
+            ->allowEmpty('flagelarH2');
 
         $validator
             ->scalar('flagelarH3')
-            ->maxLength('flagelarH3', 15)
-            ->requirePresence('flagelarH3', 'create')
-            ->notEmpty('flagelarH3');
+            ->maxLength('flagelarH3', 20)
+            ->allowEmpty('flagelarH3');
 
         $validator
             ->scalar('flagelarH4')
-            ->maxLength('flagelarH4', 15)
-            ->requirePresence('flagelarH4', 'create')
-            ->notEmpty('flagelarH4');
+            ->maxLength('flagelarH4', 20)
+            ->allowEmpty('flagelarH4');
 
         $validator
             ->scalar('flagelarH5')
-            ->maxLength('flagelarH5', 15)
-            ->requirePresence('flagelarH5', 'create')
-            ->notEmpty('flagelarH5');
+            ->maxLength('flagelarH5', 20)
+            ->allowEmpty('flagelarH5');
 
         $validator
             ->scalar('flagelarH6')
-            ->maxLength('flagelarH6', 15)
-            ->requirePresence('flagelarH6', 'create')
-            ->notEmpty('flagelarH6');
+            ->maxLength('flagelarH6', 20)
+            ->allowEmpty('flagelarH6');
 
         $validator
             ->scalar('comentario')
-            ->requirePresence('comentario', 'create')
-            ->notEmpty('comentario');
+            ->allowEmpty('comentario');
 
         $validator
             ->integer('created_by')

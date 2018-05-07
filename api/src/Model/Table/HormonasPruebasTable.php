@@ -267,9 +267,10 @@ class HormonasPruebasTable extends Table
             ->notEmpty('control_negativo');
 
         $validator
-            ->scalar('conclusión')
-            ->requirePresence('conclusión', 'create')
-            ->notEmpty('conclusión');
+            ->scalar('conclusion')
+            ->maxLength('conclusion', 20)
+            ->requirePresence('conclusion', 'create')
+            ->notEmpty('conclusion');
 
         $validator
             ->scalar('comentario_general')

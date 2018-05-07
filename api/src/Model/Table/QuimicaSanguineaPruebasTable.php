@@ -61,134 +61,112 @@ class QuimicaSanguineaPruebasTable extends Table
         $validator
             ->scalar('glucemia')
             ->maxLength('glucemia', 20)
-            ->requirePresence('glucemia', 'create')
-            ->notEmpty('glucemia');
+            ->allowEmpty('glucemia');
 
         $validator
             ->scalar('urea')
             ->maxLength('urea', 20)
-            ->requirePresence('urea', 'create')
-            ->notEmpty('urea');
+            ->allowEmpty('urea');
 
         $validator
             ->scalar('creatinina')
             ->maxLength('creatinina', 20)
-            ->requirePresence('creatinina', 'create')
-            ->notEmpty('creatinina');
+            ->allowEmpty('creatinina');
 
         $validator
             ->scalar('acido_urico')
             ->maxLength('acido_urico', 20)
-            ->requirePresence('acido_urico', 'create')
-            ->notEmpty('acido_urico');
+            ->allowEmpty('acido_urico');
 
         $validator
             ->scalar('colesterol_total')
             ->maxLength('colesterol_total', 20)
-            ->requirePresence('colesterol_total', 'create')
-            ->notEmpty('colesterol_total');
+            ->allowEmpty('colesterol_total');
 
         $validator
             ->scalar('hdl_colesterol')
             ->maxLength('hdl_colesterol', 20)
-            ->requirePresence('hdl_colesterol', 'create')
-            ->notEmpty('hdl_colesterol');
+            ->allowEmpty('hdl_colesterol');
 
         $validator
             ->scalar('ldl_colesterol')
             ->maxLength('ldl_colesterol', 20)
-            ->requirePresence('ldl_colesterol', 'create')
-            ->notEmpty('ldl_colesterol');
+            ->allowEmpty('ldl_colesterol');
 
         $validator
             ->scalar('trigliceridos')
             ->maxLength('trigliceridos', 20)
-            ->requirePresence('trigliceridos', 'create')
-            ->notEmpty('trigliceridos');
+            ->allowEmpty('trigliceridos');
 
         $validator
             ->scalar('f_alcalina')
             ->maxLength('f_alcalina', 20)
-            ->requirePresence('f_alcalina', 'create')
-            ->notEmpty('f_alcalina');
+            ->allowEmpty('f_alcalina');
 
         $validator
             ->scalar('transaminasa_got')
             ->maxLength('transaminasa_got', 20)
-            ->requirePresence('transaminasa_got', 'create')
-            ->notEmpty('transaminasa_got');
+            ->allowEmpty('transaminasa_got');
 
         $validator
             ->scalar('transaminasa_gpt')
             ->maxLength('transaminasa_gpt', 20)
-            ->requirePresence('transaminasa_gpt', 'create')
-            ->notEmpty('transaminasa_gpt');
+            ->allowEmpty('transaminasa_gpt');
 
         $validator
             ->scalar('bilirrubina_total')
             ->maxLength('bilirrubina_total', 20)
-            ->requirePresence('bilirrubina_total', 'create')
-            ->notEmpty('bilirrubina_total');
+            ->allowEmpty('bilirrubina_total');
 
         $validator
             ->scalar('bilirrubina_directa')
             ->maxLength('bilirrubina_directa', 20)
-            ->requirePresence('bilirrubina_directa', 'create')
-            ->notEmpty('bilirrubina_directa');
+            ->allowEmpty('bilirrubina_directa');
 
         $validator
             ->scalar('bilirrubina_indirecta')
             ->maxLength('bilirrubina_indirecta', 20)
-            ->requirePresence('bilirrubina_indirecta', 'create')
-            ->notEmpty('bilirrubina_indirecta');
+            ->allowEmpty('bilirrubina_indirecta');
 
         $validator
             ->scalar('amilasa')
             ->maxLength('amilasa', 20)
-            ->requirePresence('amilasa', 'create')
-            ->notEmpty('amilasa');
+            ->allowEmpty('amilasa');
 
         $validator
             ->scalar('proteinas_totales')
             ->maxLength('proteinas_totales', 20)
-            ->requirePresence('proteinas_totales', 'create')
-            ->notEmpty('proteinas_totales');
+            ->allowEmpty('proteinas_totales');
 
         $validator
             ->scalar('albumina')
             ->maxLength('albumina', 20)
-            ->requirePresence('albumina', 'create')
-            ->notEmpty('albumina');
+            ->allowEmpty('albumina');
 
         $validator
             ->scalar('calcio')
             ->maxLength('calcio', 20)
-            ->requirePresence('calcio', 'create')
-            ->notEmpty('calcio');
+            ->allowEmpty('calcio');
 
         $validator
             ->scalar('cpk')
             ->maxLength('cpk', 20)
-            ->requirePresence('cpk', 'create')
-            ->notEmpty('cpk');
+            ->allowEmpty('cpk');
 
         $validator
             ->scalar('cpk_mb')
             ->maxLength('cpk_mb', 20)
-            ->requirePresence('cpk_mb', 'create')
-            ->notEmpty('cpk_mb');
+            ->allowEmpty('cpk_mb');
 
         $validator
             ->scalar('gamaglutamil_transpeptidasa')
             ->maxLength('gamaglutamil_transpeptidasa', 20)
-            ->requirePresence('gamaglutamil_transpeptidasa', 'create')
-            ->notEmpty('gamaglutamil_transpeptidasa');
+            ->allowEmpty('gamaglutamil_transpeptidasa');
 
         $validator
             ->scalar('prueba_inmunologica_embarazo')
             ->maxLength('prueba_inmunologica_embarazo', 150)
-            ->requirePresence('prueba_inmunologica_embarazo', 'create')
-            ->notEmpty('prueba_inmunologica_embarazo');
+            ->allowEmpty('prueba_inmunologica_embarazo');
 
         $validator
             ->integer('created_by')

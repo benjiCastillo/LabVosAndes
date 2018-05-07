@@ -45,11 +45,11 @@ class PruebasFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'fecha' => 1525308957,
+                'fecha' => 1525652057,
                 'medico_id' => 1,
                 'paciente_id' => 1,
-                'created' => '2018-05-03 00:55:57',
-                'modified' => '2018-05-03 00:55:57',
+                'created' => '2018-05-07 00:14:17',
+                'modified' => '2018-05-07 00:14:17',
                 'created_by' => 1,
                 'modified_by' => 1
             ],

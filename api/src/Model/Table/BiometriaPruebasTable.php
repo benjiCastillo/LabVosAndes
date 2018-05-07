@@ -60,109 +60,91 @@ class BiometriaPruebasTable extends Table
 
         $validator
             ->scalar('hematies')
-            ->maxLength('hematies', 15)
-            ->requirePresence('hematies', 'create')
-            ->notEmpty('hematies');
+            ->maxLength('hematies', 20)
+            ->allowEmpty('hematies');
 
         $validator
             ->scalar('hematocrito')
-            ->maxLength('hematocrito', 15)
-            ->requirePresence('hematocrito', 'create')
-            ->notEmpty('hematocrito');
+            ->maxLength('hematocrito', 20)
+            ->allowEmpty('hematocrito');
 
         $validator
             ->scalar('hemoglobina')
-            ->maxLength('hemoglobina', 15)
-            ->requirePresence('hemoglobina', 'create')
-            ->notEmpty('hemoglobina');
+            ->maxLength('hemoglobina', 20)
+            ->allowEmpty('hemoglobina');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 15)
-            ->requirePresence('leucocitos', 'create')
-            ->notEmpty('leucocitos');
+            ->maxLength('leucocitos', 20)
+            ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('vsg')
-            ->maxLength('vsg', 15)
-            ->requirePresence('vsg', 'create')
-            ->notEmpty('vsg');
+            ->maxLength('vsg', 20)
+            ->allowEmpty('vsg');
 
         $validator
             ->scalar('vcm')
-            ->maxLength('vcm', 15)
-            ->requirePresence('vcm', 'create')
-            ->notEmpty('vcm');
+            ->maxLength('vcm', 20)
+            ->allowEmpty('vcm');
 
         $validator
             ->scalar('hbcm')
-            ->maxLength('hbcm', 15)
-            ->requirePresence('hbcm', 'create')
-            ->notEmpty('hbcm');
+            ->maxLength('hbcm', 20)
+            ->allowEmpty('hbcm');
 
         $validator
             ->scalar('chbcm')
-            ->maxLength('chbcm', 15)
-            ->requirePresence('chbcm', 'create')
-            ->notEmpty('chbcm');
+            ->maxLength('chbcm', 20)
+            ->allowEmpty('chbcm');
 
         $validator
             ->scalar('comentario_hema')
-            ->requirePresence('comentario_hema', 'create')
-            ->notEmpty('comentario_hema');
+            ->allowEmpty('comentario_hema');
 
         $validator
             ->scalar('cayados')
-            ->maxLength('cayados', 15)
-            ->requirePresence('cayados', 'create')
-            ->notEmpty('cayados');
+            ->maxLength('cayados', 20)
+            ->allowEmpty('cayados');
 
         $validator
             ->scalar('neutrofilos')
-            ->maxLength('neutrofilos', 15)
-            ->requirePresence('neutrofilos', 'create')
-            ->notEmpty('neutrofilos');
+            ->maxLength('neutrofilos', 20)
+            ->allowEmpty('neutrofilos');
 
         $validator
             ->scalar('basofilo')
-            ->maxLength('basofilo', 15)
-            ->requirePresence('basofilo', 'create')
-            ->notEmpty('basofilo');
+            ->maxLength('basofilo', 20)
+            ->allowEmpty('basofilo');
 
         $validator
             ->scalar('eosinofilo')
-            ->maxLength('eosinofilo', 15)
-            ->requirePresence('eosinofilo', 'create')
-            ->notEmpty('eosinofilo');
+            ->maxLength('eosinofilo', 20)
+            ->allowEmpty('eosinofilo');
 
         $validator
             ->scalar('linfocito')
-            ->maxLength('linfocito', 15)
-            ->requirePresence('linfocito', 'create')
-            ->notEmpty('linfocito');
+            ->maxLength('linfocito', 20)
+            ->allowEmpty('linfocito');
 
         $validator
             ->scalar('monocito')
-            ->maxLength('monocito', 15)
-            ->requirePresence('monocito', 'create')
-            ->notEmpty('monocito');
+            ->maxLength('monocito', 20)
+            ->allowEmpty('monocito');
 
         $validator
             ->scalar('prolinfocito')
-            ->maxLength('prolinfocito', 15)
-            ->requirePresence('prolinfocito', 'create')
-            ->notEmpty('prolinfocito');
+            ->maxLength('prolinfocito', 20)
+            ->allowEmpty('prolinfocito');
 
         $validator
             ->scalar('cel_inmaduras')
-            ->maxLength('cel_inmaduras', 15)
-            ->requirePresence('cel_inmaduras', 'create')
-            ->notEmpty('cel_inmaduras');
+            ->maxLength('cel_inmaduras', 20)
+            ->allowEmpty('cel_inmaduras');
 
         $validator
             ->scalar('comentario_leuco')
-            ->requirePresence('comentario_leuco', 'create')
-            ->notEmpty('comentario_leuco');
+            ->allowEmpty('comentario_leuco');
 
         $validator
             ->integer('created_by')

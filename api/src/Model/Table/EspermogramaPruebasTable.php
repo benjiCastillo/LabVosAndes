@@ -60,145 +60,130 @@ class EspermogramaPruebasTable extends Table
 
         $validator
             ->dateTime('hora_recoleccion')
-            ->requirePresence('hora_recoleccion', 'create')
-            ->notEmpty('hora_recoleccion');
+            ->allowEmpty('hora_recoleccion');
 
         $validator
             ->dateTime('hora_recepcion')
-            ->requirePresence('hora_recepcion', 'create')
-            ->notEmpty('hora_recepcion');
+            ->allowEmpty('hora_recepcion');
 
         $validator
             ->scalar('duracion_abstinencia')
             ->maxLength('duracion_abstinencia', 20)
-            ->requirePresence('duracion_abstinencia', 'create')
-            ->notEmpty('duracion_abstinencia');
+            ->allowEmpty('duracion_abstinencia');
 
         $validator
             ->scalar('aspecto')
             ->maxLength('aspecto', 20)
-            ->requirePresence('aspecto', 'create')
-            ->notEmpty('aspecto');
+            ->allowEmpty('aspecto');
 
         $validator
             ->scalar('color')
             ->maxLength('color', 20)
-            ->requirePresence('color', 'create')
-            ->notEmpty('color');
+            ->allowEmpty('color');
 
         $validator
             ->scalar('volumen')
             ->maxLength('volumen', 20)
-            ->requirePresence('volumen', 'create')
-            ->notEmpty('volumen');
+            ->allowEmpty('volumen');
 
         $validator
             ->scalar('viscosidad')
             ->maxLength('viscosidad', 20)
-            ->requirePresence('viscosidad', 'create')
-            ->notEmpty('viscosidad');
+            ->allowEmpty('viscosidad');
 
         $validator
             ->scalar('ph')
             ->maxLength('ph', 20)
-            ->requirePresence('ph', 'create')
-            ->notEmpty('ph');
+            ->allowEmpty('ph');
 
         $validator
             ->scalar('concentracion_espermatica')
             ->maxLength('concentracion_espermatica', 20)
-            ->requirePresence('concentracion_espermatica', 'create')
-            ->notEmpty('concentracion_espermatica');
+            ->allowEmpty('concentracion_espermatica');
 
         $validator
             ->scalar('caracteristicas_morfologicas')
             ->maxLength('caracteristicas_morfologicas', 20)
-            ->requirePresence('caracteristicas_morfologicas', 'create')
-            ->notEmpty('caracteristicas_morfologicas');
+            ->allowEmpty('caracteristicas_morfologicas');
 
         $validator
             ->scalar('espermatozoides_normales')
             ->maxLength('espermatozoides_normales', 20)
-            ->requirePresence('espermatozoides_normales', 'create')
-            ->notEmpty('espermatozoides_normales');
+            ->allowEmpty('espermatozoides_normales');
 
         $validator
             ->scalar('cabeza')
             ->maxLength('cabeza', 20)
-            ->requirePresence('cabeza', 'create')
-            ->notEmpty('cabeza');
+            ->allowEmpty('cabeza');
 
         $validator
             ->scalar('pieza_intermedia')
             ->maxLength('pieza_intermedia', 20)
-            ->requirePresence('pieza_intermedia', 'create')
-            ->notEmpty('pieza_intermedia');
+            ->allowEmpty('pieza_intermedia');
 
         $validator
             ->scalar('cola')
             ->maxLength('cola', 20)
-            ->requirePresence('cola', 'create')
-            ->notEmpty('cola');
+            ->allowEmpty('cola');
 
         $validator
-            ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
-            ->requirePresence('leucocitos', 'create')
-            ->notEmpty('leucocitos');
-
-        $validator
-            ->scalar('celulas_germinales')
-            ->maxLength('celulas_germinales', 20)
-            ->requirePresence('celulas_germinales', 'create')
-            ->notEmpty('celulas_germinales');
+            ->scalar('otras_celulas')
+            ->allowEmpty('otras_celulas');
 
         $validator
             ->scalar('aglutinacion')
             ->maxLength('aglutinacion', 20)
-            ->requirePresence('aglutinacion', 'create')
-            ->notEmpty('aglutinacion');
+            ->allowEmpty('aglutinacion');
 
         $validator
             ->scalar('progresion_lineal_rapida')
             ->maxLength('progresion_lineal_rapida', 20)
-            ->requirePresence('progresion_lineal_rapida', 'create')
-            ->notEmpty('progresion_lineal_rapida');
+            ->allowEmpty('progresion_lineal_rapida');
 
         $validator
             ->scalar('progresion_lineal_lenta')
             ->maxLength('progresion_lineal_lenta', 20)
-            ->requirePresence('progresion_lineal_lenta', 'create')
-            ->notEmpty('progresion_lineal_lenta');
+            ->allowEmpty('progresion_lineal_lenta');
 
         $validator
             ->scalar('motilidad_no_progresiva')
             ->maxLength('motilidad_no_progresiva', 20)
-            ->requirePresence('motilidad_no_progresiva', 'create')
-            ->notEmpty('motilidad_no_progresiva');
+            ->allowEmpty('motilidad_no_progresiva');
 
         $validator
             ->scalar('inmoviles')
             ->maxLength('inmoviles', 20)
-            ->requirePresence('inmoviles', 'create')
-            ->notEmpty('inmoviles');
+            ->allowEmpty('inmoviles');
 
         $validator
-            ->scalar('primera_hora')
-            ->maxLength('primera_hora', 20)
-            ->requirePresence('primera_hora', 'create')
-            ->notEmpty('primera_hora');
+            ->scalar('primera_hora_moviles')
+            ->maxLength('primera_hora_moviles', 20)
+            ->allowEmpty('primera_hora_moviles');
 
         $validator
-            ->scalar('segunda_hora')
-            ->maxLength('segunda_hora', 20)
-            ->requirePresence('segunda_hora', 'create')
-            ->notEmpty('segunda_hora');
+            ->scalar('primera_hora_inmoviles')
+            ->maxLength('primera_hora_inmoviles', 20)
+            ->allowEmpty('primera_hora_inmoviles');
 
         $validator
-            ->scalar('tercera_hora')
-            ->maxLength('tercera_hora', 20)
-            ->requirePresence('tercera_hora', 'create')
-            ->notEmpty('tercera_hora');
+            ->scalar('segunda_hora_moviles')
+            ->maxLength('segunda_hora_moviles', 20)
+            ->allowEmpty('segunda_hora_moviles');
+
+        $validator
+            ->scalar('segunda_hora_inmoviles')
+            ->maxLength('segunda_hora_inmoviles', 20)
+            ->allowEmpty('segunda_hora_inmoviles');
+
+        $validator
+            ->scalar('tercera_hora_moviles')
+            ->maxLength('tercera_hora_moviles', 20)
+            ->allowEmpty('tercera_hora_moviles');
+
+        $validator
+            ->scalar('tercera_hora_inmoviles')
+            ->maxLength('tercera_hora_inmoviles', 20)
+            ->allowEmpty('tercera_hora_inmoviles');
 
         $validator
             ->integer('created_by')

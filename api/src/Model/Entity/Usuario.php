@@ -1,6 +1,5 @@
 <?php
 namespace App\Model\Entity;
-use Cake\Auth\DefaultPasswordHasher;
 
 use Cake\ORM\Entity;
 
@@ -48,13 +47,7 @@ class Usuario extends Entity
      * @var array
      */
     protected $_hidden = [
+        'password',
         'token'
     ];
-
-    protected function _setPassword($password)
-    {
-        if (strlen($password) > 0) {
-            return (new DefaultPasswordHasher)->hash($password);
-        }
-    }
 }

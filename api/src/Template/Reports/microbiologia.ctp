@@ -131,7 +131,7 @@ $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
-$nombre = Text::slug('microbiologia-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
+$nombre = Text::slug(date('Y-m-d h-i-s') . '-' . 'microbiologia-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
 $pdf->Output($nombre . '.pdf', 'I');
 
 ?>

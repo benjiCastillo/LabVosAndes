@@ -60,139 +60,116 @@ class ExamenGeneralPruebasTable extends Table
 
         $validator
             ->scalar('color')
-            ->maxLength('color', 15)
-            ->requirePresence('color', 'create')
-            ->notEmpty('color');
+            ->maxLength('color', 20)
+            ->allowEmpty('color');
 
         $validator
             ->scalar('cantidad')
-            ->maxLength('cantidad', 15)
-            ->requirePresence('cantidad', 'create')
-            ->notEmpty('cantidad');
+            ->maxLength('cantidad', 20)
+            ->allowEmpty('cantidad');
 
         $validator
             ->scalar('olor')
-            ->maxLength('olor', 15)
-            ->requirePresence('olor', 'create')
-            ->notEmpty('olor');
+            ->maxLength('olor', 20)
+            ->allowEmpty('olor');
 
         $validator
             ->scalar('aspecto')
-            ->maxLength('aspecto', 15)
-            ->requirePresence('aspecto', 'create')
-            ->notEmpty('aspecto');
+            ->maxLength('aspecto', 20)
+            ->allowEmpty('aspecto');
 
         $validator
             ->scalar('espuma')
-            ->maxLength('espuma', 15)
-            ->requirePresence('espuma', 'create')
-            ->notEmpty('espuma');
+            ->maxLength('espuma', 20)
+            ->allowEmpty('espuma');
 
         $validator
             ->scalar('sedimento')
-            ->maxLength('sedimento', 15)
-            ->requirePresence('sedimento', 'create')
-            ->notEmpty('sedimento');
+            ->maxLength('sedimento', 20)
+            ->allowEmpty('sedimento');
 
         $validator
             ->scalar('densidad')
-            ->maxLength('densidad', 15)
-            ->requirePresence('densidad', 'create')
-            ->notEmpty('densidad');
+            ->maxLength('densidad', 20)
+            ->allowEmpty('densidad');
 
         $validator
             ->scalar('reaccion')
-            ->maxLength('reaccion', 15)
-            ->requirePresence('reaccion', 'create')
-            ->notEmpty('reaccion');
+            ->maxLength('reaccion', 20)
+            ->allowEmpty('reaccion');
 
         $validator
             ->scalar('proteinas')
-            ->maxLength('proteinas', 15)
-            ->requirePresence('proteinas', 'create')
-            ->notEmpty('proteinas');
+            ->maxLength('proteinas', 20)
+            ->allowEmpty('proteinas');
 
         $validator
             ->scalar('glucosa')
-            ->maxLength('glucosa', 15)
-            ->requirePresence('glucosa', 'create')
-            ->notEmpty('glucosa');
+            ->maxLength('glucosa', 20)
+            ->allowEmpty('glucosa');
 
         $validator
             ->scalar('cetona')
-            ->maxLength('cetona', 15)
-            ->requirePresence('cetona', 'create')
-            ->notEmpty('cetona');
+            ->maxLength('cetona', 20)
+            ->allowEmpty('cetona');
 
         $validator
             ->scalar('bilirrubina')
-            ->maxLength('bilirrubina', 15)
-            ->requirePresence('bilirrubina', 'create')
-            ->notEmpty('bilirrubina');
+            ->maxLength('bilirrubina', 20)
+            ->allowEmpty('bilirrubina');
 
         $validator
             ->scalar('sangre')
-            ->maxLength('sangre', 15)
-            ->requirePresence('sangre', 'create')
-            ->notEmpty('sangre');
+            ->maxLength('sangre', 20)
+            ->allowEmpty('sangre');
 
         $validator
             ->scalar('nitritos')
-            ->maxLength('nitritos', 15)
-            ->requirePresence('nitritos', 'create')
-            ->notEmpty('nitritos');
+            ->maxLength('nitritos', 20)
+            ->allowEmpty('nitritos');
 
         $validator
             ->scalar('urubilinogeno')
-            ->maxLength('urubilinogeno', 15)
-            ->requirePresence('urubilinogeno', 'create')
-            ->notEmpty('urubilinogeno');
+            ->maxLength('urubilinogeno', 20)
+            ->allowEmpty('urubilinogeno');
 
         $validator
             ->scalar('eritrocitos')
-            ->maxLength('eritrocitos', 15)
-            ->requirePresence('eritrocitos', 'create')
-            ->notEmpty('eritrocitos');
+            ->maxLength('eritrocitos', 20)
+            ->allowEmpty('eritrocitos');
 
         $validator
             ->scalar('piocitos')
-            ->maxLength('piocitos', 15)
-            ->requirePresence('piocitos', 'create')
-            ->notEmpty('piocitos');
+            ->maxLength('piocitos', 20)
+            ->allowEmpty('piocitos');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 15)
-            ->requirePresence('leucocitos', 'create')
-            ->notEmpty('leucocitos');
+            ->maxLength('leucocitos', 20)
+            ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('cilindros')
-            ->maxLength('cilindros', 15)
-            ->requirePresence('cilindros', 'create')
-            ->notEmpty('cilindros');
+            ->maxLength('cilindros', 20)
+            ->allowEmpty('cilindros');
 
         $validator
             ->scalar('celulas')
-            ->maxLength('celulas', 15)
-            ->requirePresence('celulas', 'create')
-            ->notEmpty('celulas');
+            ->maxLength('celulas', 20)
+            ->allowEmpty('celulas');
 
         $validator
             ->scalar('cristales')
-            ->maxLength('cristales', 15)
-            ->requirePresence('cristales', 'create')
-            ->notEmpty('cristales');
+            ->maxLength('cristales', 20)
+            ->allowEmpty('cristales');
 
         $validator
             ->scalar('otros')
-            ->requirePresence('otros', 'create')
-            ->notEmpty('otros');
+            ->allowEmpty('otros');
 
         $validator
             ->scalar('exa_bac_sed')
-            ->requirePresence('exa_bac_sed', 'create')
-            ->notEmpty('exa_bac_sed');
+            ->allowEmpty('exa_bac_sed');
 
         $validator
             ->integer('created_by')
