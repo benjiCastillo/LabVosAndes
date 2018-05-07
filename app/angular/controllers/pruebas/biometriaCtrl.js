@@ -4,24 +4,28 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
 
     //biometria
     $scope.biometria = new Object();
-    $scope.biometria.hematies = "";
-    $scope.biometria.hematocrito = "";
-    $scope.biometria.hemoglobina = "";
-    $scope.biometria.leucocitos = "";
-    $scope.biometria.vsg = "";
-    $scope.biometria.vcm = "";
-    $scope.biometria.hbcm = "";
-    $scope.biometria.chbcm = "";
-    $scope.biometria.comentario_hema = "";
-    $scope.biometria.cayados = "";
-    $scope.biometria.neutrofilos = "";
-    $scope.biometria.basofilo = "";
-    $scope.biometria.eosinofilo = "";
-    $scope.biometria.linfocito = "";
-    $scope.biometria.monocito = "";
-    $scope.biometria.prolinfocito = "";
-    $scope.biometria.cel_inmaduras = "";
-    $scope.biometria.comentario_leuco = "";
+    $scope.biometria = {
+        hematies: "",
+        hematocrito: "",
+        hemoglobina: "",
+        leucocitos: "",
+        vsg: "",
+        vcm: "",
+        hbcm: "",
+        chbcm: "",
+        comentario_hema: "",
+        cayados: "",
+        neutrofilos: "",
+        basofilo: "",
+        eosinofilo: "",
+        linfocito: "",
+        monocito: "",
+        prolinfocito: "",
+        cel_inmaduras: "",
+        comentario_leuco: ""
+    }
+
+
 
 
     var user = sessionStorage.getItem('user');
@@ -107,7 +111,7 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
             $("#modal-editar-biometria").modal("hide");
             $scope.listar($scope.dataQuery);
         });
-    }   
+    }
 
     // $scope.mostrarEliminar = function (prueba) {
     //     $("#modal-pruebas-delete").modal();
