@@ -152,7 +152,6 @@ class ExamenGeneralPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $examen_gen = $this->ExamenGeneralPruebas->newEntity();
                 $examen_gen = $this->ExamenGeneralPruebas->patchEntity($examen_gen, $data);
                 $saved = $this->ExamenGeneralPruebas->save($examen_gen);
                 if ($saved) {

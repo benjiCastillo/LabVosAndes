@@ -152,7 +152,6 @@ class InformePruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $informe = $this->InformePruebas->newEntity();
                 $informe = $this->InformePruebas->patchEntity($informe, $data);
                 $saved = $this->InformePruebas->save($informe);
                 if ($saved) {

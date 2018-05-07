@@ -152,7 +152,6 @@ class LiquidoSinovialPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $liquido = $this->LiquidoSinovialPruebas->newEntity();
                 $liquido = $this->LiquidoSinovialPruebas->patchEntity($liquido, $data);
                 $saved = $this->LiquidoSinovialPruebas->save($liquido);
                 if ($saved) {
