@@ -40,7 +40,8 @@ $pdf->Ln(1);
 if ($prueba->quimica_sanguinea_pruebas[0]->glucemia == '' && $prueba->quimica_sanguinea_pruebas[0]->urea == ''
     && $prueba->quimica_sanguinea_pruebas[0]->creatinina == '' && $prueba->quimica_sanguinea_pruebas[0]->acido_urico == ''
     && $prueba->quimica_sanguinea_pruebas[0]->colesterol_total == '' && $prueba->quimica_sanguinea_pruebas[0]->hdl_colesterol == ''
-    && $prueba->quimica_sanguinea_pruebas[0]->ldl_colesterol == '' && $prueba->quimica_sanguinea_pruebas[0]->trigliceridos == '') {
+    && $prueba->quimica_sanguinea_pruebas[0]->ldl_colesterol == '' && $prueba->quimica_sanguinea_pruebas[0]->trigliceridos == ''
+    && $prueba->quimica_sanguinea_pruebas[0]->gamaglutamil_transpeptidasa == '') {
 $col1 = '';
 } else {
     $col1 = '';
@@ -224,7 +225,7 @@ $col2 = '';
 if ($col1 == '' || $col2 == '') {
     $tabla = '';
     $tabla = '<table>' . $col1 . $col2 . '</table>';
-    $pdf->writeHTMLCell($w=100, $h=50, $x='50', $y='47', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=100, $h=50, $x='65', $y='47', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
     if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
         $embarazo = '<p>Prueba inmunológica de embarazo en suero hGC: ' . $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo . '  mg/dl</p>';
         $pdf->writeHTMLCell($w=180, $h=0, $x='55', $y='', $embarazo, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);

@@ -113,8 +113,7 @@ class PruebasTable extends Table
 
         $validator
             ->dateTime('fecha')
-            ->requirePresence('fecha', 'create')
-            ->notEmpty('fecha');
+            ->allowEmpty('fecha', 'create');
 
         $validator
             ->integer('created_by')
