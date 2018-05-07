@@ -49,12 +49,12 @@
                                         <th>Eliminar</th>
                                     </tr>
                                 </thead>
-                                <!-- <tbody>
-                                    <tr ng-repeat="biometria in listBiometria  | filter:buscadorMedico ">
-                                        <td> {{ biometria.id }}</td>
-                                        <td> {{ medico.apellidos }} </td>
+                                <tbody>
+                                    <tr>
+                                        <td> {{ listBiometria.id }} </td>
+                                        <td> {{ listBiometria.id }} </td>
                                         <td>
-                                            <a class="btn btn-info" ng-click="mostrarEditar( medico )">
+                                            <a class="btn btn-info" ng-click="mostrarEditar( listBiometria )">
                                                 <i class="fa fa-edit"></i>Editar</a>
                                         </td>
                                         <td>
@@ -62,7 +62,7 @@
                                                 <i class="fa fa-remove"></i>Eliminar</a>
                                         </td>
                                     </tr>
-                                </tbody> -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -72,3 +72,4 @@
     </div>
 </div>
 <div ng-include="'pruebas-examenes/biometria/add.html'"></div>
+<div ng-include="'pruebas-examenes/biometria/edit.html'"></div>

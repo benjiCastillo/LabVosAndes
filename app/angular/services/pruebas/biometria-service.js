@@ -39,12 +39,15 @@ app.factory('biometriaServices', ['$http', '$q', '$rootScope', function ($http, 
             return d.promise;
 
         },
-        modificar: function (user) {
+        modificar: function (data) {
+            console.log("EDITANDO")
+            console.log(data);
+            console.log(data.id);
             var d = $q.defer();
             $http({
                 method: 'PUT',
-                url: PATH + 'biometria-pruebas/edit/' + user.id,
-                data: user
+                url: PATH + 'biometria-pruebas/edit/' + data.id,
+                data: data
             })
                 .then(function successCallback(response) {
                     self.response = response.data;

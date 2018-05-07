@@ -86,12 +86,28 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
         biometriaServices.insertar(biometria).then(function () {
             var response = biometriaServices.response;
             console.log(response);
-            // $("#modal-insertar-biometria").modal("hide");
-            // $scope.listar($scope.dataQuery);
+            $("#modal-insertar-biometria").modal("hide");
+            $scope.listar($scope.dataQuery);
         });
 
     }
 
+    $scope.mostrarEditar = function (biometria) {
+        $scope.edtBiometria = biometria;
+        $("#modal-editar-biometria").modal();
+    }
+
+    $scope.edit = function (pacienteMod) {
+        pacienteMod.user = $scope.user.user;
+        pacienteMod.token = $scope.user.data.token;
+        // console.log(pacienteMod);
+        biometriaServices.modificar(pacienteMod).then(function () {
+            $scope.response = biometriaServices.response;
+            console.log($scope.response);
+            $("#modal-editar-biometria").modal("hide");
+            $scope.listar($scope.dataQuery);
+        });
+    }   
 
     // $scope.mostrarEliminar = function (prueba) {
     //     $("#modal-pruebas-delete").modal();
