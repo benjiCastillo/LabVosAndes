@@ -65,7 +65,7 @@ class UsuariosTable extends Table
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 50)
+            ->maxLength('password', 100)
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
@@ -76,7 +76,8 @@ class UsuariosTable extends Table
 
         $validator
             ->dateTime('fecha')
-            ->allowEmpty('fecha');
+            ->requirePresence('fecha', 'create')
+            ->notEmpty('fecha');
 
         $validator
             ->integer('created_by')

@@ -61,133 +61,111 @@ class SerologiaPruebasTable extends Table
         $validator
             ->scalar('factor_reumatoide')
             ->maxLength('factor_reumatoide', 20)
-            ->requirePresence('factor_reumatoide', 'create')
-            ->notEmpty('factor_reumatoide');
+            ->allowEmpty('factor_reumatoide');
 
         $validator
             ->scalar('pcr')
             ->maxLength('pcr', 20)
-            ->requirePresence('pcr', 'create')
-            ->notEmpty('pcr');
+            ->allowEmpty('pcr');
 
         $validator
             ->scalar('asto')
             ->maxLength('asto', 20)
-            ->requirePresence('asto', 'create')
-            ->notEmpty('asto');
+            ->allowEmpty('asto');
 
         $validator
             ->scalar('aso')
             ->maxLength('aso', 20)
-            ->requirePresence('aso', 'create')
-            ->notEmpty('aso');
+            ->allowEmpty('aso');
 
         $validator
             ->scalar('k_plus')
             ->maxLength('k_plus', 20)
-            ->requirePresence('k_plus', 'create')
-            ->notEmpty('k_plus');
+            ->allowEmpty('k_plus');
 
         $validator
             ->scalar('na_plus')
             ->maxLength('na_plus', 20)
-            ->requirePresence('na_plus', 'create')
-            ->notEmpty('na_plus');
+            ->allowEmpty('na_plus');
 
         $validator
             ->scalar('cl_minus')
             ->maxLength('cl_minus', 20)
-            ->requirePresence('cl_minus', 'create')
-            ->notEmpty('cl_minus');
+            ->allowEmpty('cl_minus');
 
         $validator
             ->scalar('ca')
             ->maxLength('ca', 20)
-            ->requirePresence('ca', 'create')
-            ->notEmpty('ca');
+            ->allowEmpty('ca');
 
         $validator
             ->scalar('p')
             ->maxLength('p', 20)
-            ->requirePresence('p', 'create')
-            ->notEmpty('p');
+            ->allowEmpty('p');
 
         $validator
             ->scalar('chagas')
             ->maxLength('chagas', 20)
-            ->requirePresence('chagas', 'create')
-            ->notEmpty('chagas');
+            ->allowEmpty('chagas');
 
         $validator
             ->scalar('toxoplasmosis')
             ->maxLength('toxoplasmosis', 20)
-            ->requirePresence('toxoplasmosis', 'create')
-            ->notEmpty('toxoplasmosis');
+            ->allowEmpty('toxoplasmosis');
 
         $validator
             ->scalar('chagas_resultado')
             ->maxLength('chagas_resultado', 20)
-            ->requirePresence('chagas_resultado', 'create')
-            ->notEmpty('chagas_resultado');
+            ->allowEmpty('chagas_resultado');
 
         $validator
             ->scalar('chagas_elisa_cut_off')
             ->maxLength('chagas_elisa_cut_off', 20)
-            ->requirePresence('chagas_elisa_cut_off', 'create')
-            ->notEmpty('chagas_elisa_cut_off');
+            ->allowEmpty('chagas_elisa_cut_off');
 
         $validator
             ->scalar('chagas_comentario')
-            ->requirePresence('chagas_comentario', 'create')
-            ->notEmpty('chagas_comentario');
+            ->allowEmpty('chagas_comentario');
 
         $validator
             ->scalar('tiempo_sangria')
             ->maxLength('tiempo_sangria', 20)
-            ->requirePresence('tiempo_sangria', 'create')
-            ->notEmpty('tiempo_sangria');
+            ->allowEmpty('tiempo_sangria');
 
         $validator
             ->scalar('tiempo_coagulacion')
             ->maxLength('tiempo_coagulacion', 20)
-            ->requirePresence('tiempo_coagulacion', 'create')
-            ->notEmpty('tiempo_coagulacion');
+            ->allowEmpty('tiempo_coagulacion');
 
         $validator
             ->scalar('tiempo_protrombina')
             ->maxLength('tiempo_protrombina', 20)
-            ->requirePresence('tiempo_protrombina', 'create')
-            ->notEmpty('tiempo_protrombina');
+            ->allowEmpty('tiempo_protrombina');
 
         $validator
             ->scalar('actividad_protrombina')
             ->maxLength('actividad_protrombina', 20)
-            ->requirePresence('actividad_protrombina', 'create')
-            ->notEmpty('actividad_protrombina');
+            ->allowEmpty('actividad_protrombina');
 
         $validator
             ->scalar('grupo_sanguineo')
             ->maxLength('grupo_sanguineo', 20)
-            ->requirePresence('grupo_sanguineo', 'create')
-            ->notEmpty('grupo_sanguineo');
+            ->allowEmpty('grupo_sanguineo');
 
         $validator
             ->scalar('factor_rh')
             ->maxLength('factor_rh', 20)
-            ->requirePresence('factor_rh', 'create')
-            ->notEmpty('factor_rh');
+            ->allowEmpty('factor_rh');
 
         $validator
             ->scalar('recuento_plaquetas')
             ->maxLength('recuento_plaquetas', 50)
-            ->requirePresence('recuento_plaquetas', 'create')
-            ->notEmpty('recuento_plaquetas');
+            ->allowEmpty('recuento_plaquetas');
 
         $validator
             ->scalar('agr_dis_plaquetaria')
             ->maxLength('agr_dis_plaquetaria', 50)
-            ->requirePresence('agr_dis_plaquetaria', 'create')
-            ->notEmpty('agr_dis_plaquetaria');
+            ->allowEmpty('agr_dis_plaquetaria');
 
         $validator
             ->integer('created_by')

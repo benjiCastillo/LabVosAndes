@@ -59,9 +59,14 @@ class InformePruebasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('contenido')
-            ->requirePresence('contenido', 'create')
-            ->notEmpty('contenido');
+            ->scalar('grupo_sanguineo')
+            ->maxLength('grupo_sanguineo', 20)
+            ->allowEmpty('grupo_sanguineo');
+
+        $validator
+            ->scalar('factor_rh')
+            ->maxLength('factor_rh', 20)
+            ->allowEmpty('factor_rh');
 
         $validator
             ->integer('created_by')

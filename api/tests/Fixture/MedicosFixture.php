@@ -46,8 +46,8 @@ class MedicosFixture extends TestFixture
                 'id' => 1,
                 'nombre' => 'Lorem ipsum dolor sit amet',
                 'apellidos' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-05-03 00:55:57',
-                'modified' => '2018-05-03 00:55:57',
+                'created' => '2018-05-07 00:14:17',
+                'modified' => '2018-05-07 00:14:17',
                 'created_by' => 1,
                 'modified_by' => 1
             ],

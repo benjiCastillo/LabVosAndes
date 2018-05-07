@@ -37,6 +37,87 @@ $title = '<p><b>QUÍMICA SANGUÍNEA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
+if ($prueba->quimica_sanguinea_pruebas[0]->glucemia == '' && $prueba->quimica_sanguinea_pruebas[0]->urea == ''
+&& $prueba->quimica_sanguinea_pruebas[0]->creatinina == '' && $prueba->quimica_sanguinea_pruebas[0]->acido_urico == ''
+&& $prueba->quimica_sanguinea_pruebas[0]->colesterol_total == '' && $prueba->quimica_sanguinea_pruebas[0]->hdl_colesterol == ''
+&& $prueba->quimica_sanguinea_pruebas[0]->ldl_colesterol == '' && $prueba->quimica_sanguinea_pruebas[0]->trigliceridos
+&& $prueba->quimica_sanguinea_pruebas[0]->gamaglutamil_transpeptidasa= '' && $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo = '') {
+$col1 = '';
+} else {
+    $col1 = '';
+    if ($prueba->quimica_sanguinea_pruebas[0]->glucemia != '') {
+        $col1 .= '<tr>
+                    <td width="135">Glucemia:</td>
+                    <td width="120">' . $prueba->quimica_sanguinea_pruebas[0]->glucemia . '  mg/dl</td>
+                    <td width="100" style="color: rgb(58,137,159)">70 - 110 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->urea != '') {
+        $col1 .= '<tr>
+                    <td>Urea: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->urea . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">17 - 49 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->creatinina != '') {
+        $col1 .= '<tr>
+                    <td>Creatinina: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->creatinina . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">H: 0,6 - 1,2 mg/dl; M: 0,8 - 1,4 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->acido_urico != '') {
+        $col1 .= '<tr>
+                    <td>Acido úrico: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->acido_urico . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">H: 3,7 - 8,0 mg/dl; M: 2,3 - 6,1 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->colesterol_total != '') {
+        $col1 .= '<tr>
+                    <td>Colesterol total: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->colesterol_total . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">140 - 200 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->hdl_colesterol != '') {
+        $col1 .= '<tr>
+                    <td>HDL colesterol: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->hdl_colesterol . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">30 - 70 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->ldl_colesterol != '') {
+        $col1 .= '<tr>
+                    <td>LDL colesterol: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->ldl_colesterol . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">< 100 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->trigliceridos != '') {
+        $col1 .= '<tr>
+                    <td>Triglicéridos: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->trigliceridos . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">30 - 150 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->gamaglutamil_transpeptidasa != '') {
+        $col1 .= '<tr>
+                    <td width="190">Gamaglutamil transpeptidasa GGT: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->gamaglutamil_transpeptidasa . ' U/L</td>
+                    <td style="color: rgb(58,137,159)">9 - 39 U/L</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
+        $col1 .= '<tr>
+                    <td>Prueba inmunológica de embarazo en suero hGC:: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)">30 - 70 mg/dl</td>
+                </tr>';
+    }
+    $col1 .= '<br>';
+}
+
 $tabla1 = '<table style="padding: 2px;">
                 <tr>
                     <td width="135">Glucemia:</td>
@@ -159,7 +240,7 @@ $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
-$nombre = Text::slug('quimica-sanguinea-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
+$nombre = Text::slug(date('Y-m-d h-i-s') . '-' . 'quimica-sanguinea-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
 $pdf->Output($nombre . '.pdf', 'I');
 
 ?>

@@ -21,16 +21,18 @@ use Cake\ORM\Entity;
  * @property string $cabeza
  * @property string $pieza_intermedia
  * @property string $cola
- * @property string $leucocitos
- * @property string $celulas_germinales
+ * @property string $otras_celulas
  * @property string $aglutinacion
  * @property string $progresion_lineal_rapida
  * @property string $progresion_lineal_lenta
  * @property string $motilidad_no_progresiva
  * @property string $inmoviles
- * @property string $primera_hora
- * @property string $segunda_hora
- * @property string $tercera_hora
+ * @property string $primera_hora_moviles
+ * @property string $primera_hora_inmoviles
+ * @property string $segunda_hora_moviles
+ * @property string $segunda_hora_inmoviles
+ * @property string $tercera_hora_moviles
+ * @property string $tercera_hora_inmoviles
  * @property int $prueba_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -66,16 +68,18 @@ class EspermogramaPrueba extends Entity
         'cabeza' => true,
         'pieza_intermedia' => true,
         'cola' => true,
-        'leucocitos' => true,
-        'celulas_germinales' => true,
+        'otras_celulas' => true,
         'aglutinacion' => true,
         'progresion_lineal_rapida' => true,
         'progresion_lineal_lenta' => true,
         'motilidad_no_progresiva' => true,
         'inmoviles' => true,
-        'primera_hora' => true,
-        'segunda_hora' => true,
-        'tercera_hora' => true,
+        'primera_hora_moviles' => true,
+        'primera_hora_inmoviles' => true,
+        'segunda_hora_moviles' => true,
+        'segunda_hora_inmoviles' => true,
+        'tercera_hora_moviles' => true,
+        'tercera_hora_inmoviles' => true,
         'prueba_id' => true,
         'created' => true,
         'modified' => true,

@@ -61,42 +61,35 @@ class ParasitologiaPruebasTable extends Table
         $validator
             ->scalar('consistencia')
             ->maxLength('consistencia', 20)
-            ->requirePresence('consistencia', 'create')
-            ->notEmpty('consistencia');
+            ->allowEmpty('consistencia');
 
         $validator
             ->scalar('color')
             ->maxLength('color', 20)
-            ->requirePresence('color', 'create')
-            ->notEmpty('color');
+            ->allowEmpty('color');
 
         $validator
             ->scalar('restos_alimenticios')
             ->maxLength('restos_alimenticios', 20)
-            ->requirePresence('restos_alimenticios', 'create')
-            ->notEmpty('restos_alimenticios');
+            ->allowEmpty('restos_alimenticios');
 
         $validator
             ->scalar('leucocitos')
             ->maxLength('leucocitos', 20)
-            ->requirePresence('leucocitos', 'create')
-            ->notEmpty('leucocitos');
+            ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('comentario')
-            ->requirePresence('comentario', 'create')
-            ->notEmpty('comentario');
+            ->allowEmpty('comentario');
 
         $validator
             ->scalar('sangre_oculta')
             ->maxLength('sangre_oculta', 20)
-            ->requirePresence('sangre_oculta', 'create')
-            ->notEmpty('sangre_oculta');
+            ->allowEmpty('sangre_oculta');
 
         $validator
             ->scalar('muestras')
-            ->requirePresence('muestras', 'create')
-            ->notEmpty('muestras');
+            ->allowEmpty('muestras');
 
         $validator
             ->integer('created_by')

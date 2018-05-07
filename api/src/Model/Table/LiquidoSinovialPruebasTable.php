@@ -61,50 +61,42 @@ class LiquidoSinovialPruebasTable extends Table
         $validator
             ->scalar('volumen')
             ->maxLength('volumen', 20)
-            ->requirePresence('volumen', 'create')
-            ->notEmpty('volumen');
+            ->allowEmpty('volumen');
 
         $validator
             ->scalar('proteinas_totales')
             ->maxLength('proteinas_totales', 20)
-            ->requirePresence('proteinas_totales', 'create')
-            ->notEmpty('proteinas_totales');
+            ->allowEmpty('proteinas_totales');
 
         $validator
             ->scalar('glucosa')
             ->maxLength('glucosa', 20)
-            ->requirePresence('glucosa', 'create')
-            ->notEmpty('glucosa');
+            ->allowEmpty('glucosa');
 
         $validator
             ->scalar('celulas')
             ->maxLength('celulas', 20)
-            ->requirePresence('celulas', 'create')
-            ->notEmpty('celulas');
+            ->allowEmpty('celulas');
 
         $validator
             ->scalar('coagulo_fibrina')
             ->maxLength('coagulo_fibrina', 20)
-            ->requirePresence('coagulo_fibrina', 'create')
-            ->notEmpty('coagulo_fibrina');
+            ->allowEmpty('coagulo_fibrina');
 
         $validator
             ->scalar('glicemia')
             ->maxLength('glicemia', 20)
-            ->requirePresence('glicemia', 'create')
-            ->notEmpty('glicemia');
+            ->allowEmpty('glicemia');
 
         $validator
             ->scalar('urea')
             ->maxLength('urea', 20)
-            ->requirePresence('urea', 'create')
-            ->notEmpty('urea');
+            ->allowEmpty('urea');
 
         $validator
             ->scalar('creatinina')
             ->maxLength('creatinina', 20)
-            ->requirePresence('creatinina', 'create')
-            ->notEmpty('creatinina');
+            ->allowEmpty('creatinina');
 
         $validator
             ->integer('created_by')

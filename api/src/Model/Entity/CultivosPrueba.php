@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property string $bacterias
  * @property string $esputo_as
  * @property string $esputo_microorganismo_identificado
- * @property string $antibioticos
  * @property string $ampicilina_sulbactam
  * @property string $eritromicina
  * @property string $clindamicina
@@ -53,7 +52,6 @@ class CultivosPrueba extends Entity
         'bacterias' => true,
         'esputo_as' => true,
         'esputo_microorganismo_identificado' => true,
-        'antibioticos' => true,
         'ampicilina_sulbactam' => true,
         'eritromicina' => true,
         'clindamicina' => true,

@@ -42,7 +42,7 @@ use Cake\ORM\Entity;
  * @property string $celulas_hep
  * @property string $control_positivo
  * @property string $control_negativo
- * @property string $conclusión
+ * @property string $conclusion
  * @property string $comentario_general
  * @property int $prueba_id
  * @property \Cake\I18n\FrozenTime $created
@@ -100,7 +100,7 @@ class HormonasPrueba extends Entity
         'celulas_hep' => true,
         'control_positivo' => true,
         'control_negativo' => true,
-        'conclusión' => true,
+        'conclusion' => true,
         'comentario_general' => true,
         'prueba_id' => true,
         'created' => true,
