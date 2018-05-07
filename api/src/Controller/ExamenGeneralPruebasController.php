@@ -134,7 +134,7 @@ class ExamenGeneralPruebasController extends AppController
      */
     public function edit($id = null)
     {
-        $examenGeneralPrueba = $this->ExamenGeneralPruebas->get($id, [
+        $examen_gen = $this->ExamenGeneralPruebas->get($id, [
             'contain' => []
         ]);
         $this->autoRender = false;
