@@ -37,99 +37,135 @@ $title = '<p><b>MICROBIOLOGÍA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
-$tabla1 = '<table style="padding: 0.2px;">
-                <tr>
-                    <td colspan="3"><b>Examen de Secreción Vaginal</b></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td colspan="3"><b> Examen en Fresco</b></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
+$micro = '<tr>
+                <td colspan="3"><b>Examen de Secreción Vaginal</b></td>
+                <td></td>
+            </tr>';
+if ($prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal == '' && $prueba->microbiologia_pruebas[0]->leucocitos == ''
+    && $prueba->microbiologia_pruebas[0]->piocitos == '' && $prueba->microbiologia_pruebas[0]->celulas_clave == ''
+    && $prueba->microbiologia_pruebas[0]->tricomona_vaginalis == '' && $prueba->microbiologia_pruebas[0]->flora_bacteriana == ''
+    && $prueba->microbiologia_pruebas[0]->hifas_micoticas == '' && $prueba->microbiologia_pruebas[0]->prueba_koh == ''
+    && $prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos == '' && $prueba->microbiologia_pruebas[0]->cocos_gram_positivos == ''
+    && $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos == '' && $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos == ''
+    && $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas == '') {
+$fresco = '';
+} else {
+    $fresco = '<tr>
+                <br>
+                <td colspan="3"><b> Examen en Fresco</b></td>
+                <td></td>
+            </tr>';
+    if ($prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal != '') {
+        $fresco .= '<tr>
                     <td width="165">        Células del epitelio vaginal: </td>
                     <td width="110">' . $prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal . '</td>
-                    <td width="100"></td>
-                </tr>
-                <tr>
-                    <td>        Leucocitos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->leucocitos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Piocitos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->piocitos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Células clave: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->celulas_clave . '</td>
-                    <td></td>
-                </tr>
-                 <tr>
-                    <td>        Tricomona vaginalis: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->tricomona_vaginalis . '</td>
-                    <td></td>
-                </tr>
-                 <tr>
-                    <td>        Flora bacteriana: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->flora_bacteriana . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Hifas micóticas: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->hifas_micoticas . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td><b> Prueba KOH: </b></td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->prueba_koh . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td><b> Tinción de Gram</b></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Coco-bacilos Gram positivos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Cocos Gram positivos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->cocos_gram_positivos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Bacilos Gram positivos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Bacilos Gram negativos: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos . '</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>        Hifas y esporas micóticas: </td>
-                    <td>' . $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas . '</td>
-                    <td></td>
-                </tr>
-            </table>';
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->leucocitos != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Leucocitos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->leucocitos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->piocitos != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Piocitos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->piocitos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->celulas_clave != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Células clave: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->celulas_clave . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->tricomona_vaginalis != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Tricomona vaginalis: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->tricomona_vaginalis . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->flora_bacteriana != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Flora bacteriana: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->flora_bacteriana . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->hifas_micoticas != '') {
+        $fresco .= '<tr>
+                    <td width="165">        Hifas micóticas: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->hifas_micoticas . '</td>
+                </tr>';
+    }
+    $fresco .= '<br>';
+}
 
-$pdf->writeHTMLCell($w=150, $h=0, $x='75', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+if ($prueba->microbiologia_pruebas[0]->prueba_koh == '') {
+$koh = '';
+} else {
+    $koh = '';
+    if ($prueba->microbiologia_pruebas[0]->prueba_koh != '') {
+        $koh .= '<tr>
+                    <td width="165"><b> Prueba KOH: </b></td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->prueba_koh . '</td>
+                </tr>';
+    }
+    $koh .= '<br>';
+}
+
+if ($prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos == '' && $prueba->microbiologia_pruebas[0]->cocos_gram_positivos == ''
+    && $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos == '' && $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos == ''
+    && $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas == '') {
+    $gram = '';
+} else {
+    $gram = '<tr>
+                <td colspan="3"><b> Examen en gram</b></td>
+                <td></td>
+            </tr>';
+    if ($prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos != '') {
+        $gram .= '<tr>
+                    <td width="165">        Coco-bacilos Gram positivos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->cocos_gram_positivos != '') {
+        $gram .= '<tr>
+                    <td width="165">        Cocos Gram positivos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->cocos_gram_positivos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->bacilos_gram_positivos != '') {
+        $gram .= '<tr>
+                    <td width="165">        Bacilos Gram positivos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->bacilos_gram_negativos != '') {
+        $gram .= '<tr>
+                    <td width="165">        Bacilos Gram negativos: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos . '</td>
+                </tr>';
+    }
+    if ($prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas != '') {
+        $gram .= '<tr>
+                    <td width="165">        Hifas y esporas micóticas: </td>
+                    <td width="110">' . $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas . '</td>
+                </tr>';
+    }
+}
+
+
+
+$tabla1 = '<table>' . $micro . $fresco . $koh . $gram .
+            '</table>';
+
+$pdf->writeHTMLCell($w=150, $h=80, $x='75', $y='40', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>
         </div>';
-$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='120', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $nombre = Text::slug(date('Y-m-d h-i-s') . '-' . 'microbiologia-' .  $prueba->paciente->nombre . '-' .  $prueba->paciente->apellidos);
 $pdf->Output($nombre . '.pdf', 'I');

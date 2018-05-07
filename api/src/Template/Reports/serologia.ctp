@@ -37,141 +37,238 @@ $title = '<p><b>SEROLOGÍA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
-$tabla1 = '<table>
-                <tr>
-                    <td>Factor Reumatoide: </td>
-                    <td width="100"> ' . $prueba->serologia_pruebas[0]->factor_reumatoide . ' UI/ml</td>
-                    <td width="140" style="color: rgb(58,137,159)">a partir de 30 UI/ml</td>
-                </tr>
-                <tr>
-                    <td>PCR: </td>
-                    <td> ' . $prueba->serologia_pruebas[0]->pcr . ' mg/L</td>
-                    <td style="color: rgb(58,137,159)">a partir de 6 mg/L</td>
-                </tr>
-                <tr>
-                    <td>ASTO: </td>
-                    <td> ' . $prueba->serologia_pruebas[0]->asto . ' unidades TODD</td>
-                    <td style="color: rgb(58,137,159)">hasta 166 unidades TODD</td>
-                </tr>
-                <tr>
-                    <td>ASO: </td>
-                    <td> ' . $prueba->serologia_pruebas[0]->aso . ' UI/ml</td>
-                    <td style="color: rgb(58,137,159)">a partir de 200 UI/ml</td>
-                </tr>
-                <tr>
-                    <br>
+if ($prueba->serologia_pruebas[0]->factor_reumatoide == '' && $prueba->serologia_pruebas[0]->pcr == ''
+    && $prueba->serologia_pruebas[0]->asto == '' && $prueba->serologia_pruebas[0]->aso == '') {
+$serologia = '';
+} else {
+    $serologia = '';
+    if ($prueba->serologia_pruebas[0]->factor_reumatoide != '') {
+        $serologia .= '<tr>
+                        <td width="110">Factor Reumatoide: </td>
+                        <td width="110"> ' . $prueba->serologia_pruebas[0]->factor_reumatoide . ' UI/ml</td>
+                        <td width="120" style="color: rgb(58,137,159)">a partir de 30 UI/ml</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->pcr != '') {
+        $serologia .= '<tr>
+                        <td width="110">PCR: </td>
+                        <td width="110"> ' . $prueba->serologia_pruebas[0]->pcr . ' mg/L</td>
+                        <td width="120" style="color: rgb(58,137,159)">a partir de 6 mg/L</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->asto != '') {
+        $serologia .= '<tr>
+                        <td width="110">ASTO: </td>
+                        <td width="110"> ' . $prueba->serologia_pruebas[0]->asto . ' U TODD</td>
+                        <td width="120" style="color: rgb(58,137,159)">hasta 166 U TODD</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->aso != '') {
+        $serologia .= '<tr>
+                    <td width="110">ASO: </td>
+                    <td width="110"> ' . $prueba->serologia_pruebas[0]->aso . ' UI/ml</td>
+                    <td width="120" style="color: rgb(58,137,159)">a partir de 200 UI/ml</td>
+                </tr>';
+    }
+    $serologia .= '<br>';
+}
+
+if ($prueba->serologia_pruebas[0]->k_plus == '' && $prueba->serologia_pruebas[0]->na_plus == ''
+    && $prueba->serologia_pruebas[0]->cl_minus == '' && $prueba->serologia_pruebas[0]->ca == ''
+    && $prueba->serologia_pruebas[0]->p == '') {
+$ionograma = '';
+} else {
+    $ionograma = '<tr>
                     <td colspan="3"><b>Ionograma</b></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>K+: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->k_plus . ' mEq/L</td>
-                    <td style="color: rgb(58,137,159)">3,4 - 5,3 mEq/L</td>
-                </tr>
-                <tr>
-                    <td>Na+: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->na_plus . ' mEq/L</td>
-                    <td style="color: rgb(58,137,159)">135 - 155 mEq/L</td>
-                </tr>
-                <tr>
-                    <td>Cl-: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->cl_minus . ' mEq/L</td>
-                    <td style="color: rgb(58,137,159)">98 - 106 mEq/L</td>
-                </tr>
-                <tr>
-                    <td>Ca: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->ca . ' mg/dl</td>
-                    <td style="color: rgb(58,137,159)">9,2 - 11,0 mg/dl</td>
-                </tr>
-                <tr>
-                    <td>P: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->p . ' mg/dl</td>
-                    <td style="color: rgb(58,137,159)">2,5 - 4,8 mg/dl</td>
-                </tr>
-                <tr>
+                </tr>';
+    if ($prueba->serologia_pruebas[0]->k_plus != '') {
+        $ionograma .= '<tr>
+                        <td width="110">K+: </td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->k_plus . ' mEq/L</td>
+                        <td width="120" style="color: rgb(58,137,159)">3,4 - 5,3 mEq/L</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->na_plus != '') {
+        $ionograma .= '<tr>
+                        <td width="110">Na+: </td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->na_plus . ' mEq/L</td>
+                        <td width="120" style="color: rgb(58,137,159)">135 - 155 mEq/L</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->cl_minus != '') {
+        $ionograma .= '<tr>
+                        <td width="110">Cl-: </td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->cl_minus . ' mEq/L</td>
+                        <td width="120" style="color: rgb(58,137,159)">98 - 106 mEq/L</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->ca != '') {
+        $ionograma .= '<tr>
+                        <td width="110">Ca: </td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->ca . ' mg/dl</td>
+                        <td width="120" style="color: rgb(58,137,159)">9,2 - 11,0 mg/dl</td>
+                    </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->p != '') {
+        $ionograma .= '<tr>
+                        <td width="110">P: </td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->p . ' mg/dl</td>
+                        <td width="120" style="color: rgb(58,137,159)">2,5 - 4,8 mg/dl</td>
+                    </tr>';
+    }
+    $ionograma .= '<br>';
+}
+
+
+if ($prueba->serologia_pruebas[0]->chagas == '' && $prueba->serologia_pruebas[0]->toxoplasmosis == ''
+) {
+    $hai = '';
+} else {
+    $hai = '';
+    if ($prueba->serologia_pruebas[0]->chagas != '') {
+    $hai .= '<tr>
                     <br>
-                    <td><b>HAI Chagas</b></td>
-                    <td>' . $prueba->serologia_pruebas[0]->chagas . '</td>
-                    <td style="color: rgb(58,137,159)">a partir de 1/16</td>
+                    <td width="110"><b>HAI Chagas</b></td>
+                    <td width="110">' . $prueba->serologia_pruebas[0]->chagas . '</td>
+                    <td width="120" style="color: rgb(58,137,159)">a partir de 1/16</td>
+                </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->toxoplasmosis != '') {
+        $hai .= '<tr>
+                        <br>
+                        <td width="110"><b>HAI Toxoplasmosis</b></td>
+                        <td width="110">' . $prueba->serologia_pruebas[0]->toxoplasmosis . '</td>
+                        <td width="120" style="color: rgb(58,137,159)">a partir de 1/16</td>
+                    </tr>';
+    }
+    $hai .= '<br>';
+}
+
+if ($prueba->serologia_pruebas[0]->chagas_resultado == '' && $prueba->serologia_pruebas[0]->chagas_elisa_cut_off == ''
+    && $prueba->serologia_pruebas[0]->chagas_comentario == '') {
+    $elisa = '';
+} else {
+    $elisa = '<tr>
+                <td colspan="3"><b>ElISA Chagas</b></td>
+                <td></td>
+                <td></td>
+            </tr>';
+    if ($prueba->serologia_pruebas[0]->chagas_resultado != '') {
+        $elisa .= '<tr>
+                    <td width="80">Resultado: </td>
+                    <td width="80">' . $prueba->serologia_pruebas[0]->chagas_resultado . '</td>
+                    <td width="160"style="color: rgb(58,137,159)">Reactivo: Mayor al Cut Off</td>
                 </tr>
                 <tr>
-                    <br>
-                    <td><b>HAI Toxoplasmosis</b></td>
-                    <td>' . $prueba->serologia_pruebas[0]->toxoplasmosis . '</td>
-                    <td style="color: rgb(58,137,159)">a partir de 1/16</td>
-                </tr>
-                <tr>
-                    <br>
-                    <td colspan="3"><b>ESLISA Chagas</b></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Resultado: </td>
-                    <td>' . $prueba->serologia_pruebas[0]->chagas_resultado . '</td>
-                    <td style="color: rgb(58,137,159)">Reactivo: Mayor al Cut Off; No Reactivo: Menor al Cut Off</td>
-                </tr>
-                <tr>
-                    <td>Cut Off: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->chagas_elisa_cut_off . '</td>
-                    <td style="color: rgb(58,137,159)">Dudoso: Igual al Cut Off</td>
-                </tr>
-                <tr>
+                    <td width="80"></td>
+                    <td width="80"></td>
+                    <td width="160" style="color: rgb(58,137,159)">No Reactivo: Menor al Cut Off</td>
+                </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->chagas_elisa_cut_off != '') {
+        $elisa .= '<tr>
+                    <td width="80">Cut Off: </td>
+                    <td width="80">'. $prueba->serologia_pruebas[0]->chagas_elisa_cut_off . '</td>
+                    <td width="160" style="color: rgb(58,137,159)">Dudoso: Igual al Cut Off</td>
+                </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->chagas_comentario != '') {
+        $elisa .= '<tr>
                     <td>Comentario: </td>
-                    <td colspan="2">'. $prueba->serologia_pruebas[0]->chagas_comentario . '</td>
+                    <td width="230" colspan="2">'. $prueba->serologia_pruebas[0]->chagas_comentario . '</td>
                     <td></td>
-                </tr>
-                <tr>
-                    <br>
+                </tr>';
+    }
+    $elisa .= '<br>';
+}
+
+if ($prueba->serologia_pruebas[0]->tiempo_sangria == '' && $prueba->serologia_pruebas[0]->tiempo_coagulacion == ''
+    && $prueba->serologia_pruebas[0]->tiempo_protrombina == '' && $prueba->serologia_pruebas[0]->actividad_protrombina == ''
+    && $prueba->serologia_pruebas[0]->grupo_sanguineo == '' && $prueba->serologia_pruebas[0]->factor_rh == ''
+    && $prueba->serologia_pruebas[0]->recuento_plaquetas == '' && $prueba->serologia_pruebas[0]->agr_dis_plaquetaria == '') {
+$coagulograma = '';
+} else {
+    $coagulograma = '<tr>
                     <td colspan="3"><b>Coagulograma</b></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>Tiempo de sangría: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->tiempo_sangria . '</td>
-                    <td style="color: rgb(58,137,159)">2 – 5 min</td>
-                </tr>
-                <tr>
-                    <td>Tiempo de coagulación: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->tiempo_coagulacion . '</td>
-                    <td style="color: rgb(58,137,159)">5 – 7,5 min</td>
-                </tr>
-                <tr>
-                    <td>Tiempo de Protrombina: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->tiempo_protrombina . '</td>
-                    <td style="color: rgb(58,137,159)">11 – 13 seg</td>
-                </tr>
-                <tr>
-                    <td>Actividad Protrombina: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->actividad_protrombina . '</td>
-                    <td style="color: rgb(58,137,159)"></td>
-                </tr>
-                <tr>
-                    <td>Grupo sanguineo: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->grupo_sanguineo . '</td>
-                    <td style="color: rgb(58,137,159)"></td>
-                </tr>
-                <tr>
-                    <td>Factor Rh: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->factor_rh . '</td>
-                    <td style="color: rgb(58,137,159)"></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td>Recuento de plaquetas: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->recuento_plaquetas . '</td>
-                    <td style="color: rgb(58,137,159)">150.000 - 450.000 X mm3 de sangre</td>
-                </tr>
-                <tr>
-                    <td>Agregación y distribución plaquetaria: </td>
-                    <td>'. $prueba->serologia_pruebas[0]->agr_dis_plaquetaria . '</td>
-                    <td style="color: rgb(58,137,159)"></td>
-                </tr>
-            </table>';
+                </tr>';
+    if ($prueba->serologia_pruebas[0]->tiempo_sangria != '') {
+        $coagulograma .= '<tr>
+                            <td width="130">Tiempo de sangría: </td>
+                            <td width="100">'. $prueba->serologia_pruebas[0]->tiempo_sangria . '</td>
+                            <td width="100" style="color: rgb(58,137,159)">2 – 5 min</td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->tiempo_coagulacion != '') {
+        $coagulograma .= '<tr>
+                            <td>Tiempo de coagulación: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->tiempo_coagulacion . '</td>
+                            <td style="color: rgb(58,137,159)">5 – 7,5 min</td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->tiempo_protrombina != '') {
+        $coagulograma .= '<tr>
+                            <td>Tiempo de Protrombina: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->tiempo_protrombina . '</td>
+                            <td style="color: rgb(58,137,159)">11 – 13 seg</td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->actividad_protrombina != '') {
+        $coagulograma .= '<tr>
+                            <td>Actividad Protrombina: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->actividad_protrombina . '</td>
+                            <td style="color: rgb(58,137,159)"></td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->grupo_sanguineo != '') {
+        $coagulograma .= '<tr>
+                            <td>Grupo sanguineo: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->grupo_sanguineo . '</td>
+                            <td style="color: rgb(58,137,159)"></td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->factor_rh != '') {
+        $coagulograma .= '<tr>
+                            <td>Factor Rh: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->factor_rh . '</td>
+                            <td style="color: rgb(58,137,159)"></td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->recuento_plaquetas != '') {
+        $coagulograma .= '<tr>
+                            <td>Recuento de plaquetas: </td>
+                            <td>'. $prueba->serologia_pruebas[0]->recuento_plaquetas . '</td>
+                            <td style="color: rgb(58,137,159)">150.000 - 450.000 X mm3 de sangre</td>
+                        </tr>';
+    }
+    if ($prueba->serologia_pruebas[0]->agr_dis_plaquetaria != '') {
+        $coagulograma .= '<tr>
+                    <td width="150">Agregación y distribución plaquetaria: </td>
+                    <td width="150" colspan="2">'. $prueba->serologia_pruebas[0]->agr_dis_plaquetaria . '</td>
+                    <td></td>
+                </tr>';
+    }
+    $coagulograma .= '<br>';
+}
 
-$pdf->writeHTMLCell($w=110, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+if (($serologia == '' && $ionograma == '' && $hai == '') ||
+    ($elisa == '' && $coagulograma == '')) {
+    $tabla = '';
+    $tabla = '<table>' . $serologia . $ionograma . $hai . $elisa . $coagulograma . '</table>';
+    $pdf->writeHTMLCell($w=130, $h=0, $x='64', $y='42', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+}
+else {
+    $tabla1 = '';
+    $tabla1 = '<table>' . $serologia .  $ionograma . $hai . '</table>';
+    $pdf->writeHTMLCell($w=125, $h=0, $x='15', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+
+    $tabla2 = '';
+    $tabla2 = '<table>' . $elisa . $coagulograma . '</table>';
+    $pdf->writeHTMLCell($w=130, $h=0, $x='115', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+}
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
