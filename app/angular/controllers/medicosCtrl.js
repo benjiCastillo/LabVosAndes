@@ -21,7 +21,7 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
 
             $scope.response = medicosServices.response;
             $scope.cargandoMedicos = false;
-
+            console.log($scope.response)
             if ($scope.response.error == 1) {
                 $scope.medicosCargado = false;
             } else {

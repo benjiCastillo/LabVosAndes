@@ -16,6 +16,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.informeServices',
 	'vosandesApp.pruebasServices',
 	'vosandesApp.pacientesExamenServices',
+	'vosandesApp.biometriaServices',
 	'angularMoment'
 
 ]);

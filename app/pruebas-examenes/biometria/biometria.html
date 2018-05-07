@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="well">
-            <h2 class="text-info">BIOMETRIA</h2>
+            <h3 class="text-info">BIOMETRIA</h3>
             <p>
                 <b>Paciente: </b>
                 <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
@@ -27,14 +27,48 @@
                 <div class="col-md-16">
                     <div class="box">
                         <div class="box-header with-border">
-                            <h2 class="text-info">BIOMETRIA</h2>
+                            <h3 class="text-primary box-title">Biometría</h3>
+                            <div class="box-tools">
+                                <div class="input-group">
+                                    <a ng-click="insertarModal()" class="btn btn-success">
+                                        <i class="fa fa-plus"></i> Agregar Biometría</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="box-body">
+                            <span class="animate fadeIn" ng-show="notData">No existen pruebas de biometría aún..</span>
+                            <span class="animate fadeIn" ng-show="loadData">Cargando..</span>
+                            <label for="#" ng-show="biometriaLoad">Buscar</label>
+                            <input type="text" ng-show="biometriaLoad" class="form-control" placeholder="Buscar" ng-model="buscadorMedico" required>
+                            <table class="table table-hover table-striped" ng-show="biometriaLoad">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <!-- <tbody>
+                                    <tr ng-repeat="biometria in listBiometria  | filter:buscadorMedico ">
+                                        <td> {{ biometria.id }}</td>
+                                        <td> {{ medico.apellidos }} </td>
+                                        <td>
+                                            <a class="btn btn-info" ng-click="mostrarEditar( medico )">
+                                                <i class="fa fa-edit"></i>Editar</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" ng-click="mostrarEliminar( medico )">
+                                                <i class="fa fa-remove"></i>Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody> -->
+                            </table>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
     </div>
 </div>
+<div ng-include="'pruebas-examenes/biometria/add.html'"></div>

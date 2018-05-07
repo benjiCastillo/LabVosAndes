@@ -1,70 +1,96 @@
 var app = angular.module('vosandesApp.biometriaCtrl', []);
 
-app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'pruebasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, pruebasServices, medicosServices, $sessionStorage, moment) {
+app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometriaServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, biometriaServices, medicosServices, $sessionStorage, moment) {
+
+    //biometria
+    $scope.biometria = new Object();
+    $scope.biometria.hematies = "";
+    $scope.biometria.hematocrito = "";
+    $scope.biometria.hemoglobina = "";
+    $scope.biometria.leucocitos = "";
+    $scope.biometria.vsg = "";
+    $scope.biometria.vcm = "";
+    $scope.biometria.hbcm = "";
+    $scope.biometria.chbcm = "";
+    $scope.biometria.comentario_hema = "";
+    $scope.biometria.cayados = "";
+    $scope.biometria.neutrofilos = "";
+    $scope.biometria.basofilo = "";
+    $scope.biometria.eosinofilo = "";
+    $scope.biometria.linfocito = "";
+    $scope.biometria.monocito = "";
+    $scope.biometria.prolinfocito = "";
+    $scope.biometria.cel_inmaduras = "";
+    $scope.biometria.comentario_leuco = "";
+
 
     var user = sessionStorage.getItem('user');
     user = JSON.parse(user)
     $scope.user = user;
     $scope.paciente = $sessionStorage.paciente;
+    $scope.prueba = $sessionStorage.prueba;
     $scope.dataQuery = new Object();
-    $scope.dataQueryMed = new Object();
+    // $scope.dataQueryMed = new Object();
     $scope.loadData = false;
     $scope.notData = false;
-    $notMedico = true;
+    $scope.biometriaLoad = false;
+    // $notMedico = true;
 
-    $scope.dataQuery.user = $scope.user;
-    $scope.dataQuery.paciente = $scope.paciente;
-    $scope.dataQueryMed.user = $scope.user.user;
-    $scope.dataQueryMed.data = {};
-    $scope.dataQueryMed.data.token = $scope.user.data.token
-
-    // $scope.listar = function (data) {
-    //     //  console.log(data)
-    //     $scope.paciente.visible = true;
-    //     pruebasServices.listar(data).then(function () {
-    //         $scope.response = pruebasServices.response;
-    //         // console.log($scope.response);
-    //         $scope.loadData = false;
-
-    //         if ($scope.response.error == 1) {
-    //             $scope.notData = true;
-    //         } else {
-    //             $scope.pacientesCargado = true;
-
-    //             $scope.listPruebas = $scope.response.data;
-    //             $scope.msgPruebas = $scope.response.message;
-    //         }
-
-    //     });
-    // }
-
-    // $scope.listar($scope.dataQuery);
+    $scope.dataQuery.user = $scope.user.user;
+    $scope.dataQuery.token = $scope.user.data.token;
+    $scope.dataQuery.prueba_id = $scope.prueba.id;
+    console.log($scope.dataQuery);
+    // $scope.dataQueryMed.user = $scope.user.user;
+    // $scope.dataQueryMed.data = {};
+    // $scope.dataQueryMed.data.token = $scope.user.data.token
 
 
-    // // modal add
-    // $scope.insertarModal = function () {
-    //     $scope.medico = {};
-    //     $("#modal-pruebas-add").modal();
-    //     console.log($scope.dataQueryMed);
-    // }
-    // $scope.insertar = function (medico) {
-    //     if (!isNaN(medico)) {
-    //         var data = new Object();
-    //         data.token = $scope.user.data.token;
-    //         data.user = $scope.user.user;
-    //         data.medico_id = parseInt(medico);
-    //         data.paciente_id = $scope.paciente.id;
-    //         pruebasServices.insertar(data).then(function () {
-    //             var response = pruebasServices.response;
-    //             //  console.log(response);
-    //             $("#modal-pruebas-add").modal("hide");
-    //             $scope.listar($scope.dataQuery);
-    //         });
-    //     } else {
-    //         alert("Elija un médico o registre médicos para registrar un prueba")
-    //     }
+    $scope.listar = function (data) {
+        $scope.loadData = true;
+        biometriaServices.listar(data).then(function () {
+            $scope.response = biometriaServices.response;
+            console.log($scope.response);
+            $scope.loadData = false;
 
-    // }
+            if ($scope.response.error == 1) {
+                $scope.notData = true;
+            } else {
+                $scope.pacientesCargado = true;
+                if ($scope.response.data == 0) {
+                    $scope.notData = true;
+                } else {
+                    $scope.listBiometria = $scope.response.data;
+                    $scope.msgPruebas = $scope.response.message;
+                    $scope.biometriaLoad = true;
+                }
+
+            }
+
+        });
+    }
+
+    $scope.listar($scope.dataQuery);
+
+
+    // modal add
+    $scope.insertarModal = function () {
+        $scope.medico = {};
+        $("#modal-insertar-biometria").modal();
+        //console.log($scope.dataQueryMed);
+    }
+    $scope.insertar = function (biometria) {
+        biometria.prueba_id = $scope.prueba.id;
+        biometria.token = $scope.user.data.token;
+        biometria.user = $scope.user.user;
+        // console.log(biometria);
+        biometriaServices.insertar(biometria).then(function () {
+            var response = biometriaServices.response;
+            console.log(response);
+            // $("#modal-insertar-biometria").modal("hide");
+            // $scope.listar($scope.dataQuery);
+        });
+
+    }
 
 
     // $scope.mostrarEliminar = function (prueba) {
