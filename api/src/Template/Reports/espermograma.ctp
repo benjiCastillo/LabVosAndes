@@ -258,11 +258,6 @@ else {
     $pdf->writeHTMLCell($w=150, $h=0, $x='110', $y='47', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
 
-// $tabla1 = '<table> '.$datos_hora. $examen_fisico. $examen_microscopico . $examen_directo .'
-//             </table>';
-
-// $pdf->writeHTMLCell($w=130, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
             BIOQUÍMICA - FARMACÉUTICA</b>

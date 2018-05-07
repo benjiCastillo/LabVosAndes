@@ -152,7 +152,6 @@ class HormonasPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $hormonas = $this->HormonasPruebas->newEntity();
                 $hormonas = $this->HormonasPruebas->patchEntity($hormonas, $data);
                 $saved = $this->HormonasPruebas->save($hormonas);
                 if ($saved) {

@@ -152,7 +152,6 @@ class BiometriaPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $biometria = $this->BiometriaPruebas->newEntity();
                 $biometria = $this->BiometriaPruebas->patchEntity($biometria, $data);
                 $saved = $this->BiometriaPruebas->save($biometria);
                 if ($saved) {

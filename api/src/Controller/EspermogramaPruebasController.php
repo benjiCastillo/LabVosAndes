@@ -152,7 +152,6 @@ class EspermogramaPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $espermo = $this->EspermogramaPruebas->newEntity();
                 $espermo = $this->EspermogramaPruebas->patchEntity($espermo, $data);
                 $saved = $this->EspermogramaPruebas->save($espermo);
                 if ($saved) {

@@ -152,7 +152,6 @@ class CultivosPruebasController extends AppController
             ])->first();
             if (!empty($user)) {
                 $data['modified_by'] = $user->id;
-                $cultivos = $this->CultivosPruebas->newEntity();
                 $cultivos = $this->CultivosPruebas->patchEntity($cultivos, $data);
                 $saved = $this->CultivosPruebas->save($cultivos);
                 if ($saved) {
