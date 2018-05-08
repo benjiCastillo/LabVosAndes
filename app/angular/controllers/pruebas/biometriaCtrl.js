@@ -84,13 +84,13 @@ app.controller('biometriaCtrl', ['$scope', '$routeParams', '$window', 'biometria
         biometria.token = $scope.user.data.token;
         biometria.user = $scope.user.user;
         console.log(biometria);
-        // biometriaServices.insertar(biometria).then(function () {
-        //     var response = biometriaServices.response;
-        //     console.log(response);
-        //     $("#modal-insertar-biometria").modal("hide");
-        //     // $window.location.reload();
-        //     $scope.listar($scope.dataQuery);
-        // });
+        biometriaServices.insertar(biometria).then(function () {
+            var response = biometriaServices.response;
+            console.log(response);
+            $("#modal-insertar-biometria").modal("hide");
+            // $window.location.reload();
+            $scope.listar($scope.dataQuery);
+        });
 
     }
 
