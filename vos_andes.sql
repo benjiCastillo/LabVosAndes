@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-05-2018 a las 00:14:32
+-- Tiempo de generación: 08-05-2018 a las 05:57:57
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -332,43 +332,43 @@ INSERT INTO `examen_general_pruebas` (`id`, `color`, `cantidad`, `olor`, `aspect
 
 CREATE TABLE `hormonas_pruebas` (
   `id` int(11) NOT NULL,
-  `tsh` varchar(20) NOT NULL,
-  `t4_libre` varchar(20) NOT NULL,
-  `t4_total` varchar(20) NOT NULL,
-  `t3` varchar(20) NOT NULL,
-  `cisticercosis_resultado` varchar(20) NOT NULL,
-  `cisticercosis_cut_off` varchar(20) NOT NULL,
-  `comentario_cisticercosis` text NOT NULL,
-  `antigeno_carcino` varchar(20) NOT NULL,
-  `psa_total` varchar(20) NOT NULL,
-  `psa_libre` varchar(20) NOT NULL,
-  `relacion_psa_libre_total` varchar(20) NOT NULL,
-  `estradiol` varchar(20) NOT NULL,
-  `progesterona` varchar(20) NOT NULL,
-  `fsh` varchar(20) NOT NULL,
-  `lh` varchar(20) NOT NULL,
-  `prolactina` varchar(20) NOT NULL,
-  `testosterona` varchar(20) NOT NULL,
-  `ana` varchar(20) NOT NULL,
-  `testosterona_control_positivo` varchar(20) NOT NULL,
-  `testosterona_control_negativo` varchar(20) NOT NULL,
-  `celulas_le` varchar(20) NOT NULL,
-  `celulas_le_control_positivo` varchar(20) NOT NULL,
-  `celulas_le_control_negativo` varchar(20) NOT NULL,
-  `anticuerpos_resultado` varchar(20) NOT NULL,
-  `anticuerpos_cut_off` varchar(20) NOT NULL,
-  `comentario_anticuerpos` text NOT NULL,
-  `toxoplasmosis_lgm` varchar(20) NOT NULL,
-  `toxoplasmosis_lgg` varchar(20) NOT NULL,
-  `b_hcg_cuantitativo` varchar(20) NOT NULL,
-  `anti_nucleares` varchar(20) NOT NULL,
-  `anticuerpos_control_positivo` varchar(20) NOT NULL,
-  `anticuerpos_control_negativo` varchar(20) NOT NULL,
-  `celulas_hep` varchar(20) NOT NULL,
-  `control_positivo` varchar(20) NOT NULL,
-  `control_negativo` varchar(20) NOT NULL,
-  `conclusion` varchar(20) NOT NULL,
-  `comentario_general` text NOT NULL,
+  `tsh` varchar(20) DEFAULT NULL,
+  `t4_libre` varchar(20) DEFAULT NULL,
+  `t4_total` varchar(20) DEFAULT NULL,
+  `t3` varchar(20) DEFAULT NULL,
+  `cisticercosis_resultado` varchar(20) DEFAULT NULL,
+  `cisticercosis_cut_off` varchar(20) DEFAULT NULL,
+  `comentario_cisticercosis` text,
+  `antigeno_carcino` varchar(20) DEFAULT NULL,
+  `psa_total` varchar(20) DEFAULT NULL,
+  `psa_libre` varchar(20) DEFAULT NULL,
+  `relacion_psa_libre_total` varchar(20) DEFAULT NULL,
+  `estradiol` varchar(20) DEFAULT NULL,
+  `progesterona` varchar(20) DEFAULT NULL,
+  `fsh` varchar(20) DEFAULT NULL,
+  `lh` varchar(20) DEFAULT NULL,
+  `prolactina` varchar(20) DEFAULT NULL,
+  `testosterona` varchar(20) DEFAULT NULL,
+  `ana` varchar(20) DEFAULT NULL,
+  `testosterona_control_positivo` varchar(20) DEFAULT NULL,
+  `testosterona_control_negativo` varchar(20) DEFAULT NULL,
+  `celulas_le` varchar(20) DEFAULT NULL,
+  `celulas_le_control_positivo` varchar(20) DEFAULT NULL,
+  `celulas_le_control_negativo` varchar(20) DEFAULT NULL,
+  `anticuerpos_resultado` varchar(20) DEFAULT NULL,
+  `anticuerpos_cut_off` varchar(20) DEFAULT NULL,
+  `comentario_anticuerpos` text,
+  `toxoplasmosis_lgm` varchar(20) DEFAULT NULL,
+  `toxoplasmosis_lgg` varchar(20) DEFAULT NULL,
+  `b_hcg_cuantitativo` varchar(20) DEFAULT NULL,
+  `anti_nucleares` varchar(20) DEFAULT NULL,
+  `anticuerpos_control_positivo` varchar(20) DEFAULT NULL,
+  `anticuerpos_control_negativo` varchar(20) DEFAULT NULL,
+  `celulas_hep` varchar(20) DEFAULT NULL,
+  `control_positivo` varchar(20) DEFAULT NULL,
+  `control_negativo` varchar(20) DEFAULT NULL,
+  `conclusion` varchar(20) DEFAULT NULL,
+  `comentario_general` text,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -405,7 +405,7 @@ CREATE TABLE `informe_pruebas` (
 --
 
 INSERT INTO `informe_pruebas` (`id`, `grupo_sanguineo`, `factor_rh`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'awdadw', 'sefsdfsef', 86, '2018-05-04 00:00:00', '2018-05-04 00:00:00', 0, NULL);
+(1, '111', '111', 86, '2018-05-04 00:00:00', '2018-05-07 02:43:56', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -435,7 +435,7 @@ CREATE TABLE `liquido_sinovial_pruebas` (
 --
 
 INSERT INTO `liquido_sinovial_pruebas` (`id`, `volumen`, `proteinas_totales`, `glucosa`, `celulas`, `coagulo_fibrina`, `glicemia`, `urea`, `creatinina`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíiááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, 'awdaw', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíiááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 'ááée´uúíi', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -550,7 +550,7 @@ CREATE TABLE `parasitologia_pruebas` (
 --
 
 INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(2, 'awdasd', 'áa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(2, '', '', '', '', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -618,7 +618,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
 --
 
 INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', '', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññú', 'awááééññúawááééññú', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'awdawd', 'waaeg', 'egaga', 'egaega', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'awdawfawg', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -709,7 +709,7 @@ CREATE TABLE `serologia_pruebas` (
 --
 
 INSERT INTO `serologia_pruebas` (`id`, `factor_reumatoide`, `pcr`, `asto`, `aso`, `k_plus`, `na_plus`, `cl_minus`, `ca`, `p`, `chagas`, `toxoplasmosis`, `chagas_resultado`, `chagas_elisa_cut_off`, `chagas_comentario`, `tiempo_sangria`, `tiempo_coagulacion`, `tiempo_protrombina`, `actividad_protrombina`, `grupo_sanguineo`, `factor_rh`, `recuento_plaquetas`, `agr_dis_plaquetaria`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñ', '', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, '', '', '', '', '', '', '', '', '', '', '', '23g23g32', '23g23g', 'g3g3g2', 'dawfawgfa', 'dwad', 'dwadaw', 'wdawd', 'awdaw', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
