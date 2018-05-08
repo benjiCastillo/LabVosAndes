@@ -96,9 +96,9 @@ class QuimicaSanguineaPruebasController extends AppController
 
             if (!empty($user)) {
                 $data['created_by'] = $user->id;
-                $quimica = $this->QuimicaSanguinea->newEntity();
-                $quimica = $this->QuimicaSanguinea->patchEntity($quimica, $data);
-                $saved = $this->QuimicaSanguinea->save($quimica);
+                $quimica = $this->QuimicaSanguineaPruebas->newEntity();
+                $quimica = $this->QuimicaSanguineaPruebas->patchEntity($quimica, $data);
+                $saved = $this->QuimicaSanguineaPruebas->save($quimica);
                 if ($saved) {
                     $json = [
                         'error' => 0,
