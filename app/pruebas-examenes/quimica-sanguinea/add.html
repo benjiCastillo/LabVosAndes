@@ -11,14 +11,17 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6">
-              <h4 class="text-success">Examen Fisico</h4>
               <div class="form-group">
                 <label class="col-sm-4">Glucemia</label>
-                <input type="text" class="col-sm-8" placeholder="Color" ng-model="quimicaSanguinea.glucemia">
+                <input type="text" class="col-sm-8" placeholder="glucemia" ng-model="quimicaSanguinea.glucemia">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Urea</label>
+                <input type="text" class="col-sm-8" placeholder="Urea" ng-model="quimicaSanguinea.urea">
               </div>
               <div class="form-group">
                 <label class="col-sm-4">Creatinina</label>
-                <input type="text" class="col-sm-8" placeholder="Cantidad" ng-model="quimicaSanguinea.creatinina">
+                <input type="text" class="col-sm-8" placeholder="creatinina" ng-model="quimicaSanguinea.creatinina">
               </div>
               <div class="form-group">
                 <label class="col-sm-4">Ácido urico</label>
@@ -29,80 +32,81 @@
                 <input type="text" class="col-sm-8" placeholder="colesterol total" ng-model="quimicaSanguinea.colesterol_total">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">hdl colesterol</label>
-                <input type="text" class="col-sm-8" placeholder="hdl colesterol" ng-model="quimicaSanguinea.hdl_colesterol">
+                <label class="col-sm-4">HDL colesterol</label>
+                <input type="text" class="col-sm-8" placeholder="HDL colesterol" ng-model="quimicaSanguinea.hdl_colesterol">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">ldl colesterol</label>
-                <input type="text" class="col-sm-8" placeholder="ldl colesterol" ng-model="quimicaSanguinea.ldl_colesterol">
+                <label class="col-sm-4">LDL colesterol</label>
+                <input type="text" class="col-sm-8" placeholder="LDL colesterol" ng-model="quimicaSanguinea.ldl_colesterol">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Trigliceridos</label>
-                <input type="text" class="col-sm-8" placeholder="Trigliceridos" ng-model="quimicaSanguinea.trigliceridos">
+                <label class="col-sm-4">Triglicéridos</label>
+                <input type="text" class="col-sm-8" placeholder="Triglicéridos" ng-model="quimicaSanguinea.trigliceridos">
               </div>
+              <div class="form-group">
+                <label class="col-sm-4">Gamaglutamil transpeptidasa</label>
+                <input type="text" class="col-sm-8" placeholder="Gamaglutamil transpeptidasa" ng-model="quimicaSanguinea.gamaglutamil_transpeptidasa">
+              </div>
+
 
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <label class="col-sm-4">f alcalina</label>
-                <input type="text" class="col-sm-8" placeholder="f alcalina" ng-model="quimicaSanguinea.f_alcalina">
+                <label class="col-sm-4">F. alcalina</label>
+                <input type="text" class="col-sm-8" placeholder="F. alcalina" ng-model="quimicaSanguinea.f_alcalina">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">transaminasa_got</label>
-                <input type="text" class="col-sm-8" placeholder="transaminasa_got" ng-model="quimicaSanguinea.transaminasa_got">
+                <label class="col-sm-4">Transaminasa GOT</label>
+                <input type="text" class="col-sm-8" placeholder="Transaminasa GOT" ng-model="quimicaSanguinea.transaminasa_got">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">transaminasa_gpt</label>
-                <input type="text" class="col-sm-8" placeholder="transaminasa_gpt" ng-model="quimicaSanguinea.transaminasa_gpt">
+                <label class="col-sm-4">Transaminasa GPT</label>
+                <input type="text" class="col-sm-8" placeholder="Transaminasa GPT" ng-model="quimicaSanguinea.transaminasa_gpt">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">bilirrubina_total</label>
-                <input type="text" class="col-sm-8" placeholder="bilirrubina_total" ng-model="quimicaSanguinea.bilirrubina_total">
+                <label class="col-sm-4">Bilirrubina total</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina total" ng-model="quimicaSanguinea.bilirrubina_total">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">bilirrubina_directa</label>
-                <input type="text" class="col-sm-8" placeholder="bilirrubina_directa" ng-model="quimicaSanguinea.bilirrubina_directa">
+                <label class="col-sm-4">Bilirrubina directa</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina directa" ng-model="quimicaSanguinea.bilirrubina_directa">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">bilirrubina_indirecta</label>
-                <input type="text" class="col-sm-8" placeholder="bilirrubina_indirecta" ng-model="quimicaSanguinea.bilirrubina_indirecta">
+                <label class="col-sm-4">Bilirrubina indirecta</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina indirecta" ng-model="quimicaSanguinea.bilirrubina_indirecta">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">amilasa</label>
-                <input type="text" class="col-sm-8" placeholder="amilasa" ng-model="quimicaSanguinea.amilasa">
+                <label class="col-sm-4">Amilasa</label>
+                <input type="text" class="col-sm-8" placeholder="Amilasa" ng-model="quimicaSanguinea.amilasa">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">proteinas_totales</label>
-                <input type="text" class="col-sm-8" placeholder="proteinas_totales" ng-model="quimicaSanguinea.proteinas_totales">
+                <label class="col-sm-4">Proteinas totales</label>
+                <input type="text" class="col-sm-8" placeholder="Proteinas totales" ng-model="quimicaSanguinea.proteinas_totales">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">albumina</label>
-                <input type="text" class="col-sm-8" placeholder="albumina" ng-model="quimicaSanguinea.albumina">
+                <label class="col-sm-4">Albumina</label>
+                <input type="text" class="col-sm-8" placeholder="Albumina" ng-model="quimicaSanguinea.albumina">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">calcio</label>
-                <input type="text" class="col-sm-8" placeholder="calcio" ng-model="quimicaSanguinea.calcio">
+                <label class="col-sm-4">Calcio</label>
+                <input type="text" class="col-sm-8" placeholder="Calcio" ng-model="quimicaSanguinea.calcio">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">cpk</label>
-                <input type="text" class="col-sm-8" placeholder="cpk" ng-model="quimicaSanguinea.cpk">
+                <label class="col-sm-4">CPK</label>
+                <input type="text" class="col-sm-8" placeholder="CPK" ng-model="quimicaSanguinea.cpk">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">cpk_mb</label>
-                <input type="text" class="col-sm-8" placeholder="cpk_mb" ng-model="quimicaSanguinea.cpk_mb">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">gamaglutamil_transpeptidasa</label>
-                <input type="text" class="col-sm-8" placeholder="gamaglutamil_transpeptidasa" ng-model="quimicaSanguinea.gamaglutamil_transpeptidasa">
+                <label class="col-sm-4">CPK MB</label>
+                <input type="text" class="col-sm-8" placeholder="CPK MB" ng-model="quimicaSanguinea.cpk_mb">
               </div>
 
             </div>
 
             <div class="col-md-12">
               <div class="form-group">
-                <label>prueba_inmunologica_embarazo</label>
-                <textarea ng-model="quimicaSanguinea.prueba_inmunologica_embarazo" class="col-sm-12" id="" cols="10" rows="2"></textarea>
+                <label>Prueba Inmunológica de embarazo en suero</label>
+                <textarea ck-editor ng-model="quimicaSanguinea.prueba_inmunologica_embarazo" class="col-sm-12" id="" cols="10" rows="2"></textarea>
               </div>
             </div>
 

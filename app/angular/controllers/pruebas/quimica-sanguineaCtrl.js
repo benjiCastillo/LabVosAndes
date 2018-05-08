@@ -37,7 +37,7 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     $scope.user = user;
     $scope.paciente = $sessionStorage.paciente;
     $scope.prueba = $sessionStorage.prueba;
-    $scope.PATH = 'http://localhost/LabVosAndes/api/examen-quimica-pruebas/printQuimicaPruebas/' + $scope.prueba.id;
+    $scope.PATH = 'http://localhost/LabVosAndes/api/quimica-sanguinea-pruebas/printQuimicaPruebas/' + $scope.prueba.id;
     console.log()
     $scope.dataQuery = new Object();
     // $scope.dataQueryMed = new Object();
@@ -103,7 +103,7 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     }
 
     $scope.mostrarEditar = function (quimica) {
-        $scope.edtBiometria = quimica;
+        $scope.edtQuimica = quimica;
         $("#modal-edit-quimica").modal();
     }
 
