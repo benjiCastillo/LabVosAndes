@@ -33,7 +33,7 @@ class QuimicaSanguineaPruebasController extends AppController
             ])->count();
 
             if ($count) {
-                $quimica = $this->QuimicaSanguinea->find('all', [
+                $quimica = $this->QuimicaSanguineaPruebas->find('all', [
                     'conditions' => [
                         'prueba_id' => $data['prueba_id']
                     ]

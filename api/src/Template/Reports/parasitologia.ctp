@@ -37,62 +37,94 @@ $title = '<p><b>PARASITOLOGÍA</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
-$tabla1 = '<table style="padding: 2px;">
-                <tr>
+if ($prueba->parasitologia_pruebas[0]->consistencia == '' && $prueba->parasitologia_pruebas[0]->color == ''
+    && $prueba->parasitologia_pruebas[0]->restos_alimenticios == '') {
+$copro = '';
+} else {
+    $copro = '<tr>
                     <td colspan="3"><b>Coproparasitológico Simple</b></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
+                </tr>';
+    if ($prueba->parasitologia_pruebas[0]->consistencia != '') {
+        $copro .= '<tr>
                     <td width="110">Consistencia: </td>
                     <td width="100">' . $prueba->parasitologia_pruebas[0]->consistencia . '</td>
                     <td style="color: rgb(58,137,159)">Semi líquido</td>
-                </tr>
-                <tr>
-                    <td>Color: </td>
-                    <td>' . $prueba->parasitologia_pruebas[0]->color . '</td>
+                </tr>';
+    }
+    if ($prueba->parasitologia_pruebas[0]->color != '') {
+        $copro .= '<tr>
+                    <td width="110">Color: </td>
+                    <td width="100">' . $prueba->parasitologia_pruebas[0]->color . '</td>
                     <td style="color: rgb(58,137,159)">Pardo claro</td>
-                </tr>
-                <tr>
-                    <td>Restos alimenticios: </td>
-                    <td>' . $prueba->parasitologia_pruebas[0]->restos_alimenticios . '</td>
+                </tr>';
+    }
+    if ($prueba->parasitologia_pruebas[0]->restos_alimenticios != '') {
+        $copro .= '<tr>
+                    <td width="110">Restos alimenticios: </td>
+                    <td width="100">' . $prueba->parasitologia_pruebas[0]->restos_alimenticios . '</td>
                     <td style="color: rgb(58,137,159)">Regular cantidad</td>
-                </tr>
-                <tr>
-                    <br>
+                </tr>';
+    }
+    $copro .= '<br>';
+}
+
+if ($prueba->parasitologia_pruebas[0]->leucocitos == '' && $prueba->parasitologia_pruebas[0]->comentario == ''
+    && $prueba->parasitologia_pruebas[0]->sangre_oculta == '') {
+    $moco = '';
+} else {
+    $moco = '<tr>
                     <td colspan="3"><b>Moco Fecal</b></td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>Leucocitos: </td>
-                    <td>' . $prueba->parasitologia_pruebas[0]->leucocitos . '</td>
+                </tr>';
+    if ($prueba->parasitologia_pruebas[0]->leucocitos != '') {
+        $moco .= '<tr>
+                    <td width="110">Leucocitos: </td>
+                    <td width="100">' . $prueba->parasitologia_pruebas[0]->leucocitos . '</td>
                     <td style="color: rgb(58,137,159)">8 - 10 pcm</td>
-                </tr>
-                <tr>
+                </tr>';
+    }
+    if ($prueba->parasitologia_pruebas[0]->comentario != '') {
+        $moco .= '<tr>
                     <td colspan="3">' . $prueba->parasitologia_pruebas[0]->comentario . '</td>
                     <td></td>
                     <td></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <br>
-                    <td colspan="3"><b>Examen Mocroscópico: </b></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>' . $prueba->parasitologia_pruebas[0]->muestras . ' </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>';
+                </tr>';
+    }
+    if ($prueba->parasitologia_pruebas[0]->sangre_oculta != '') {
+        $moco .= '<tr>
+                        <br>
+                        <td width="110" colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
+                        <td width="100"></td>
+                        <td></td>
+                    </tr>';
+    }
+    $moco .= '<br>';
+}
 
+
+if ($prueba->parasitologia_pruebas[0]->muestras == '') {
+    $microscopico = '';
+} else {
+    $microscopico = '<tr>
+                        <td colspan="3"><b>Examen Mocroscópico: </b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>';
+    if ($prueba->parasitologia_pruebas[0]->muestras != '') {
+        $microscopico .= '<tr>
+                            <td width="110">' . $prueba->parasitologia_pruebas[0]->muestras . ' </td>
+                            <td width="100"></td>
+                            <td></td>
+                        </tr>';
+        }
+    $microscopico .= '<br>';
+}
+
+
+$tabla1 = '<table>' . $copro . $moco . $microscopico . '</table>';
 $pdf->writeHTMLCell($w=150, $h=0, $x='68', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
 $pdf->SetFont('helvetica','',7);

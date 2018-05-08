@@ -154,8 +154,6 @@ if ($prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos == '' && $pru
     }
 }
 
-
-
 $tabla1 = '<table>' . $micro . $fresco . $koh . $gram .
             '</table>';
 
