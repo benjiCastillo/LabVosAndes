@@ -1,0 +1,136 @@
+<div class="modal fade bs-example-modal-lg" id="modal-edit-general">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h3 class="modal-title text-primary">Insertar Examen General</h3>
+                <h4 class="text-info">Examen General de Orina</h4>
+            </div>
+            <form class="form-horizontal" style="padding: 0 10px;" name="frmedtBiometria" ng-submit="edit(edtBiometria)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-success">Examen Fisico</h4>
+                            <div class="form-group">
+                                <label class="col-sm-4">Color</label>
+                                <input type="text" class="col-sm-8" placeholder="Color" ng-model="edtBiometria.color">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cantidad</label>
+                                <input type="text" class="col-sm-8" placeholder="Cantidad" ng-model="edtBiometria.cantidad">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Olor</label>
+                                <input type="text" class="col-sm-8" placeholder="Olor" ng-model="edtBiometria.olor">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Aspecto</label>
+                                <input type="text" class="col-sm-8" placeholder="Aspecto" ng-model="edtBiometria.aspecto">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Espuma</label>
+                                <input type="text" class="col-sm-8" placeholder="Espuma" ng-model="edtBiometria.espuma">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Sedimento</label>
+                                <input type="text" class="col-sm-8" placeholder="Sedimento" ng-model="edtBiometria.sedimento">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Densidad</label>
+                                <input type="text" class="col-sm-8" placeholder="Densidad" ng-model="edtBiometria.densidad">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Reaccion</label>
+                                <input type="text" class="col-sm-8" placeholder="Reaccion" ng-model="edtBiometria.reaccion">
+                            </div>
+                            <h4 class="text-success">Examen Quimico</h4>
+                            <div class="form-group">
+                                <label class="col-sm-4">Proteinas</label>
+                                <input type="text" class="col-sm-8" placeholder="Proteinas" ng-model="edtBiometria.proteinas">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Glucosa</label>
+                                <input type="text" class="col-sm-8" placeholder="Glucosa" ng-model="edtBiometria.glucosa">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cetona</label>
+                                <input type="text" class="col-sm-8" placeholder="Cetona" ng-model="edtBiometria.cetona">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Bilirrubina</label>
+                                <input type="text" class="col-sm-8" placeholder="Bilirrubina" ng-model="edtBiometria.bilirrubina">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Sangre</label>
+                                <input type="text" class="col-sm-8" placeholder="Sangre" ng-model="edtBiometria.sangre">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Nitritos</label>
+                                <input type="text" class="col-sm-8" placeholder="Nitritos" ng-model="edtBiometria.nitritos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Urubilinogeno</label>
+                                <input type="text" class="col-sm-8" placeholder="Urubilinogeno" ng-model="edtBiometria.urubilinogeno">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-success">Examen Microscopico Sedimento</h4>
+                            <div class="form-group">
+                                <label class="col-sm-4">Eritocito</label>
+                                <input type="text" class="col-sm-8" placeholder="Eritocito" ng-model="edtBiometria.eritrocitos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Piocitos</label>
+                                <input type="text" class="col-sm-8" placeholder="Piocitos" ng-model="edtBiometria.piocitos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Leucocitos</label>
+                                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="edtBiometria.leucocitos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cilindros</label>
+                                <input type="text" class="col-sm-8" placeholder="Cilindros" ng-model="edtBiometria.cilindros">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Celulas</label>
+                                <input type="text" class="col-sm-8" placeholder="Celulas" ng-model="edtBiometria.celulas">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cristales</label>
+                                <input type="text" class="col-sm-8" placeholder="Cristales" ng-model="edtBiometria.cristales">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2">Otros</label>
+                                <textarea ng-model="edtBiometria.otros" class="col-sm-10" id="" cols="30" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12">Examen Bacteriologico Sedimento</label>
+                                <textarea ng-model="edtBiometria.exa_bac_sed" class="col-sm-10 col-md-offset-2" id="" cols="10" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <p class="text-danger" ng-show="testGenError">
+                        <b>La prueba ya fue registrada</b>
+                    </p>
+                    <p class="text-success" ng-show="testGenSuccess">
+                        <b>Datos Almacenados Correctamente</b>
+                    </p>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
