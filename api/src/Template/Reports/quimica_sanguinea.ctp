@@ -173,7 +173,7 @@ $col2 = '';
     if ($prueba->quimica_sanguinea_pruebas[0]->bilirrubina_indirecta != '') {
         $col2 .= '<tr>
                     <td>Bilirrubina indirecta: </td>
-                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->bilirrubina_indirecta . ' mg/dl</td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->bilirrubina_indirecta . ' pcm</td>
                     <td style="color: rgb(58,137,159)">8 - 10 pcm</td>
                 </tr>';
     }
@@ -227,21 +227,21 @@ if ($col1 == '' || $col2 == '') {
     $tabla = '<table>' . $col1 . $col2 . '</table>';
     $pdf->writeHTMLCell($w=100, $h=50, $x='65', $y='47', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
     if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
-        $embarazo = '<p>Prueba inmunológica de embarazo en suero hGC: ' . $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo . '  mg/dl</p>';
+        $embarazo = '<p>Prueba inmunológica de embarazo en suero hGC: ' . $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo . '</p>';
         $pdf->writeHTMLCell($w=180, $h=0, $x='55', $y='', $embarazo, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
     }
 }
 else {
     $tabla1 = '';
     $tabla1 = '<table>' . $col1 . '</table>';
-    $pdf->writeHTMLCell($w=100, $h=50, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=100, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
     $tabla2 = '';
     $tabla2 = '<table>' . $col2 . '</table>';
-    $pdf->writeHTMLCell($w=100, $h=50, $x='110', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=100, $h=0, $x='110', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
     if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
-        $embarazo = '<p>Prueba inmunológica de embarazo en suero hGC: ' . $prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo . '  mg/dl</p>';
+        $embarazo = '<p>Prueba inmunológica de embarazo en suero hGC: ' . nl2br($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo) . '</p>';
         $pdf->writeHTMLCell($w=180, $h=0, $x='55', $y='', $embarazo, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
     }
 }
