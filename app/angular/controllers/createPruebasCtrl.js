@@ -21,7 +21,6 @@ app.controller('createpruebasCtrl', ['$scope', '$routeParams', '$window', 'prueb
 
 
     $scope.crearPruebas = function (prueba) {
-        alert(prueba)
         $window.location.href = '#/paciente/pruebas/create/'+prueba;
     }
 
