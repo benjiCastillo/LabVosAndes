@@ -26,7 +26,7 @@ $initData = '<table>
                 </tr>
                 <tr>
                     <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
@@ -38,8 +38,8 @@ $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
 $datos_hora = '<tr>
-                    <td width="220"><b>Hora de recolección: </b> ' . $prueba->espermograma_pruebas[0]->hora_recoleccion . '</td>
-                    <td width="220"><b>Hora de recepción: </b> ' . $prueba->espermograma_pruebas[0]->hora_recepcion . '</td>
+                    <td width="220"><b>Hora de recolección: </b> ' . $prueba->espermograma_pruebas[0]->hora_recoleccion->format('d-m-Y H:i:s') . '</td>
+                    <td width="220"><b>Hora de recepción: </b> ' . $prueba->espermograma_pruebas[0]->hora_recepcion->format('d-m-Y H:i:s') . '</td>
                     <td width="210"><b>Duración de la abstinencia: </b> ' . $prueba->espermograma_pruebas[0]->duracion_abstinencia . '</td>
                 </tr><br>';
 
