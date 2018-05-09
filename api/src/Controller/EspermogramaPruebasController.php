@@ -96,9 +96,9 @@ class EspermogramaPruebasController extends AppController
 
             if (!empty($user)) {
                 $data['created_by'] = $user->id;
-                $espermo = $this->EspermoGramaPruebas->newEntity();
-                $espermo = $this->EspermoGramaPruebas->patchEntity($espermo, $data);
-                $saved = $this->EspermoGramaPruebas->save($espermo);
+                $espermo = $this->EspermogramaPruebas->newEntity();
+                $espermo = $this->EspermogramaPruebas->patchEntity($espermo, $data);
+                $saved = $this->EspermogramaPruebas->save($espermo);
                 if ($saved) {
                     $json = [
                         'error' => 0,
