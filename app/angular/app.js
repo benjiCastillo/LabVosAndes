@@ -11,6 +11,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.examenGeneralCtrl',
 	'vosandesApp.quimicaSanguineaCtrl',
 	'vosandesApp.cultivosCtrl',
+	'vosandesApp.espermogramasCtrl',
 	'vosandesApp.pacExaCtrl',
 	'vosandesApp.biometriaCtrl',
 	'vosandesApp.createpruebasCtrl',
@@ -23,7 +24,9 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.examenGeneralServices',
 	'vosandesApp.quimicaSanguineaServices',
 	'vosandesApp.cultivosServices',
-	'angularMoment'
+	'vosandesApp.espermogramasServices',
+	'angularMoment',
+	'moment-picker'
 
 ]);
 
@@ -104,6 +107,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/cultivos', {
 			templateUrl: 'pruebas-examenes/cultivos/cultivos.html',
 			controller: 'cultivosCtrl'
+		})
+		.when('/paciente/pruebas/create/espermogramas', {
+			templateUrl: 'pruebas-examenes/espermogramas/espermogramas.html',
+			controller: 'espermogramasCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
