@@ -2,11 +2,11 @@ var app = angular.module('vosandesApp.espermogramasCtrl', []);
 
 app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'espermogramasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, espermogramasServices, medicosServices, $sessionStorage, moment) {
 
+    $scope.edt_hora_recoleccion = null;
+    $scope.edt_hora_recepcion = null;
     //espermogramas
     $scope.espermogramas = new Object();
     $scope.espermogramas = {
-        hora_recoleccion: "",
-        hora_recepcion: "",
         duracion_abstinencia: "",
         aspecto: "",
         color: "",
@@ -81,19 +81,20 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
 
     $scope.listar($scope.dataQuery);
 
-
     // modal add
     $scope.insertarModal = function () {
         $("#modal-insertar-espermogramas").modal();
     }
 
     $scope.insertar = function (espermogramas) {
+        var hora_reco = document.getElementById("hora_recoleccion_form").value;
+        var hora_rece = document.getElementById("hora_recepcion_form").value;
         espermogramas.prueba_id = $scope.prueba.id;
         espermogramas.token = $scope.user.data.token;
         espermogramas.user = $scope.user.user;
-        espermogramas.hora_recoleccion = espermogramas.hora_recoleccion._d;
-        espermogramas.hora_recepcion = espermogramas.hora_recepcion._d;
-        console.log(espermogramas);
+        espermogramas.hora_recoleccion = moment(hora_reco).format('YYYY-MM-DD HH:mm');
+        espermogramas.hora_recepcion = moment(hora_rece).format('YYYY-MM-DD HH:mm');
+        console.log(espermogramas)
         espermogramasServices.insertar(espermogramas).then(function () {
             var response = espermogramasServices.response;
             console.log(response);
@@ -105,13 +106,22 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
     }
 
     $scope.mostrarEditar = function (espermogramas) {
+        console.log(moment(espermogramas.hora_recoleccion).format('YYYY-MM-DDThh:mm'));
+        espermogramas.hora_recoleccion = moment(espermogramas.hora_recoleccion).format('YYYY-MM-DDThh:mm');
+        espermogramas.hora_recepcion = moment(espermogramas.hora_recepcion).format('YYYY-MM-DDThh:mm');
+        // document.getElementById("edt_hora_recoleccion_form").value = moment(espermogramas.hora_recoleccion).format('yyyy-MM-ddThh:mm');
+        // document.getElementById("edt_hora_recepcion_form").value = moment(espermogramas.hora_recepcion).format('yyyy-MM-ddThh:mm');
         $scope.edtespermogramas = espermogramas;
         $("#modal-edit-espermogramas").modal();
     }
 
     $scope.edit = function (espermogramas) {
+        var h_reco = document.getElementById("edt_hora_recoleccion").value;
+        var h_rece = document.getElementById("edt_hora_recepcion").value;
         espermogramas.user = $scope.user.user;
         espermogramas.token = $scope.user.data.token;
+        espermogramas.hora_recoleccion = moment(h_reco).format('YYYY-MM-DD HH:mm');
+        espermogramas.hora_recepcion = moment(h_rece).format('YYYY-MM-DD HH:mm');
         console.log(espermogramas)
         espermogramasServices.modificar(espermogramas).then(function () {
             $scope.response = espermogramasServices.response;
@@ -163,5 +173,11 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
         var el = document.getElementById('pdf-' + type);
         el.parentNode.removeChild(el);
     }
+
+    $('#hora_recoleccion').datetimepicker({
+        format: 'YYYY-MM-DD h:mm:ss a',
+        locale: 'es',
+    });
+
 
 }])

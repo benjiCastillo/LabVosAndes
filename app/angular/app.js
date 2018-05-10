@@ -26,7 +26,6 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.cultivosServices',
 	'vosandesApp.espermogramasServices',
 	'angularMoment',
-	'moment-picker'
 
 ]);
 

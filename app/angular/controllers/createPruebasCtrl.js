@@ -1,6 +1,6 @@
 var app = angular.module('vosandesApp.createpruebasCtrl', []);
 
-app.controller('createpruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, pruebasServices, medicosServices, $sessionStorage, moment) {
+app.controller('createpruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServices', 'medicosServices', '$sessionStorage', function ($scope, $routeParams, $window, pruebasServices, medicosServices, $sessionStorage ) {
 
     var user = sessionStorage.getItem('user');
     user = JSON.parse(user)

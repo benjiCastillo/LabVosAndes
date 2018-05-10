@@ -15,17 +15,11 @@
 
               <div class="form-group">
                 <label class="col-sm-4">Hora de recoleción</label>
-                <!-- <datepicker>
-                  <input type="text" class="col-sm-8" ng-model="espermogramas.hora_recoleccion">
-                </datepicker> -->
-                <input class="form-control" ng-model="espermogramas.hora_recoleccion" ng-model-options="{ updateOn: 'blur' }" placeholder="Select a date..."
-                  moment-picker="espermogramas.hora_recoleccion" today="true" locale="es">
+                <input type="datetime-local" class="col-sm-8" id="hora_recoleccion_form">
               </div>
               <div class="form-group">
                 <label class="col-sm-4">Hora de recepción</label>
-                <input class="form-control" ng-model="espermogramas.hora_recepcion" ng-model-options="{ updateOn: 'blur' }" placeholder="Select a date..."
-                  moment-picker="espermogramas.hora_recepcion" today="true" locale="es">
-                <!-- <input type="text" class="col-sm-8" placeholder="hora_recepcion" ng-model="espermogramas.hora_recepcion"> -->
+                <input type="datetime-local" class="col-sm-8" id="hora_recepcion_form">
               </div>
               <div class="form-group">
                 <label class="col-sm-4">Duración de la abstinencia</label>
