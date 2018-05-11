@@ -12,6 +12,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.quimicaSanguineaCtrl',
 	'vosandesApp.cultivosCtrl',
 	'vosandesApp.espermogramasCtrl',
+	'vosandesApp.microbiologiaCtrl',
 	'vosandesApp.pacExaCtrl',
 	'vosandesApp.biometriaCtrl',
 	'vosandesApp.createpruebasCtrl',
@@ -28,6 +29,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.espermogramasServices',
 	'vosandesApp.informeServices',
 	'vosandesApp.liquidoSinovialServices',
+	'vosandesApp.microbiologiaServices',
 	'angularMoment',
 
 ]);
@@ -121,6 +123,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/liquido-sinovial', {
 			templateUrl: 'pruebas-examenes/liquido-sinovial/liquido-sinovial.html',
 			controller: 'liquidoSinovialCtrl'
+		})
+		.when('/paciente/pruebas/create/microbiologia', {
+			templateUrl: 'pruebas-examenes/microbiologia/microbiologia.html',
+			controller: 'microbiologiaCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
