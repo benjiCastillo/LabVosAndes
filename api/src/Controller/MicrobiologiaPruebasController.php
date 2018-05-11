@@ -206,8 +206,8 @@ class MicrobiologiaPruebasController extends AppController
         ])->first();
 
         if(!empty($user)) {
-            $registry = $this->Microbiologia->get($id);
-            if ($this->Microbiologia->delete($registry)) {
+            $registry = $this->MicrobiologiaPruebas->get($id);
+            if ($this->MicrobiologiaPruebas->delete($registry)) {
                 $json = [
                     'error' => 0,
                     'message' => 'El registro se eliminó correctamente'

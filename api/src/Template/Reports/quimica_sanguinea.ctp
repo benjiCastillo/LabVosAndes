@@ -44,7 +44,11 @@ if ($prueba->quimica_sanguinea_pruebas[0]->glucemia == '' && $prueba->quimica_sa
     && $prueba->quimica_sanguinea_pruebas[0]->gamaglutamil_transpeptidasa == '') {
 $col1 = '';
 } else {
-    $col1 = '';
+    $col1 = '<tr>
+                <td width="35%"></td>
+                <td width="30%"></td>
+                <td width="35%"><b>Valores de referencia</b></td>
+            </tr>';
     if ($prueba->quimica_sanguinea_pruebas[0]->glucemia != '') {
         $col1 .= '<tr>
                     <td>Glucemia:</td>
@@ -134,7 +138,11 @@ if ($prueba->quimica_sanguinea_pruebas[0]->f_alcalina == '' && $prueba->quimica_
     && $prueba->quimica_sanguinea_pruebas[0]->cpk == '' && $prueba->quimica_sanguinea_pruebas[0]->cpk_mb == '') {
 $col2 = '';
 } else {
-    $col2 = '';
+    $col2 = '<tr>
+                <td width="35%"></td>
+                <td width="25%"></td>
+                <td width="35%"><b>Valores de referencia</b></td>
+            </tr>';
     if ($prueba->quimica_sanguinea_pruebas[0]->f_alcalina != '') {
         $col2 .= '<tr>
                     <td>F. Alcalina: </td>
@@ -244,7 +252,7 @@ if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
 
         $tabla2 = '';
         $tabla2 = '<table>' . $col2 . '</table>';
-        $pdf->writeHTMLCell($w=100, $h=0, $x='110', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+        $pdf->writeHTMLCell($w=100, $h=0, $x='115', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
     }
 }
 
