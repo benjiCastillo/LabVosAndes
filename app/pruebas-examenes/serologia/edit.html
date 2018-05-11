@@ -1,119 +1,120 @@
 <div class="modal fade" id="modal-edit-serologia">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title">Editar Serología</h4>
-      </div>
-      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtserologia)">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="col-sm-4">Factor reumatoide</label>
-                <input type="text" class="col-sm-8" placeholder="Factor reumatoide" ng-model="edtserologia.factor_reumatoide">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title">Editar Serología</h4>
+        </div>
+        <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtserologia)">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-4">Factor Reumatoide</label>
+                  <input type="text" class="col-sm-8" placeholder="Factor reumatoide" ng-model="edtserologia.factor_reumatoide">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">PCR</label>
+                  <input type="text" class="col-sm-8" placeholder="PCR" ng-model="edtserologia.pcr">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">ASTO</label>
+                  <input type="text" class="col-sm-8" placeholder="ASTO" ng-model="edtserologia.asto">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">ASO</label>
+                  <input type="text" class="col-sm-8" placeholder="ASO" ng-model="edtserologia.aso">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">K+</label>
+                  <input type="text" class="col-sm-8" placeholder="K+" ng-model="edtserologia.k_plus">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Na+</label>
+                  <input type="text" class="col-sm-8" placeholder="Na+" ng-model="edtserologia.na_plus">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Cl-</label>
+                  <input type="text" class="col-sm-8" placeholder="Cl-" ng-model="edtserologia.cl_minus">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Ca</label>
+                  <input type="text" class="col-sm-8" placeholder="Ca" ng-model="edtserologia.ca">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">P</label>
+                  <input type="text" class="col-sm-8" placeholder="P" ng-model="edtserologia.p">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">HAI Chagas</label>
+                  <input type="text" class="col-sm-8" placeholder="HAI Chagas" ng-model="edtserologia.chagas">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">HAI Toxoplasmosis</label>
+                  <input type="text" class="col-sm-8" placeholder="HAI Toxoplasmosis" ng-model="edtserologia.toxoplasmosis">
+                </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-4">PCR</label>
-                <input type="text" class="col-sm-8" placeholder="PCR" ng-model="edtserologia.pcr">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Asto</label>
-                <input type="text" class="col-sm-8" placeholder="Asto" ng-model="edtserologia.asto">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Aso</label>
-                <input type="text" class="col-sm-8" placeholder="Aso" ng-model="edtserologia.aso">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">k_plus</label>
-                <input type="text" class="col-sm-8" placeholder="k_plus" ng-model="edtserologia.k_plus">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">na_plus</label>
-                <input type="text" class="col-sm-8" placeholder="na_plus" ng-model="edtserologia.na_plus">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">cl_minus</label>
-                <input type="text" class="col-sm-8" placeholder="cl_minus" ng-model="edtserologia.cl_minus">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">ca</label>
-                <input type="text" class="col-sm-8" placeholder="ca" ng-model="edtserologia.ca">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">p</label>
-                <input type="text" class="col-sm-8" placeholder="p" ng-model="edtserologia.p">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">chagas</label>
-                <input type="text" class="col-sm-8" placeholder="chagas" ng-model="edtserologia.chagas">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="col-sm-4">Toxoplasmosis</label>
-                <input type="text" class="col-sm-8" placeholder="Toxoplasmosis" ng-model="edtserologia.toxoplasmosis">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Chagas resultado</label>
-                <input type="text" class="col-sm-8" placeholder="Chagas resultado" ng-model="edtserologia.chagas_resultado">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Chagas elisa cut off</label>
-                <input type="text" class="col-sm-8" placeholder="Chagas elisa cut off" ng-model="edtserologia.chagas_elisa_cut_off">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Chagas comentario</label>
-                <input type="text" class="col-sm-8" placeholder="Chagas comentario" ng-model="edtserologia.chagas_comentario">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Tiempo sangria</label>
-                <input type="text" class="col-sm-8" placeholder="Tiempo sangria" ng-model="edtserologia.tiempo_sangria">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Tiempo coagulación</label>
-                <input type="text" class="col-sm-8" placeholder="Tiempo coagulación" ng-model="edtserologia.tiempo_coagulacion">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Tiempo protrombina</label>
-                <input type="text" class="col-sm-8" placeholder="Tiempo protrombina" ng-model="edtserologia.tiempo_protrombina">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Actividad protrombina</label>
-                <input type="text" class="col-sm-8" placeholder="Actividad protrombina" ng-model="edtserologia.actividad_protrombina">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Grupo Sanguíneo</label>
-                <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="edtserologia.grupo_sanguineo">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Factor RH</label>
-                <input type="text" class="col-sm-8" placeholder="Factor RH" ng-model="edtserologia.factor_rh">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Recuento plaquetas</label>
-                <input type="text" class="col-sm-8" placeholder="Recuento plaquetas" ng-model="edtserologia.recuento_plaquetas">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Agr_dis_plaquetaria</label>
-                <input type="text" class="col-sm-8" placeholder="Agr_dis_plaquetaria" ng-model="edtserologia.agr_dis_plaquetaria">
+              <div class="col-md-6">
+  
+                <div class="form-group">
+                  <label class="col-sm-4">Chagas Resultado</label>
+                  <input type="text" class="col-sm-8" placeholder="Chagas Resultado" ng-model="edtserologia.chagas_resultado">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Chagas Elisa Cut Off</label>
+                  <input type="text" class="col-sm-8" placeholder="Chagas Elisa Cut Off" ng-model="edtserologia.chagas_elisa_cut_off">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Chagas Comentario</label>
+                  <input type="text" class="col-sm-8" placeholder="Chagas Comentario" ng-model="edtserologia.chagas_comentario">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Tiempo de Sangría</label>
+                  <input type="text" class="col-sm-8" placeholder="Tiempo de Sangría" ng-model="edtserologia.tiempo_sangria">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Tiempo de Coagulación</label>
+                  <input type="text" class="col-sm-8" placeholder="Tiempo de Coagulación" ng-model="edtserologia.tiempo_coagulacion">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Tiempo de Protrombina</label>
+                  <input type="text" class="col-sm-8" placeholder="Tiempo de Protrombina" ng-model="edtserologia.tiempo_protrombina">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Actividad Protrombina</label>
+                  <input type="text" class="col-sm-8" placeholder="Actividad Protrombina" ng-model="edtserologia.actividad_protrombina">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Grupo Sanguíneo</label>
+                  <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="edtserologia.grupo_sanguineo">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Factor Rh</label>
+                  <input type="text" class="col-sm-8" placeholder="Factor Rh" ng-model="edtserologia.factor_rh">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Recuento de plaquetas</label>
+                  <input type="text" class="col-sm-8" placeholder="Recuento de plaquetas" ng-model="edtserologia.recuento_plaquetas">
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4">Agregación y distribución plaquetaria</label>
+                  <input type="text" class="col-sm-8" placeholder="Agregación y distribución plaquetaria" ng-model="edtserologia.agr_dis_plaquetaria">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">
-            <i class="fa fa-save"></i> Guardar</button>
-        </div>
-
-      </form>
-
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">
+              <i class="fa fa-save"></i> Guardar</button>
+          </div>
+  
+        </form>
+  
+      </div>
+      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
+    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal-dialog -->
-</div>
