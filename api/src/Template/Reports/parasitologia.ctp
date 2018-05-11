@@ -42,29 +42,28 @@ if ($prueba->parasitologia_pruebas[0]->consistencia == '' && $prueba->parasitolo
 $copro = '';
 } else {
     $copro = '<tr>
-                    <td colspan="3"><b>Coproparasitológico Simple</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="40%" colspan="2"><b>Coproparasitológico Simple</b></td>
+                    <td width="25%"><b>Valores de referencia</b></td>
                 </tr>';
     if ($prueba->parasitologia_pruebas[0]->consistencia != '') {
         $copro .= '<tr>
-                    <td width="110">Consistencia: </td>
-                    <td width="100">' . $prueba->parasitologia_pruebas[0]->consistencia . '</td>
-                    <td style="color: rgb(58,137,159)">Semi líquido</td>
+                    <td width="25%">Consistencia: </td>
+                    <td width="15%">' . $prueba->parasitologia_pruebas[0]->consistencia . '</td>
+                    <td width="25%" style="color: rgb(58,137,159)">Semi líquido</td>
                 </tr>';
     }
     if ($prueba->parasitologia_pruebas[0]->color != '') {
         $copro .= '<tr>
-                    <td width="110">Color: </td>
-                    <td width="100">' . $prueba->parasitologia_pruebas[0]->color . '</td>
-                    <td style="color: rgb(58,137,159)">Pardo claro</td>
+                    <td width="25%">Color: </td>
+                    <td width="15%">' . $prueba->parasitologia_pruebas[0]->color . '</td>
+                    <td width="25%" style="color: rgb(58,137,159)">Pardo claro</td>
                 </tr>';
     }
     if ($prueba->parasitologia_pruebas[0]->restos_alimenticios != '') {
         $copro .= '<tr>
-                    <td width="110">Restos alimenticios: </td>
-                    <td width="100">' . $prueba->parasitologia_pruebas[0]->restos_alimenticios . '</td>
-                    <td style="color: rgb(58,137,159)">Regular cantidad</td>
+                    <td width="25%">Restos alimenticios: </td>
+                    <td width="15%">' . $prueba->parasitologia_pruebas[0]->restos_alimenticios . '</td>
+                    <td width="25%" style="color: rgb(58,137,159)">Regular cantidad</td>
                 </tr>';
     }
     $copro .= '<br>';
@@ -75,37 +74,42 @@ if ($prueba->parasitologia_pruebas[0]->leucocitos == '' && $prueba->parasitologi
     $moco = '';
 } else {
     $moco = '<tr>
-                    <td colspan="3"><b>Moco Fecal</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="40%" colspan="3"><b>Moco Fecal</b></td>
+                    <td width="25%"><b>Valores de referencia</b></td>
                 </tr>';
     if ($prueba->parasitologia_pruebas[0]->leucocitos != '') {
         $moco .= '<tr>
-                    <td width="110">Leucocitos: </td>
-                    <td width="100">' . $prueba->parasitologia_pruebas[0]->leucocitos . '</td>
-                    <td style="color: rgb(58,137,159)">8 - 10 pcm</td>
+                    <td width="25%">Leucocitos: </td>
+                    <td width="15%">' . $prueba->parasitologia_pruebas[0]->leucocitos . '</td>
+                    <td width="25%" style="color: rgb(58,137,159)">8 - 10 pcm</td>
                 </tr>';
     }
     if ($prueba->parasitologia_pruebas[0]->comentario != '') {
         $moco .= '<tr>
-                    <td colspan="3">' . $prueba->parasitologia_pruebas[0]->comentario . '</td>
+                    <td width="65%" colspan="3">' . $prueba->parasitologia_pruebas[0]->comentario . '</td>
                     <td></td>
                     <td></td>
                 </tr>';
     }
-    if ($prueba->parasitologia_pruebas[0]->sangre_oculta != '') {
-        $moco .= '<tr>
-                        <br>
-                        <td width="110" colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
-                        <td width="100"></td>
-                        <td></td>
-                    </tr>';
-    }
     $moco .= '<br>';
 }
 
+if ($prueba->parasitologia_pruebas[0]->sangre_oculta == '' {
+    $sangre = '';
+    $moco .= '<tr>
+                <br>
+                <td width="110" colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
+                <td width="100"></td>
+                <td></td>
+            </tr>';
+    }
+    $sangre .= '<br>';
+}
 
-if ($prueba->parasitologia_pruebas[0]->muestras == '') {
+
+
+if ($prueba->parasitologia_pruebas[0]->muestra1 == '' && $prueba->parasitologia_pruebas[0]->muestra2 == ''
+    && $prueba->parasitologia_pruebas[0]->muestra3 == '') {
     $microscopico = '';
 } else {
     $microscopico = '<tr>
@@ -113,13 +117,27 @@ if ($prueba->parasitologia_pruebas[0]->muestras == '') {
                         <td></td>
                         <td></td>
                     </tr>';
-    if ($prueba->parasitologia_pruebas[0]->muestras != '') {
+    if ($prueba->parasitologia_pruebas[0]->muestra1 != '') {
         $microscopico .= '<tr>
-                            <td width="110">' . $prueba->parasitologia_pruebas[0]->muestras . ' </td>
+                            <td width="110"><b>Muestra 1: </b>' . $prueba->parasitologia_pruebas[0]->muestra1 . ' </td>
                             <td width="100"></td>
                             <td></td>
                         </tr>';
-        }
+    }
+    if ($prueba->parasitologia_pruebas[0]->muestra2 != '') {
+        $microscopico .= '<tr>
+                            <td width="110"><b>Muestra 2: </b>' . $prueba->parasitologia_pruebas[0]->muestra2 . ' </td>
+                            <td width="100"></td>
+                            <td></td>
+                        </tr>';
+    }
+    if ($prueba->parasitologia_pruebas[0]->muestra3 != '') {
+        $microscopico .= '<tr>
+                            <td width="110"><b>Muestra 3: </b>' . $prueba->parasitologia_pruebas[0]->muestra3 . ' </td>
+                            <td width="100"></td>
+                            <td></td>
+                        </tr>';
+    }
     $microscopico .= '<br>';
 }
 

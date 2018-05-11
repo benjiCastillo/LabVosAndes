@@ -207,7 +207,7 @@ class LiquidoSinovialPruebasController extends AppController
 
         if(!empty($user)) {
             $registry = $this->LiquidoSinovialPruebas->get($id);
-            if ($this->LiquidiSinovialPruebas->delete($registry)) {
+            if ($this->LiquidoSinovialPruebas->delete($registry)) {
                 $json = [
                     'error' => 0,
                     'message' => 'El registro se eliminó correctamente'

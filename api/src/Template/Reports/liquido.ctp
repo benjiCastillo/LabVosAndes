@@ -38,42 +38,46 @@ $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
 if ($prueba->liquido_sinovial_pruebas[0]->volumen == '' && $prueba->liquido_sinovial_pruebas[0]->proteinas_totales == ''
-    && $prueba->liquido_sinovial_pruebas[0]->glucosa == '' && $prueba->liquido_sinovial_pruebas[0]->celulas == ''
-    && $prueba->liquido_sinovial_pruebas[0]->coagulo_fibrina == '' && $prueba->liquido_sinovial_pruebas[0]->glicemia == ''
-    && $prueba->liquido_sinovial_pruebas[0]->urea == '' && $prueba->liquido_sinovial_pruebas[0]->creatinina == '') {
+    && $prueba->liquido_sinovial_pruebas[0]->glucosa == '' && $prueba->liquido_sinovial_pruebas[0]->celulas == '') {
 $examen_directo = '';
 } else {
     $examen_directo = '<tr>
-                        <td colspan="3"><b>Examen Directo</b></td>
-                        <td></td>
-                        <td></td>
+                        <td width="42%" colspan="2"><b>Examen Directo</b></td>
+                        <td width="25%"><b>Valores de referencia</b></td>
                     </tr>';
     if ($prueba->liquido_sinovial_pruebas[0]->volumen != '') {
         $examen_directo .= '<tr>
-                            <td width="110">Volumen: </td>
-                            <td width="110">' . $prueba->liquido_sinovial_pruebas[0]->volumen . ' ml</td>
-                            <td style="color: rgb(58,137,159)">3,5 ml</td>
+                            <td width="21%">Volumen: </td>
+                            <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->volumen . ' ml</td>
+                            <td width="25%" style="color: rgb(58,137,159)">3,5 ml</td>
                         </tr>';
     }
     if ($prueba->liquido_sinovial_pruebas[0]->proteinas_totales != '') {
         $examen_directo .= '<tr>
-                            <td>Proteínas Totales: </td>
-                            <td>' . $prueba->liquido_sinovial_pruebas[0]->proteinas_totales . ' g/dl</td>
-                            <td style="color: rgb(58,137,159)">2,5 g/dl</td>
+                            <td width="21%">Proteínas Totales: </td>
+                            <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->proteinas_totales . ' g/dl</td>
+                            <td width="25%" style="color: rgb(58,137,159)">2,5 g/dl</td>
                         </tr>';
     }
     if ($prueba->liquido_sinovial_pruebas[0]->glucosa != '') {
         $examen_directo .= '<tr>
-                            <td>Glucosa: </td>
-                            <td>' . $prueba->liquido_sinovial_pruebas[0]->glucosa . '</td>
-                            <td style="color: rgb(58,137,159)">70 - 120 mg/dl</td>
+                            <td width="21%">Glucosa: </td>
+                            <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->glucosa . '</td>
+                            <td width="25%" style="color: rgb(58,137,159)">70 - 120 mg/dl</td>
                         </tr>';
     }
     if ($prueba->liquido_sinovial_pruebas[0]->celulas != '') {
         $examen_directo .= '<tr>
-                            <td>Células: </td>
-                            <td>' . $prueba->liquido_sinovial_pruebas[0]->celulas . '</td>
-                            <td style="color: rgb(58,137,159)">< 200 por mm3</td>
+                            <td width="21%">Células: </td>
+                            <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->celulas . '</td>
+                            <td width="25%" style="color: rgb(58,137,159)">< 200 por mm3</td>
+                        </tr>';
+    }
+    if ($prueba->liquido_sinovial_pruebas[0]->coagulo_fibrina != '') {
+        $examen_directo .= '<tr>
+                            <td width="21%">Coágulo de fibrina: </td>
+                            <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->coagulo_fibrina . '</td>
+                            <td width="25%"></td>
                         </tr>';
     }
     $examen_directo .= '<br>';
@@ -86,23 +90,23 @@ $liquido = '';
     $liquido = '';
     if ($prueba->liquido_sinovial_pruebas[0]->glicemia != '') {
         $liquido .= '<tr>
-                        <td>Glicemia: </td>
-                        <td>' . $prueba->liquido_sinovial_pruebas[0]->glicemia . ' mg/dl</td>
-                        <td style="color: rgb(58,137,159)">70 - 110 mg/dl</td>
+                        <td width="21%">Glicemia: </td>
+                        <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->glicemia . ' mg/dl</td>
+                        <td width="25%" style="color: rgb(58,137,159)">70 - 110 mg/dl</td>
                     </tr>';
     }
     if ($prueba->liquido_sinovial_pruebas[0]->urea != '') {
         $liquido .= '<tr>
-                        <td>Urea: </td>
-                        <td>' . $prueba->liquido_sinovial_pruebas[0]->urea . ' mg/dl</td>
-                        <td style="color: rgb(58,137,159)">17 - 49 mg/dl</td>
+                        <td width="21%">Urea: </td>
+                        <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->urea . ' mg/dl</td>
+                        <td width="25%" style="color: rgb(58,137,159)">17 - 49 mg/dl</td>
                     </tr>';
     }
     if ($prueba->liquido_sinovial_pruebas[0]->creatinina != '') {
         $liquido .= '<tr>
-                        <td>Creatinina: </td>
-                        <td>' . $prueba->liquido_sinovial_pruebas[0]->creatinina . ' mg/dl</td>
-                        <td style="color: rgb(58,137,159)">0,6 - 1,2 mg/dl</td>
+                        <td width="21%">Creatinina: </td>
+                        <td width="21%">' . $prueba->liquido_sinovial_pruebas[0]->creatinina . ' mg/dl</td>
+                        <td width="25%" style="color: rgb(58,137,159)">0,6 - 1,2 mg/dl</td>
                     </tr>';
     }
 }

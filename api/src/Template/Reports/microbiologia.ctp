@@ -50,51 +50,51 @@ if ($prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal == '' && $prueba
     && $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas == '') {
 $fresco = '';
 } else {
-    $fresco = '<tr>
-                <br>
-                <td colspan="3"><b> Examen en Fresco</b></td>
-                <td></td>
-            </tr>';
+    $fresco = '<br>
+                <tr>
+                    <td width="52%" colspan="3"><b>     Examen en Fresco</b></td>
+                    <td></td>
+                </tr>';
     if ($prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal != '') {
         $fresco .= '<tr>
-                    <td width="165">        Células del epitelio vaginal: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal . '</td>
+                    <td width="32%">    Células del epitelio vaginal: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->celulas_epitelio_vaginal . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->leucocitos != '') {
         $fresco .= '<tr>
-                    <td width="165">        Leucocitos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->leucocitos . '</td>
+                    <td width="32%">    Leucocitos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->leucocitos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->piocitos != '') {
         $fresco .= '<tr>
-                    <td width="165">        Piocitos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->piocitos . '</td>
+                    <td width="32%">    Piocitos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->piocitos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->celulas_clave != '') {
         $fresco .= '<tr>
-                    <td width="165">        Células clave: </td>
+                    <td width="165">    Células clave: </td>
                     <td width="110">' . $prueba->microbiologia_pruebas[0]->celulas_clave . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->tricomona_vaginalis != '') {
         $fresco .= '<tr>
-                    <td width="165">        Tricomona vaginalis: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->tricomona_vaginalis . '</td>
+                    <td width="32%">    Tricomona vaginalis: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->tricomona_vaginalis . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->flora_bacteriana != '') {
         $fresco .= '<tr>
-                    <td width="165">        Flora bacteriana: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->flora_bacteriana . '</td>
+                    <td width="32%">    Flora bacteriana: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->flora_bacteriana . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->hifas_micoticas != '') {
         $fresco .= '<tr>
-                    <td width="165">        Hifas micóticas: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->hifas_micoticas . '</td>
+                    <td width="32%">    Hifas micóticas: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->hifas_micoticas . '</td>
                 </tr>';
     }
     $fresco .= '<br>';
@@ -106,8 +106,8 @@ $koh = '';
     $koh = '';
     if ($prueba->microbiologia_pruebas[0]->prueba_koh != '') {
         $koh .= '<tr>
-                    <td width="165"><b> Prueba KOH: </b></td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->prueba_koh . '</td>
+                    <td width="32%"><b>     Prueba KOH: </b></td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->prueba_koh . '</td>
                 </tr>';
     }
     $koh .= '<br>';
@@ -119,37 +119,37 @@ if ($prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos == '' && $pru
     $gram = '';
 } else {
     $gram = '<tr>
-                <td colspan="3"><b> Examen en gram</b></td>
+                <td width="52%" colspan="3"><b>     Examen en gram</b></td>
                 <td></td>
             </tr>';
     if ($prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos != '') {
         $gram .= '<tr>
-                    <td width="165">        Coco-bacilos Gram positivos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos . '</td>
+                    <td width="32%">        Coco-bacilos Gram positivos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->coco_bacilos_gram_positivos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->cocos_gram_positivos != '') {
         $gram .= '<tr>
-                    <td width="165">        Cocos Gram positivos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->cocos_gram_positivos . '</td>
+                    <td width="32%">        Cocos Gram positivos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->cocos_gram_positivos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->bacilos_gram_positivos != '') {
         $gram .= '<tr>
-                    <td width="165">        Bacilos Gram positivos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos . '</td>
+                    <td width="32%">        Bacilos Gram positivos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_positivos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->bacilos_gram_negativos != '') {
         $gram .= '<tr>
-                    <td width="165">        Bacilos Gram negativos: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos . '</td>
+                    <td width="32%">        Bacilos Gram negativos: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->bacilos_gram_negativos . '</td>
                 </tr>';
     }
     if ($prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas != '') {
         $gram .= '<tr>
-                    <td width="165">        Hifas y esporas micóticas: </td>
-                    <td width="110">' . $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas . '</td>
+                    <td width="32%">        Hifas y esporas micóticas: </td>
+                    <td width="20%">' . $prueba->microbiologia_pruebas[0]->hifas_esporas_micoticas . '</td>
                 </tr>';
     }
 }
