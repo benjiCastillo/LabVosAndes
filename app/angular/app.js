@@ -25,6 +25,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.quimicaSanguineaServices',
 	'vosandesApp.cultivosServices',
 	'vosandesApp.espermogramasServices',
+	'vosandesApp.informeServices',
 	'angularMoment',
 
 ]);
@@ -110,6 +111,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/espermogramas', {
 			templateUrl: 'pruebas-examenes/espermogramas/espermogramas.html',
 			controller: 'espermogramasCtrl'
+		})
+		.when('/paciente/pruebas/create/informe', {
+			templateUrl: 'pruebas-examenes/informe/informe.html',
+			controller: 'informeCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
