@@ -15,6 +15,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.pacExaCtrl',
 	'vosandesApp.biometriaCtrl',
 	'vosandesApp.createpruebasCtrl',
+	'vosandesApp.liquidoSinovialCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
 	'vosandesApp.informeServices',
@@ -26,6 +27,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.cultivosServices',
 	'vosandesApp.espermogramasServices',
 	'vosandesApp.informeServices',
+	'vosandesApp.liquidoSinovialServices',
 	'angularMoment',
 
 ]);
@@ -115,6 +117,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/informe', {
 			templateUrl: 'pruebas-examenes/informe/informe.html',
 			controller: 'informeCtrl'
+		})
+		.when('/paciente/pruebas/create/liquido-sinovial', {
+			templateUrl: 'pruebas-examenes/liquido-sinovial/liquido-sinovial.html',
+			controller: 'liquidoSinovialCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
