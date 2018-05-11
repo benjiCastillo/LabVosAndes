@@ -41,7 +41,11 @@ if ($prueba->serologia_pruebas[0]->factor_reumatoide == '' && $prueba->serologia
     && $prueba->serologia_pruebas[0]->asto == '' && $prueba->serologia_pruebas[0]->aso == '') {
 $serologia = '';
 } else {
-    $serologia = '';
+    $serologia = '<tr>
+                        <td width="110">Factor Reumatoide: </td>
+                        <td width="110"> ' . $prueba->serologia_pruebas[0]->factor_reumatoide . ' UI/ml</td>
+                        <td width="120" style="color: rgb(58,137,159)">a partir de 30 UI/ml</td>
+                    </tr>';
     if ($prueba->serologia_pruebas[0]->factor_reumatoide != '') {
         $serologia .= '<tr>
                         <td width="110">Factor Reumatoide: </td>
