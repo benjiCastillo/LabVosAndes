@@ -1,0 +1,81 @@
+<div class="modal fade" id="modal-edit-parasitologia">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Editar Microbiología</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtparasitologia)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="form-group">
+                <label class="col-sm-4">Células epitelio vaginal</label>
+                <input type="text" class="col-sm-8" placeholder="Células epitelio vaginal" ng-model="edtparasitologia.celulas_epitelio_vaginal">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Leucocitos</label>
+                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="edtparasitologia.leucocitos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Piocitos</label>
+                <input type="text" class="col-sm-8" placeholder="Piocitos" ng-model="edtparasitologia.piocitos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Células clave</label>
+                <input type="text" class="col-sm-8" placeholder="Células clave" ng-model="edtparasitologia.celulas_clave">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tricomona vaginalis</label>
+                <input type="text" class="col-sm-8" placeholder="Tricomona vaginalis" ng-model="edtparasitologia.tricomona_vaginalis">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Flora bacteriana</label>
+                <input type="text" class="col-sm-8" placeholder="Flora bacteriana" ng-model="edtparasitologia.flora_bacteriana">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Hifas micoticas</label>
+                <input type="text" class="col-sm-8" placeholder="Hifas micoticas" ng-model="edtparasitologia.hifas_micoticas">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Prueba koh</label>
+                <input type="text" class="col-sm-8" placeholder="Prueba koh" ng-model="edtparasitologia.prueba_koh">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Coco bacilos gram Positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Coco bacilos gram Positivos" ng-model="edtparasitologia.coco_bacilos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Cocos gram positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Cocos gram positivos" ng-model="edtparasitologia.cocos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bacilos gram positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Bacilos gram positivos" ng-model="edtparasitologia.bacilos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bacilos gram negativos</label>
+                <input type="text" class="col-sm-8" placeholder="Bacilos gram negativos" ng-model="edtparasitologia.bacilos_gram_negativos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Hifas esporas micoticas</label>
+                <input type="text" class="col-sm-8" placeholder="Hifas esporas micoticas" ng-model="edtparasitologia.hifas_esporas_micoticas">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
