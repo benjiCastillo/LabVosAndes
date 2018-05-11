@@ -33,7 +33,7 @@ class SerologiaPruebasController extends AppController
             ])->count();
 
             if ($count) {
-                $serologia = $this->Serologia->find('all', [
+                $serologia = $this->SerologiaPruebas->find('all', [
                     'conditions' => [
                         'prueba_id' => $data['prueba_id']
                     ]

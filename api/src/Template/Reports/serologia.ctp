@@ -193,57 +193,56 @@ if ($prueba->serologia_pruebas[0]->tiempo_sangria == '' && $prueba->serologia_pr
 $coagulograma = '';
 } else {
     $coagulograma = '<tr>
-                    <td colspan="3"><b>Coagulograma</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="45%" colspan="2"><b>Coagulograma</b></td>
+                    <td width="30%"><b>Valores de Referencia</b></td>
                 </tr>';
     if ($prueba->serologia_pruebas[0]->tiempo_sangria != '') {
         $coagulograma .= '<tr>
-                            <td width="130">Tiempo de sangría: </td>
-                            <td width="100">'. $prueba->serologia_pruebas[0]->tiempo_sangria . '</td>
-                            <td width="100" style="color: rgb(58,137,159)">2 – 5 min</td>
+                            <td width="30%">Tiempo de sangría: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->tiempo_sangria . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)">2 – 5 min</td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->tiempo_coagulacion != '') {
         $coagulograma .= '<tr>
-                            <td>Tiempo de coagulación: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->tiempo_coagulacion . '</td>
-                            <td style="color: rgb(58,137,159)">5 – 7,5 min</td>
+                            <td width="30%">Tiempo de coagulación: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->tiempo_coagulacion . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)">5 – 7,5 min</td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->tiempo_protrombina != '') {
         $coagulograma .= '<tr>
-                            <td>Tiempo de Protrombina: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->tiempo_protrombina . '</td>
-                            <td style="color: rgb(58,137,159)">11 – 13 seg</td>
+                            <td width="30%">Tiempo de Protrombina: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->tiempo_protrombina . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)">11 – 13 seg</td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->actividad_protrombina != '') {
         $coagulograma .= '<tr>
-                            <td>Actividad Protrombina: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->actividad_protrombina . '</td>
-                            <td style="color: rgb(58,137,159)"></td>
+                            <td width="30%">Actividad Protrombina: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->actividad_protrombina . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)"></td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->grupo_sanguineo != '') {
         $coagulograma .= '<tr>
-                            <td>Grupo sanguineo: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->grupo_sanguineo . '</td>
-                            <td style="color: rgb(58,137,159)"></td>
+                            <td width="30%">Grupo sanguineo: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->grupo_sanguineo . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)"></td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->factor_rh != '') {
         $coagulograma .= '<tr>
-                            <td>Factor Rh: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->factor_rh . '</td>
-                            <td style="color: rgb(58,137,159)"></td>
+                            <td width="30%">Factor Rh: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->factor_rh . '</td>
+                            <td width="30%" style="color: rgb(58,137,159)"></td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->recuento_plaquetas != '') {
         $coagulograma .= '<tr>
-                            <td>Recuento de plaquetas: </td>
-                            <td>'. $prueba->serologia_pruebas[0]->recuento_plaquetas . '</td>
-                            <td style="color: rgb(58,137,159)">150.000 - 450.000 X mm3 de sangre</td>
+                            <td width="30%">Recuento de plaquetas: </td>
+                            <td width="15%">'. $prueba->serologia_pruebas[0]->recuento_plaquetas . '</td>
+                            <td width="22%" style="color: rgb(58,137,159)">150.000 - 450.000 X mm3 de sangre</td>
                         </tr>';
     }
     if ($prueba->serologia_pruebas[0]->agr_dis_plaquetaria != '') {
