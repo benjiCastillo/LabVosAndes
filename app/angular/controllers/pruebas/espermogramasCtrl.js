@@ -2,8 +2,6 @@ var app = angular.module('vosandesApp.espermogramasCtrl', []);
 
 app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'espermogramasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, espermogramasServices, medicosServices, $sessionStorage, moment) {
 
-    $scope.edt_hora_recoleccion = null;
-    $scope.edt_hora_recepcion = null;
     //espermogramas
     $scope.espermogramas = new Object();
     $scope.espermogramas = {
@@ -25,9 +23,12 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
         progresion_lineal_lenta: "",
         motilidad_no_progresiva: "",
         inmoviles: "",
-        primera_hora: "",
-        segunda_hora: "",
-        tercera_hora: ""
+        primera_hora_moviles: "",
+        primera_hora_inmoviles: "",
+        segunda_hora_moviles: "",
+        segunda_hora_inmoviles: "",
+        tercera_hora_moviles: "",
+        tercera_hora_inmoviles: ""
     }
 
 
