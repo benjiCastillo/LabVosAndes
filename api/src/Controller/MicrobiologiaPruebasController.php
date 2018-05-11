@@ -134,7 +134,7 @@ class MicrobiologiaPruebasController extends AppController
      */
     public function edit($id = null)
     {
-        $microbiologia = $this->Microbiologia->get($id, [
+        $microbiologia = $this->MicrobiologiaPruebas->get($id, [
             'contain' => []
         ]);
         $this->autoRender = false;
