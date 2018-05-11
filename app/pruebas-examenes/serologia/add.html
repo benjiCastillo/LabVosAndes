@@ -1,43 +1,105 @@
-<div class="modal fade" id="modal-insertar-parasitologia">
+<div class="modal fade" id="modal-insertar-serologia">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title">Parasitologia</h4>
+        <h4 class="modal-title">Serología</h4>
       </div>
-      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(parasitologia)">
+      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(serologia)">
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6">
               <div class="form-group">
-                <label class="col-sm-4">Consistencia</label>
-                <input type="text" class="col-sm-8" placeholder="Consistencia" ng-model="parasitologia.consistencia">
+                <label class="col-sm-4">Factor reumatoide</label>
+                <input type="text" class="col-sm-8" placeholder="Factor reumatoide" ng-model="serologia.factor_reumatoide">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Color</label>
-                <input type="text" class="col-sm-8" placeholder="Color" ng-model="parasitologia.color">
+                <label class="col-sm-4">PCR</label>
+                <input type="text" class="col-sm-8" placeholder="PCR" ng-model="serologia.pcr">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Restos alimenticios</label>
-                <input type="text" class="col-sm-8" placeholder="Restos alimenticios" ng-model="parasitologia.restos_alimenticios">
+                <label class="col-sm-4">Asto</label>
+                <input type="text" class="col-sm-8" placeholder="Asto" ng-model="serologia.asto">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Leucocitos</label>
-                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="parasitologia.leucocitos">
+                <label class="col-sm-4">Aso</label>
+                <input type="text" class="col-sm-8" placeholder="Aso" ng-model="serologia.aso">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Comentario</label>
-                <input type="text" class="col-sm-8" placeholder="Comentario" ng-model="parasitologia.comentario">
+                <label class="col-sm-4">k_plus</label>
+                <input type="text" class="col-sm-8" placeholder="k_plus" ng-model="serologia.k_plus">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Sangre oculta</label>
-                <input type="text" class="col-sm-8" placeholder="Sangre oculta" ng-model="parasitologia.sangre_oculta">
+                <label class="col-sm-4">na_plus</label>
+                <input type="text" class="col-sm-8" placeholder="na_plus" ng-model="serologia.na_plus">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Muestras</label>
-                <input type="text" class="col-sm-8" placeholder="Muestras" ng-model="parasitologia.muestras">
+                <label class="col-sm-4">cl_minus</label>
+                <input type="text" class="col-sm-8" placeholder="cl_minus" ng-model="serologia.cl_minus">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">ca</label>
+                <input type="text" class="col-sm-8" placeholder="ca" ng-model="serologia.ca">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">p</label>
+                <input type="text" class="col-sm-8" placeholder="p" ng-model="serologia.p">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">chagas</label>
+                <input type="text" class="col-sm-8" placeholder="chagas" ng-model="serologia.chagas">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-sm-4">Toxoplasmosis</label>
+                <input type="text" class="col-sm-8" placeholder="Toxoplasmosis" ng-model="serologia.toxoplasmosis">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Chagas resultado</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas resultado" ng-model="serologia.chagas_resultado">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Chagas elisa cut off</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas elisa cut off" ng-model="serologia.chagas_elisa_cut_off">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Chagas comentario</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas comentario" ng-model="serologia.chagas_comentario">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo sangria</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo sangria" ng-model="serologia.tiempo_sangria">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo coagulación</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo coagulación" ng-model="serologia.tiempo_coagulacion">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo protrombina</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo protrombina" ng-model="serologia.tiempo_protrombina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Actividad protrombina</label>
+                <input type="text" class="col-sm-8" placeholder="Actividad protrombina" ng-model="serologia.actividad_protrombina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Grupo Sanguíneo</label>
+                <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="serologia.grupo_sanguineo">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Factor RH</label>
+                <input type="text" class="col-sm-8" placeholder="Factor RH" ng-model="serologia.factor_rh">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Recuento plaquetas</label>
+                <input type="text" class="col-sm-8" placeholder="Recuento plaquetas" ng-model="serologia.recuento_plaquetas">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Agr_dis_plaquetaria</label>
+                <input type="text" class="col-sm-8" placeholder="Agr_dis_plaquetaria" ng-model="serologia.agr_dis_plaquetaria">
               </div>
             </div>
           </div>
