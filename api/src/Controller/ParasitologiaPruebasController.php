@@ -134,7 +134,7 @@ class ParasitologiaPruebasController extends AppController
      */
     public function edit($id = null)
     {
-        $parasito = $this->Parasitologia->get($id, [
+        $parasito = $this->ParasitologiaPruebas->get($id, [
             'contain' => []
         ]);
         $this->autoRender = false;
