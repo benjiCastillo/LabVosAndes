@@ -32,8 +32,6 @@ app.controller('parasitologiaCtrl', ['$scope', '$routeParams', '$window', 'paras
     $scope.dataQuery.token = $scope.user.data.token;
     $scope.dataQuery.prueba_id = $scope.prueba.id;
 
-
-
     $scope.listar = function (data) {
         $scope.loadData = true;
         parasitologiaServices.listar(data).then(function () {

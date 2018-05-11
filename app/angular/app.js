@@ -18,6 +18,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.createpruebasCtrl',
 	'vosandesApp.liquidoSinovialCtrl',
 	'vosandesApp.parasitologiaCtrl',
+	'vosandesApp.serologiaCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
 	'vosandesApp.informeServices',
@@ -32,6 +33,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.liquidoSinovialServices',
 	'vosandesApp.microbiologiaServices',
 	'vosandesApp.parasitologiaServices',
+	'vosandesApp.serologiaServices',
 	'angularMoment',
 
 ]);
@@ -133,6 +135,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/parasitologia', {
 			templateUrl: 'pruebas-examenes/parasitologia/parasitologia.html',
 			controller: 'parasitologiaCtrl'
+		})
+		.when('/paciente/pruebas/create/serologia', {
+			templateUrl: 'pruebas-examenes/serologia/serologia.html',
+			controller: 'serologiaCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
