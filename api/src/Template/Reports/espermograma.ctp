@@ -38,8 +38,8 @@ $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
 $datos_hora = '<tr>
-                    <td width="220"><b>Hora de recolección: </b> ' . $prueba->espermograma_pruebas[0]->hora_recoleccion->format('d-m-Y H:i:s') . '</td>
-                    <td width="220"><b>Hora de recepción: </b> ' . $prueba->espermograma_pruebas[0]->hora_recepcion->format('d-m-Y H:i:s') . '</td>
+                    <td width="230"><b>Hora de recolección: </b> ' . $prueba->espermograma_pruebas[0]->hora_recoleccion->format('d-m-Y H:i:s') . '</td>
+                    <td width="230"><b>Hora de recepción: </b> ' . $prueba->espermograma_pruebas[0]->hora_recepcion->format('d-m-Y H:i:s') . '</td>
                     <td width="210"><b>Duración de la abstinencia: </b> ' . $prueba->espermograma_pruebas[0]->duracion_abstinencia . '</td>
                 </tr><br>';
 
@@ -49,110 +49,46 @@ if ($prueba->espermograma_pruebas[0]->aspecto == '' && $prueba->espermograma_pru
     $examen_fisico = '';
 } else {
     $examen_fisico = '<tr>
-                            <td colspan="3"><b>Examen Físico</b></td>
-                            <td></td>
-                            <td></td>
+                            <td width="34%" colspan="2"><b>Examen Físico</b></td>
+                            <td width="25%"><b>Valores de referencia</b></td>
                         </tr>';
     if ($prueba->espermograma_pruebas[0]->aspecto != '') {
         $examen_fisico .= '<tr>
-                                <td width="130">Aspecto: </td>
-                                <td width="100">' . $prueba->espermograma_pruebas[0]->aspecto . '</td>
-                                <td width="100" style="color: rgb(58,137,159)">Opaco Homogéneo</td>
+                                <td width="12%">Aspecto: </td>
+                                <td width="22%">' . $prueba->espermograma_pruebas[0]->aspecto . '</td>
+                                <td width="25%" style="color: rgb(58,137,159)">Opaco Homogéneo</td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->color != '') {
         $examen_fisico .= '<tr>
-                                <td width="130">Color: </td>
-                                <td width="100">' . $prueba->espermograma_pruebas[0]->color . '</td>
-                                <td width="100" style="color: rgb(58,137,159)">Blanco amarillento</td>
+                                <td width="12%">Color: </td>
+                                <td width="22%">' . $prueba->espermograma_pruebas[0]->color . '</td>
+                                <td width="25%" style="color: rgb(58,137,159)">Blanco amarillento</td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->volumen != '') {
         $examen_fisico .= '<tr>
-                                <td width="130">Volumen: </td>
-                                <td width="100">' . $prueba->espermograma_pruebas[0]->volumen . ' ml</td>
-                                <td width="100" style="color: rgb(58,137,159)">1.5 – 6 ml</td>
+                                <td width="12%">Volumen: </td>
+                                <td width="22%">' . $prueba->espermograma_pruebas[0]->volumen . ' ml</td>
+                                <td width="25%" style="color: rgb(58,137,159)">1.5 – 6 ml</td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->viscosidad != '') {
         $examen_fisico .= '<tr>
-                                <td width="130">Viscosidad: </td>
-                                <td width="100">' . $prueba->espermograma_pruebas[0]->viscosidad . ' mm</td>
-                                <td width="100" style="color: rgb(58,137,159)">5 – 10 mm</td>
+                                <td width="12%">Viscosidad: </td>
+                                <td width="22%">' . $prueba->espermograma_pruebas[0]->viscosidad . ' mm</td>
+                                <td width="25%" style="color: rgb(58,137,159)">5 – 10 mm</td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->ph != '') {
         $examen_fisico .= '<tr>
-                                <td width="130">Ph: </td>
-                                <td width="100">' . $prueba->espermograma_pruebas[0]->ph . '</td>
-                                <td width="100" style="color: rgb(58,137,159)">7.8 – 8.2</td>
+                                <td width="12%">Ph: </td>
+                                <td width="22%">' . $prueba->espermograma_pruebas[0]->ph . '</td>
+                                <td width="25%" style="color: rgb(58,137,159)">7.8 – 8.2</td>
                             </tr>';
     }
     $examen_fisico .= '<br>';
 }
-
-if ($prueba->espermograma_pruebas[0]->concentracion_espermatica == '' && $prueba->espermograma_pruebas[0]->caracteristicas_morfologicas == ''
-    && $prueba->espermograma_pruebas[0]->espermatozoides_normales == '' && $prueba->espermograma_pruebas[0]->cabeza == ''
-    && $prueba->espermograma_pruebas[0]->pieza_intermedia == '' && $prueba->espermograma_pruebas[0]->cola == ''
-    && $prueba->espermograma_pruebas[0]->otras_celulas == '') {
-    $examen_microscopico = '';
-} else {
-    $examen_microscopico = '<tr>
-                                <td colspan="3"><b>Examen Microscópico</b></td>
-                                <td></td>
-                                <td></td>
-                            </tr>';
-    if ($prueba->espermograma_pruebas[0]->concentracion_espermatica != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Concentración espermática: </td>
-                                    <td width="100">' . $prueba->espermograma_pruebas[0]->concentracion_espermatica . ' mm3</td>
-                                    <td width="100" style="color: rgb(58,137,159)">60`000.000 – 150`000.000 mm3</td>
-                                </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->caracteristicas_morfologicas != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Características morfológicas: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->caracteristicas_morfologicas . '</td>
-                                    <td></td>
-                                </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->espermatozoides_normales != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Espermatozoides normales: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->espermatozoides_normales . '</td>
-                                                              </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->cabeza != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Cabeza: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->cabeza . '</td>
-                                    <td></td>
-                                </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->pieza_intermedia != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Pieza intermedia: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->pieza_intermedia . '</td>
-                                    <td></td>
-                                </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->cola != '') {
-        $examen_microscopico .= '<tr>
-                                    <td width="152">Cola: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->cola . '</td>
-                                    <td></td>
-                                </tr>';
-    }
-    if ($prueba->espermograma_pruebas[0]->otras_celulas != '') {
-        $examen_microscopico .= ' <tr>
-                                    <td width="152">Otras células: </td>
-                                    <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->otras_celulas . '</td>
-                                    <td></td>
-                                </tr>';
-    }
-    $examen_microscopico .= '<br>';
-}
-
 
 if ($prueba->espermograma_pruebas[0]->aglutinacion == '' && $prueba->espermograma_pruebas[0]->progresion_lineal_rapida == ''
 && $prueba->espermograma_pruebas[0]->progresion_lineal_lenta == '' && $prueba->espermograma_pruebas[0]->motilidad_no_progresiva == ''
@@ -166,40 +102,102 @@ $examen_directo = '';
                         </tr>';
     if ($prueba->espermograma_pruebas[0]->aglutinacion != '') {
         $examen_directo .= '<tr>
-                                <td width="130">Aglutinación: </td>
-                                <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->aglutinacion . '</td>
+                                <td width="25%">Aglutinación: </td>
+                                <td width="20%" colspan="2">' . $prueba->espermograma_pruebas[0]->aglutinacion . '</td>
                                 <td></td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->progresion_lineal_rapida != '') {
         $examen_directo .= '<tr>
-                                <td width="130">Progresión lineal rápida: </td>
-                                <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->progresion_lineal_rapida . '</td>
+                                <td width="25%">Progresión lineal rápida: </td>
+                                <td width="20%" colspan="2">' . $prueba->espermograma_pruebas[0]->progresion_lineal_rapida . '</td>
                                 <td></td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->progresion_lineal_lenta != '') {
         $examen_directo .= '<tr>
-                                <td width="130">Progresión lineal lenta: </td>
-                                <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->progresion_lineal_lenta . '</td>
+                                <td width="25%">Progresión lineal lenta: </td>
+                                <td width="20%" colspan="2">' . $prueba->espermograma_pruebas[0]->progresion_lineal_lenta . '</td>
                                 <td></td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->motilidad_no_progresiva != '') {
         $examen_directo .= '<tr>
-                                <td width="130">Motilidad no progresiva: </td>
-                                <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->motilidad_no_progresiva . '</td>
+                                <td width="25%">Motilidad no progresiva: </td>
+                                <td width="20%" colspan="2">' . $prueba->espermograma_pruebas[0]->motilidad_no_progresiva . '</td>
                                 <td></td>
                             </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->inmoviles != '') {
         $examen_directo .= '<tr>
-                                <td width="130">Inmóviles: </td>
-                                <td width="200" colspan="2">' . $prueba->espermograma_pruebas[0]->inmoviles . '</td>
+                                <td width="25%">Inmóviles: </td>
+                                <td width="20%" colspan="2">' . $prueba->espermograma_pruebas[0]->inmoviles . '</td>
                                 <td></td>
                             </tr>';
     }
     $examen_directo .= '<br>';
+}
+
+
+if ($prueba->espermograma_pruebas[0]->concentracion_espermatica == '' && $prueba->espermograma_pruebas[0]->caracteristicas_morfologicas == ''
+    && $prueba->espermograma_pruebas[0]->espermatozoides_normales == '' && $prueba->espermograma_pruebas[0]->cabeza == ''
+    && $prueba->espermograma_pruebas[0]->pieza_intermedia == '' && $prueba->espermograma_pruebas[0]->cola == ''
+    && $prueba->espermograma_pruebas[0]->otras_celulas == '') {
+    $examen_microscopico = '';
+} else {
+    $examen_microscopico = '<tr>
+                                <td width="48%" colspan="2"><b>Examen Microscópico</b></td>
+                                <td width="30%"><b>Valores de referencia</b></td>
+                            </tr>';
+    if ($prueba->espermograma_pruebas[0]->concentracion_espermatica != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Concentración espermática: </td>
+                                    <td width="20%">' . $prueba->espermograma_pruebas[0]->concentracion_espermatica . ' mm3</td>
+                                    <td width="20%" style="color: rgb(58,137,159)">60`000.000 – 150`000.000 mm3</td>
+                                </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->caracteristicas_morfologicas != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Características morfológicas: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->caracteristicas_morfologicas . '</td>
+                                    <td></td>
+                                </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->espermatozoides_normales != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Espermatozoides normales: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->espermatozoides_normales . '</td>
+                                                              </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->cabeza != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Cabeza: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->cabeza . '</td>
+                                    <td></td>
+                                </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->pieza_intermedia != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Pieza intermedia: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->pieza_intermedia . '</td>
+                                    <td></td>
+                                </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->cola != '') {
+        $examen_microscopico .= '<tr>
+                                    <td width="28%">Cola: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->cola . '</td>
+                                    <td></td>
+                                </tr>';
+    }
+    if ($prueba->espermograma_pruebas[0]->otras_celulas != '') {
+        $examen_microscopico .= ' <tr>
+                                    <td width="28%">Otras células: </td>
+                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->otras_celulas . '</td>
+                                    <td></td>
+                                </tr>';
+    }
+    $examen_microscopico .= '<br>';
 }
 
 if ($prueba->espermograma_pruebas[0]->primera_hora_moviles == '' && $prueba->espermograma_pruebas[0]->primera_hora_inmoviles == ''
@@ -223,14 +221,14 @@ if ($prueba->espermograma_pruebas[0]->primera_hora_moviles == '' && $prueba->esp
         $viavilidad .= '<tr>
                             <td width="60">2º hora: </td>
                             <td width="110">' . $prueba->espermograma_pruebas[0]->segunda_hora_moviles . '% móviles</td>
-                            <td width="110">' . $prueba->espermograma_pruebas[0]->segunda_hora_moviles . '% inmóviles</td>
+                            <td width="110">' . $prueba->espermograma_pruebas[0]->segunda_hora_inmoviles . '% inmóviles</td>
                         </tr>';
     }
     if ($prueba->espermograma_pruebas[0]->tercera_hora_moviles != '' && $prueba->espermograma_pruebas[0]->tercera_hora_inmoviles != '') {
         $viavilidad .= '<tr>
                             <td width="60">3º hora: </td>
                             <td width="110">' . $prueba->espermograma_pruebas[0]->tercera_hora_moviles . '% móviles</td>
-                            <td width="110">' . $prueba->espermograma_pruebas[0]->tercera_hora_moviles . '% inmóviles</td>
+                            <td width="110">' . $prueba->espermograma_pruebas[0]->tercera_hora_inmoviles . '% inmóviles</td>
                         </tr>';
     }
 
@@ -255,7 +253,7 @@ else {
 
     $tabla2 = '';
     $tabla2 = '<table>' . $examen_microscopico . $viavilidad . '</table>';
-    $pdf->writeHTMLCell($w=150, $h=0, $x='110', $y='47', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=150, $h=0, $x='100', $y='47', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
 
 $pdf->SetFont('helvetica','',7);

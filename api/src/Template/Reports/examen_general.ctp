@@ -40,14 +40,13 @@ $pdf->Ln(1);
 
 $examen_fisico = '<table>
                 <tr>
-                    <td colspan="3"><b>Exámen Físico</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="23%" colspan="2"><b>Exámen Físico</b></td>
+                    <td width="10%"><b>Valores de referencia</b></td>
                 </tr>
                 <tr>
-                    <td width="65">Color: </td>
-                    <td width="90">' . $prueba->examen_general_pruebas[0]->color . '</td>
-                    <td width="90" style="color: rgb(58,137,159)">Ámbar</td>
+                    <td width="9%">Color: </td>
+                    <td width="14%">' . $prueba->examen_general_pruebas[0]->color . '</td>
+                    <td width="15%" style="color: rgb(58,137,159)">Ámbar</td>
                 </tr>
                 <tr>
                     <td>Cantidad: </td>
@@ -88,14 +87,13 @@ $examen_fisico = '<table>
 
 $examen_quimico = '<table>
                 <tr>
-                    <td colspan="3"><b>Exámen Químico</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="40%" colspan="2"><b>Exámen Químico</b></td>
+                    <td width="15%"><b>Valores de referencia</b></td>
                 </tr>
                 <tr>
-                    <td td width="85">Proteínas: </td>
-                    <td td width="90">' . $prueba->examen_general_pruebas[0]->proteinas . '</td>
-                    <td width="70" style="color: rgb(58,137,159)">No contiene</td>
+                    <td width="18%">Proteínas: </td>
+                    <td width="22%">' . $prueba->examen_general_pruebas[0]->proteinas . '</td>
+                    <td width="15%" style="color: rgb(58,137,159)">No contiene</td>
                 </tr>
                 <tr>
                     <td>Glucosa: </td>

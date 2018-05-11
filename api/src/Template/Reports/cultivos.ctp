@@ -91,8 +91,8 @@ if ($prueba->cultivos_pruebas[0]->ampicilina_sulbactam == '' && $prueba->cultivo
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Antibióticos</td>
-                                <td>Sensibilidad</td>
+                                <td style="color: rgb(58,137,159)">Antibióticos</td>
+                                <td style="color: rgb(58,137,159)">Sensibilidad</td>
                             </tr>';
     if ($prueba->cultivos_pruebas[0]->ampicilina_sulbactam != '') {
         $antibiograma_esputo .= '<tr>
@@ -179,8 +179,8 @@ if ($prueba->cultivos_pruebas[0]->amoxicilina_ac_clavulanico == '' && $prueba->c
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Antibióticos</td>
-                                    <td>Sensibilidad</td>
+                                    <td style="color: rgb(58,137,159)">Antibióticos</td>
+                                    <td style="color: rgb(58,137,159)">Sensibilidad</td>
                                 </tr>';
     if ($prueba->cultivos_pruebas[0]->amoxicilina_ac_clavulanico != '') {
         $antibiograma_urocultivo .= '<tr>

@@ -39,14 +39,14 @@ $pdf->Ln(1);
 
 $tabla1 = '<table>
                 <tr>
-                    <td colspan="3"><b>Hematimetría 3600 m.s.n.m.</b></td>
-                    <td></td>
+                    <td width="34%" colspan="2"><b>Hematimetría 3600 m.s.n.m.</b></td>
+                    <td width="30%"><b>Valores de referencia</b></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Hematíes: </td>
-                    <td>' . $prueba->biometria_pruebas[0]->hematies . '</td>
-                    <td width="165" style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
+                    <td width="17%">Hematíes: </td>
+                    <td width="17%">' . $prueba->biometria_pruebas[0]->hematies . '</td>
+                    <td width="30%" style="color: rgb(58,137,159)">H: 5`2 - 5`6; M: 5`2 - 5`4</td>
                 </tr>
                 <tr>
                     <td>Hematocrito: </td>
@@ -68,10 +68,10 @@ $tabla1 = '<table>
                     <td>' . $prueba->biometria_pruebas[0]->vsg . '</td>
                     <td style="color: rgb(58,137,159)">1 - 10</td>
                 </tr>
+                <br>
                 <tr>
-                    <br>
-                    <td colspan="3"><b>Índices Hematimétricos</b></td>
-                    <td></td>
+                    <td colspan="2"><b>Índices Hematimétricos</b></td>
+                    <td><b>Valores de referencia</b></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -107,14 +107,14 @@ else{
 
 $tabla2 = '<table>
                 <tr>
-                    <td colspan="3"><b>Leucograma</b></td>
-                    <td></td>
+                    <td width="34%" colspan="2"><b>Leucograma</b></td>
+                    <td width="30%"><b>Valores de referencia</b></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td width="110">Cayados: </td>
-                    <td width="110">' . $prueba->biometria_pruebas[0]->cayados . '</td>
-                    <td width="50" style="color: rgb(58,137,159)">1 - 5 %</td>
+                    <td width="17%">Cayados: </td>
+                    <td width="17%">' . $prueba->biometria_pruebas[0]->cayados . '</td>
+                    <td width="30%" style="color: rgb(58,137,159)">1 - 5 %</td>
                 </tr>
                 <tr>
                     <td>Neutrófilos: </td>
