@@ -33,7 +33,7 @@ class MicrobiologiaPruebasController extends AppController
             ])->count();
 
             if ($count) {
-                $micro = $this->Microbiologia->find('all', [
+                $micro = $this->MicrobiologiaPruebas->find('all', [
                     'conditions' => [
                         'prueba_id' => $data['prueba_id']
                     ]
