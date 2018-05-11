@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="well">
-            <h3 class="text-info">Líquido Sinovial</h3>
+            <h3 class="text-info">Microbiología</h3>
             <p>
                 <b>Paciente: </b>
                 <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
@@ -14,9 +14,9 @@
                 <b>Fecha de Prueba: </b>
                 <span>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
             </p>
-            <a class="btn btn-info" ng-if="!notData" ng-click="mostrarEditar( listliquidoSinovial )">
+            <a class="btn btn-info" ng-if="!notData" ng-click="mostrarEditar( listmicrobiologia )">
                 <i class="fa fa-edit"></i>Editar</a>
-            <a class="btn btn-danger" ng-if="!notData" ng-click="mostrarEliminar( listliquidoSinovial )">
+            <a class="btn btn-danger" ng-if="!notData" ng-click="mostrarEliminar( listmicrobiologia )">
                 <i class="fa fa-remove"></i>Eliminar</a>
         </div>
 
@@ -38,7 +38,7 @@
 
                     </div>
                     <div class="box-body">
-                        <p ng-if="notData">No tiene prueba de Líquido Sinovial.</p>
+                        <p ng-if="notData">No tiene prueba de Microbiología.</p>
                           <section id="section-pdf">
 
                           </section>
@@ -49,6 +49,6 @@
         </div>
     </section>
 </div>
-<div ng-include="'pruebas-examenes/liquido-sinovial/add.html'"></div>
-<div ng-include="'pruebas-examenes/liquido-sinovial/edit.html'"></div>
-<div ng-include="'pruebas-examenes/liquido-sinovial/delete.html'"></div>
+<div ng-include="'pruebas-examenes/microbiologia/add.html'"></div>
+<div ng-include="'pruebas-examenes/microbiologia/edit.html'"></div>
+<div ng-include="'pruebas-examenes/microbiologia/delete.html'"></div>

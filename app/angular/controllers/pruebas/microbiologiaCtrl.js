@@ -5,14 +5,19 @@ app.controller('microbiologiaCtrl', ['$scope', '$routeParams', '$window', 'micro
     //microbiologia
     $scope.microbiologia = new Object();
     $scope.microbiologia = {
-        volumen: "",
-        proteinas_totales: "",
-        glucosa: "",
-        celulas: "",
-        coagulo_fibrina: "",
-        glicemia: "",
-        urea: "",
-        creatinina: ""
+        celulas_epitelio_vaginal: "",
+        leucocitos: "",
+        piocitos: "",
+        celulas_clave: "",
+        tricomona_vaginalis: "",
+        flora_bacteriana: "",
+        hifas_micoticas: "",
+        prueba_koh: "",
+        coco_bacilos_gram_positivos: "",
+        cocos_gram_positivos: "",
+        bacilos_gram_positivos: "",
+        bacilos_gram_negativos: "",
+        hifas_esporas_micoticas: "",
     }
 
     var user = sessionStorage.getItem('user');

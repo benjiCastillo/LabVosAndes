@@ -1,47 +1,67 @@
-<div class="modal fade" id="modal-edit-liquido-sinovial">
+<div class="modal fade" id="modal-edit-microbiologia">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title">Editar Líquido Sinovial</h4>
+        <h4 class="modal-title">Editar Microbiología</h4>
       </div>
-      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtliquidoSinovial)">
+      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(edtmicrobiologia)">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="form-group">
-                <label class="col-sm-4">Volumen</label>
-                <input type="text" class="col-sm-8" placeholder="Volumen" ng-model="edtliquidoSinovial.volumen">
+                <label class="col-sm-4">Células epitelio vaginal</label>
+                <input type="text" class="col-sm-8" placeholder="Células epitelio vaginal" ng-model="edtmicrobiologia.celulas_epitelio_vaginal">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Proteinas totales</label>
-                <input type="text" class="col-sm-8" placeholder="Proteinas totales" ng-model="edtliquidoSinovial.proteinas_totales">
+                <label class="col-sm-4">Leucocitos</label>
+                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="edtmicrobiologia.leucocitos">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Glucosa</label>
-                <input type="text" class="col-sm-8" placeholder="Glucosa" ng-model="edtliquidoSinovial.glucosa">
+                <label class="col-sm-4">Piocitos</label>
+                <input type="text" class="col-sm-8" placeholder="Piocitos" ng-model="edtmicrobiologia.piocitos">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Células</label>
-                <input type="text" class="col-sm-8" placeholder="Células" ng-model="edtliquidoSinovial.celulas">
+                <label class="col-sm-4">Células clave</label>
+                <input type="text" class="col-sm-8" placeholder="Células clave" ng-model="edtmicrobiologia.celulas_clave">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Coagulo fibrina</label>
-                <input type="text" class="col-sm-8" placeholder="Coagulo fibrina" ng-model="edtliquidoSinovial.coagulo_fibrina">
+                <label class="col-sm-4">Tricomona vaginalis</label>
+                <input type="text" class="col-sm-8" placeholder="Tricomona vaginalis" ng-model="edtmicrobiologia.tricomona_vaginalis">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Glicemia</label>
-                <input type="text" class="col-sm-8" placeholder="Glicemia" ng-model="edtliquidoSinovial.glicemia">
+                <label class="col-sm-4">Flora bacteriana</label>
+                <input type="text" class="col-sm-8" placeholder="Flora bacteriana" ng-model="edtmicrobiologia.flora_bacteriana">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Úrea</label>
-                <input type="text" class="col-sm-8" placeholder="Úrea" ng-model="edtliquidoSinovial.urea">
+                <label class="col-sm-4">Hifas micoticas</label>
+                <input type="text" class="col-sm-8" placeholder="Hifas micoticas" ng-model="edtmicrobiologia.hifas_micoticas">
               </div>
               <div class="form-group">
-                <label class="col-sm-4">Creatinina</label>
-                <input type="text" class="col-sm-8" placeholder="Creatinina" ng-model="edtliquidoSinovial.creatinina">
+                <label class="col-sm-4">Prueba koh</label>
+                <input type="text" class="col-sm-8" placeholder="Prueba koh" ng-model="edtmicrobiologia.prueba_koh">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Coco bacilos gram Positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Coco bacilos gram Positivos" ng-model="edtmicrobiologia.coco_bacilos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Cocos gram positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Cocos gram positivos" ng-model="edtmicrobiologia.cocos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bacilos gram positivos</label>
+                <input type="text" class="col-sm-8" placeholder="Bacilos gram positivos" ng-model="edtmicrobiologia.bacilos_gram_positivos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bacilos gram negativos</label>
+                <input type="text" class="col-sm-8" placeholder="Bacilos gram negativos" ng-model="edtmicrobiologia.bacilos_gram_negativos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Hifas esporas micoticas</label>
+                <input type="text" class="col-sm-8" placeholder="Hifas esporas micoticas" ng-model="edtmicrobiologia.hifas_esporas_micoticas">
               </div>
             </div>
           </div>
