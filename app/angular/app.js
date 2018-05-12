@@ -20,6 +20,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.parasitologiaCtrl',
 	'vosandesApp.serologiaCtrl',
 	'vosandesApp.reaccionwCtrl',
+	'vosandesApp.hormonasCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
 	'vosandesApp.informeServices',
@@ -36,6 +37,7 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.parasitologiaServices',
 	'vosandesApp.serologiaServices',
 	'vosandesApp.reaccionwServices',
+	'vosandesApp.hormonasServices',
 	'angularMoment',
 
 ]);
@@ -146,6 +148,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/paciente/pruebas/create/reaccion-w', {
 			templateUrl: 'pruebas-examenes/reaccion-w/reaccion-w.html',
 			controller: 'reaccionwCtrl'
+		})
+		.when('/paciente/pruebas/create/hormonas', {
+			templateUrl: 'pruebas-examenes/hormonas/hormonas.html',
+			controller: 'hormonasCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
