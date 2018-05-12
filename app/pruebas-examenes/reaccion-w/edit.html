@@ -1,0 +1,142 @@
+<div class="modal fade" id="modal-edit-reaccionw">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">Editar Reacción de Widal</h4>
+			</div>
+			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtreaccionw)">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 class="text-success">Informe</h4>
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>Dilucion</th>
+										<th>1/20</th>
+										<th>1/40</th>
+										<th>1/80</th>
+										<th>1/160</th>
+										<th>1/320</th>
+										<th>1/400</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Paratyphi "A"</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA1">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA2">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA3">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA4">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA5">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraA6">
+										</td>
+									</tr>
+									<tr>
+										<td>Paratyphi "B"</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB1">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB2">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB3">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB4">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB5">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.paraB6">
+										</td>
+									</tr>
+									<tr>
+										<td>Somatico "O"</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO1">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO2">
+										</td>
+
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO3">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO4">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO5">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO6">
+										</td>
+									</tr>
+									<tr>
+										<td>Flagelar "H"</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH1">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH2">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH3">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH4">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH5">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH6">
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<textarea ng-model="edtreaccionw.comentario" class="col-sm-12" id="" cols="10" rows="3"></textarea>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<p class="text-danger" ng-show="testReacError">
+						<b>La prueba ya fue registrada</b>
+					</p>
+					<p class="text-success" ng-show="testReacSuccess">
+						<b>Datos Almacenados Correctamente</b>
+					</p>
+					<button type="submit" class="btn btn-success">
+						<i class="fa fa-save"></i> Guardar</button>
+				</div>
+
+			</form>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

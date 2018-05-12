@@ -1,15 +1,13 @@
-<div class="modal fade" id="modal-insertar-reaccion">
+<div class="modal fade" id="modal-insertar-reaccionw">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-
-
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
 				<h4 class="modal-title">Reaccion de Widal</h4>
 			</div>
-			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertarReaccion(reaccion)">
+			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(reaccionw)">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-12">
@@ -30,87 +28,86 @@
 									<tr>
 										<td>Paratyphi "A"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA20">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA1">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA40">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA2">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA80">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA3">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA160">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA4">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA320">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA5">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pA400">
+											<input class="form-control" type="text" ng-model="reaccionw.paraA6">
 										</td>
 									</tr>
 									<tr>
 										<td>Paratyphi "B"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB20">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB1">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB40">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB2">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB80">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB3">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB160">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB4">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB320">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB5">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.pB400">
+											<input class="form-control" type="text" ng-model="reaccionw.paraB6">
 										</td>
 									</tr>
 									<tr>
 										<td>Somatico "O"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s20">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO1">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s40">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO2">
 										</td>
 
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s80">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO3">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s160">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO4">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s320">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO5">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.s400">
+											<input class="form-control" type="text" ng-model="reaccionw.somaticoO6">
 										</td>
 									</tr>
 									<tr>
 										<td>Flagelar "H"</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f20">
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH1">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f40">
-										</td>
-										
-										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f80">
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH2">
 										</td>
 										<td>
-										<input class="form-control" type="text" ng-model="reaccion.f160">
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH3">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f320">
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH4">
 										</td>
 										<td>
-											<input class="form-control" type="text" ng-model="reaccion.f400">
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH5">
+										</td>
+										<td>
+											<input class="form-control" type="text" ng-model="reaccionw.flagelarH6">
 										</td>
 									</tr>
 
@@ -118,7 +115,7 @@
 							</table>
 							<div class="form-group">
 								<label class="col-sm-12">Comentario</label>
-								<textarea ng-model="reaccion.comentario" class="col-sm-12" id="" cols="10" rows="5"></textarea>
+								<textarea ng-model="reaccionw.comentario" class="col-sm-12" id="" cols="10" rows="3"></textarea>
 							</div>
 
 						</div>
