@@ -1,132 +1,197 @@
-<div class="modal fade" id="modal-edit-reaccionw">
+<div class="modal fade" id="modal-edit-hormonas">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<h4 class="modal-title">Editar Reacción de Widal</h4>
+				<h4 class="modal-title">Editar Hormonas</h4>
 			</div>
-			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtreaccionw)">
+			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edthormonas)">
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-12">
-							<h4 class="text-success">Informe</h4>
-							<table class="table table-hover table-striped">
-								<thead>
-									<tr>
-										<th>Dilucion</th>
-										<th>1/20</th>
-										<th>1/40</th>
-										<th>1/80</th>
-										<th>1/160</th>
-										<th>1/320</th>
-										<th>1/400</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Paratyphi "A"</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA1">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA2">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA3">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA4">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA5">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraA6">
-										</td>
-									</tr>
-									<tr>
-										<td>Paratyphi "B"</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB1">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB2">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB3">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB4">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB5">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.paraB6">
-										</td>
-									</tr>
-									<tr>
-										<td>Somatico "O"</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO1">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO2">
-										</td>
+						<div class="col-md-6">
 
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO3">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO4">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO5">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.somaticoO6">
-										</td>
-									</tr>
-									<tr>
-										<td>Flagelar "H"</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH1">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH2">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH3">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH4">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH5">
-										</td>
-										<td>
-											<input class="form-control" type="text" ng-model="edtreaccionw.flagelarH6">
-										</td>
-									</tr>
-
-								</tbody>
-							</table>
+							<h4 class="text-success">DOSIFICACIÓN DE HORMONAS TIROIDEAS
+							</h4>
 							<div class="form-group">
-								<label class="col-sm-12">Comentario</label>
-								<textarea ng-model="edtreaccionw.comentario" class="col-sm-12" id="" cols="10" rows="3"></textarea>
+								<label class="col-sm-4">TSH</label>
+								<input type="text" class="col-sm-8" placeholder="TSH" ng-model="edthormonas.tsh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4"> T4 Libre</label>
+								<input type="text" class="col-sm-8" placeholder=" T4 Libre" ng-model="edthormonas.t4_libre">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">T4 Total</label>
+								<input type="text" class="col-sm-8" placeholder="T4 Total" ng-model="edthormonas.t4_total">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">T3</label>
+								<input type="text" class="col-sm-8" placeholder="T3" ng-model="edthormonas.t3">
 							</div>
 
+							<h4 class="text-success">ELISA Cisticercosis</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Resultado</label>
+								<input type="text" class="col-sm-8" placeholder="Resultado" ng-model="edthormonas.cisticercosis_resultado">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Cut off</label>
+								<input type="text" class="col-sm-8" placeholder="Cut off" ng-model="edthormonas.cisticercosis_cut_off">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="edthormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="edthormonas.comentario_cisticercosis" class="col-sm-12" id="" cols="30"
+								 rows="2"></textarea>
+							</div>
+							<h4 class="text-success">MARCADORES TUMORALES
+							</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Antígeno Carcinoembrionario</label>
+								<input type="text" class="col-sm-8" placeholder="Antígeno Carcinoembrionario" ng-model="edthormonas.antigeno_carcino">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">P S A Total</label>
+								<input type="text" class="col-sm-8" placeholder="P S A Total" ng-model="edthormonas.psa_total">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">P S A Libre</label>
+								<input type="text" class="col-sm-8" placeholder="P S A Libre" ng-model="edthormonas.psa_libre">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Relación % PSA Libre / PSA Total</label>
+								<input type="text" class="col-sm-8" placeholder="Relación % PSA Libre / PSA Total" ng-model="edthormonas.relacion_psa_libre_total">
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4">ESTRADIOL</label>
+								<input type="text" class="col-sm-8" placeholder="PROGESTERONA" ng-model="edthormonas.estradiol">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">PROGESTERONA</label>
+								<input type="text" class="col-sm-8" placeholder="PROGESTERONA" ng-model="edthormonas.progesterona">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">FSH</label>
+								<input type="text" class="col-sm-8" placeholder="FSH" ng-model="edthormonas.fsh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">LH</label>
+								<input type="text" class="col-sm-8" placeholder="LH" ng-model="edthormonas.lh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">PROLACTINA</label>
+								<input type="text" class="col-sm-8" placeholder="PROLACTINA" ng-model="edthormonas.prolactina">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">TESTOESTERONA</label>
+								<input type="text" class="col-sm-8" placeholder="TESTOESTERONA" ng-model="edthormonas.testosterona">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h4 class="text-success">ANA</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Ana</label>
+								<input type="text" class="col-sm-8" placeholder="Ana" ng-model="edthormonas.ana">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="edthormonas.ana_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="edthormonas.ana_control_negativo">
+							</div>
+
+							<h4 class="text-success">Células L E</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Células L E</label>
+								<input type="text" class="col-sm-8" placeholder="Células L E" ng-model="edthormonas.celulas_le">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="edthormonas.celulas_le_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="edthormonas.celulas_le_control_negativo">
+							</div>
+
+							<h4 class="text-success">Anticuerpos Anti- peptido ciclico de la Citrulina</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Resultado</label>
+								<input type="text" class="col-sm-8" placeholder="Resultado" ng-model="edthormonas.anticuerpos_resultado">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4"> Cut off</label>
+								<input type="text" class="col-sm-8" placeholder=" Cut off" ng-model="edthormonas.anticuerpos_cut_off">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="edthormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="edthormonas.comentario_anticuerpos" class="col-sm-12" id="" cols="30"
+								 rows="2"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4">Toxoplasmosis Ig M</label>
+								<input type="text" class="col-sm-8" placeholder="Eosinofilo" ng-model="edthormonas.toxoplasmosis_lgm">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Toxoplasmosis Ig G</label>
+								<input type="text" class="col-sm-8" placeholder="Toxoplasmosis Ig G" ng-model="edthormonas.toxoplasmosis_lgg">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">B- HCG Cuantitativo</label>
+								<input type="text" class="col-sm-8" placeholder="B- HCG Cuantitativo" ng-model="edthormonas.b_hcg_cuantitativo">
+							</div>
+
+							<h4 class="text-success">Anticuerpos Anti- Nucleares. ANA (Celulas Hep- 2) </h4>
+							<div class="form-group">
+								<label class="col-sm-4">Anticuerpos Anti- Nucleares</label>
+								<input type="text" class="col-sm-8" placeholder="Anticuerpos Anti- Nucleares" ng-model="edthormonas.anti_nucleares">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="edthormonas.anticuerpos_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="edthormonas.anticuerpos_control_negativo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Células Hep - 2</label>
+								<input type="text" class="col-sm-8" placeholder="Células Hep - 2" ng-model="edthormonas.celulas_hep">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="edthormonas.control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="edthormonas.control_negativo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Conclusión</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="edthormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="edthormonas.conclusion" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="edthormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="edthormonas.comentario_general" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="modal-footer">
-					<p class="text-danger" ng-show="testReacError">
+					<p class="text-danger" ng-show="testBioError">
 						<b>La prueba ya fue registrada</b>
 					</p>
-					<p class="text-success" ng-show="testReacSuccess">
+					<p class="text-success" ng-show="testBioSuccess">
 						<b>Datos Almacenados Correctamente</b>
 					</p>
 					<button type="submit" class="btn btn-success">

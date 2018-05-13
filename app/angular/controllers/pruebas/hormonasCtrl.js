@@ -23,8 +23,8 @@ app.controller('hormonasCtrl', ['$scope', '$routeParams', '$window', 'hormonasSe
         prolactina: "",
         testosterona: "",
         ana: "",
-        testosterona_control_positivo: "",
-        testosterona_control_negativo: "",
+        ana_control_positivo: "",
+        ana_control_negativo: "",
         celulas_le: "",
         celulas_le_control_positivo: "",
         celulas_le_control_negativo: "",
@@ -49,7 +49,7 @@ app.controller('hormonasCtrl', ['$scope', '$routeParams', '$window', 'hormonasSe
     $scope.user = user;
     $scope.paciente = $sessionStorage.paciente;
     $scope.prueba = $sessionStorage.prueba;
-    $scope.PATH = 'http://localhost/LabVosAndes/api/reaccion-w-pruebas/printReaccionPruebas/' + $scope.prueba.id;
+    $scope.PATH = 'http://localhost/LabVosAndes/api/hormonasPruebas/printHormonasPruebas/' + $scope.prueba.id;
     console.log()
     $scope.dataQuery = new Object();
     // $scope.dataQueryMed = new Object();
