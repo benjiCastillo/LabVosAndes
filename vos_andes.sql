@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-05-2018 a las 05:57:57
+-- Tiempo de generación: 13-05-2018 a las 00:34:56
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -187,7 +187,7 @@ CREATE TABLE `biometria_pruebas` (
 --
 
 INSERT INTO `biometria_pruebas` (`id`, `hematies`, `hematocrito`, `hemoglobina`, `leucocitos`, `vsg`, `vcm`, `hbcm`, `chbcm`, `comentario_hema`, `cayados`, `neutrofilos`, `basofilo`, `eosinofilo`, `linfocito`, `monocito`, `prolinfocito`, `cel_inmaduras`, `comentario_leuco`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'asdawdaw', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', '1000000.0000', 'a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1a\'a\'sd\'w\'ásasdáwNNNdasññad1', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -229,7 +229,7 @@ CREATE TABLE `cultivos_pruebas` (
 --
 
 INSERT INTO `cultivos_pruebas` (`id`, `leucocitos`, `bacterias`, `esputo_as`, `esputo_microorganismo_identificado`, `ampicilina_sulbactam`, `eritromicina`, `clindamicina`, `tetraciclina`, `vancomicina`, `recuento_colonias`, `agar_mac_conkey`, `tincion_gram`, `pruebas_bioquimicas`, `urocultivo_microorganismo_identificado`, `amoxicilina_ac_clavulanico`, `gentamicina`, `ciprofloxacino`, `cefixima`, `cotrimoxazol`, `nitrofurantoina`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '', '', '', '', '', '', '', '', 'dwada', '', '', '', '', '', '3aedf', '3faf3', '', '3r3r', 'avzv', 'qqqwf', 86, '2018-05-04 00:00:00', NULL, 0, NULL);
+(1, 'awdawd', 'awaef3awdadawdadawdawdawdasdawfacscawcw', 'awdawd', 'awdawfawf33', 'a3ra3ra3', 'a3ra3', '3ra3r', '3rara', 'dwada', '235235', 'wdadwa', 'afwfwaf', '1212r12', 'afwfwa3f', '3fwafwa4g', 'gw4gwa4', 'w4gwa4g', 'w4gw4g', '3r2323t', '2t23t', 86, '2018-05-04 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,7 @@ CREATE TABLE `espermograma_pruebas` (
 --
 
 INSERT INTO `espermograma_pruebas` (`id`, `hora_recoleccion`, `hora_recepcion`, `duracion_abstinencia`, `aspecto`, `color`, `volumen`, `viscosidad`, `ph`, `concentracion_espermatica`, `caracteristicas_morfologicas`, `espermatozoides_normales`, `cabeza`, `pieza_intermedia`, `cola`, `otras_celulas`, `aglutinacion`, `progresion_lineal_rapida`, `progresion_lineal_lenta`, `motilidad_no_progresiva`, `inmoviles`, `primera_hora_moviles`, `primera_hora_inmoviles`, `segunda_hora_moviles`, `segunda_hora_inmoviles`, `tercera_hora_moviles`, `tercera_hora_inmoviles`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(2, '2018-05-06 04:00:00', '2018-05-06 04:00:00', '50 años', '', 'awdawd', 'dwad22', '12312r', 'dgsdg', 'asdaw', 'awdawd', 'gagaga', 'gagag', 'wagagaw', 'awdaw', 'awfawfawfafawf\r\nawfawfawf\r\nasaaa', '', 'awdwaf', 'dawdaf', 'dawdaw', '', 'wfawfa', 'wfawf', 'wfawfa', 'fwafa', 'dwadaw', 'dwada', 86, '2018-05-06 00:00:00', NULL, 0, NULL);
+(2, '2018-05-06 04:00:00', '2018-05-06 04:00:00', '50 años', 'Opaco Homogéneo', 'awfawfq3f', 'afafa3fa', '4gae4gae', 'e4gae4hae', '60`000.000', 'awdawd', 'gagaga', 'gagag', 'wagagaw', 'awdaw', 'awfawfawfafawf\r\nawfawfawf\r\nasaaa', 'eahae5h', 'eahea5ha', '5heahae5', 'e5hae5ha', '', 'wfawfa', 'wfawf', 'wfawfa', 'fwafa', 'dwadaw', 'e5hea5h', 86, '2018-05-06 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -350,8 +350,8 @@ CREATE TABLE `hormonas_pruebas` (
   `prolactina` varchar(20) DEFAULT NULL,
   `testosterona` varchar(20) DEFAULT NULL,
   `ana` varchar(20) DEFAULT NULL,
-  `testosterona_control_positivo` varchar(20) DEFAULT NULL,
-  `testosterona_control_negativo` varchar(20) DEFAULT NULL,
+  `ana_control_positivo` varchar(20) DEFAULT NULL,
+  `ana_control_negativo` varchar(20) DEFAULT NULL,
   `celulas_le` varchar(20) DEFAULT NULL,
   `celulas_le_control_positivo` varchar(20) DEFAULT NULL,
   `celulas_le_control_negativo` varchar(20) DEFAULT NULL,
@@ -380,8 +380,8 @@ CREATE TABLE `hormonas_pruebas` (
 -- Volcado de datos para la tabla `hormonas_pruebas`
 --
 
-INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `testosterona_control_positivo`, `testosterona_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'á;;ñ$ééaá;;ñ$', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `ana_control_positivo`, `ana_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'á;;ñ$ééaá;;ñ$', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -405,7 +405,7 @@ CREATE TABLE `informe_pruebas` (
 --
 
 INSERT INTO `informe_pruebas` (`id`, `grupo_sanguineo`, `factor_rh`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '111', '111', 86, '2018-05-04 00:00:00', '2018-05-07 02:43:56', 0, 20);
+(1, 'awfawgaefadwafaw', '', 86, '2018-05-04 00:00:00', '2018-05-07 02:43:56', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -537,7 +537,9 @@ CREATE TABLE `parasitologia_pruebas` (
   `leucocitos` varchar(20) DEFAULT NULL,
   `comentario` text,
   `sangre_oculta` varchar(20) DEFAULT NULL,
-  `muestras` text,
+  `muestra1` varchar(100) DEFAULT NULL,
+  `muestra2` varchar(100) NOT NULL,
+  `muestra3` varchar(100) NOT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -549,8 +551,8 @@ CREATE TABLE `parasitologia_pruebas` (
 -- Volcado de datos para la tabla `parasitologia_pruebas`
 --
 
-INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestras`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(2, '', '', '', '', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeé', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestra1`, `muestra2`, `muestra3`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(2, 'rawfaw', 'awf33', '25252', '2342t', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé', 'áa´aaá´eeéwagwa4gwag322g', '21d1dawdawdawd', '12d12123geagergawegw4g', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -605,7 +607,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
   `cpk` varchar(20) DEFAULT NULL,
   `cpk_mb` varchar(20) DEFAULT NULL,
   `gamaglutamil_transpeptidasa` varchar(20) DEFAULT NULL,
-  `prueba_inmunologica_embarazo` varchar(150) DEFAULT NULL,
+  `prueba_inmunologica_embarazo` text,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -618,7 +620,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
 --
 
 INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'awdawd', 'waaeg', 'egaga', 'egaega', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'awdawfawg', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'adawda', 'a3ta', '3ra3r', '3ra3r', '3ra3ta3t', '3twataw', '3tawta', 't3ataw', '3twatwa', 'hhhhhh', 'aaaaa', 'aaaaa', '33333', '44444', '3333', '1241241', '112412', 'vvv', 'vvvv', 'cccc', 'ccvvvcc', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -709,7 +711,7 @@ CREATE TABLE `serologia_pruebas` (
 --
 
 INSERT INTO `serologia_pruebas` (`id`, `factor_reumatoide`, `pcr`, `asto`, `aso`, `k_plus`, `na_plus`, `cl_minus`, `ca`, `p`, `chagas`, `toxoplasmosis`, `chagas_resultado`, `chagas_elisa_cut_off`, `chagas_comentario`, `tiempo_sangria`, `tiempo_coagulacion`, `tiempo_protrombina`, `actividad_protrombina`, `grupo_sanguineo`, `factor_rh`, `recuento_plaquetas`, `agr_dis_plaquetaria`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '', '', '', '', '', '', '', '', '', '', '', '23g23g32', '23g23g', 'g3g3g2', 'dawfawgfa', 'dwad', 'dwadaw', 'wdawd', 'awdaw', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, 'fsefae', '23523t', '23523t', '23523t', 'faw4gw', 'e4gea4hg', 'earghae', '44h', '', 'aergae4wg', 'g4agae', 'awdawd', 'awda2d2', '3rr', 'dawfawgfa', 'dwad', 'dwadaw', 'wdawd', 'awdaw', 'áááéée;;ñ', 'áááéée;;ñ', 'áááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñáááéée;;ñ', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
