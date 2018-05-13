@@ -268,7 +268,7 @@ class HormonasPruebasTable extends Table
 
         $validator
             ->scalar('conclusion')
-            ->maxLength('conclusion', 20)
+            ->maxLength('conclusion')
             ->requirePresence('conclusion', 'create')
             ->notEmpty('conclusion');
 
