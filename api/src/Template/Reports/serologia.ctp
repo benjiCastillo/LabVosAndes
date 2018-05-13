@@ -247,10 +247,15 @@ $coagulograma = '';
     }
     if ($prueba->serologia_pruebas[0]->agr_dis_plaquetaria != '') {
         $coagulograma .= '<tr>
-                    <td width="150">Agregación y distribución plaquetaria: </td>
-                    <td width="150" colspan="2">'. $prueba->serologia_pruebas[0]->agr_dis_plaquetaria . '</td>
-                    <td></td>
-                </tr>';
+                            <td width="30%">Agregación y distribución</td>
+                            <td width="45%" colspan="2"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td width="30%">plaquetaria: </td>
+                            <td width="45%" colspan="2">'. $prueba->serologia_pruebas[0]->agr_dis_plaquetaria . '</td>
+                            <td></td>
+                        </tr>';
     }
     $coagulograma .= '<br>';
 }
@@ -264,11 +269,11 @@ if (($serologia == '' && $ionograma == '' && $hai == '') ||
 else {
     $tabla1 = '';
     $tabla1 = '<table>' . $serologia .  $ionograma . $hai . '</table>';
-    $pdf->writeHTMLCell($w=125, $h=0, $x='15', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=125, $h=0, $x='15', $y='40', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
     $tabla2 = '';
     $tabla2 = '<table>' . $elisa . $coagulograma . '</table>';
-    $pdf->writeHTMLCell($w=130, $h=0, $x='115', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=130, $h=0, $x='115', $y='40', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
 
 $pdf->SetFont('helvetica','',7);

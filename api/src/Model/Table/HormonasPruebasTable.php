@@ -166,16 +166,16 @@ class HormonasPruebasTable extends Table
             ->notEmpty('ana');
 
         $validator
-            ->scalar('testosterona_control_positivo')
-            ->maxLength('testosterona_control_positivo', 20)
-            ->requirePresence('testosterona_control_positivo', 'create')
-            ->notEmpty('testosterona_control_positivo');
+            ->scalar('ana_control_positivo')
+            ->maxLength('ana_control_positivo', 20)
+            ->requirePresence('ana_control_positivo', 'create')
+            ->notEmpty('ana_control_positivo');
 
         $validator
-            ->scalar('testosterona_control_negativo')
-            ->maxLength('testosterona_control_negativo', 20)
-            ->requirePresence('testosterona_control_negativo', 'create')
-            ->notEmpty('testosterona_control_negativo');
+            ->scalar('ana_control_negativo')
+            ->maxLength('ana_control_negativo', 20)
+            ->requirePresence('ana_control_negativo', 'create')
+            ->notEmpty('ana_control_negativo');
 
         $validator
             ->scalar('celulas_le')
@@ -268,7 +268,7 @@ class HormonasPruebasTable extends Table
 
         $validator
             ->scalar('conclusion')
-            ->maxLength('conclusion', 20)
+            ->maxLength('conclusion')
             ->requirePresence('conclusion', 'create')
             ->notEmpty('conclusion');
 
