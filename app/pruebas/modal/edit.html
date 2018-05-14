@@ -13,12 +13,12 @@
                         <label class="col-sm-4">Fecha y hora de Examen</label>
                         <input type="datetime-local" class="col-sm-8" id="edt_hora_fecha" value="{{ edtprueba.fecha  }}">
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="miembroInput" class="text-info">Elija un Médico</label>
+                    <div class="form-group">
+                        <label>Elija un Médico</label>
                         <select class="form-control" ng-model="medico" required>
-                            <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+                            <option ng-repeat="med in medicos" value="{{med.id}}" ng-selected="med.id === edtprueba.medico_id ">{{med.nombre }} {{med.apellidos}}</option>
                         </select>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="modal-footer">

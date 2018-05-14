@@ -20,7 +20,7 @@ function login() {
             } else {
                 $('#correcto').css('display', 'block');
                 data.user = user;
-                
+
                 sessionStorage.setItem('user', JSON.stringify(data));
                 window.location.href = 'app';
             }
@@ -53,6 +53,7 @@ function saveUser() {
                             $('#Snombre').val('');
                             $('#Suser').val('');
                             $('#clave').val('');
+                            showLogIn()
                         } else {
                             $('#testInput').text('Error nombre de usuario ya registrado')
                         }
