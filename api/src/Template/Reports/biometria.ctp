@@ -97,7 +97,7 @@ if( $prueba->biometria_pruebas[0]->comentario_hema != '' ){
         <td><b>Comentario</b></td>
     </tr>
     <tr>
-        <td><p>' . $prueba->biometria_pruebas[0]->comentario_hema . '</p></td>
+        <td><p>' . nl2br($prueba->biometria_pruebas[0]->comentario_hema) . '</p></td>
     </tr>
 </table>';
 }
@@ -159,7 +159,7 @@ if( $prueba->biometria_pruebas[0]->comentario_leuco != ''){
         <td><b>Comentario</b></td>
     </tr>
     <tr>
-        <td><p>' . $prueba->biometria_pruebas[0]->comentario_leuco . '</p></td>
+        <td><p>' . nl2br($prueba->biometria_pruebas[0]->comentario_leuco) . '</p></td>
     </tr>
 </table>';
 } else {

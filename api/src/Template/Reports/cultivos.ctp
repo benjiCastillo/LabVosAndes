@@ -53,7 +53,7 @@ if ($prueba->cultivos_pruebas[0]->leucocitos == '' && $prueba->cultivos_pruebas[
     if ($prueba->cultivos_pruebas[0]->bacterias != '') {
         $tincion_gram_directa .= '<tr>
                                     <td>Bacterias: </td>
-                                    <td>' . $prueba->cultivos_pruebas[0]->bacterias . '</td>
+                                    <td>' . nl2br($prueba->cultivos_pruebas[0]->bacterias) . '</td>
                                 </tr>';
     }
     $tincion_gram_directa .= '<br>';
