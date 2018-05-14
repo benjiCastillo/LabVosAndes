@@ -87,7 +87,7 @@ $biometria = '<table style="padding: 4px;">
 $pdf->writeHTMLCell($w=180, $h=0, $x='15', $y='', $biometria, $border=0, $ln=1, $fill=0, $reseth=true, $align='R', $autopadding=true);
 
 $pdf->Ln(4);
-$comentario = '<div><b>Comentario: </b>'.$prueba->reaccion_w_pruebas[0]->comentario.'</div>';
+$comentario = '<div><b>Comentario: </b>' . nl2br($prueba->reaccion_w_pruebas[0]->comentario) . '</div>';
 if ($comentario != ''){
     $pdf->writeHTMLCell($w=180, $h=0, $x='19', $y='', $comentario, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
