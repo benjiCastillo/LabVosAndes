@@ -86,7 +86,7 @@ if ($prueba->parasitologia_pruebas[0]->leucocitos == '' && $prueba->parasitologi
     }
     if ($prueba->parasitologia_pruebas[0]->comentario != '') {
         $moco .= '<tr>
-                    <td width="65%" colspan="3">' . $prueba->parasitologia_pruebas[0]->comentario . '</td>
+                    <td width="65%" colspan="3">' . nl2br($prueba->parasitologia_pruebas[0]->comentario) . '</td>
                     <td></td>
                     <td></td>
                 </tr>';

@@ -180,7 +180,7 @@ if ($prueba->serologia_pruebas[0]->chagas_resultado == '' && $prueba->serologia_
     if ($prueba->serologia_pruebas[0]->chagas_comentario != '') {
         $elisa .= '<tr>
                     <td>Comentario: </td>
-                    <td width="230" colspan="2">'. $prueba->serologia_pruebas[0]->chagas_comentario . '</td>
+                    <td width="230" colspan="2">'. nl2br($prueba->serologia_pruebas[0]->chagas_comentario) . '</td>
                 </tr>';
     }
     $elisa .= '<br>';

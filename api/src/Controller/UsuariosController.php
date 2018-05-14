@@ -204,9 +204,9 @@ class UsuariosController extends AppController
                     'user' => $data['user'],
                     'token' => $data['token']
                 ]
-            ])->count();
+            ])->first();
 
-            if ($count) {
+            if ($user) {
                 $user->token = '';
                 $this->Usuarios->save($user);
                 $json = [
