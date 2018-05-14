@@ -1,0 +1,147 @@
+<div class="modal fade bs-example-modal-lg" id="modal-insertar-espermogramas">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h3 class="modal-title text-primary">Insertar Espermograma</h3>
+
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;" name="frmespermogramas" ng-submit="insertar(espermogramas)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="col-sm-4">Hora de recoleción</label>
+                <input type="datetime-local" class="col-sm-8" id="hora_recoleccion_form">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Hora de recepción</label>
+                <input type="datetime-local" class="col-sm-8" id="hora_recepcion_form">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Duración de la abstinencia</label>
+                <input type="text" class="col-sm-8" placeholder="Duración de la abstinencia" ng-model="espermogramas.duracion_abstinencia">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Aspecto</label>
+                <input type="text" class="col-sm-8" placeholder="Aspecto" ng-model="espermogramas.aspecto">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Color</label>
+                <input type="text" class="col-sm-8" placeholder="Color" ng-model="espermogramas.color">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Volumen</label>
+                <input type="text" class="col-sm-8" placeholder="Volumen" ng-model="espermogramas.volumen">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Viscosidad</label>
+                <input type="text" class="col-sm-8" placeholder="Viscosidad" ng-model="espermogramas.viscosidad">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">ph</label>
+                <input type="text" class="col-sm-8" placeholder="ph" ng-model="espermogramas.ph">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Aglutinación</label>
+                <input type="text" class="col-sm-8" placeholder="Aglutinación" ng-model="espermogramas.aglutinacion">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Progresión lineal rápida</label>
+                <input type="text" class="col-sm-8" placeholder="Progresión lineal rápida" ng-model="espermogramas.progresion_lineal_rapida">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Progresión lineal lenta</label>
+                <input type="text" class="col-sm-8" placeholder="Progresión lineal lenta" ng-model="espermogramas.progresion_lineal_lenta">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Motilidad no progresiva</label>
+                <input type="text" class="col-sm-8" placeholder="Motilidad no progresiva" ng-model="espermogramas.motilidad_no_progresiva">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Inmóviles</label>
+                <input type="text" class="col-sm-8" placeholder="Inmóviles" ng-model="espermogramas.inmoviles">
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="col-sm-4">Concentración Espermática</label>
+                <input type="text" class="col-sm-8" placeholder="Concentración Espermática" ng-model="espermogramas.concentracion_espermatica">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Caracteristicas morfológicas</label>
+                <input type="text" class="col-sm-8" placeholder="Caracteristicas morfológicas" ng-model="espermogramas.caracteristicas_morfologicas">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Espermatozoides normales</label>
+                <input type="text" class="col-sm-8" placeholder="Espermatozoides normales" ng-model="espermogramas.espermatozoides_normales">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Cabeza</label>
+                <input type="text" class="col-sm-8" placeholder="Cabeza" ng-model="espermogramas.cabeza">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Pieza intermedia</label>
+                <input type="text" class="col-sm-8" placeholder="Pieza intermedia" ng-model="espermogramas.pieza_intermedia">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Cola</label>
+                <input type="text" class="col-sm-8" placeholder="Cola" ng-model="espermogramas.cola">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Otras células</label>
+                <textarea style="word-break: break-all;" placeholder="Otras células" ng-model="espermogramas.otras_celulas" class="col-sm-8"
+                  cols="10" rows="2"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-4">Primera hora móviles</label>
+                <input type="text" class="col-sm-8" placeholder="Primera_hora" ng-model="espermogramas.primera_hora_moviles">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Primera hora inmóviles</label>
+                <input type="text" class="col-sm-8" placeholder="Primera_hora" ng-model="espermogramas.primera_hora_inmoviles">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Segunda hora móviles </label>
+                <input type="text" class="col-sm-8" placeholder="Segunda hora" ng-model="espermogramas.segunda_hora_moviles">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Segunda hora inmóviles </label>
+                <input type="text" class="col-sm-8" placeholder="Segunda hora" ng-model="espermogramas.segunda_hora_inmoviles">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tercera hora móviles</label>
+                <input type="text" class="col-sm-8" placeholder="Tercera hora" ng-model="espermogramas.tercera_hora_moviles">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tercera hora inmóviles</label>
+                <input type="text" class="col-sm-8" placeholder="Tercera hora" ng-model="espermogramas.tercera_hora_inmoviles">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal-footer">
+          <p class="text-danger" ng-show="testGenError">
+            <b>La prueba ya fue registrada</b>
+          </p>
+          <p class="text-success" ng-show="testGenSuccess">
+            <b>Datos Almacenados Correctamente</b>
+          </p>
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

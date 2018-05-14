@@ -1,0 +1,57 @@
+<div class="modal fade" id="modal-edit-parasitologia">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Editar Parasitologia</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtparasitologia)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="form-group">
+                <label class="col-sm-4">Consistencia</label>
+                <input type="text" class="col-sm-8" placeholder="Consistencia" ng-model="edtparasitologia.consistencia">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Color</label>
+                <input type="text" class="col-sm-8" placeholder="Color" ng-model="edtparasitologia.color">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Restos alimenticios</label>
+                <input type="text" class="col-sm-8" placeholder="Restos alimenticios" ng-model="edtparasitologia.restos_alimenticios">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Leucocitos</label>
+                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="edtparasitologia.leucocitos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Comentario</label>
+                <input type="text" class="col-sm-8" placeholder="Comentario" ng-model="edtparasitologia.comentario">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Sangre oculta</label>
+                <input type="text" class="col-sm-8" placeholder="Sangre oculta" ng-model="edtparasitologia.sangre_oculta">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Muestras</label>
+                <input type="text" class="col-sm-8" placeholder="Muestras" ng-model="edtparasitologia.muestras">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

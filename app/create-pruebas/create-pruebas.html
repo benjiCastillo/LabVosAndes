@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+            <p>
+                <b>Paciente: </b>
+                <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
+            </p>
+            <p>
+                <b>Edad: </b>
+                <span>{{ paciente.edad }}</span>
+            </p>
+            <p>
+                <b>Sexo: </b>
+                <span ng-if="paciente.sexo == 'M' ">Masculino</span>
+                <span ng-if="paciente.sexo == 'F' ">Femenino</span>
+            </p>
+            <p>
+                <b>Fecha de Prueba: </b>
+                <span>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
+            </p>
+        </div>
+
+
+        <section>
+            <div class="row">
+                <div class="col-md-16">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h2 class="text-info">Seleccione Prueba</h2>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('biometria')">
+                                    <p>Biometría</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('cultivos')">
+                                    <p>Cultivos</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('espermogramas')">
+                                    <p>Espermogramas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('examen-general')">
+                                    <p>Examen General</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('hormonas')">
+                                    <p>Hormonas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('informe')">
+                                    <p>Informe</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('liquido-sinovial')">
+                                    <p>Liquido Sinovial</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('microbiologia')">
+                                    <p>Microbiología</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('parasitologia')">
+                                    <p>Parasitología</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('quimica-sanguinea')">
+                                    <p>Química Sanguínea</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('reaccion-w')">
+                                    <p>Reacción de Widal</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="well card-prueba" ng-click="crearPruebas('serologia')">
+                                    <p>Serología</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="modal fade" id="modal-insertar-serologia">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Serología</h4>
+      </div>
+      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(serologia)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-sm-4">Factor Reumatoide</label>
+                <input type="text" class="col-sm-8" placeholder="Factor reumatoide" ng-model="serologia.factor_reumatoide">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">PCR</label>
+                <input type="text" class="col-sm-8" placeholder="PCR" ng-model="serologia.pcr">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">ASTO</label>
+                <input type="text" class="col-sm-8" placeholder="ASTO" ng-model="serologia.asto">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">ASO</label>
+                <input type="text" class="col-sm-8" placeholder="ASO" ng-model="serologia.aso">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">K+</label>
+                <input type="text" class="col-sm-8" placeholder="K+" ng-model="serologia.k_plus">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Na+</label>
+                <input type="text" class="col-sm-8" placeholder="Na+" ng-model="serologia.na_plus">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Cl-</label>
+                <input type="text" class="col-sm-8" placeholder="Cl-" ng-model="serologia.cl_minus">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Ca</label>
+                <input type="text" class="col-sm-8" placeholder="Ca" ng-model="serologia.ca">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">P</label>
+                <input type="text" class="col-sm-8" placeholder="P" ng-model="serologia.p">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">HAI Chagas</label>
+                <input type="text" class="col-sm-8" placeholder="HAI Chagas" ng-model="serologia.chagas">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">HAI Toxoplasmosis</label>
+                <input type="text" class="col-sm-8" placeholder="HAI Toxoplasmosis" ng-model="serologia.toxoplasmosis">
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="col-sm-4">Chagas Resultado</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas Resultado" ng-model="serologia.chagas_resultado">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Chagas Elisa Cut Off</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas Elisa Cut Off" ng-model="serologia.chagas_elisa_cut_off">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Chagas Comentario</label>
+                <input type="text" class="col-sm-8" placeholder="Chagas Comentario" ng-model="serologia.chagas_comentario">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo de Sangría</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo de Sangría" ng-model="serologia.tiempo_sangria">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo de Coagulación</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo de Coagulación" ng-model="serologia.tiempo_coagulacion">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Tiempo de Protrombina</label>
+                <input type="text" class="col-sm-8" placeholder="Tiempo de Protrombina" ng-model="serologia.tiempo_protrombina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Actividad Protrombina</label>
+                <input type="text" class="col-sm-8" placeholder="Actividad Protrombina" ng-model="serologia.actividad_protrombina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Grupo Sanguíneo</label>
+                <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="serologia.grupo_sanguineo">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Factor Rh</label>
+                <input type="text" class="col-sm-8" placeholder="Factor Rh" ng-model="serologia.factor_rh">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Recuento de plaquetas</label>
+                <input type="text" class="col-sm-8" placeholder="Recuento de plaquetas" ng-model="serologia.recuento_plaquetas">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Agregación y distribución plaquetaria</label>
+                <input type="text" class="col-sm-8" placeholder="Agregación y distribución plaquetaria" ng-model="serologia.agr_dis_plaquetaria">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

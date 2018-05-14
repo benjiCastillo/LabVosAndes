@@ -193,7 +193,7 @@ if ($prueba->espermograma_pruebas[0]->concentracion_espermatica == '' && $prueba
     if ($prueba->espermograma_pruebas[0]->otras_celulas != '') {
         $examen_microscopico .= ' <tr>
                                     <td width="28%">Otras células: </td>
-                                    <td width="40%" colspan="2">' . $prueba->espermograma_pruebas[0]->otras_celulas . '</td>
+                                    <td width="40%" colspan="2">' . nl2br($prueba->espermograma_pruebas[0]->otras_celulas) . '</td>
                                     <td></td>
                                 </tr>';
     }

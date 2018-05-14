@@ -110,7 +110,7 @@ if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado == '' && $prueba->horm
     if ($prueba->hormonas_pruebas[0]->comentario_cisticercosis != '') {
         $elisa .= '<tr>
                     <td width="20%">Comentario: </td>
-                    <td width="70%" colspan="2">' . $prueba->hormonas_pruebas[0]->comentario_cisticercosis . '</td>
+                    <td width="70%" colspan="2">' . nl2br($prueba->hormonas_pruebas[0]->comentario_cisticercosis) . '</td>
                 </tr>';
     }
     $elisa .= '<br>';
@@ -344,7 +344,7 @@ if ($prueba->hormonas_pruebas[0]->anticuerpos_resultado == '' && $prueba->hormon
     if ($prueba->hormonas_pruebas[0]->comentario_anticuerpos != '') {
         $aapcc .= '<tr>
                     <td width="20%">Comentario: </td>
-                    <td width="72%" colspan="2">' . $prueba->hormonas_pruebas[0]->comentario_anticuerpos . '</td>
+                    <td width="72%" colspan="2">' . nl2br($prueba->hormonas_pruebas[0]->comentario_anticuerpos) . '</td>
                     <td></td>
                 </tr><br>';
     }
@@ -450,13 +450,13 @@ if ($prueba->hormonas_pruebas[0]->anti_nucleares == '' && $prueba->hormonas_prue
     if ($prueba->hormonas_pruebas[0]->conclusion != '') {
         $anach2 .= '<br><tr>
                     <td width="20%">Conclusión: </td>
-                    <td width="72%" colspan="2">' . $prueba->hormonas_pruebas[0]->conclusion . '</td>
+                    <td width="72%" colspan="2">' . nl2br($prueba->hormonas_pruebas[0]->conclusion) . '</td>
                 </tr><br>';
     }
     if ($prueba->hormonas_pruebas[0]->comentario_general != '') {
         $anach2 .= '<tr>
                         <td width="20%">Comentario: </td>
-                        <td width="72%" colspan="2">' . $prueba->hormonas_pruebas[0]->comentario_general . '</td>
+                        <td width="72%" colspan="2">' . nl2br($prueba->hormonas_pruebas[0]->comentario_general) . '</td>
                     </tr>';
     }
     $anach2 .= '<br>';

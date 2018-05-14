@@ -1,0 +1,122 @@
+<div class="modal fade bs-example-modal-lg" id="modal-edit-cultivos">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h3 class="modal-title text-primary">Editar Cultivo</h3>
+            </div>
+            <form class="form-horizontal" style="padding: 0 10px;" name="frmedtcultivos" ng-submit="edit(edtcultivos)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label class="col-sm-4">Leucocitos</label>
+                                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="edtcultivos.leucocitos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Bacterias</label>
+                                <textarea style="word-break: break-all;" placeholder="Bacterias" ng-model="edtcultivos.bacterias" class="col-sm-8" id=""
+                                    cols="10" rows="2"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4">Esputo AS</label>
+                                <input type="text" class="col-sm-8" placeholder="Esputo AS" ng-model="edtcultivos.esputo_as">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Esputo Microorganismo Identificado</label>
+                                <input type="text" class="col-sm-8" placeholder="Esputo Microorganismo Identificado" ng-model="edtcultivos.esputo_microorganismo_identificado">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Ampicilina Sulbactam</label>
+                                <input type="text" class="col-sm-8" placeholder="Ampicilina Sulbactam" ng-model="edtcultivos.ampicilina_sulbactam">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Eritromicina</label>
+                                <input type="text" class="col-sm-8" placeholder="Eritromicina" ng-model="edtcultivos.eritromicina">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Clindamicina</label>
+                                <input type="text" class="col-sm-8" placeholder="Clindamicina" ng-model="edtcultivos.clindamicina">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Tetraciclina</label>
+                                <input type="text" class="col-sm-8" placeholder="Tetraciclina" ng-model="edtcultivos.tetraciclina">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Vancomicina</label>
+                                <input type="text" class="col-sm-8" placeholder="Vancomicina" ng-model="edtcultivos.vancomicina">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-4">Recuento colonias</label>
+                                <input type="text" class="col-sm-8" placeholder="Recuento colonias" ng-model="edtcultivos.recuento_colonias">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Agar Mac Conkey</label>
+                                <input type="text" class="col-sm-8" placeholder="Agar Mac Conkey" ng-model="edtcultivos.agar_mac_conkey">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Tinción de Gram</label>
+                                <input type="text" class="col-sm-8" placeholder="Tinción de Gram" ng-model="edtcultivos.tincion_gram">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Pruebas Bioquímicas</label>
+                                <input type="text" class="col-sm-8" placeholder="Pruebas Bioquímicas" ng-model="edtcultivos.pruebas_bioquimicas">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Urocultivo Microorganismo Identificado</label>
+                                <input type="text" class="col-sm-8" placeholder="Urocultivo Microorganismo Identificado" ng-model="edtcultivos.urocultivo_microorganismo_identificado">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Amoxicilina ac.Clavulanico</label>
+                                <input type="text" class="col-sm-8" placeholder="Amoxicilina ac.Clavulanico" ng-model="edtcultivos.amoxicilina_ac_clavulanico">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Gentamicina</label>
+                                <input type="text" class="col-sm-8" placeholder="Gentamicina" ng-model="edtcultivos.gentamicina">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Ciprofloxacino</label>
+                                <input type="text" class="col-sm-8" placeholder="Ciprofloxacino" ng-model="edtcultivos.ciprofloxacino">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cefixima</label>
+                                <input type="text" class="col-sm-8" placeholder="Cefixima" ng-model="edtcultivos.cefixima">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Cotrimoxazol</label>
+                                <input type="text" class="col-sm-8" placeholder="Cotrimoxazol" ng-model="edtcultivos.cotrimoxazol">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Nitrofurantoina</label>
+                                <input type="text" class="col-sm-8" placeholder="Nitrofurantoina" ng-model="edtcultivos.nitrofurantoina">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <p class="text-danger" ng-show="testGenError">
+                        <b>La prueba ya fue registrada</b>
+                    </p>
+                    <p class="text-success" ng-show="testGenSuccess">
+                        <b>Datos Almacenados Correctamente</b>
+                    </p>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

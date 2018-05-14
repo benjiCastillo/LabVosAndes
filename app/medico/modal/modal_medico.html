@@ -1,0 +1,32 @@
+<div class="modal fade" id="modal-medico">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Insertar Médico</h4>
+      </div>
+      <form name="med" ng-submit="insertar(medico)" novalidate="novalidate">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" id="medNombre" ng-model="medico.nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" class="form-control" placeholder="Apellidos" id="medApellidos" ng-model="medico.apellidos" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+            <p>
+                <b>Paciente: </b>
+                <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
+            </p>
+            <p>
+                <b>Edad: </b>
+                <span>{{ paciente.edad }}</span>
+            </p>
+            <p>
+                <b>Sexo: </b>
+                <span ng-if="paciente.sexo == 'M' ">Masculino</span>
+                <span ng-if="paciente.sexo == 'F' ">Femenino</span>
+            </p>
+            <br>
+            <div class="form-group" ng-show="selectMed">
+                <label for="miembroInput" class="text-info">Medico</label>
+                <select class="form-control" ng-model="medico">
+                    <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+                </select>
+            </div>
+            <span>{{ ifmedExists }}</span>
+            <button class="btn btn-block btn-success" ng-click="insertarModal()">Crear Examen</button>
+        </div>
+
+
+        <section>
+            <div class="row">
+                <div class="col-md-16">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h2 class="text-info">Pruebas</h2>
+                        </div>
+                        <div class="box-body">
+                            <p ng-show="loadData">Cargando Datos </p>
+                            <p>{{ msgPruebas }}</p>
+                            <table class="table table-hover" ng-show="!notData">
+                                <thead>
+                                    <tr>
+                                        <th>Nro</th>
+                                        <th>Fecha</th>
+                                        <th>Ingresar</th>
+                                        <th>Eliminar</th>
+                                        <th>Editar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="prueba in listPruebas ">
+                                        <td>{{ $index+1 }}</td>
+                                        <td>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</td>
+                                        <td>
+                                            <button ng-click="crearPruebas( prueba )"
+                                                class="btn btn-info">Ingresar</button>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" ng-click="mostrarEliminar( prueba )">
+                                                <i class="fa fa-remove"></i>Eliminar</a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" ng-click="showEdit(paciente.id,listPruebas.id_tipo, listPruebas.tipo)">Editar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div ng-include="'pruebas/modal/add.html'"></div>
+<div ng-include="'pruebas/modal/edit.html'"></div>
+<div ng-include="'pruebas/modal/delete.html'"></div>

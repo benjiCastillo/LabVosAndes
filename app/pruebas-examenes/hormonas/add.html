@@ -1,0 +1,205 @@
+<div class="modal fade" id="modal-insertar-hormonas">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">Hormonas</h4>
+			</div>
+			<form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(hormonas)">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+
+							<h4 class="text-success">DOSIFICACIÓN DE HORMONAS TIROIDEAS
+							</h4>
+							<div class="form-group">
+								<label class="col-sm-4">TSH</label>
+								<input type="text" class="col-sm-8" placeholder="TSH" ng-model="hormonas.tsh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4"> T4 Libre</label>
+								<input type="text" class="col-sm-8" placeholder=" T4 Libre" ng-model="hormonas.t4_libre">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">T4 Total</label>
+								<input type="text" class="col-sm-8" placeholder="T4 Total" ng-model="hormonas.t4_total">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">T3</label>
+								<input type="text" class="col-sm-8" placeholder="T3" ng-model="hormonas.t3">
+							</div>
+
+							<h4 class="text-success">ELISA Cisticercosis</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Resultado</label>
+								<input type="text" class="col-sm-8" placeholder="Resultado" ng-model="hormonas.cisticercosis_resultado">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Cut off</label>
+								<input type="text" class="col-sm-8" placeholder="Cut off" ng-model="hormonas.cisticercosis_cut_off">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="hormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="hormonas.comentario_cisticercosis" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
+							<h4 class="text-success">MARCADORES TUMORALES
+							</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Antígeno Carcinoembrionario</label>
+								<input type="text" class="col-sm-8" placeholder="Antígeno Carcinoembrionario" ng-model="hormonas.antigeno_carcino">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">P S A Total</label>
+								<input type="text" class="col-sm-8" placeholder="P S A Total" ng-model="hormonas.psa_total">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">P S A Libre</label>
+								<input type="text" class="col-sm-8" placeholder="P S A Libre" ng-model="hormonas.psa_libre">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Relación % PSA Libre / PSA Total</label>
+								<input type="text" class="col-sm-8" placeholder="Relación % PSA Libre / PSA Total" ng-model="hormonas.relacion_psa_libre_total">
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4">ESTRADIOL</label>
+								<input type="text" class="col-sm-8" placeholder="PROGESTERONA" ng-model="hormonas.estradiol">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">PROGESTERONA</label>
+								<input type="text" class="col-sm-8" placeholder="PROGESTERONA" ng-model="hormonas.progesterona">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">FSH</label>
+								<input type="text" class="col-sm-8" placeholder="FSH" ng-model="hormonas.fsh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">LH</label>
+								<input type="text" class="col-sm-8" placeholder="LH" ng-model="hormonas.lh">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">PROLACTINA</label>
+								<input type="text" class="col-sm-8" placeholder="PROLACTINA" ng-model="hormonas.prolactina">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">TESTOESTERONA</label>
+								<input type="text" class="col-sm-8" placeholder="TESTOESTERONA" ng-model="hormonas.testosterona">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h4 class="text-success">ANA</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Ana</label>
+								<input type="text" class="col-sm-8" placeholder="Ana" ng-model="hormonas.ana">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="hormonas.ana_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="hormonas.ana_control_negativo">
+							</div>
+
+							<h4 class="text-success">Células L E</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Células L E</label>
+								<input type="text" class="col-sm-8" placeholder="Células L E" ng-model="hormonas.celulas_le">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="hormonas.celulas_le_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="hormonas.celulas_le_control_negativo">
+							</div>
+
+							<h4 class="text-success">Anticuerpos Anti- peptido ciclico de la Citrulina</h4>
+							<div class="form-group">
+								<label class="col-sm-4">Resultado</label>
+								<input type="text" class="col-sm-8" placeholder="Resultado" ng-model="hormonas.anticuerpos_resultado">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4"> Cut off</label>
+								<input type="text" class="col-sm-8" placeholder=" Cut off" ng-model="hormonas.anticuerpos_cut_off">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="hormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="hormonas.comentario_anticuerpos" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4">Toxoplasmosis Ig M</label>
+								<input type="text" class="col-sm-8" placeholder="Eosinofilo" ng-model="hormonas.toxoplasmosis_lgm">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Toxoplasmosis Ig G</label>
+								<input type="text" class="col-sm-8" placeholder="Toxoplasmosis Ig G" ng-model="hormonas.toxoplasmosis_lgg">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">B- HCG Cuantitativo</label>
+								<input type="text" class="col-sm-8" placeholder="B- HCG Cuantitativo" ng-model="hormonas.b_hcg_cuantitativo">
+							</div>
+
+							<h4 class="text-success">Anticuerpos Anti- Nucleares. ANA (Celulas Hep- 2) </h4>
+							<div class="form-group">
+								<label class="col-sm-4">Anticuerpos Anti- Nucleares</label>
+								<input type="text" class="col-sm-8" placeholder="Anticuerpos Anti- Nucleares" ng-model="hormonas.anti_nucleares">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="hormonas.anticuerpos_control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="hormonas.anticuerpos_control_negativo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Células Hep - 2</label>
+								<input type="text" class="col-sm-8" placeholder="Células Hep - 2" ng-model="hormonas.celulas_hep">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Control positivo</label>
+								<input type="text" class="col-sm-8" placeholder="Control positivo" ng-model="hormonas.control_positivo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4">Contro negativo</label>
+								<input type="text" class="col-sm-8" placeholder="Basofilo" ng-model="hormonas.control_negativo">
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Conclusión</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="hormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="hormonas.conclusion" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-12">Comentario</label>
+								<!-- <input type="text" class="col-sm-8" placeholder="C.Hb.C.M." ng-model="hormonas.comentario_cisticercosis"> -->
+								<textarea style="word-break: break-all;" ng-model="hormonas.comentario_general" class="col-sm-12" id="" cols="30" rows="2"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<p class="text-danger" ng-show="testBioError">
+						<b>La prueba ya fue registrada</b>
+					</p>
+					<p class="text-success" ng-show="testBioSuccess">
+						<b>Datos Almacenados Correctamente</b>
+					</p>
+					<button type="submit" class="btn btn-success">
+						<i class="fa fa-save"></i> Guardar</button>
+				</div>
+
+			</form>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

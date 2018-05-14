@@ -1,0 +1,28 @@
+var app = angular.module('vosandesApp.notificaciones',[]);
+
+
+app.factory('Notificaciones', ['$http', '$q', function($http, $q){
+
+	var self = {
+
+		notificaciones:[{
+			icono:"fa-user",
+			notificacion: "Nuevo usuario registrado"
+		},
+		{
+			icono:"fa-save",
+			notificacion: "Se esta utilizando el 50% de disco duro."
+		},
+		{
+			icono:"fa-save",
+			notificacion: "Otra Notificacion."
+		}
+		]
+
+	};
+
+
+	return self;
+
+
+}]);

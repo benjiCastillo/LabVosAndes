@@ -158,7 +158,7 @@ $examen_microscopico = '<table>
                 </tr>
                 <tr>
                     <td>Otros: </td>
-                    <td>' . $prueba->examen_general_pruebas[0]->otros . '</td>
+                    <td>' . nl2br($prueba->examen_general_pruebas[0]->otros) . '</td>
                 </tr>
 </table>';
 
@@ -167,7 +167,7 @@ $examen_bacteriologico = '<table>
                     <td><b>Exámen Bacteriológico Sedimento</b></td>
                 </tr>
                 <tr>
-                    <td>' . $prueba->examen_general_pruebas[0]->exa_bac_sed . '</td>
+                    <td>' . nl2br($prueba->examen_general_pruebas[0]->exa_bac_sed) . '</td>
                 </tr>
             </table>';
 
