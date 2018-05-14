@@ -13,7 +13,9 @@ use Cake\ORM\Entity;
  * @property string $leucocitos
  * @property string $comentario
  * @property string $sangre_oculta
- * @property string $muestras
+ * @property string $muestra1
+ * @property string $muestra2
+ * @property string $muestra3
  * @property int $prueba_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -41,7 +43,9 @@ class ParasitologiaPrueba extends Entity
         'leucocitos' => true,
         'comentario' => true,
         'sangre_oculta' => true,
-        'muestras' => true,
+        'muestra1' => true,
+        'muestra2' => true,
+        'muestra3' => true,
         'prueba_id' => true,
         'created' => true,
         'modified' => true,
