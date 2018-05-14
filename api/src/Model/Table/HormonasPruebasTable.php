@@ -61,221 +61,183 @@ class HormonasPruebasTable extends Table
         $validator
             ->scalar('tsh')
             ->maxLength('tsh', 20)
-            ->requirePresence('tsh', 'create')
-            ->notEmpty('tsh');
+            ->allowEmpty('tsh');
 
         $validator
             ->scalar('t4_libre')
             ->maxLength('t4_libre', 20)
-            ->requirePresence('t4_libre', 'create')
-            ->notEmpty('t4_libre');
+            ->allowEmpty('t4_libre');
 
         $validator
             ->scalar('t4_total')
             ->maxLength('t4_total', 20)
-            ->requirePresence('t4_total', 'create')
-            ->notEmpty('t4_total');
+            ->allowEmpty('t4_total');
 
         $validator
             ->scalar('t3')
             ->maxLength('t3', 20)
-            ->requirePresence('t3', 'create')
-            ->notEmpty('t3');
+            ->allowEmpty('t3');
 
         $validator
             ->scalar('cisticercosis_resultado')
             ->maxLength('cisticercosis_resultado', 20)
-            ->requirePresence('cisticercosis_resultado', 'create')
-            ->notEmpty('cisticercosis_resultado');
+            ->allowEmpty('cisticercosis_resultado');
 
         $validator
             ->scalar('cisticercosis_cut_off')
             ->maxLength('cisticercosis_cut_off', 20)
-            ->requirePresence('cisticercosis_cut_off', 'create')
-            ->notEmpty('cisticercosis_cut_off');
+            ->allowEmpty('cisticercosis_cut_off');
 
         $validator
             ->scalar('comentario_cisticercosis')
-            ->requirePresence('comentario_cisticercosis', 'create')
-            ->notEmpty('comentario_cisticercosis');
+            ->allowEmpty('comentario_cisticercosis');
 
         $validator
             ->scalar('antigeno_carcino')
             ->maxLength('antigeno_carcino', 20)
-            ->requirePresence('antigeno_carcino', 'create')
-            ->notEmpty('antigeno_carcino');
+            ->allowEmpty('antigeno_carcino');
 
         $validator
             ->scalar('psa_total')
             ->maxLength('psa_total', 20)
-            ->requirePresence('psa_total', 'create')
-            ->notEmpty('psa_total');
+            ->allowEmpty('psa_total');
 
         $validator
             ->scalar('psa_libre')
             ->maxLength('psa_libre', 20)
-            ->requirePresence('psa_libre', 'create')
-            ->notEmpty('psa_libre');
+            ->allowEmpty('psa_libre');
 
         $validator
             ->scalar('relacion_psa_libre_total')
             ->maxLength('relacion_psa_libre_total', 20)
-            ->requirePresence('relacion_psa_libre_total', 'create')
-            ->notEmpty('relacion_psa_libre_total');
+            ->allowEmpty('relacion_psa_libre_total');
 
         $validator
             ->scalar('estradiol')
             ->maxLength('estradiol', 20)
-            ->requirePresence('estradiol', 'create')
-            ->notEmpty('estradiol');
+            ->allowEmpty('estradiol');
 
         $validator
             ->scalar('progesterona')
             ->maxLength('progesterona', 20)
-            ->requirePresence('progesterona', 'create')
-            ->notEmpty('progesterona');
+            ->allowEmpty('progesterona');
 
         $validator
             ->scalar('fsh')
             ->maxLength('fsh', 20)
-            ->requirePresence('fsh', 'create')
-            ->notEmpty('fsh');
+            ->allowEmpty('fsh');
 
         $validator
             ->scalar('lh')
             ->maxLength('lh', 20)
-            ->requirePresence('lh', 'create')
-            ->notEmpty('lh');
+            ->allowEmpty('lh');
 
         $validator
             ->scalar('prolactina')
             ->maxLength('prolactina', 20)
-            ->requirePresence('prolactina', 'create')
-            ->notEmpty('prolactina');
+            ->allowEmpty('prolactina');
 
         $validator
             ->scalar('testosterona')
             ->maxLength('testosterona', 20)
-            ->requirePresence('testosterona', 'create')
-            ->notEmpty('testosterona');
+            ->allowEmpty('testosterona');
 
         $validator
             ->scalar('ana')
             ->maxLength('ana', 20)
-            ->requirePresence('ana', 'create')
-            ->notEmpty('ana');
+            ->allowEmpty('ana');
 
         $validator
             ->scalar('ana_control_positivo')
             ->maxLength('ana_control_positivo', 20)
-            ->requirePresence('ana_control_positivo', 'create')
-            ->notEmpty('ana_control_positivo');
+            ->allowEmpty('ana_control_positivo');
 
         $validator
             ->scalar('ana_control_negativo')
             ->maxLength('ana_control_negativo', 20)
-            ->requirePresence('ana_control_negativo', 'create')
-            ->notEmpty('ana_control_negativo');
+            ->allowEmpty('ana_control_negativo');
 
         $validator
             ->scalar('celulas_le')
             ->maxLength('celulas_le', 20)
-            ->requirePresence('celulas_le', 'create')
-            ->notEmpty('celulas_le');
+            ->allowEmpty('celulas_le');
 
         $validator
             ->scalar('celulas_le_control_positivo')
             ->maxLength('celulas_le_control_positivo', 20)
-            ->requirePresence('celulas_le_control_positivo', 'create')
-            ->notEmpty('celulas_le_control_positivo');
+            ->allowEmpty('celulas_le_control_positivo');
 
         $validator
             ->scalar('celulas_le_control_negativo')
             ->maxLength('celulas_le_control_negativo', 20)
-            ->requirePresence('celulas_le_control_negativo', 'create')
-            ->notEmpty('celulas_le_control_negativo');
+            ->allowEmpty('celulas_le_control_negativo');
 
         $validator
             ->scalar('anticuerpos_resultado')
             ->maxLength('anticuerpos_resultado', 20)
-            ->requirePresence('anticuerpos_resultado', 'create')
-            ->notEmpty('anticuerpos_resultado');
+            ->allowEmpty('anticuerpos_resultado');
 
         $validator
             ->scalar('anticuerpos_cut_off')
             ->maxLength('anticuerpos_cut_off', 20)
-            ->requirePresence('anticuerpos_cut_off', 'create')
-            ->notEmpty('anticuerpos_cut_off');
+            ->allowEmpty('anticuerpos_cut_off');
 
         $validator
             ->scalar('comentario_anticuerpos')
-            ->requirePresence('comentario_anticuerpos', 'create')
-            ->notEmpty('comentario_anticuerpos');
+            ->allowEmpty('comentario_anticuerpos');
 
         $validator
             ->scalar('toxoplasmosis_lgm')
             ->maxLength('toxoplasmosis_lgm', 20)
-            ->requirePresence('toxoplasmosis_lgm', 'create')
-            ->notEmpty('toxoplasmosis_lgm');
+            ->allowEmpty('toxoplasmosis_lgm');
 
         $validator
             ->scalar('toxoplasmosis_lgg')
             ->maxLength('toxoplasmosis_lgg', 20)
-            ->requirePresence('toxoplasmosis_lgg', 'create')
-            ->notEmpty('toxoplasmosis_lgg');
+            ->allowEmpty('toxoplasmosis_lgg');
 
         $validator
             ->scalar('b_hcg_cuantitativo')
             ->maxLength('b_hcg_cuantitativo', 20)
-            ->requirePresence('b_hcg_cuantitativo', 'create')
-            ->notEmpty('b_hcg_cuantitativo');
+            ->allowEmpty('b_hcg_cuantitativo');
 
         $validator
             ->scalar('anti_nucleares')
             ->maxLength('anti_nucleares', 20)
-            ->requirePresence('anti_nucleares', 'create')
-            ->notEmpty('anti_nucleares');
+            ->allowEmpty('anti_nucleares');
 
         $validator
             ->scalar('anticuerpos_control_positivo')
             ->maxLength('anticuerpos_control_positivo', 20)
-            ->requirePresence('anticuerpos_control_positivo', 'create')
-            ->notEmpty('anticuerpos_control_positivo');
+            ->allowEmpty('anticuerpos_control_positivo');
 
         $validator
             ->scalar('anticuerpos_control_negativo')
             ->maxLength('anticuerpos_control_negativo', 20)
-            ->requirePresence('anticuerpos_control_negativo', 'create')
-            ->notEmpty('anticuerpos_control_negativo');
+            ->allowEmpty('anticuerpos_control_negativo');
 
         $validator
             ->scalar('celulas_hep')
             ->maxLength('celulas_hep', 20)
-            ->requirePresence('celulas_hep', 'create')
-            ->notEmpty('celulas_hep');
+            ->allowEmpty('celulas_hep');
 
         $validator
             ->scalar('control_positivo')
             ->maxLength('control_positivo', 20)
-            ->requirePresence('control_positivo', 'create')
-            ->notEmpty('control_positivo');
+            ->allowEmpty('control_positivo');
 
         $validator
             ->scalar('control_negativo')
             ->maxLength('control_negativo', 20)
-            ->requirePresence('control_negativo', 'create')
-            ->notEmpty('control_negativo');
+            ->allowEmpty('control_negativo');
 
         $validator
             ->scalar('conclusion')
-            ->maxLength('conclusion')
-            ->requirePresence('conclusion', 'create')
-            ->notEmpty('conclusion');
+            ->allowEmpty('conclusion');
 
         $validator
             ->scalar('comentario_general')
-            ->requirePresence('comentario_general', 'create')
-            ->notEmpty('comentario_general');
+            ->allowEmpty('comentario_general');
 
         $validator
             ->integer('created_by')

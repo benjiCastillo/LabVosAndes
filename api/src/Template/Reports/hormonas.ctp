@@ -37,6 +37,7 @@ $title = '<p><b>HORMONAS</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
+$columns = array();
 $contSub = 0;
 if ($prueba->hormonas_pruebas[0]->tsh == '' && $prueba->hormonas_pruebas[0]->t4_libre == ''
     && $prueba->hormonas_pruebas[0]->t4_total == '' && $prueba->hormonas_pruebas[0]->t3 == '') {
@@ -75,6 +76,7 @@ if ($prueba->hormonas_pruebas[0]->tsh == '' && $prueba->hormonas_pruebas[0]->t4_
                         </tr>';
     }
     $dosificacion .= '<br>';
+    array_push($columns, $dosificacion);
     $contSub++;
 }
 
@@ -112,6 +114,7 @@ if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado == '' && $prueba->horm
                 </tr>';
     }
     $elisa .= '<br>';
+    array_push($columns, $elisa);
     $contSub++;
 }
 
@@ -152,6 +155,7 @@ $marcadores = '';
                         </tr>';
     }
     $marcadores .= '<br>';
+    array_push($columns, $marcadores);
     $contSub++;
 }
 
@@ -234,7 +238,7 @@ if ($prueba->hormonas_pruebas[0]->estradiol == '' && $prueba->hormonas_pruebas[0
                     </tr>';
     }
     if ($prueba->hormonas_pruebas[0]->prolactina != '') {
-        $hormonas .= '<br><tr>
+        $hormonas .= '<tr>
                         <td width="25%"><b>Prolactina</b></td>
                         <td width="30%">' . $prueba->hormonas_pruebas[0]->prolactina . ' mUI/L</td>
                         <td width="40%" style="color: rgb(58,137,159)">1,8 - 17,0 mUI/L</td>
@@ -248,6 +252,7 @@ if ($prueba->hormonas_pruebas[0]->estradiol == '' && $prueba->hormonas_pruebas[0
                     </tr>';
     }
     $hormonas .= '<br>';
+    array_push($columns, $hormonas);
     $contSub++;
 }
 
@@ -304,6 +309,7 @@ if ($prueba->hormonas_pruebas[0]->ana == '' && $prueba->hormonas_pruebas[0]->tes
                 </tr>';
     }
     $ana .= '<br>';
+    array_push($columns, $ana);
     $contSub++;
 }
 
@@ -380,6 +386,7 @@ if ($prueba->hormonas_pruebas[0]->anticuerpos_resultado == '' && $prueba->hormon
                 </tr>';
     }
     $aapcc .= '<br>';
+    array_push($columns, $aapcc);
     $contSub++;
 }
 
@@ -396,7 +403,7 @@ if ($prueba->hormonas_pruebas[0]->anti_nucleares == '' && $prueba->hormonas_prue
     if ($prueba->hormonas_pruebas[0]->anti_nucleares != '') {
         $anach2 .= '<tr>
                         <td width="35%">Anticuerpos Anti-Nucleares: </td>
-                        <td width="27%">' . $prueba->hormonas_pruebas[0]->anti_nucleares . ' U/m</td>
+                        <td width="27%">' . $prueba->hormonas_pruebas[0]->anti_nucleares . ' U/ml</td>
                         <td width="40%" style="color: rgb(58,137,159)">Reactivo: Mayor a 10 U/ml</td>
                     </tr>
                     <tr>
@@ -453,6 +460,7 @@ if ($prueba->hormonas_pruebas[0]->anti_nucleares == '' && $prueba->hormonas_prue
                     </tr>';
     }
     $anach2 .= '<br>';
+    array_push($columns, $anach2);
     $contSub++;
 }
 
@@ -461,20 +469,17 @@ if ($contSub == 1) {
     $tabla_elemento = '<table>' . $dosificacion . $elisa . $marcadores . $hormonas . $ana . $aapcc . $anach2 . '</table>';
     $pdf->writeHTMLCell($w=130, $h=0, $x='57', $y='40', $tabla_elemento, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 } else {
-    // if (($tincion_gram_directa == '' && $cultivos_esputo == '' && $antibiograma_esputo == '') ||
-    // ($urocultivo == '' && $antibiograma_urocultivo == '')) {
-    //     $tabla = '';
-    //     $tabla = '<table>' . $tincion_gram_directa . $cultivos_esputo . $antibiograma_esputo . $urocultivo .  $antibiograma_urocultivo . '</table>';
-    //     $pdf->writeHTMLCell($w=130, $h=0, $x='75', $y='42', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-    // } else {
-    //     $tabla1 = '';
-    //     $tabla1 = '<table>' . $tincion_gram_directa .  $cultivos_esputo . $antibiograma_esputo . '</table>';
-    //     $pdf->writeHTMLCell($w=125, $h=0, $x='30', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    if (count($columns) == 2) {
+        $tabla1 = '';
+        $tabla1 = '<table>' . $columns[0] . '</table>';
+        $pdf->writeHTMLCell($w=125, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-    //     $tabla2 = '';
-    //     $tabla2 = '<table>' . $urocultivo . $antibiograma_urocultivo . '</table>';
-    //     $pdf->writeHTMLCell($w=130, $h=0, $x='120', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-    // }
+        $tabla2 = '';
+        $tabla2 = '<table>' . $columns[1] . '</table>';
+        $pdf->writeHTMLCell($w=130, $h=0, $x='90', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    } else {
+
+    }
 }
 
 $pdf->SetFont('helvetica','',7);
