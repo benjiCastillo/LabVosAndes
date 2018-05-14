@@ -25,8 +25,8 @@ use Cake\ORM\Entity;
  * @property string $prolactina
  * @property string $testosterona
  * @property string $ana
- * @property string $testosterona_control_positivo
- * @property string $testosterona_control_negativo
+ * @property string $ana_control_positivo
+ * @property string $ana_control_negativo
  * @property string $celulas_le
  * @property string $celulas_le_control_positivo
  * @property string $celulas_le_control_negativo
@@ -83,8 +83,8 @@ class HormonasPrueba extends Entity
         'prolactina' => true,
         'testosterona' => true,
         'ana' => true,
-        'testosterona_control_positivo' => true,
-        'testosterona_control_negativo' => true,
+        'ana_control_positivo' => true,
+        'ana_control_negativo' => true,
         'celulas_le' => true,
         'celulas_le_control_positivo' => true,
         'celulas_le_control_negativo' => true,
