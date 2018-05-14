@@ -22,31 +22,32 @@
 							<th>Apellidos</th>
 							<th>Edad</th>
 							<th>Sexo</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
 							<th>Pruebas</th>
+							<th>Eliminar</th>
+							<th>Editar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!--					
 						{{ pacientes | json }}-->
-						<tr ng-repeat="paciente in pacientes | filter:buscador">
+						<tr ng-repeat="paciente in pacientes | orderBy:'-created'|filter:buscador">
 							<td> {{ paciente.nombre }}</td>
 							<td> {{ paciente.apellidos }}</td>
 							<td> {{ paciente.edad }}</td>
 							<td> {{ paciente.sexo }}</td>
 							<td>
-								<a class="btn btn-info" ng-click="mostrarEditar( paciente )">
-									<i class="fa fa-edit"></i>Editar</a>
+								<a class="btn btn-primary" ng-click="crearExamen( paciente )">
+									<i class="fa fa-flask"></i>
+								</a>
 							</td>
 							<td>
 								<a class="btn btn-danger" ng-click="mostrarEliminar( paciente )">
 									<i class="fa fa-remove"></i>Eliminar</a>
 							</td>
+
 							<td>
-								<a class="btn btn-primary" ng-click="crearExamen( paciente )">
-									<i class="fa fa-flask"></i>
-								</a>
+								<a class="btn btn-info" ng-click="mostrarEditar( paciente )">
+									<i class="fa fa-edit"></i>Editar</a>
 							</td>
 						</tr>
 					</tbody>
