@@ -75,11 +75,6 @@ class UsuariosTable extends Table
             ->allowEmpty('token');
 
         $validator
-            ->dateTime('fecha')
-            ->requirePresence('fecha', 'create')
-            ->notEmpty('fecha');
-
-        $validator
             ->integer('created_by')
             ->requirePresence('created_by', 'create')
             ->notEmpty('created_by');

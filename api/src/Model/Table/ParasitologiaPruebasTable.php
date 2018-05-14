@@ -88,8 +88,21 @@ class ParasitologiaPruebasTable extends Table
             ->allowEmpty('sangre_oculta');
 
         $validator
-            ->scalar('muestras')
-            ->allowEmpty('muestras');
+            ->scalar('muestra1')
+            ->maxLength('muestra1', 100)
+            ->allowEmpty('muestra1');
+
+        $validator
+            ->scalar('muestra2')
+            ->maxLength('muestra2', 100)
+            ->requirePresence('muestra2', 'create')
+            ->notEmpty('muestra2');
+
+        $validator
+            ->scalar('muestra3')
+            ->maxLength('muestra3', 100)
+            ->requirePresence('muestra3', 'create')
+            ->notEmpty('muestra3');
 
         $validator
             ->integer('created_by')

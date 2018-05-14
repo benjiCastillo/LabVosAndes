@@ -190,4 +190,38 @@ class UsuariosController extends AppController
             return $this->response->withBody($body);
         }
     }
+
+    public function logout()
+    {
+        $this->autoRender = false;
+        $this->response = $this->response->withType('application/json');
+        $json = [];
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $user = $this->Usuarios->find('all', [
+                'fields' => ['id', 'password', 'user', 'token'],
+                'conditions' => [
+                    'user' => $data['user'],
+                    'token' => $data['token']
+                ]
+            ])->count();
+
+            if ($count) {
+                $user->token = '';
+                $this->Usuarios->save($user);
+                $json = [
+                    'error' => 0,
+                    'message' => 'Sesión finalizada'
+                ];
+            } else {
+                $json = [
+                    'error' => 1,
+                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
+                ];
+            }
+            $body = $this->response->getBody();
+            $body->write(json_encode($json));
+            return $this->response->withBody($body);
+        }
+    }
 }
