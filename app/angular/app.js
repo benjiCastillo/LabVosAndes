@@ -44,7 +44,7 @@ var app = angular.module('vosandesApp', [
 ]);
 
 
-app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones', 'moment', 'usuariosServices', function ($scope, Configuracion, Mensajes, Notificaciones, moment, usuariosServices) {
+app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones', 'moment', 'usuariosServices', '$window', function ($scope, Configuracion, Mensajes, Notificaciones, moment, usuariosServices, $window) {
 	moment.tz.setDefault("America/La_Paz");
 	$scope.config = {};
 	$scope.mensajes = Mensajes.mensajes;
@@ -64,6 +64,10 @@ app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificacion
 		console.log($scope.dataQuery);
 		usuariosServices.logout($scope.dataQuery).then(function () {
 			$scope.response = usuariosServices.response;
+			if ($scope.response.error === 0) {
+				console.log($scope.response)
+				$window.location.href = 'http://localhost/LabVosAndes';
+			}
 			console.log($scope.response)
 		});
 	}
