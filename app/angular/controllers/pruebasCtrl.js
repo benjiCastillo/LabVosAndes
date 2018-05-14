@@ -8,6 +8,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     $scope.paciente = $sessionStorage.paciente;
     $scope.dataQuery = new Object();
     $scope.dataQueryMed = new Object();
+    $scope.medicos = new Object();
     $scope.loadData = false;
     $scope.notData = false;
     $notMedico = true;
@@ -17,7 +18,16 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     $scope.dataQueryMed.user = $scope.user.user;
     $scope.dataQueryMed.data = {};
     $scope.dataQueryMed.data.token = $scope.user.data.token
-
+    // obtenerMedicos
+    $scope.listarMedicos = function (data) {
+        medicosServices.listar(data).then(function () {
+            $scope.medicos = medicosServices.response.data;
+            console.log($scope.medicos)
+            if ($scope.medicos.length == 0) {
+                alert("No existen médicos registrados, registre médicos para registrar un prueba")
+            }
+        });
+    }
     $scope.listar = function (data) {
         //  console.log(data)
         $scope.paciente.visible = true;
@@ -33,11 +43,12 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
                 $scope.listPruebas = $scope.response.data;
                 $scope.msgPruebas = $scope.response.message;
+                console.log($scope.listPruebas)
             }
 
         });
     }
-
+    $scope.listarMedicos($scope.dataQueryMed)
     $scope.listar($scope.dataQuery);
 
 
@@ -66,6 +77,21 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
     }
 
+    $scope.mostrarEditar = function (prueba) {
+        $scope.edtprueba = prueba
+        $("#modal-edit-prueba").modal();
+    }
+
+    $scope.edit = function (pruebaMod) {
+        pruebaMod.user = $scope.user.user;
+        pruebaMod.token = $scope.user.data.token;
+        pruebasServices.modificar(pruebaMod).then(function () {
+            $scope.response = pruebasServices.response;
+            console.log($scope.response)
+            // $("#modal-editar-medico").modal("hide");
+            // $scope.listar($scope.user);
+        });
+    }
 
     $scope.mostrarEliminar = function (prueba) {
         $("#modal-pruebas-delete").modal();
@@ -84,23 +110,29 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
             $scope.listar($scope.dataQuery);
         });
     }
-    // obtenerMedicos
-    $scope.listarMedicos = function (data) {
-        medicosServices.listar(data).then(function () {
-            $scope.medicos = medicosServices.response.data;
-            // console.log($scope.medicos.length)
-            if ($scope.medicos.length == 0) {
-                alert("No existen médicos registrados, registre médicos para registrar un prueba")
-            }
-        });
-    }
+
 
     $scope.crearPruebas = function (prueba) {
         $sessionStorage.prueba = prueba;
         $window.location.href = '#/paciente/pruebas/create';
     }
 
-    $scope.listarMedicos($scope.dataQueryMed)
+    $scope.getMedico = function (id) {
+        if ($scope.medicos.length == 0) {
+            return "";
+        } else {
+            var medicos = $scope.medicos;
+            var medico = "";
+            medicos.forEach(element => {
+                if (element.id == id) {
+                    medico = element.nombre + " " + element.apellidos
+                }
+            });
+        }
+        return medico;
+    }
+
+
 
 
 

@@ -40,6 +40,22 @@ app.factory('pruebasServices', ['$http', '$q', '$rootScope', function ($http, $q
 				});
 			return d.promise;
 		},
+		modificar: function (data) {
+            var d = $q.defer();
+            $http({
+                method: 'PUT',
+                url: PATH + 'pruebas/edit/' + data.id,
+                data: data
+            })
+                .then(function successCallback(response) {
+                    self.response = response.data;
+                    return d.resolve()
+                }, function errorCallback(response) {
+                    return d.resolve()
+                    self.response = response.data
+                });
+            return d.promise;
+        },
 		eliminar: function (data) {
 			var d = $q.defer();
 			$http({

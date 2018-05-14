@@ -30,7 +30,6 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
                 $scope.pacientesCargado = true;
                 $scope.noExistenPacientes = false;
                 $scope.pacientes = $scope.response.data;
-                console.log($scope.pacientes)
             }
 
         });

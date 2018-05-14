@@ -1,0 +1,34 @@
+<div class="modal fade" id="modal-edit-prueba">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Editar Prueba</h4>
+            </div>
+            <form name="frmPruebaInsertar" ng-submit="edit(edtprueba)">
+                <div class="modal-body">
+                    <p>{{ edtprueba.nombre }}</p>
+                    <p>{{ edtprueba.edad }}</p>
+                    <p ng-if="edtprueba.sexo == 'F' ">Femenino</p>
+                    <p ng-if="edtprueba.sexo == 'M' ">Masculino</p>
+                    <!-- <div class="form-group">
+                        <label for="miembroInput" class="text-info">Elija un Médico</label>
+                        <select class="form-control" ng-model="medico" required>
+                            <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
+                        </select>
+                    </div> -->
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
