@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property string $user
  * @property string $password
  * @property string $token
- * @property \Cake\I18n\FrozenTime $fecha
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $created_by
@@ -34,7 +33,6 @@ class Usuario extends Entity
         'user' => true,
         'password' => true,
         'token' => true,
-        'fecha' => true,
         'created' => true,
         'modified' => true,
         'created_by' => true,
