@@ -9,16 +9,25 @@
             </div>
             <form name="frmPruebaInsertar" ng-submit="edit(edtprueba)">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label class="col-sm-4">Fecha y hora de Examen</label>
-                        <input type="datetime-local" class="col-sm-8" id="edt_hora_fecha" value="{{ edtprueba.fecha  }}">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-4">Fecha y hora de Examen</label>
+                            <input type="datetime-local" class="col-sm-7" id="edt_hora_fecha" value="{{ edtprueba.fecha  }}">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Elija un Médico</label>
-                        <select class="form-control" ng-model="medico" required>
-                            <option ng-repeat="med in medicos" value="{{med.id}}" ng-selected="med.id === edtprueba.medico_id ">{{med.nombre }} {{med.apellidos}}</option>
-                        </select>
+                    <br>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-4">Elija un Médico</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" ng-model="medico" required>
+                                    <option ng-repeat="med in medicos" value="{{med.id}}" ng-selected="med.id === edtprueba.medico_id ">{{med.nombre }} {{med.apellidos}}</option>
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="modal-footer">
