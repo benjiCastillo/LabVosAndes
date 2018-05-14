@@ -1,7 +1,7 @@
 var app = angular.module('vosandesApp.espermogramasCtrl', []);
 
 app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'espermogramasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, espermogramasServices, medicosServices, $sessionStorage, moment) {
-    moment.tz.setDefault("America/La_Paz");
+    // moment.tz.setDefault("America/La_Paz");
     //espermogramas
     $scope.espermogramas = new Object();
     $scope.espermogramas = {
@@ -71,7 +71,7 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
                 } else {
                     $scope.notData = false;
                     $scope.listespermogramas = $scope.response.data;
-                    console.log($scope.listespermogramas )
+                    console.log($scope.listespermogramas)
                     $scope.msgPruebas = $scope.response.message;
                     $scope.espermogramasLoad = true;
                     createEmbed("espermogramas");
@@ -86,6 +86,8 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
     // modal add
     $scope.insertarModal = function () {
         $("#modal-insertar-espermogramas").modal();
+        document.getElementById("hora_recoleccion_form").value = moment(new Date()).format('YYYY-MM-DDTHH:mm');
+        document.getElementById("hora_recepcion_form").value = moment(new Date()).format('YYYY-MM-DDTHH:mm');
     }
 
     $scope.insertar = function (espermogramas) {
@@ -108,9 +110,9 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
     }
 
     $scope.mostrarEditar = function (espermogramas) {
-        console.log(moment(espermogramas.hora_recoleccion).format('YYYY-MM-DDThh:mm'));
-        espermogramas.hora_recoleccion = moment(espermogramas.hora_recoleccion).format('YYYY-MM-DDThh:mm');
-        espermogramas.hora_recepcion = moment(espermogramas.hora_recepcion).format('YYYY-MM-DDThh:mm');
+
+        espermogramas.hora_recoleccion = moment(espermogramas.hora_recoleccion).format('YYYY-MM-DDTHH:mm');
+        espermogramas.hora_recepcion = moment(espermogramas.hora_recepcion).format('YYYY-MM-DDTHH:mm');
         // document.getElementById("edt_hora_recoleccion_form").value = moment(espermogramas.hora_recoleccion).format('yyyy-MM-ddThh:mm');
         // document.getElementById("edt_hora_recepcion_form").value = moment(espermogramas.hora_recepcion).format('yyyy-MM-ddThh:mm');
         $scope.edtespermogramas = espermogramas;

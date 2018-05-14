@@ -45,6 +45,7 @@ function saveUser() {
                         password: pwd1
                     },
                     function (data, status) {
+                        console.log(data)
                         if (data.error == 0) {
                             $('#testInput').text('Datos insertados con exito!');
                             $('#Spassword').val('');
