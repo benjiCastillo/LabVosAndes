@@ -1,3 +1,12 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Inicio</a>
+    </li>
+    <li>
+        <a href="#/paciente/">Pacientes</a>
+    </li>
+    <li class="active">{{ paciente.nombre }} {{ paciente.apellidos }}</li>
+</ol>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="well">
@@ -44,7 +53,7 @@
                                         <th>Medico</th>
                                         <th>Ingresar</th>
                                         <th>Eliminar</th>
-                                        <th>Editar</th>
+                                        <!-- <th>Editar</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,9 +68,9 @@
                                             <a class="btn btn-danger" ng-click="mostrarEliminar( prueba )">
                                                 <i class="fa fa-remove"></i>Eliminar</a>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <button class="btn btn-success" ng-click="mostrarEditar(prueba)">Editar</button>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>

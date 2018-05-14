@@ -1,7 +1,7 @@
 var app = angular.module('vosandesApp.espermogramasCtrl', []);
 
 app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'espermogramasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, espermogramasServices, medicosServices, $sessionStorage, moment) {
-
+    moment.tz.setDefault("America/La_Paz");
     //espermogramas
     $scope.espermogramas = new Object();
     $scope.espermogramas = {
@@ -71,6 +71,7 @@ app.controller('espermogramasCtrl', ['$scope', '$routeParams', '$window', 'esper
                 } else {
                     $scope.notData = false;
                     $scope.listespermogramas = $scope.response.data;
+                    console.log($scope.listespermogramas )
                     $scope.msgPruebas = $scope.response.message;
                     $scope.espermogramasLoad = true;
                     createEmbed("espermogramas");

@@ -1,3 +1,18 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="#/">Inicio</a>
+    </li>
+    <li>
+        <a href="#/paciente/">Pacientes</a>
+    </li>
+    <li>
+        <a href="#/paciente/pruebas/">{{ paciente.nombre }} {{ paciente.apellidos }}</a>
+    </li>
+    <li>
+        <a href="#/paciente/pruebas/create">Seleccionar Prueba</a>
+    </li>
+    <li class="active">Microbiología</li>
+</ol>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="well">
@@ -39,9 +54,9 @@
                     </div>
                     <div class="box-body">
                         <p ng-if="notData">No tiene prueba de Microbiología.</p>
-                          <section id="section-pdf">
+                        <section id="section-pdf">
 
-                          </section>
+                        </section>
                         <!-- <embed ng-if="!notData" ng-src="{{ PATH }}" id="informe-pdf" width="100%" height="400px"> -->
                     </div>
                 </div>

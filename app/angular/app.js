@@ -43,8 +43,8 @@ var app = angular.module('vosandesApp', [
 ]);
 
 
-app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones', function ($scope, Configuracion, Mensajes, Notificaciones) {
-
+app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones','moment', function ($scope, Configuracion, Mensajes, Notificaciones,moment) {
+	moment.tz.setDefault("America/La_Paz");
 	$scope.config = {};
 	$scope.mensajes = Mensajes.mensajes;
 	$scope.notificaciones = Notificaciones.notificaciones;

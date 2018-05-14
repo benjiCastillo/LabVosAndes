@@ -1,7 +1,22 @@
+<ol class="breadcrumb">
+        <li>
+            <a href="#/">Inicio</a>
+        </li>
+        <li>
+            <a href="#/paciente/">Pacientes</a>
+        </li>
+        <li>
+            <a href="#/paciente/pruebas/">{{ paciente.nombre }} {{ paciente.apellidos }}</a>
+        </li>
+        <li>
+            <a href="#/paciente/pruebas/create">Seleccionar Prueba</a>
+        </li>
+        <li class="active">Química Sanguínea</li>
+    </ol>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="well">
-            <h3 class="text-info">Examen General de Orina </h3>
+            <h3 class="text-info">Química Sanguínea </h3>
             <p>
                 <b>Paciente: </b>
                 <span>{{ paciente.nombre }} {{ paciente.apellidos }}</span>
@@ -33,13 +48,13 @@
                         <div class="box-tools">
                             <div class="input-group">
                                 <a ng-click="insertarModal()" ng-if="notData" class="btn btn-success">
-                                    <i class="fa fa-plus"></i> Agregar Examen General de Orina</a>
+                                    <i class="fa fa-plus"></i> Agregar Química Sanguínea</a>
                             </div>
                         </div>
 
                     </div>
                     <div class="box-body">
-                        <p ng-if="notData">No tiene Examen General de Orina.</p>
+                        <p ng-if="notData">No tiene Examen de Química Sanguínea.</p>
                         <section id="section-pdf">
 
                         </section>

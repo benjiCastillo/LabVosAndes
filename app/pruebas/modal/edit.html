@@ -9,10 +9,10 @@
             </div>
             <form name="frmPruebaInsertar" ng-submit="edit(edtprueba)">
                 <div class="modal-body">
-                    <p>{{ edtprueba.nombre }}</p>
-                    <p>{{ edtprueba.edad }}</p>
-                    <p ng-if="edtprueba.sexo == 'F' ">Femenino</p>
-                    <p ng-if="edtprueba.sexo == 'M' ">Masculino</p>
+                    <div class="form-group">
+                        <label class="col-sm-4">Fecha y hora de Examen</label>
+                        <input type="datetime-local" class="col-sm-8" id="edt_hora_fecha" value="{{ edtprueba.fecha  }}">
+                    </div>
                     <!-- <div class="form-group">
                         <label for="miembroInput" class="text-info">Elija un Médico</label>
                         <select class="form-control" ng-model="medico" required>
