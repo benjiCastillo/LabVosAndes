@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-05-2018 a las 00:34:56
+-- Tiempo de generación: 14-05-2018 a las 17:43:13
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -367,7 +367,7 @@ CREATE TABLE `hormonas_pruebas` (
   `celulas_hep` varchar(20) DEFAULT NULL,
   `control_positivo` varchar(20) DEFAULT NULL,
   `control_negativo` varchar(20) DEFAULT NULL,
-  `conclusion` varchar(20) DEFAULT NULL,
+  `conclusion` text,
   `comentario_general` text,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -381,7 +381,7 @@ CREATE TABLE `hormonas_pruebas` (
 --
 
 INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `ana_control_positivo`, `ana_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4ééaá;;ñaf3fa3fawef23t24ty24yg42ahawh4aw4', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$ééaá;;ñ$ééaá;;', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$ééaá;;ñ$', 'ééaá;;ñ$', 'ééaá;;ñ$', 'á;;ñ$ééaá;;ñ$', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, 'awfaw', 'wa4gaw4', 'wagawg', 'aw4gaw4ga', '', '', '', '', '', '', '', 'awdadw', 'awefawef', 'waegaw', 'awgaweg', 'wargawrg', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -725,7 +725,6 @@ CREATE TABLE `usuarios` (
   `user` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `token` varchar(100) DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) NOT NULL,
@@ -736,8 +735,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `token`, `fecha`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(20, 'morty', 'admin', '$2y$10$UnvW.QsauJcNS37ABuNemO3i/yxTwfAX6wd8LBD31jezunln0iBz2', '$2y$10$k369U5NT5VsU9lctQutuBe9rtR.FPp52B.vig5uulSJFJIsOLPGN.', '2018-05-06 23:40:40', '2018-05-06 23:40:40', '2018-05-06 23:40:53', 0, NULL);
+INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `token`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(20, 'morty', 'admin', '$2y$10$UnvW.QsauJcNS37ABuNemO3i/yxTwfAX6wd8LBD31jezunln0iBz2', '$2y$10$k369U5NT5VsU9lctQutuBe9rtR.FPp52B.vig5uulSJFJIsOLPGN.', '2018-05-06 23:40:40', '2018-05-06 23:40:53', 0, NULL);
 
 --
 -- Índices para tablas volcadas
