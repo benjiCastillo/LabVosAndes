@@ -78,7 +78,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     }
 
     $scope.mostrarEditar = function (prueba) {
-        prueba.fecha = moment(prueba.fecha).format('YYYY-MM-DD[T]HH:mm:ss');
+        prueba.fecha = moment(prueba.fecha).format('YYYY-MM-DD[T]HH:mm');
         // document.getElementById("edt_hora_fecha").value = prueba.fecha
         $scope.edtprueba = prueba;
         $("#modal-edit-prueba").modal();
@@ -88,13 +88,14 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
         var h_f = document.getElementById("edt_hora_fecha").value;
         pruebaMod.user = $scope.user.user;
         pruebaMod.token = $scope.user.data.token;
+        pruebaMod.medico_id = parseInt(pruebaMod.medico_id)
         pruebaMod.fecha = moment(h_f).format('YYYY-MM-DD HH:mm')
         console.log(pruebaMod)
         pruebasServices.modificar(pruebaMod).then(function () {
             $scope.response = pruebasServices.response;
             console.log($scope.response)
-            // $("#modal-editar-medico").modal("hide");
-            // $scope.listar($scope.user);
+            $("#modal-edit-prueba").modal("hide");
+            $scope.listar($scope.dataQuery);
         });
     }
 

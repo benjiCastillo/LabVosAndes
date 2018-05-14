@@ -38,29 +38,40 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.serologiaServices',
 	'vosandesApp.reaccionwServices',
 	'vosandesApp.hormonasServices',
+	'vosandesApp.usuariosServices',
 	'angularMoment',
 
 ]);
 
 
-app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones','moment', function ($scope, Configuracion, Mensajes, Notificaciones,moment) {
+app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificaciones', 'moment', 'usuariosServices', function ($scope, Configuracion, Mensajes, Notificaciones, moment, usuariosServices) {
 	moment.tz.setDefault("America/La_Paz");
 	$scope.config = {};
 	$scope.mensajes = Mensajes.mensajes;
 	$scope.notificaciones = Notificaciones.notificaciones;
-
+	$scope.dataQuery = new Object();
 	$scope.titulo = "";
 	$scope.subtitulo = "";
 
 	var user = sessionStorage.getItem('user');
 	var user = JSON.parse(user)
-	console.log(user.user)
-	$scope.user = user;
+	console.log(user)
 
+	$scope.user = user;
+	$scope.dataQuery.user = $scope.user.user;
+	$scope.dataQuery.token = $scope.user.data.token;
+	$scope.logOut = function () {
+		console.log($scope.dataQuery);
+		usuariosServices.logout($scope.dataQuery).then(function () {
+			$scope.response = usuariosServices.response;
+			console.log($scope.response)
+		});
+	}
 	Configuracion.cargar().then(function () {
 		$scope.config = Configuracion.config;
+
 	});
-	
+
 
 
 	$scope.activar = function (menu, submenu, titulo, subtitulo) {

@@ -7,7 +7,7 @@ app.controller('dashboardCtrl', ['$scope','$sessionStorage', function($scope,$se
 	
 	var user = sessionStorage.getItem('user');
 	var user = JSON.parse(user)
-	console.log(user.user)
+	// console.log(user.user)
 	$scope.user = user;
 	
 }])
