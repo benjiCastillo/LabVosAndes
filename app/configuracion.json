@@ -1,11 +1,11 @@
 {
 
-	"version":"1.0.67",
+	"version":"2.0.0",
 	"aplicativo": "Vos Andes",
 	"iniciales":"Vos Andes",
 	"autor":"Benji Castillo, Erwin Mendez",
 	"anio": 2017,
 	"web": "https://github.com/benjiCastillo/LabVosAndes",
-	"empresa":"libreStack"
+	"empresa":"Freetech"
 
 }

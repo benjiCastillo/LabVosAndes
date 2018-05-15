@@ -23,7 +23,6 @@ var app = angular.module('vosandesApp', [
 	'vosandesApp.hormonasCtrl',
 	'vosandesApp.pacientesServices',
 	'vosandesApp.medicosServices',
-	'vosandesApp.informeServices',
 	'vosandesApp.pruebasServices',
 	'vosandesApp.pacientesExamenServices',
 	'vosandesApp.biometriaServices',
@@ -76,6 +75,11 @@ app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificacion
 
 	});
 
+	$scope.getYear = function(){
+		var date = new Date();
+		return date.getFullYear();
+	}
+	
 
 
 	$scope.activar = function (menu, submenu, titulo, subtitulo) {
