@@ -11,7 +11,9 @@ app.controller('parasitologiaCtrl', ['$scope', '$routeParams', '$window', 'paras
         leucocitos: "",
         comentario: "",
         sangre_oculta: "",
-        muestras: ""
+        muestra1: "",
+        muestra2: "",
+        muestra3: "",
     }
 
     var user = sessionStorage.getItem('user');
