@@ -12,10 +12,10 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     $scope.loadData = false;
     $scope.notData = false;
     $notMedico = true;
-    $scope.medico =new Object;
+    $scope.medico = new Object;
     $scope.medico = {
-        medico_id:'',
-        paciente_id:'',
+        medico_id: '',
+        paciente_id: '',
         comentario: ''
     }
 
@@ -61,7 +61,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
     // modal add
     $scope.insertarModal = function () {
-        
+
         $("#modal-pruebas-add").modal();
         console.log($scope.dataQueryMed);
     }
@@ -140,7 +140,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
             var medico = "";
             medicos.forEach(element => {
                 if (element.id == id) {
-                    medico = element.nombre + " " + element.apellidos
+                    medico = element.nombre
                 }
             });
         }

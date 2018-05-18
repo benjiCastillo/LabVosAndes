@@ -204,7 +204,6 @@ app.controller('createpruebasCtrl', ['$scope', '$routeParams', '$window',
                     document.getElementById("card-reaccion-widal").style.color = "#ffff";
                     console.log("existen biometria")
                 }
-
             });
         }
 

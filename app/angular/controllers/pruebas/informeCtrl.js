@@ -6,7 +6,8 @@ app.controller('informeCtrl', ['$scope', '$routeParams', '$window', 'informeServ
     $scope.informe = new Object();
     $scope.informe = {
         grupo_sanguineo: "",
-        factor_rh: ""
+        factor_rh: "",
+        prueba_inmunologica_embarazo:""
     }
 
     var user = sessionStorage.getItem('user');

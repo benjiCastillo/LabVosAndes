@@ -25,8 +25,7 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
         calcio: "",
         cpk: "",
         cpk_mb: "",
-        gamaglutamil_transpeptidasa: "",
-        prueba_inmunologica_embarazo: "",
+        gamaglutamil_transpeptidasa: ""
     }
 
 
