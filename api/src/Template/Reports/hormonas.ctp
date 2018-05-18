@@ -25,8 +25,8 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.  $prueba->paciente->edad. '</p></td>
                 </tr>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
@@ -468,18 +468,11 @@ if ($contSub == 1) {
     $tabla_elemento = '';
     $tabla_elemento = '<table>' . $dosificacion . $elisa . $marcadores . $hormonas . $ana . $aapcc . $anach2 . '</table>';
     $pdf->writeHTMLCell($w=130, $h=0, $x='57', $y='40', $tabla_elemento, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-} else {
-    if (count($columns) == 2) {
-        $tabla1 = '';
-        $tabla1 = '<table>' . $columns[0] . '</table>';
-        $pdf->writeHTMLCell($w=125, $h=0, $x='5', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-        $tabla2 = '';
-        $tabla2 = '<table>' . $columns[1] . '</table>';
-        $pdf->writeHTMLCell($w=130, $h=0, $x='90', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-    } else {
-
-    }
+    $laboratorio = '';
+    $laboratorio = '<br><p style="color: rgb(58,137,159)">' . $prueba->hormonas_pruebas[0]->laboratorio . '</p>';
+    $pdf->writeHTMLCell($w=185, $h=0, $x='', $y='', $laboratorio, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+    
 }
 
 $pdf->SetFont('helvetica','',7);

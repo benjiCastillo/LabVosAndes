@@ -25,8 +25,8 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.  $prueba->paciente->edad. '</p></td>
                 </tr>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
@@ -75,13 +75,13 @@ if ($prueba->parasitologia_pruebas[0]->leucocitos == '' && $prueba->parasitologi
 } else {
     $moco = '<tr>
                     <td width="40%" colspan="3"><b>Moco Fecal</b></td>
-                    <td width="25%"><b>Valores de referencia</b></td>
+                    <td width="30%"><b>Valores de referencia</b></td>
                 </tr>';
     if ($prueba->parasitologia_pruebas[0]->leucocitos != '') {
         $moco .= '<tr>
                     <td width="25%">Leucocitos: </td>
                     <td width="15%">' . $prueba->parasitologia_pruebas[0]->leucocitos . '</td>
-                    <td width="25%" style="color: rgb(58,137,159)">8 - 10 pcm</td>
+                    <td width="30%" style="color: rgb(58,137,159)">8 - 10 pcm</td>
                 </tr>';
     }
     if ($prueba->parasitologia_pruebas[0]->comentario != '') {

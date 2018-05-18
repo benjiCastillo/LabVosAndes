@@ -25,14 +25,14 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.  $prueba->paciente->edad. '</p></td>
                 </tr>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
 $pdf->writeHTMLCell($w=180, $h=0, $x='40', $y='', $initData, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-$pdf->SetFont('helvetica','',12);
+$pdf->SetFont('helvetica','',10);
 $title = '<p><b>EXÁMEN GENERAL</b></p>';
 $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
@@ -43,6 +43,10 @@ if($prueba->informe_pruebas[0]->grupo_sanguineo != '')
 
 if($prueba->informe_pruebas[0]->factor_rh != '')
     $informe .= '<p><b>Factor Rh: </b>' . $prueba->informe_pruebas[0]->factor_rh . '</p>';
+
+if ($prueba->informe_pruebas[0]->prueba_inmunologica_embarazo != '') {
+    $informe .= '<p><b>Prueba inmunológica de embarazo en suero hGC: </b>' . $prueba->informe_pruebas[0]->prueba_inmunologica_embarazo . '</p>';
+}
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='65', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 

@@ -25,8 +25,8 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.  $prueba->paciente->edad. '</p></td>
                 </tr>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
@@ -230,31 +230,20 @@ $col2 = '';
     $col2 .= '<br>';
 }
 
-
-if ($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo != '') {
-    $embarazo = '<table>
-                    <tr>
-                        <td width="270">Prueba inmunológica de embarazo en suero hGC: </td>
-                        <td width="250">' . nl2br($prueba->quimica_sanguinea_pruebas[0]->prueba_inmunologica_embarazo) . '</td>
-                    </tr>
-                        </table>';
-    $pdf->writeHTMLCell($w=180, $h=0, $x='35', $y='60', $embarazo, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+if ($col1 == '' || $col2 == '') {
+    $tabla = '';
+    $tabla = '<table>' . $col1 . $col2 . '</table>';
+    $pdf->writeHTMLCell($w=100, $h=50, $x='65', $y='47', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 } else {
-    if ($col1 == '' || $col2 == '') {
-        $tabla = '';
-        $tabla = '<table>' . $col1 . $col2 . '</table>';
-        $pdf->writeHTMLCell($w=100, $h=50, $x='65', $y='47', $tabla, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-    }
-    else {
-        $tabla1 = '';
-        $tabla1 = '<table>' . $col1 . '</table>';
-        $pdf->writeHTMLCell($w=100, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $tabla1 = '';
+    $tabla1 = '<table>' . $col1 . '</table>';
+    $pdf->writeHTMLCell($w=100, $h=0, $x='12', $y='42', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
-        $tabla2 = '';
-        $tabla2 = '<table>' . $col2 . '</table>';
-        $pdf->writeHTMLCell($w=100, $h=0, $x='115', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
-    }
+    $tabla2 = '';
+    $tabla2 = '<table>' . $col2 . '</table>';
+    $pdf->writeHTMLCell($w=100, $h=0, $x='115', $y='42', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
+
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

@@ -62,7 +62,7 @@ class LiquidoSinovialPruebasTable extends Table
             ->scalar('volumen')
             ->maxLength('volumen', 20)
             ->allowEmpty('volumen');
-
+            
         $validator
             ->scalar('proteinas_totales')
             ->maxLength('proteinas_totales', 20)

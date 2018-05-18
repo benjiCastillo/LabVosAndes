@@ -64,12 +64,6 @@ class MedicosTable extends Table
             ->notEmpty('nombre');
 
         $validator
-            ->scalar('apellidos')
-            ->maxLength('apellidos', 75)
-            ->requirePresence('apellidos', 'create')
-            ->notEmpty('apellidos');
-
-        $validator
             ->integer('created_by')
             ->requirePresence('created_by', 'create')
             ->notEmpty('created_by');

@@ -240,6 +240,11 @@ class HormonasPruebasTable extends Table
             ->allowEmpty('comentario_general');
 
         $validator
+            ->scalar('laboratorio')
+            ->maxLength('laboratorio', 80)
+            ->allowEmpty('laboratorio');
+
+        $validator
             ->integer('created_by')
             ->requirePresence('created_by', 'create')
             ->notEmpty('created_by');

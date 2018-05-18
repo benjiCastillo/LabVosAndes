@@ -82,6 +82,11 @@ class PacientesTable extends Table
             ->notEmpty('sexo');
 
         $validator
+            ->scalar('celular')
+            ->maxLength('celular', 8)
+            ->allowEmpty('celular');
+
+        $validator
             ->integer('created_by')
             ->requirePresence('created_by', 'create')
             ->notEmpty('created_by');

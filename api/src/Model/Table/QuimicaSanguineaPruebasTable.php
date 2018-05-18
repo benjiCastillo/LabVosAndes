@@ -164,11 +164,6 @@ class QuimicaSanguineaPruebasTable extends Table
             ->allowEmpty('gamaglutamil_transpeptidasa');
 
         $validator
-            ->scalar('prueba_inmunologica_embarazo')
-            ->maxLength('prueba_inmunologica_embarazo', 150)
-            ->allowEmpty('prueba_inmunologica_embarazo');
-
-        $validator
             ->integer('created_by')
             ->requirePresence('created_by', 'create')
             ->notEmpty('created_by');

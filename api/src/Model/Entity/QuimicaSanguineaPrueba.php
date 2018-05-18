@@ -28,7 +28,6 @@ use Cake\ORM\Entity;
  * @property string $cpk
  * @property string $cpk_mb
  * @property string $gamaglutamil_transpeptidasa
- * @property string $prueba_inmunologica_embarazo
  * @property int $prueba_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -71,7 +70,6 @@ class QuimicaSanguineaPrueba extends Entity
         'cpk' => true,
         'cpk_mb' => true,
         'gamaglutamil_transpeptidasa' => true,
-        'prueba_inmunologica_embarazo' => true,
         'prueba_id' => true,
         'created' => true,
         'modified' => true,

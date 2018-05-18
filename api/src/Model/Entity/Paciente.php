@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $apellidos
  * @property string $edad
  * @property string $sexo
+ * @property string $celular
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $created_by
@@ -35,6 +36,7 @@ class Paciente extends Entity
         'apellidos' => true,
         'edad' => true,
         'sexo' => true,
+        'celular' => true,
         'created' => true,
         'modified' => true,
         'created_by' => true,

@@ -25,8 +25,8 @@ $initData = '<table>
                     <td><p><FONT style="color: rgb(150,0,0)">Edad: </FONT>'.  $prueba->paciente->edad. '</p></td>
                 </tr>
                 <tr>
-                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . ' ' . $prueba->medico->apellidos . '</p></td>
-                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y H:i:s') . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Dr.(a): </FONT>' . $prueba->medico->nombre . '</p></td>
+                    <td><p><FONT style="color: rgb(150,0,0)">Fecha: </FONT>' . $prueba->fecha->format('d-m-Y') . '</p></td>
                 </tr>
             </table>';
 
@@ -83,9 +83,8 @@ if ($prueba->serologia_pruebas[0]->k_plus == '' && $prueba->serologia_pruebas[0]
 $ionograma = '';
 } else {
     $ionograma = '<tr>
-                    <td colspan="3"><b>Ionograma</b></td>
-                    <td></td>
-                    <td></td>
+                    <td width="50%" colspan="2"><b>Ionograma</b></td>
+                    <td width="30%"><b>Valores de Referencia</b></td>
                 </tr>';
     if ($prueba->serologia_pruebas[0]->k_plus != '') {
         $ionograma .= '<tr>
@@ -132,12 +131,17 @@ if ($prueba->serologia_pruebas[0]->chagas == '' && $prueba->serologia_pruebas[0]
 } else {
     $hai = '';
     if ($prueba->serologia_pruebas[0]->chagas != '') {
-    $hai .= '<tr>
-                    <br>
+    $hai .= '<br><tr>
+                    <td width="25%"></td>
+                    <td width="25%"></td>
+                    <td width="30%"><b>Valores de Referencia</b></td>
+                </tr>
+                <tr>
                     <td width="25%"><b>HAI Chagas: </b></td>
                     <td width="25%">' . $prueba->serologia_pruebas[0]->chagas . '</td>
                     <td width="30%" style="color: rgb(58,137,159)">a partir de 1/16</td>
                 </tr>';
+                
     }
     if ($prueba->serologia_pruebas[0]->toxoplasmosis != '') {
         $hai .= '<tr>
@@ -269,11 +273,11 @@ if (($serologia == '' && $ionograma == '' && $hai == '') ||
 else {
     $tabla1 = '';
     $tabla1 = '<table>' . $serologia .  $ionograma . $hai . '</table>';
-    $pdf->writeHTMLCell($w=125, $h=0, $x='15', $y='40', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=125, $h=0, $x='13', $y='40', $tabla1, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
     $tabla2 = '';
     $tabla2 = '<table>' . $elisa . $coagulograma . '</table>';
-    $pdf->writeHTMLCell($w=130, $h=0, $x='115', $y='40', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
+    $pdf->writeHTMLCell($w=130, $h=0, $x='113', $y='40', $tabla2, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 }
 
 $pdf->SetFont('helvetica','',7);
