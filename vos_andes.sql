@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2018 a las 22:01:57
+-- Tiempo de generación: 18-05-2018 a las 22:23:48
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -567,6 +567,7 @@ CREATE TABLE `pruebas` (
   `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `medico_id` int(11) NOT NULL,
   `paciente_id` int(11) NOT NULL,
+  `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) NOT NULL,
@@ -577,8 +578,8 @@ CREATE TABLE `pruebas` (
 -- Volcado de datos para la tabla `pruebas`
 --
 
-INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(86, '2018-01-15 01:18:25.601406', 18, 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
+INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`, `comentario`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(86, '2018-01-15 01:18:25.601406', 18, 37, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
