@@ -25,7 +25,6 @@
 					<thead>
 						<tr>
 							<th>Nombre</th>
-							<th>Apellidos</th>
 							<th>Editar</th>
 							<th>Eliminar</th>
 						</tr>
@@ -33,7 +32,6 @@
 					<tbody>
 						<tr ng-repeat="medico in medicos  | filter:buscadorMedico">
 							<td> {{ medico.nombre }}</td>
-							<td> {{ medico.apellidos }} </td>
 							<td>
 								<a class="btn btn-info" ng-click="mostrarEditar( medico )">
 									<i class="fa fa-edit"></i>Editar</a>

@@ -15,9 +15,14 @@
                     <p ng-if="paciente.sexo == 'M' ">Masculino</p>
                     <div class="form-group">
                         <label for="miembroInput" class="text-info">Elija un Médico</label>
-                        <select class="form-control" ng-model="medico" required>
+                        <select class="form-control" ng-model="medico.medico_id" required>
                             <option ng-repeat="med in medicos" value="{{med.id}}">{{med.nombre }} {{med.apellidos}}</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comentario</label>
+                        <br>
+                        <textarea style="word-break: break-all;" ng-model="medico.comentario" class="col-sm-12" id="" cols="30" rows="3"></textarea>
                     </div>
                 </div>
 

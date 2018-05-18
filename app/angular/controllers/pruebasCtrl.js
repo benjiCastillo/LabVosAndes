@@ -12,6 +12,13 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     $scope.loadData = false;
     $scope.notData = false;
     $notMedico = true;
+    $scope.medico =new Object;
+    $scope.medico = {
+        medico_id:'',
+        paciente_id:'',
+        comentario: ''
+    }
+
 
     $scope.dataQuery.user = $scope.user;
     $scope.dataQuery.paciente = $scope.paciente;
@@ -54,17 +61,19 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
     // modal add
     $scope.insertarModal = function () {
-        $scope.medico = {};
+        
         $("#modal-pruebas-add").modal();
         console.log($scope.dataQueryMed);
     }
     $scope.insertar = function (medico) {
-        if (!isNaN(medico)) {
+        if (!isNaN(medico.medico_id)) {
             var data = new Object();
             data.token = $scope.user.data.token;
             data.user = $scope.user.user;
-            data.medico_id = parseInt(medico);
+            data.medico_id = parseInt(medico.medico_id);
             data.paciente_id = $scope.paciente.id;
+            data.comentario = medico.comentario
+            console.log(data);
             pruebasServices.insertar(data).then(function () {
                 var response = pruebasServices.response;
                 console.log(response);
@@ -137,9 +146,6 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
         }
         return medico;
     }
-
-
-
 
 
 }])
