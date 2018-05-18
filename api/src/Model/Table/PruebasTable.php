@@ -124,6 +124,10 @@ class PruebasTable extends Table
             ->integer('modified_by')
             ->allowEmpty('modified_by');
 
+        $validator
+            ->scalar('comentario')
+            ->allowEmpty('comentario');
+            
         return $validator;
     }
 

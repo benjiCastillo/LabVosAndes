@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nombre
- * @property string $apellidos
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $created_by
@@ -30,7 +29,6 @@ class Medico extends Entity
      */
     protected $_accessible = [
         'nombre' => true,
-        'apellidos' => true,
         'created' => true,
         'modified' => true,
         'created_by' => true,
