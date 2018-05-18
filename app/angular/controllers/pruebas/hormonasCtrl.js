@@ -41,7 +41,8 @@ app.controller('hormonasCtrl', ['$scope', '$routeParams', '$window', 'hormonasSe
         control_positivo: "",
         control_negativo: "",
         conclusion: "",
-        comentario_general: ""
+        comentario_general: "",
+        laboratorio:""
     }
 
     var user = sessionStorage.getItem('user');
