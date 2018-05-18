@@ -43,7 +43,7 @@ class Prueba extends Entity
      * @var array
      */
     protected $_accessible = [
-        'fecha' => true,
+        'comentario' => true,
         'medico_id' => true,
         'paciente_id' => true,
         'created' => true,

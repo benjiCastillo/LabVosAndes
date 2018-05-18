@@ -112,8 +112,8 @@ class PruebasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('fecha')
-            ->allowEmpty('fecha', 'create');
+            ->scalar('comentario')
+            ->allowEmpty('comentario');
 
         $validator
             ->integer('created_by')
@@ -124,9 +124,6 @@ class PruebasTable extends Table
             ->integer('modified_by')
             ->allowEmpty('modified_by');
 
-        $validator
-            ->scalar('comentario')
-            ->allowEmpty('comentario');
             
         return $validator;
     }
