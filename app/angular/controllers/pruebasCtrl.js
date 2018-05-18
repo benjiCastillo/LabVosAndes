@@ -1,7 +1,7 @@
 var app = angular.module('vosandesApp.pruebasCtrl', []);
 
 app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServices', 'medicosServices', '$sessionStorage', 'moment', function ($scope, $routeParams, $window, pruebasServices, medicosServices, $sessionStorage, moment) {
-    moment.tz.setDefault("America/La_Paz");
+    // moment.tz.setDefault("America/La_Paz");
     var user = sessionStorage.getItem('user');
     user = JSON.parse(user)
     $scope.user = user;
@@ -87,8 +87,10 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     }
 
     $scope.mostrarEditar = function (prueba) {
-        prueba.fecha = moment(prueba.fecha).format('YYYY-MM-DD[T]HH:mm');
+        
+        prueba.created = moment(prueba.created).format('YYYY-MM-DDTHH:mm');
         // document.getElementById("edt_hora_fecha").value = prueba.fecha
+        console.log(prueba.created)
         $scope.edtprueba = prueba;
         $("#modal-edit-prueba").modal();
     }
@@ -98,7 +100,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
         pruebaMod.user = $scope.user.user;
         pruebaMod.token = $scope.user.data.token;
         pruebaMod.medico_id = parseInt(pruebaMod.medico_id)
-        pruebaMod.fecha = moment(h_f).format('YYYY-MM-DD HH:mm')
+        pruebaMod.created = moment(h_f).format('YYYY-MM-DD HH:mm')
         console.log(pruebaMod)
         pruebasServices.modificar(pruebaMod).then(function () {
             $scope.response = pruebasServices.response;

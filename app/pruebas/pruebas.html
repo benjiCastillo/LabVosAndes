@@ -59,7 +59,7 @@
                                 <tbody>
                                     <tr ng-repeat="prueba in listPruebas | orderBy:'-created' ">
                                         <td>{{ $index+1 }}</td>
-                                        <td>{{ prueba.fecha | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</td>
+                                        <td>{{ prueba.created | amDateFormat:'DD/MM/YYYY HH:mm:ss a' }}</td>
                                         <td>{{ getMedico(prueba.medico_id) }}</td>
                                         <td>
                                             <button ng-click="crearPruebas( prueba )" class="btn btn-info">Ingresar</button>
