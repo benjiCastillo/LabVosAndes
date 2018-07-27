@@ -36,8 +36,8 @@ class InformePruebasTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('InformePruebas') ? [] : ['className' => InformePruebasTable::class];
-        $this->InformePruebas = TableRegistry::get('InformePruebas', $config);
+        $config = TableRegistry::getTableLocator()->exists('InformePruebas') ? [] : ['className' => InformePruebasTable::class];
+        $this->InformePruebas = TableRegistry::getTableLocator()->get('InformePruebas', $config);
     }
 
     /**

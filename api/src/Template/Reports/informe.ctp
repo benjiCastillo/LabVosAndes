@@ -47,8 +47,11 @@ if($prueba->informe_pruebas[0]->factor_rh != '')
 if ($prueba->informe_pruebas[0]->prueba_inmunologica_embarazo != '') {
     $informe .= '<p><b>Prueba inmunológica de embarazo en suero hGC: </b>' . $prueba->informe_pruebas[0]->prueba_inmunologica_embarazo . '</p>';
 }
+if ($prueba->informe_pruebas[0]->other != '') {
+    $informe .= '<p>' . $prueba->informe_pruebas[0]->other . '</p>';
+}
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='65', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>

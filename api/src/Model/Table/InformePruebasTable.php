@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\InformePrueba newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\InformePrueba[] newEntities(array $data, array $options = [])
  * @method \App\Model\Entity\InformePrueba|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\InformePrueba|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\InformePrueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\InformePrueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\InformePrueba findOrCreate($search, callable $callback = null, $options = [])
@@ -60,18 +61,19 @@ class InformePruebasTable extends Table
 
         $validator
             ->scalar('grupo_sanguineo')
-            ->maxLength('grupo_sanguineo', 20)
+            ->maxLength('grupo_sanguineo', 100)
             ->allowEmpty('grupo_sanguineo');
 
         $validator
             ->scalar('factor_rh')
-            ->maxLength('factor_rh', 20)
+            ->maxLength('factor_rh', 100)
             ->allowEmpty('factor_rh');
 
         $validator
-            ->scalar('prueba_inmunologica_embarazo')
-            ->maxLength('prueba_inmunologica_embarazo', 20)
-            ->allowEmpty('prueba_inmunologica_embarazo');
+            ->scalar('prueba_inmunologica')
+            ->maxLength('prueba_inmunologica', 100)
+            ->requirePresence('prueba_inmunologica', 'create')
+            ->notEmpty('prueba_inmunologica');
 
         $validator
             ->integer('created_by')

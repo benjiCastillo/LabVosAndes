@@ -30,19 +30,19 @@ class CompanyInfo {
         $pdf->SetTextColor(37,65,98);
 
         $image_file = WWW_ROOT . 'img' . DS . 'logovosandes.jpg';
-        $pdf->Image($image_file, 28, 2, 20, '', 'JPG', '', 'T', false, 200, '', false, false, 0, false, false, false);
+        $pdf->Image($image_file, 17, 2, 20, '', 'JPG', '', 'T', false, 200, '', false, false, 0, false, false, false);
         $pdf->Ln(3);
 
         $titleP = '<p><b>LABORATORIO DE ANÁLISIS CLÍNICO</b> <b style="color: rgb(150,0,0)">"VOS ANDES"</b></p>';
-        $pdf->writeHTML($titleP, true, false, false, false, 'C');
-        $pdf->Ln(2);
+        $pdf->writeHTMLCell($w=120, $h=0, $x='35', $y='', $titleP, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+        $pdf->Ln(3);
         $pdf->SetFont('helvetica', '', 11);
-        $pdf->Cell(0, 15, '                                  Dir.: Av. Camacho esq. Oruro Clínica 1º de mayo        Telf.: 62-23510', 0, false, 'L', 0, '', 0, false, 'M', 'M');
+        $pdf->Cell(0, 15, '                       Dir.: Av. Camacho esq. Oruro Clínica 1º de mayo        Telf.: 62-23510', 0, false, 'L', 0, '', 0, false, 'M', 'M');
         $pdf->Ln(5);
-        $pdf->Cell(0, 15, '                                  Cel.: 72414698        E-mail: labvosandes@gmail.com        Emergencias las 24 horas.', 0, false, 'L', 0, '', 0, false, 'M', 'M');
+        $pdf->Cell(0, 15, '                       Cel.: 72414698 - 69643269    E-mail: labvosandes@gmail.com    Emergencias las 24 horas.', 0, false, 'L', 0, '', 0, false, 'M', 'M');
 
         $style = array('width' => 0.3, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
-        $pdf->Line(152.5, 19.5, 199, 19.5, $style);
+        $pdf->Line(152.5, 20.5, 199, 20.5, $style);
         $style1 = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(31, 77, 120));
         $pdf->Line(2, 22, 212, 22, $style1);
 

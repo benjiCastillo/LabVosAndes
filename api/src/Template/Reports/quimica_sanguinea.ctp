@@ -67,12 +67,12 @@ $col1 = '';
         $col1 .= '<tr>
                     <td>Creatinina: </td>
                     <td>' . $prueba->quimica_sanguinea_pruebas[0]->creatinina . '  mg/dl</td>
-                    <td style="color: rgb(58,137,159)">H: 0,6 - 1,2 mg/dl</td>
+                    <td style="color: rgb(58,137,159)">H: 0,8 - 1,4 mg/dl</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td style="color: rgb(58,137,159)">M: 0,8 - 1,4 mg/dl</td>
+                    <td style="color: rgb(58,137,159)">M: 0,6 - 1,2 mg/dl</td>
                 </tr>';
     }
     if ($prueba->quimica_sanguinea_pruebas[0]->acido_urico != '') {
