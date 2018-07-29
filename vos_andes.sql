@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-07-2018 a las 17:41:58
+-- Tiempo de generación: 29-07-2018 a las 18:30:07
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -564,6 +564,7 @@ INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alim
 CREATE TABLE `pruebas` (
   `id` int(11) NOT NULL,
   `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
   `medico_id` int(11) NOT NULL,
   `paciente_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -576,8 +577,8 @@ CREATE TABLE `pruebas` (
 -- Volcado de datos para la tabla `pruebas`
 --
 
-INSERT INTO `pruebas` (`id`, `fecha`, `medico_id`, `paciente_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(86, '2018-01-15 01:18:25.601406', 18, 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
+INSERT INTO `pruebas` (`id`, `fecha`, `comentario`, `medico_id`, `paciente_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(86, '2018-01-15 01:18:25.601406', '', 18, 37, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 

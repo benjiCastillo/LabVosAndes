@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property \Cake\I18n\FrozenTime $fecha
+ * @property string $comentario
  * @property int $medico_id
  * @property int $paciente_id
  * @property \Cake\I18n\FrozenTime $created
@@ -43,6 +44,7 @@ class Prueba extends Entity
      * @var array
      */
     protected $_accessible = [
+        'fecha' => true,
         'comentario' => true,
         'medico_id' => true,
         'paciente_id' => true,

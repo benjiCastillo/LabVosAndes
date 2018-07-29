@@ -49,8 +49,8 @@ class PruebasTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Pruebas') ? [] : ['className' => PruebasTable::class];
-        $this->Pruebas = TableRegistry::get('Pruebas', $config);
+        $config = TableRegistry::getTableLocator()->exists('Pruebas') ? [] : ['className' => PruebasTable::class];
+        $this->Pruebas = TableRegistry::getTableLocator()->get('Pruebas', $config);
     }
 
     /**
