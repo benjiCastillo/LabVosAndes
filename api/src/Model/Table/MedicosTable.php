@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Medico newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Medico[] newEntities(array $data, array $options = [])
  * @method \App\Model\Entity\Medico|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Medico|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Medico patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Medico[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Medico findOrCreate($search, callable $callback = null, $options = [])

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-07-2018 a las 04:18:37
+-- Tiempo de generación: 29-07-2018 a las 17:41:58
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -381,7 +381,7 @@ CREATE TABLE `hormonas_pruebas` (
 --
 
 INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `ana_control_positivo`, `ana_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'awfaw', 'wa4gaw4', 'wagawg', 'aw4gaw4ga', '', '', '', '', '', '', '', 'awdadw', 'awefawef', 'waegaw', 'awgaweg', 'wargawrg', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, 'awfaw', 'wa4gaw4', 'wagawg', 'aw4gaw4ga', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -407,7 +407,7 @@ CREATE TABLE `informe_pruebas` (
 --
 
 INSERT INTO `informe_pruebas` (`id`, `grupo_sanguineo`, `factor_rh`, `prueba_inmunologica_embarazo`, `other`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, '', '', '', 'awdawdaawdawdaawdawdaawdawdaawdawda', 86, '2018-05-04 00:00:00', '2018-05-07 02:43:56', 0, 20);
+(1, '', '', '', '', 86, '2018-05-04 00:00:00', '2018-05-07 02:43:56', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -448,7 +448,6 @@ INSERT INTO `liquido_sinovial_pruebas` (`id`, `volumen`, `proteinas_totales`, `g
 CREATE TABLE `medicos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(55) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) NOT NULL,
@@ -459,9 +458,9 @@ CREATE TABLE `medicos` (
 -- Volcado de datos para la tabla `medicos`
 --
 
-INSERT INTO `medicos` (`id`, `nombre`, `apellidos`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(18, 'Son', 'Gokú', '0000-00-00 00:00:00', NULL, 0, 0),
-(19, 'dr thor', 'el del martillo', '2018-05-03 15:21:08', '2018-05-03 15:21:08', 19, NULL);
+INSERT INTO `medicos` (`id`, `nombre`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(18, 'Son', '0000-00-00 00:00:00', NULL, 0, 0),
+(19, 'dr thor', '2018-05-03 15:21:08', '2018-05-03 15:21:08', 19, NULL);
 
 -- --------------------------------------------------------
 
