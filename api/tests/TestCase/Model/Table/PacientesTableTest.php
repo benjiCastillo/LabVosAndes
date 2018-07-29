@@ -36,8 +36,8 @@ class PacientesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Pacientes') ? [] : ['className' => PacientesTable::class];
-        $this->Pacientes = TableRegistry::get('Pacientes', $config);
+        $config = TableRegistry::getTableLocator()->exists('Pacientes') ? [] : ['className' => PacientesTable::class];
+        $this->Pacientes = TableRegistry::getTableLocator()->get('Pacientes', $config);
     }
 
     /**

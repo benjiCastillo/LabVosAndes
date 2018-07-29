@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-07-2018 a las 18:30:07
+-- Tiempo de generación: 29-07-2018 a las 19:32:06
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -509,6 +509,7 @@ CREATE TABLE `pacientes` (
   `apellidos` varchar(75) COLLATE utf8_spanish2_ci NOT NULL,
   `edad` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `sexo` char(1) COLLATE utf8_spanish2_ci NOT NULL,
+  `celular` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) NOT NULL,
@@ -519,10 +520,10 @@ CREATE TABLE `pacientes` (
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(37, 'Erwin', 'Méndez', '23 m', 'M', '0000-00-00 00:00:00', NULL, 0, 0),
-(38, 'asdf', 'asdf', '12', 'F', '0000-00-00 00:00:00', NULL, 0, 0),
-(39, 'lolo', 'el gilipollas', '45 m', 'M', '2018-05-03 15:14:24', '2018-05-03 15:14:24', 19, NULL);
+INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `celular`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(37, 'Erwin', 'Méndez', '23 m', 'M', '', '0000-00-00 00:00:00', NULL, 0, 0),
+(38, 'asdf', 'asdf', '12', 'F', '', '0000-00-00 00:00:00', NULL, 0, 0),
+(39, 'lolo', 'el gilipollas', '45 m', 'M', '', '2018-05-03 15:14:24', '2018-05-03 15:14:24', 19, NULL);
 
 -- --------------------------------------------------------
 
@@ -564,7 +565,7 @@ INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alim
 CREATE TABLE `pruebas` (
   `id` int(11) NOT NULL,
   `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `comentario` text COLLATE utf8_spanish2_ci NOT NULL,
+  `comentario` text COLLATE utf8_spanish2_ci,
   `medico_id` int(11) NOT NULL,
   `paciente_id` int(11) NOT NULL,
   `created` datetime NOT NULL,

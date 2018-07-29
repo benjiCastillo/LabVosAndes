@@ -119,8 +119,7 @@ class PruebasTable extends Table
 
         $validator
             ->scalar('comentario')
-            ->requirePresence('comentario', 'create')
-            ->notEmpty('comentario');
+            ->allowEmpty('comentario');
 
         $validator
             ->integer('created_by')

@@ -118,7 +118,7 @@ class PruebasController extends AppController
                     $json = [
                         'error' => 1,
                         'save' => 0,
-                        'message' => 'El examen no pudo ser registrado'
+                        'message' => $prueba->getErrors()
                     ];
                 }
             } else {
