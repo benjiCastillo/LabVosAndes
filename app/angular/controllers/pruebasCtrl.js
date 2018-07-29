@@ -15,8 +15,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     $scope.medico = new Object;
     $scope.medico = {
         medico_id: '',
-        paciente_id: '',
-        comentario: ''
+        paciente_id: ''
     }
 
 
@@ -55,6 +54,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
         });
     }
+
     $scope.listarMedicos($scope.dataQueryMed)
     $scope.listar($scope.dataQuery);
 
@@ -71,6 +71,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
             data.token = $scope.user.data.token;
             data.user = $scope.user.user;
             data.medico_id = parseInt(medico.medico_id);
+            data.fecha = moment(medico.fecha).format('YYYY-MM-DD HH:mm');
             data.paciente_id = $scope.paciente.id;
             data.comentario = medico.comentario
             console.log(data);
@@ -87,10 +88,10 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
     }
 
     $scope.mostrarEditar = function (prueba) {
-        
-        prueba.created = moment(prueba.created).format('YYYY-MM-DDTHH:mm');
+
+        prueba.fecha = moment(prueba.fecha).format('YYYY-MM-DDTHH:mm');
         // document.getElementById("edt_hora_fecha").value = prueba.fecha
-        console.log(prueba.created)
+        console.log(prueba.fecha)
         $scope.edtprueba = prueba;
         $("#modal-edit-prueba").modal();
     }
@@ -100,7 +101,7 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
         pruebaMod.user = $scope.user.user;
         pruebaMod.token = $scope.user.data.token;
         pruebaMod.medico_id = parseInt(pruebaMod.medico_id)
-        pruebaMod.created = moment(h_f).format('YYYY-MM-DD HH:mm')
+        pruebaMod.fecha = moment(h_f).format('YYYY-MM-DD HH:mm')
         console.log(pruebaMod)
         pruebasServices.modificar(pruebaMod).then(function () {
             $scope.response = pruebasServices.response;
