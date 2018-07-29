@@ -28,6 +28,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Prueba newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Prueba[] newEntities(array $data, array $options = [])
  * @method \App\Model\Entity\Prueba|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Prueba|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Prueba patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Prueba[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Prueba findOrCreate($search, callable $callback = null, $options = [])
@@ -112,8 +113,14 @@ class PruebasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->dateTime('fecha')
+            ->requirePresence('fecha', 'create')
+            ->notEmpty('fecha');
+
+        $validator
             ->scalar('comentario')
-            ->allowEmpty('comentario');
+            ->requirePresence('comentario', 'create')
+            ->notEmpty('comentario');
 
         $validator
             ->integer('created_by')
@@ -124,7 +131,6 @@ class PruebasTable extends Table
             ->integer('modified_by')
             ->allowEmpty('modified_by');
 
-            
         return $validator;
     }
 
