@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Paciente newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Paciente[] newEntities(array $data, array $options = [])
  * @method \App\Model\Entity\Paciente|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Paciente|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
  * @method \App\Model\Entity\Paciente patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Paciente[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Paciente findOrCreate($search, callable $callback = null, $options = [])
@@ -83,8 +84,9 @@ class PacientesTable extends Table
 
         $validator
             ->scalar('celular')
-            ->maxLength('celular', 8)
-            ->allowEmpty('celular');
+            ->maxLength('celular', 15)
+            ->requirePresence('celular', 'create')
+            ->notEmpty('celular');
 
         $validator
             ->integer('created_by')
