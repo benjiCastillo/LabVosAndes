@@ -52,8 +52,8 @@ class PacientesFixture extends TestFixture
                 'edad' => 'Lorem ipsum d',
                 'sexo' => 'Lorem ipsum dolor sit ame',
                 'celular' => 'Lorem ipsum d',
-                'created' => '2018-07-29 15:32:31',
-                'modified' => '2018-07-29 15:32:31',
+                'created' => '2018-07-29 15:40:30',
+                'modified' => '2018-07-29 15:40:30',
                 'created_by' => 1,
                 'modified_by' => 1
             ],
