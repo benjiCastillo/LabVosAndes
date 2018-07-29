@@ -19,7 +19,6 @@ class MedicosFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'nombre' => ['type' => 'string', 'length' => 55, 'null' => false, 'default' => null, 'collate' => 'utf8_spanish2_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'apellidos' => ['type' => 'string', 'length' => 75, 'null' => false, 'default' => null, 'collate' => 'utf8_spanish2_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'created_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
@@ -45,9 +44,8 @@ class MedicosFixture extends TestFixture
             [
                 'id' => 1,
                 'nombre' => 'Lorem ipsum dolor sit amet',
-                'apellidos' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-05-07 00:14:17',
-                'modified' => '2018-05-07 00:14:17',
+                'created' => '2018-07-29 13:42:39',
+                'modified' => '2018-07-29 13:42:39',
                 'created_by' => 1,
                 'modified_by' => 1
             ],
