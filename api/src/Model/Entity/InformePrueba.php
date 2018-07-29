@@ -9,7 +9,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $grupo_sanguineo
  * @property string $factor_rh
- * @property string $prueba_inmunologica
+ * @property string $prueba_inmunologica_embarazo
+ * @property string $other
  * @property int $prueba_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -33,7 +34,8 @@ class InformePrueba extends Entity
     protected $_accessible = [
         'grupo_sanguineo' => true,
         'factor_rh' => true,
-        'prueba_inmunologica' => true,
+        'prueba_inmunologica_embarazo' => true,
+        'other' => true,
         'prueba_id' => true,
         'created' => true,
         'modified' => true,
