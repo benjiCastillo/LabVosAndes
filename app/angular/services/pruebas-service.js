@@ -24,6 +24,7 @@ app.factory('pruebasServices', ['$http', '$q', '$rootScope', function ($http, $q
 			return d.promise;
 		},
 		insertar: function (data) {
+			console.log("datos enviados a pruebas")
 			console.log(data)
 			var d = $q.defer();
 			$http({

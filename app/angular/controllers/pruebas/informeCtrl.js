@@ -7,7 +7,8 @@ app.controller('informeCtrl', ['$scope', '$routeParams', '$window', 'informeServ
     $scope.informe = {
         grupo_sanguineo: "",
         factor_rh: "",
-        prueba_inmunologica_embarazo:""
+        prueba_inmunologica_embarazo:"",
+        other:""
     }
 
     var user = sessionStorage.getItem('user');
@@ -46,6 +47,8 @@ app.controller('informeCtrl', ['$scope', '$routeParams', '$window', 'informeServ
                 } else {
                     $scope.notData = false;
                     $scope.listInforme = $scope.response.data;
+                    console.log("datos desde el backend")
+                    console.log($scope.listInforme);
                     $scope.msgPruebas = $scope.response.message;
                     $scope.informeLoad = true;
                     createEmbed("informe");

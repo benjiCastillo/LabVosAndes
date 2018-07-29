@@ -40,6 +40,8 @@ app.factory('informeServices', ['$http', '$q', '$rootScope', function ($http, $q
 
         },
         modificar: function (data) {
+            console.log("DATOS A MODIFICAR")
+            console.log(data)
             var d = $q.defer();
             $http({
                 method: 'PUT',
