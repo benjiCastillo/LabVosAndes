@@ -61,7 +61,8 @@ app.controller('pruebasCtrl', ['$scope', '$routeParams', '$window', 'pruebasServ
 
     // modal add
     $scope.insertarModal = function () {
-
+        // var insertDate = moment().format('YYYY-MM-DDTHH:mm');
+        // document.getElementById("add_hora_fecha").value = insertDate;
         $("#modal-pruebas-add").modal();
         console.log($scope.dataQueryMed);
     }
