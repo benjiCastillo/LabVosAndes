@@ -40,7 +40,9 @@ $pdf->Ln(1);
 $columns = array();
 $contSub = 0;
 if ($prueba->hormonas_pruebas[0]->tsh == '' && $prueba->hormonas_pruebas[0]->t4_libre == ''
-    && $prueba->hormonas_pruebas[0]->t4_total == '' && $prueba->hormonas_pruebas[0]->t3 == '') {
+    && $prueba->hormonas_pruebas[0]->t4_total == '' && $prueba->hormonas_pruebas[0]->t3 == ''
+    && $prueba->hormonas_pruebas[0]->cisticercosis_resultado == '' && $prueba->hormonas_pruebas[0]->cisticercosis_cut_off == ''
+    && $prueba->hormonas_pruebas[0]->comentario_cisticercosis == '') {
     $dosificacion = '';
 } else {
     $dosificacion = '<tr>
@@ -75,21 +77,13 @@ if ($prueba->hormonas_pruebas[0]->tsh == '' && $prueba->hormonas_pruebas[0]->t4_
                             <td width="35%" style="color: rgb(58,137,159)">0,69 - 2,02 ng/ml</td>
                         </tr>';
     }
-    $dosificacion .= '<br>';
-    array_push($columns, $dosificacion);
-    $contSub++;
-}
 
-if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado == '' && $prueba->hormonas_pruebas[0]->cisticercosis_cut_off == ''
-    && $prueba->hormonas_pruebas[0]->comentario_cisticercosis == '') {
-    $elisa = '';
-} else {
-    $elisa = '<tr>
+    if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado != '') {
+        $dosificacion .= '<br><tr>
                     <td width="50%" colspan="2"><b>ELISA Cisticercosis</b></td>
                     <td width="35%"><b>Valores de Referencia</b></td>
-                </tr>';
-    if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado != '') {
-        $elisa .= '<tr>
+                </tr>
+                <tr>
                     <td width="25%">Resultado: </td>
                     <td width="25%">' . $prueba->hormonas_pruebas[0]->cisticercosis_resultado . '</td>
                     <td width="35%" style="color: rgb(58,137,159)">Reactivo: Mayor al Cut Off</td>
@@ -101,20 +95,20 @@ if ($prueba->hormonas_pruebas[0]->cisticercosis_resultado == '' && $prueba->horm
                 </tr>';
     }
     if ($prueba->hormonas_pruebas[0]->cisticercosis_cut_off != '') {
-        $elisa .= '<tr>
+        $dosificacion .= '<tr>
                     <td width="25%">Cut off: </td>
                     <td width="25%">' . $prueba->hormonas_pruebas[0]->cisticercosis_cut_off . '</td>
                     <td width="35%" style="color: rgb(58,137,159)">Dudoso: Igual al Cut Off</td>
                 </tr><br>';
     }
     if ($prueba->hormonas_pruebas[0]->comentario_cisticercosis != '') {
-        $elisa .= '<tr>
+        $dosificacion .= '<tr>
                     <td width="20%">Comentario: </td>
                     <td width="70%" colspan="2">' . nl2br($prueba->hormonas_pruebas[0]->comentario_cisticercosis) . '</td>
                 </tr>';
     }
-    $elisa .= '<br>';
-    array_push($columns, $elisa);
+    $dosificacion .= '<br>';
+    array_push($columns, $dosificacion);
     $contSub++;
 }
 
@@ -466,7 +460,7 @@ if ($prueba->hormonas_pruebas[0]->anti_nucleares == '' && $prueba->hormonas_prue
 
 if ($contSub == 1) {
     $tabla_elemento = '';
-    $tabla_elemento = '<table>' . $dosificacion . $elisa . $marcadores . $hormonas . $ana . $aapcc . $anach2 . '</table>';
+    $tabla_elemento = '<table>' . $dosificacion . $marcadores . $hormonas . $ana . $aapcc . $anach2 . '</table>';
     $pdf->writeHTMLCell($w=130, $h=0, $x='57', $y='40', $tabla_elemento, $border=0, $ln=1, $fill=0, $reseth=true, $align='L', $autopadding=true);
 
     $laboratorio = '';
