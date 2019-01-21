@@ -38,24 +38,36 @@ $pdf->writeHTML($title, true, false, true, false, 'C');
 $pdf->Ln(1);
 
 $informe = '';
-if($prueba->informe_pruebas[0]->grupo_sanguineo != '')
-    $informe = '<p><b>Grupo Sanguineo: </b>' . $prueba->informe_pruebas[0]->grupo_sanguineo . '</p>';
-
-if($prueba->informe_pruebas[0]->factor_rh != '')
-    $informe .= '<p><b>Factor Rh: </b>' . $prueba->informe_pruebas[0]->factor_rh . '</p>';
-
+$cont = 0;
+if($prueba->informe_pruebas[0]->grupo_sanguineo != ''){
+    $informe = '<p><b>Grupo Sanguineo: </b>' . nl2br($prueba->informe_pruebas[0]->grupo_sanguineo) . '</p>';
+    $cont++;
+}
+if($prueba->informe_pruebas[0]->factor_rh != ''){
+    $informe .= '<p><b>Factor Rh: </b>' . nl2br($prueba->informe_pruebas[0]->factor_rh) . '</p>';
+    $cont++;
+}
 if ($prueba->informe_pruebas[0]->prueba_inmunologica_embarazo != '') {
-    $informe .= '<p><b>Prueba inmunológica de embarazo en suero hGC: </b>' . $prueba->informe_pruebas[0]->prueba_inmunologica_embarazo . '</p>';
+    $informe .= '<p><b>Prueba inmunológica de embarazo en suero hGC: </b>' . nl2br($prueba->informe_pruebas[0]->prueba_inmunologica_embarazo) . '</p>';
+    $cont++;
 }
 if ($prueba->informe_pruebas[0]->other != '') {
-    $informe .= '<p>' . $prueba->informe_pruebas[0]->other . '</p>';
+    $informe .= '<p>' . nl2br($prueba->informe_pruebas[0]->other) . '</p>';
+    $cont++;
 }
 
-$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='70', $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
+if($cont == 3 || $cont == 4){
+    $y = "55";
+} else {
+    $y = "65";
+}
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y, $informe, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=false);
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
-            BIOQUÍMICA - FARMACÉUTICA</b>
+            BIOQUÍMICA - FARMACÉUTICA<br>
+            JEFE DE LABORATORIO
+            </b>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 

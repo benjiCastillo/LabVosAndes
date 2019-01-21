@@ -182,7 +182,9 @@ $pdf->writeHTMLCell($w=100, $h=0, $x='151', $y='42', $examen_microscopico, $bord
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
-            BIOQUÍMICA - FARMACÉUTICA</b>
+            BIOQUÍMICA - FARMACÉUTICA<br>
+            JEFE DE LABORATORIO
+            </b>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='122', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 

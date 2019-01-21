@@ -60,67 +60,67 @@ class SerologiaPruebasTable extends Table
 
         $validator
             ->scalar('factor_reumatoide')
-            ->maxLength('factor_reumatoide', 20)
+            ->maxLength('factor_reumatoide', 40)
             ->allowEmpty('factor_reumatoide');
 
         $validator
             ->scalar('pcr')
-            ->maxLength('pcr', 20)
+            ->maxLength('pcr', 40)
             ->allowEmpty('pcr');
 
         $validator
             ->scalar('asto')
-            ->maxLength('asto', 20)
+            ->maxLength('asto', 40)
             ->allowEmpty('asto');
 
         $validator
             ->scalar('aso')
-            ->maxLength('aso', 20)
+            ->maxLength('aso', 40)
             ->allowEmpty('aso');
 
         $validator
             ->scalar('k_plus')
-            ->maxLength('k_plus', 20)
+            ->maxLength('k_plus', 40)
             ->allowEmpty('k_plus');
 
         $validator
             ->scalar('na_plus')
-            ->maxLength('na_plus', 20)
+            ->maxLength('na_plus', 40)
             ->allowEmpty('na_plus');
 
         $validator
             ->scalar('cl_minus')
-            ->maxLength('cl_minus', 20)
+            ->maxLength('cl_minus', 40)
             ->allowEmpty('cl_minus');
 
         $validator
             ->scalar('ca')
-            ->maxLength('ca', 20)
+            ->maxLength('ca', 40)
             ->allowEmpty('ca');
 
         $validator
             ->scalar('p')
-            ->maxLength('p', 20)
+            ->maxLength('p', 40)
             ->allowEmpty('p');
 
         $validator
             ->scalar('chagas')
-            ->maxLength('chagas', 20)
+            ->maxLength('chagas', 40)
             ->allowEmpty('chagas');
 
         $validator
             ->scalar('toxoplasmosis')
-            ->maxLength('toxoplasmosis', 20)
+            ->maxLength('toxoplasmosis', 40)
             ->allowEmpty('toxoplasmosis');
 
         $validator
             ->scalar('chagas_resultado')
-            ->maxLength('chagas_resultado', 20)
+            ->maxLength('chagas_resultado', 40)
             ->allowEmpty('chagas_resultado');
 
         $validator
             ->scalar('chagas_elisa_cut_off')
-            ->maxLength('chagas_elisa_cut_off', 20)
+            ->maxLength('chagas_elisa_cut_off', 40)
             ->allowEmpty('chagas_elisa_cut_off');
 
         $validator
@@ -129,32 +129,32 @@ class SerologiaPruebasTable extends Table
 
         $validator
             ->scalar('tiempo_sangria')
-            ->maxLength('tiempo_sangria', 20)
+            ->maxLength('tiempo_sangria', 40)
             ->allowEmpty('tiempo_sangria');
 
         $validator
             ->scalar('tiempo_coagulacion')
-            ->maxLength('tiempo_coagulacion', 20)
+            ->maxLength('tiempo_coagulacion', 40)
             ->allowEmpty('tiempo_coagulacion');
 
         $validator
             ->scalar('tiempo_protrombina')
-            ->maxLength('tiempo_protrombina', 20)
+            ->maxLength('tiempo_protrombina', 40)
             ->allowEmpty('tiempo_protrombina');
 
         $validator
             ->scalar('actividad_protrombina')
-            ->maxLength('actividad_protrombina', 20)
+            ->maxLength('actividad_protrombina', 40)
             ->allowEmpty('actividad_protrombina');
 
         $validator
             ->scalar('grupo_sanguineo')
-            ->maxLength('grupo_sanguineo', 20)
+            ->maxLength('grupo_sanguineo', 40)
             ->allowEmpty('grupo_sanguineo');
 
         $validator
             ->scalar('factor_rh')
-            ->maxLength('factor_rh', 20)
+            ->maxLength('factor_rh', 40)
             ->allowEmpty('factor_rh');
 
         $validator

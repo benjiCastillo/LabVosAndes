@@ -50,6 +50,7 @@ class QuimicaSanguineaPrueba extends Entity
      */
     protected $_accessible = [
         'glucemia' => true,
+        'glusemia_post_prandial' => true,
         'urea' => true,
         'creatinina' => true,
         'acido_urico' => true,
