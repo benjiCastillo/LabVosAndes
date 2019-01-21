@@ -1,10 +1,8 @@
 var app = angular.module('vosandesApp.informeServices', [])
 
 app.factory('informeServices', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
-
     var self = {
         insertar: function (datos) {
-            console.log(datos)
             var d = $q.defer();
             $http({
                 method: 'POST',
@@ -19,11 +17,9 @@ app.factory('informeServices', ['$http', '$q', '$rootScope', function ($http, $q
                     return d.resolve();
                 });
             return d.promise;
-
         },
         listar: function (data) {
             var d = $q.defer();
-
             $http({
                 method: 'POST',
                 url: PATH + 'informe-pruebas/list',
@@ -40,8 +36,6 @@ app.factory('informeServices', ['$http', '$q', '$rootScope', function ($http, $q
 
         },
         modificar: function (data) {
-            console.log("DATOS A MODIFICAR")
-            console.log(data)
             var d = $q.defer();
             $http({
                 method: 'PUT',
@@ -74,7 +68,6 @@ app.factory('informeServices', ['$http', '$q', '$rootScope', function ($http, $q
                 });
             return d.promise;
         }
-
     }
     return self;
 }])
