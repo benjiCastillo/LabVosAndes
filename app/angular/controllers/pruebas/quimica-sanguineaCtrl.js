@@ -6,6 +6,7 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     $scope.quimicaSanguinea = new Object();
     $scope.quimicaSanguinea = {
         glucemia: "",
+        glusemia_post_prandial: "",
         urea: "",
         creatinina: "",
         acido_urico: "",
@@ -28,35 +29,24 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
         gamaglutamil_transpeptidasa: ""
     }
 
-
-
-
     var user = sessionStorage.getItem('user');
     user = JSON.parse(user)
     $scope.user = user;
     $scope.paciente = $sessionStorage.paciente;
     $scope.prueba = $sessionStorage.prueba;
     $scope.PATH = 'http://localhost/LabVosAndes/api/quimica-sanguinea-pruebas/printQuimicaPruebas/' + $scope.prueba.id;
-    console.log()
     $scope.dataQuery = new Object();
-    // $scope.dataQueryMed = new Object();
     $scope.loadData = false;
     $scope.notData = false;
     $scope.quimicaLoad = false;
-    // $notMedico = true;
-
     $scope.dataQuery.user = $scope.user.user;
     $scope.dataQuery.token = $scope.user.data.token;
     $scope.dataQuery.prueba_id = $scope.prueba.id;
 
-
-
     $scope.listar = function (data) {
         $scope.loadData = true;
-        console.log(data)
         quimicaSanguineaServices.listar(data).then(function () {
             $scope.response = quimicaSanguineaServices.response;
-            console.log($scope.response);
             $scope.loadData = false;
 
             if ($scope.response.error == 1) {
@@ -79,8 +69,6 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     }
 
     $scope.listar($scope.dataQuery);
-
-
     // modal add
     $scope.insertarModal = function () {
         $("#modal-insertar-quimica").modal();
@@ -90,12 +78,9 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
         quimica.prueba_id = $scope.prueba.id;
         quimica.token = $scope.user.data.token;
         quimica.user = $scope.user.user;
-        // console.log(quimica);
         quimicaSanguineaServices.insertar(quimica).then(function () {
             var response = quimicaSanguineaServices.response;
-            console.log(response);
             $("#modal-insertar-quimica").modal("hide");
-            // $window.location.reload();
             $scope.listar($scope.dataQuery);
         });
 
@@ -109,10 +94,8 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     $scope.edit = function (quimica) {
         quimica.user = $scope.user.user;
         quimica.token = $scope.user.data.token;
-        console.log(quimica)
         quimicaSanguineaServices.modificar(quimica).then(function () {
             $scope.response = quimicaSanguineaServices.response;
-            console.log($scope.response);
             $("#modal-edit-quimica").modal("hide");
             $scope.listar($scope.dataQuery);
         });
@@ -124,7 +107,6 @@ app.controller('quimicaSanguineaCtrl', ['$scope', '$routeParams', '$window', 'qu
     }
 
     $scope.eliminar = function (dataBiometria) {
-
         var biometria = new Object();
         biometria.id = dataBiometria.id;
         biometria.user = $scope.user.user;
