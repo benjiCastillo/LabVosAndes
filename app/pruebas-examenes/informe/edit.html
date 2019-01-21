@@ -1,45 +1,46 @@
 <div class="modal fade" id="modal-edit-informe">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title">Editar Informe</h4>
-      </div>
-      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtinforme)">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="col-sm-4">Grupo Sanguíneo</label>
-                <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="edtinforme.grupo_sanguineo">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Factor RH</label>
-                <input type="text" class="col-sm-8" placeholder="Factor RH" ng-model="edtinforme.factor_rh">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Prueba Inmunológica de embarazo en suero</label>
-                <input type="text" class="col-sm-8" placeholder="Prueba Inmunológica de embarazo en suero" ng-model="edtinforme.prueba_inmunologica_embarazo">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-12">Comentario</label>
-                <textarea style="word-break: break-all;" ng-model="edtinforme.other" class="col-sm-12" id="" cols="30" rows="2"></textarea>
-              </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Editar Informe</h4>
             </div>
-          </div>
+            <form class="form-horizontal" style="padding: 0 10px;" ng-submit="edit(edtinforme)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-4">Grupo Sanguíneo</label>
+                                <input type="text" class="col-sm-8" placeholder="Grupo Sanguíneo" ng-model="edtinforme.grupo_sanguineo">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Factor RH</label>
+                                <input type="text" class="col-sm-8" placeholder="Factor RH" ng-model="edtinforme.factor_rh">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Prueba Inmunológica de embarazo en suero</label>
+                                <input type="text" class="col-sm-8" placeholder="Prueba Inmunológica de embarazo en suero"
+                                    ng-model="edtinforme.prueba_inmunologica_embarazo">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-12">Comentario</label>
+                                <textarea style="word-break: break-all;" ng-model="edtinforme.other" class="col-sm-12"
+                                    id="" cols="30" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+
         </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">
-            <i class="fa fa-save"></i> Guardar</button>
-        </div>
-
-      </form>
-
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
