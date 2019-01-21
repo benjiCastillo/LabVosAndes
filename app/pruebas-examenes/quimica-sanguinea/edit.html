@@ -1,127 +1,131 @@
 <div class="modal fade bs-example-modal-lg" id="modal-edit-quimica">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-              <h3 class="modal-title text-primary">Insertar prueba de Química Sanguínea</h3>
-            </div>
-            <form class="form-horizontal" style="padding: 0 10px;" name="frmedtQuimica" ng-submit="edit(edtQuimica)">
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-sm-4">Glucemia</label>
-                      <input type="text" class="col-sm-8" placeholder="glucemia" ng-model="edtQuimica.glucemia">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Urea</label>
-                      <input type="text" class="col-sm-8" placeholder="Urea" ng-model="edtQuimica.urea">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Creatinina</label>
-                      <input type="text" class="col-sm-8" placeholder="creatinina" ng-model="edtQuimica.creatinina">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Ácido urico</label>
-                      <input type="text" class="col-sm-8" placeholder="Ácido urico" ng-model="edtQuimica.acido_urico">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Colesterol total</label>
-                      <input type="text" class="col-sm-8" placeholder="colesterol total" ng-model="edtQuimica.colesterol_total">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">HDL colesterol</label>
-                      <input type="text" class="col-sm-8" placeholder="HDL colesterol" ng-model="edtQuimica.hdl_colesterol">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">LDL colesterol</label>
-                      <input type="text" class="col-sm-8" placeholder="LDL colesterol" ng-model="edtQuimica.ldl_colesterol">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Triglicéridos</label>
-                      <input type="text" class="col-sm-8" placeholder="Triglicéridos" ng-model="edtQuimica.trigliceridos">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Gamaglutamil transpeptidasa</label>
-                      <input type="text" class="col-sm-8" placeholder="Gamaglutamil transpeptidasa" ng-model="edtQuimica.gamaglutamil_transpeptidasa">
-                    </div>
-      
-      
-                  </div>
-      
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="col-sm-4">F. alcalina</label>
-                      <input type="text" class="col-sm-8" placeholder="F. alcalina" ng-model="edtQuimica.f_alcalina">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Transaminasa GOT</label>
-                      <input type="text" class="col-sm-8" placeholder="Transaminasa GOT" ng-model="edtQuimica.transaminasa_got">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Transaminasa GPT</label>
-                      <input type="text" class="col-sm-8" placeholder="Transaminasa GPT" ng-model="edtQuimica.transaminasa_gpt">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Bilirrubina total</label>
-                      <input type="text" class="col-sm-8" placeholder="Bilirrubina total" ng-model="edtQuimica.bilirrubina_total">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Bilirrubina directa</label>
-                      <input type="text" class="col-sm-8" placeholder="Bilirrubina directa" ng-model="edtQuimica.bilirrubina_directa">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Bilirrubina indirecta</label>
-                      <input type="text" class="col-sm-8" placeholder="Bilirrubina indirecta" ng-model="edtQuimica.bilirrubina_indirecta">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Amilasa</label>
-                      <input type="text" class="col-sm-8" placeholder="Amilasa" ng-model="edtQuimica.amilasa">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Proteinas totales</label>
-                      <input type="text" class="col-sm-8" placeholder="Proteinas totales" ng-model="edtQuimica.proteinas_totales">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Albumina</label>
-                      <input type="text" class="col-sm-8" placeholder="Albumina" ng-model="edtQuimica.albumina">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">Calcio</label>
-                      <input type="text" class="col-sm-8" placeholder="Calcio" ng-model="edtQuimica.calcio">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">CPK</label>
-                      <input type="text" class="col-sm-8" placeholder="CPK" ng-model="edtQuimica.cpk">
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4">CPK MB</label>
-                      <input type="text" class="col-sm-8" placeholder="CPK MB" ng-model="edtQuimica.cpk_mb">
-                    </div>
-      
-                  </div>
-      
-                </div>
-              </div>
-      
-      
-              <div class="modal-footer">
-                <p class="text-danger" ng-show="testGenError">
-                  <b>La prueba ya fue registrada</b>
-                </p>
-                <p class="text-success" ng-show="testGenSuccess">
-                  <b>Datos Almacenados Correctamente</b>
-                </p>
-                <button type="submit" class="btn btn-success">
-                  <i class="fa fa-save"></i> Guardar</button>
-              </div>
-      
-            </form>
-      
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h3 class="modal-title text-primary">Insertar prueba de Química Sanguínea</h3>
       </div>
+      <form class="form-horizontal" style="padding: 0 10px;" name="frmedtQuimica" ng-submit="edit(edtQuimica)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-sm-4">Glucemia</label>
+                <input type="text" class="col-sm-8" placeholder="glucemia" ng-model="edtQuimica.glucemia">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Glucemia Post-Prandial</label>
+                <input type="text" class="col-sm-8" placeholder="glucemia" ng-model="edtQuimica.glusemia_post_prandial">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Urea</label>
+                <input type="text" class="col-sm-8" placeholder="Urea" ng-model="edtQuimica.urea">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Creatinina</label>
+                <input type="text" class="col-sm-8" placeholder="creatinina" ng-model="edtQuimica.creatinina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Ácido urico</label>
+                <input type="text" class="col-sm-8" placeholder="Ácido urico" ng-model="edtQuimica.acido_urico">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Colesterol total</label>
+                <input type="text" class="col-sm-8" placeholder="colesterol total" ng-model="edtQuimica.colesterol_total">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">HDL colesterol</label>
+                <input type="text" class="col-sm-8" placeholder="HDL colesterol" ng-model="edtQuimica.hdl_colesterol">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">LDL colesterol</label>
+                <input type="text" class="col-sm-8" placeholder="LDL colesterol" ng-model="edtQuimica.ldl_colesterol">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Triglicéridos</label>
+                <input type="text" class="col-sm-8" placeholder="Triglicéridos" ng-model="edtQuimica.trigliceridos">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Gamaglutamil transpeptidasa</label>
+                <input type="text" class="col-sm-8" placeholder="Gamaglutamil transpeptidasa" ng-model="edtQuimica.gamaglutamil_transpeptidasa">
+              </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-sm-4">F. alcalina</label>
+                <input type="text" class="col-sm-8" placeholder="F. alcalina" ng-model="edtQuimica.f_alcalina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Transaminasa GOT</label>
+                <input type="text" class="col-sm-8" placeholder="Transaminasa GOT" ng-model="edtQuimica.transaminasa_got">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Transaminasa GPT</label>
+                <input type="text" class="col-sm-8" placeholder="Transaminasa GPT" ng-model="edtQuimica.transaminasa_gpt">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bilirrubina total</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina total" ng-model="edtQuimica.bilirrubina_total">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bilirrubina directa</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina directa" ng-model="edtQuimica.bilirrubina_directa">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Bilirrubina indirecta</label>
+                <input type="text" class="col-sm-8" placeholder="Bilirrubina indirecta" ng-model="edtQuimica.bilirrubina_indirecta">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Amilasa</label>
+                <input type="text" class="col-sm-8" placeholder="Amilasa" ng-model="edtQuimica.amilasa">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Proteinas totales</label>
+                <input type="text" class="col-sm-8" placeholder="Proteinas totales" ng-model="edtQuimica.proteinas_totales">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Albumina</label>
+                <input type="text" class="col-sm-8" placeholder="Albumina" ng-model="edtQuimica.albumina">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">Calcio</label>
+                <input type="text" class="col-sm-8" placeholder="Calcio" ng-model="edtQuimica.calcio">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">CPK</label>
+                <input type="text" class="col-sm-8" placeholder="CPK" ng-model="edtQuimica.cpk">
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4">CPK MB</label>
+                <input type="text" class="col-sm-8" placeholder="CPK MB" ng-model="edtQuimica.cpk_mb">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="modal-footer">
+          <p class="text-danger" ng-show="testGenError">
+            <b>La prueba ya fue registrada</b>
+          </p>
+          <p class="text-success" ng-show="testGenSuccess">
+            <b>Datos Almacenados Correctamente</b>
+          </p>
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
