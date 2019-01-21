@@ -60,32 +60,32 @@ class HormonasPruebasTable extends Table
 
         $validator
             ->scalar('tsh')
-            ->maxLength('tsh', 20)
+            ->maxLength('tsh', 40)
             ->allowEmpty('tsh');
 
         $validator
             ->scalar('t4_libre')
-            ->maxLength('t4_libre', 20)
+            ->maxLength('t4_libre', 40)
             ->allowEmpty('t4_libre');
 
         $validator
             ->scalar('t4_total')
-            ->maxLength('t4_total', 20)
+            ->maxLength('t4_total', 40)
             ->allowEmpty('t4_total');
 
         $validator
             ->scalar('t3')
-            ->maxLength('t3', 20)
+            ->maxLength('t3', 40)
             ->allowEmpty('t3');
 
         $validator
             ->scalar('cisticercosis_resultado')
-            ->maxLength('cisticercosis_resultado', 20)
+            ->maxLength('cisticercosis_resultado', 40)
             ->allowEmpty('cisticercosis_resultado');
 
         $validator
             ->scalar('cisticercosis_cut_off')
-            ->maxLength('cisticercosis_cut_off', 20)
+            ->maxLength('cisticercosis_cut_off', 40)
             ->allowEmpty('cisticercosis_cut_off');
 
         $validator
@@ -94,92 +94,92 @@ class HormonasPruebasTable extends Table
 
         $validator
             ->scalar('antigeno_carcino')
-            ->maxLength('antigeno_carcino', 20)
+            ->maxLength('antigeno_carcino', 40)
             ->allowEmpty('antigeno_carcino');
 
         $validator
             ->scalar('psa_total')
-            ->maxLength('psa_total', 20)
+            ->maxLength('psa_total', 40)
             ->allowEmpty('psa_total');
 
         $validator
             ->scalar('psa_libre')
-            ->maxLength('psa_libre', 20)
+            ->maxLength('psa_libre', 40)
             ->allowEmpty('psa_libre');
 
         $validator
             ->scalar('relacion_psa_libre_total')
-            ->maxLength('relacion_psa_libre_total', 20)
+            ->maxLength('relacion_psa_libre_total', 40)
             ->allowEmpty('relacion_psa_libre_total');
 
         $validator
             ->scalar('estradiol')
-            ->maxLength('estradiol', 20)
+            ->maxLength('estradiol', 40)
             ->allowEmpty('estradiol');
 
         $validator
             ->scalar('progesterona')
-            ->maxLength('progesterona', 20)
+            ->maxLength('progesterona', 40)
             ->allowEmpty('progesterona');
 
         $validator
             ->scalar('fsh')
-            ->maxLength('fsh', 20)
+            ->maxLength('fsh', 40)
             ->allowEmpty('fsh');
 
         $validator
             ->scalar('lh')
-            ->maxLength('lh', 20)
+            ->maxLength('lh', 40)
             ->allowEmpty('lh');
 
         $validator
             ->scalar('prolactina')
-            ->maxLength('prolactina', 20)
+            ->maxLength('prolactina', 40)
             ->allowEmpty('prolactina');
 
         $validator
             ->scalar('testosterona')
-            ->maxLength('testosterona', 20)
+            ->maxLength('testosterona', 40)
             ->allowEmpty('testosterona');
 
         $validator
             ->scalar('ana')
-            ->maxLength('ana', 20)
+            ->maxLength('ana', 40)
             ->allowEmpty('ana');
 
         $validator
             ->scalar('ana_control_positivo')
-            ->maxLength('ana_control_positivo', 20)
+            ->maxLength('ana_control_positivo', 40)
             ->allowEmpty('ana_control_positivo');
 
         $validator
             ->scalar('ana_control_negativo')
-            ->maxLength('ana_control_negativo', 20)
+            ->maxLength('ana_control_negativo', 40)
             ->allowEmpty('ana_control_negativo');
 
         $validator
             ->scalar('celulas_le')
-            ->maxLength('celulas_le', 20)
+            ->maxLength('celulas_le', 40)
             ->allowEmpty('celulas_le');
 
         $validator
             ->scalar('celulas_le_control_positivo')
-            ->maxLength('celulas_le_control_positivo', 20)
+            ->maxLength('celulas_le_control_positivo', 40)
             ->allowEmpty('celulas_le_control_positivo');
 
         $validator
             ->scalar('celulas_le_control_negativo')
-            ->maxLength('celulas_le_control_negativo', 20)
+            ->maxLength('celulas_le_control_negativo', 40)
             ->allowEmpty('celulas_le_control_negativo');
 
         $validator
             ->scalar('anticuerpos_resultado')
-            ->maxLength('anticuerpos_resultado', 20)
+            ->maxLength('anticuerpos_resultado', 40)
             ->allowEmpty('anticuerpos_resultado');
 
         $validator
             ->scalar('anticuerpos_cut_off')
-            ->maxLength('anticuerpos_cut_off', 20)
+            ->maxLength('anticuerpos_cut_off', 40)
             ->allowEmpty('anticuerpos_cut_off');
 
         $validator
@@ -188,47 +188,47 @@ class HormonasPruebasTable extends Table
 
         $validator
             ->scalar('toxoplasmosis_lgm')
-            ->maxLength('toxoplasmosis_lgm', 20)
+            ->maxLength('toxoplasmosis_lgm', 40)
             ->allowEmpty('toxoplasmosis_lgm');
 
         $validator
             ->scalar('toxoplasmosis_lgg')
-            ->maxLength('toxoplasmosis_lgg', 20)
+            ->maxLength('toxoplasmosis_lgg', 40)
             ->allowEmpty('toxoplasmosis_lgg');
 
         $validator
             ->scalar('b_hcg_cuantitativo')
-            ->maxLength('b_hcg_cuantitativo', 20)
+            ->maxLength('b_hcg_cuantitativo', 40)
             ->allowEmpty('b_hcg_cuantitativo');
 
         $validator
             ->scalar('anti_nucleares')
-            ->maxLength('anti_nucleares', 20)
+            ->maxLength('anti_nucleares', 40)
             ->allowEmpty('anti_nucleares');
 
         $validator
             ->scalar('anticuerpos_control_positivo')
-            ->maxLength('anticuerpos_control_positivo', 20)
+            ->maxLength('anticuerpos_control_positivo', 40)
             ->allowEmpty('anticuerpos_control_positivo');
 
         $validator
             ->scalar('anticuerpos_control_negativo')
-            ->maxLength('anticuerpos_control_negativo', 20)
+            ->maxLength('anticuerpos_control_negativo', 40)
             ->allowEmpty('anticuerpos_control_negativo');
 
         $validator
             ->scalar('celulas_hep')
-            ->maxLength('celulas_hep', 20)
+            ->maxLength('celulas_hep', 40)
             ->allowEmpty('celulas_hep');
 
         $validator
             ->scalar('control_positivo')
-            ->maxLength('control_positivo', 20)
+            ->maxLength('control_positivo', 40)
             ->allowEmpty('control_positivo');
 
         $validator
             ->scalar('control_negativo')
-            ->maxLength('control_negativo', 20)
+            ->maxLength('control_negativo', 40)
             ->allowEmpty('control_negativo');
 
         $validator

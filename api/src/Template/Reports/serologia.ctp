@@ -141,7 +141,7 @@ if ($prueba->serologia_pruebas[0]->chagas == '' && $prueba->serologia_pruebas[0]
                     <td width="25%">' . $prueba->serologia_pruebas[0]->chagas . '</td>
                     <td width="30%" style="color: rgb(58,137,159)">a partir de 1/16</td>
                 </tr>';
-                
+
     }
     if ($prueba->serologia_pruebas[0]->toxoplasmosis != '') {
         $hai .= '<tr>
@@ -282,7 +282,9 @@ else {
 
 $pdf->SetFont('helvetica','',7);
 $firm = '<div style="line-height: 12px;"><b>Dra. María Luz Nina Colque<br>
-            BIOQUÍMICA - FARMACÉUTICA</b>
+            BIOQUÍMICA - FARMACÉUTICA<br>
+            JEFE DE LABORATORIO
+            </b>
         </div>';
 $pdf->writeHTMLCell($w=0, $h=0, $x='145', $y='115', $firm, $border=0, $ln=1, $fill=0, $reseth=true, $align='C', $autopadding=true);
 

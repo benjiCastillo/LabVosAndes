@@ -60,107 +60,112 @@ class QuimicaSanguineaPruebasTable extends Table
 
         $validator
             ->scalar('glucemia')
-            ->maxLength('glucemia', 20)
+            ->maxLength('glucemia', 40)
             ->allowEmpty('glucemia');
 
         $validator
+            ->scalar('glusemia_post_prandial')
+            ->maxLength('glusemia_post_prandial', 40)
+            ->allowEmpty('glusemia_post_prandial');
+
+        $validator
             ->scalar('urea')
-            ->maxLength('urea', 20)
+            ->maxLength('urea', 40)
             ->allowEmpty('urea');
 
         $validator
             ->scalar('creatinina')
-            ->maxLength('creatinina', 20)
+            ->maxLength('creatinina', 40)
             ->allowEmpty('creatinina');
 
         $validator
             ->scalar('acido_urico')
-            ->maxLength('acido_urico', 20)
+            ->maxLength('acido_urico', 40)
             ->allowEmpty('acido_urico');
 
         $validator
             ->scalar('colesterol_total')
-            ->maxLength('colesterol_total', 20)
+            ->maxLength('colesterol_total', 40)
             ->allowEmpty('colesterol_total');
 
         $validator
             ->scalar('hdl_colesterol')
-            ->maxLength('hdl_colesterol', 20)
+            ->maxLength('hdl_colesterol', 40)
             ->allowEmpty('hdl_colesterol');
 
         $validator
             ->scalar('ldl_colesterol')
-            ->maxLength('ldl_colesterol', 20)
+            ->maxLength('ldl_colesterol', 40)
             ->allowEmpty('ldl_colesterol');
 
         $validator
             ->scalar('trigliceridos')
-            ->maxLength('trigliceridos', 20)
+            ->maxLength('trigliceridos', 40)
             ->allowEmpty('trigliceridos');
 
         $validator
             ->scalar('f_alcalina')
-            ->maxLength('f_alcalina', 20)
+            ->maxLength('f_alcalina', 40)
             ->allowEmpty('f_alcalina');
 
         $validator
             ->scalar('transaminasa_got')
-            ->maxLength('transaminasa_got', 20)
+            ->maxLength('transaminasa_got', 40)
             ->allowEmpty('transaminasa_got');
 
         $validator
             ->scalar('transaminasa_gpt')
-            ->maxLength('transaminasa_gpt', 20)
+            ->maxLength('transaminasa_gpt', 40)
             ->allowEmpty('transaminasa_gpt');
 
         $validator
             ->scalar('bilirrubina_total')
-            ->maxLength('bilirrubina_total', 20)
+            ->maxLength('bilirrubina_total', 40)
             ->allowEmpty('bilirrubina_total');
 
         $validator
             ->scalar('bilirrubina_directa')
-            ->maxLength('bilirrubina_directa', 20)
+            ->maxLength('bilirrubina_directa', 40)
             ->allowEmpty('bilirrubina_directa');
 
         $validator
             ->scalar('bilirrubina_indirecta')
-            ->maxLength('bilirrubina_indirecta', 20)
+            ->maxLength('bilirrubina_indirecta', 40)
             ->allowEmpty('bilirrubina_indirecta');
 
         $validator
             ->scalar('amilasa')
-            ->maxLength('amilasa', 20)
+            ->maxLength('amilasa', 40)
             ->allowEmpty('amilasa');
 
         $validator
             ->scalar('proteinas_totales')
-            ->maxLength('proteinas_totales', 20)
+            ->maxLength('proteinas_totales', 40)
             ->allowEmpty('proteinas_totales');
 
         $validator
             ->scalar('albumina')
-            ->maxLength('albumina', 20)
+            ->maxLength('albumina', 40)
             ->allowEmpty('albumina');
 
         $validator
             ->scalar('calcio')
-            ->maxLength('calcio', 20)
+            ->maxLength('calcio', 40)
             ->allowEmpty('calcio');
 
         $validator
             ->scalar('cpk')
-            ->maxLength('cpk', 20)
+            ->maxLength('cpk', 40)
             ->allowEmpty('cpk');
 
         $validator
             ->scalar('cpk_mb')
-            ->maxLength('cpk_mb', 20)
+            ->maxLength('cpk_mb', 40)
             ->allowEmpty('cpk_mb');
 
         $validator
             ->scalar('gamaglutamil_transpeptidasa')
-            ->maxLength('gamaglutamil_transpeptidasa', 20)
+            ->maxLength('gamaglutamil_transpeptidasa', 40)
             ->allowEmpty('gamaglutamil_transpeptidasa');
 
         $validator

@@ -60,22 +60,22 @@ class ParasitologiaPruebasTable extends Table
 
         $validator
             ->scalar('consistencia')
-            ->maxLength('consistencia', 20)
+            ->maxLength('consistencia', 40)
             ->allowEmpty('consistencia');
 
         $validator
             ->scalar('color')
-            ->maxLength('color', 20)
+            ->maxLength('color', 40)
             ->allowEmpty('color');
 
         $validator
             ->scalar('restos_alimenticios')
-            ->maxLength('restos_alimenticios', 20)
+            ->maxLength('restos_alimenticios', 40)
             ->allowEmpty('restos_alimenticios');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
+            ->maxLength('leucocitos', 40)
             ->allowEmpty('leucocitos');
 
         $validator
@@ -84,7 +84,7 @@ class ParasitologiaPruebasTable extends Table
 
         $validator
             ->scalar('sangre_oculta')
-            ->maxLength('sangre_oculta', 20)
+            ->maxLength('sangre_oculta', 40)
             ->allowEmpty('sangre_oculta');
 
         $validator

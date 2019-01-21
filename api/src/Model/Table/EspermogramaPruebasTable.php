@@ -68,62 +68,62 @@ class EspermogramaPruebasTable extends Table
 
         $validator
             ->scalar('duracion_abstinencia')
-            ->maxLength('duracion_abstinencia', 20)
+            ->maxLength('duracion_abstinencia', 40)
             ->allowEmpty('duracion_abstinencia');
 
         $validator
             ->scalar('aspecto')
-            ->maxLength('aspecto', 20)
+            ->maxLength('aspecto', 40)
             ->allowEmpty('aspecto');
 
         $validator
             ->scalar('color')
-            ->maxLength('color', 20)
+            ->maxLength('color', 40)
             ->allowEmpty('color');
 
         $validator
             ->scalar('volumen')
-            ->maxLength('volumen', 20)
+            ->maxLength('volumen', 40)
             ->allowEmpty('volumen');
 
         $validator
             ->scalar('viscosidad')
-            ->maxLength('viscosidad', 20)
+            ->maxLength('viscosidad', 40)
             ->allowEmpty('viscosidad');
 
         $validator
             ->scalar('ph')
-            ->maxLength('ph', 20)
+            ->maxLength('ph', 40)
             ->allowEmpty('ph');
 
         $validator
             ->scalar('concentracion_espermatica')
-            ->maxLength('concentracion_espermatica', 20)
+            ->maxLength('concentracion_espermatica', 40)
             ->allowEmpty('concentracion_espermatica');
 
         $validator
             ->scalar('caracteristicas_morfologicas')
-            ->maxLength('caracteristicas_morfologicas', 20)
+            ->maxLength('caracteristicas_morfologicas', 40)
             ->allowEmpty('caracteristicas_morfologicas');
 
         $validator
             ->scalar('espermatozoides_normales')
-            ->maxLength('espermatozoides_normales', 20)
+            ->maxLength('espermatozoides_normales', 40)
             ->allowEmpty('espermatozoides_normales');
 
         $validator
             ->scalar('cabeza')
-            ->maxLength('cabeza', 20)
+            ->maxLength('cabeza', 40)
             ->allowEmpty('cabeza');
 
         $validator
             ->scalar('pieza_intermedia')
-            ->maxLength('pieza_intermedia', 20)
+            ->maxLength('pieza_intermedia', 40)
             ->allowEmpty('pieza_intermedia');
 
         $validator
             ->scalar('cola')
-            ->maxLength('cola', 20)
+            ->maxLength('cola', 40)
             ->allowEmpty('cola');
 
         $validator
@@ -132,57 +132,57 @@ class EspermogramaPruebasTable extends Table
 
         $validator
             ->scalar('aglutinacion')
-            ->maxLength('aglutinacion', 20)
+            ->maxLength('aglutinacion', 40)
             ->allowEmpty('aglutinacion');
 
         $validator
             ->scalar('progresion_lineal_rapida')
-            ->maxLength('progresion_lineal_rapida', 20)
+            ->maxLength('progresion_lineal_rapida', 40)
             ->allowEmpty('progresion_lineal_rapida');
 
         $validator
             ->scalar('progresion_lineal_lenta')
-            ->maxLength('progresion_lineal_lenta', 20)
+            ->maxLength('progresion_lineal_lenta', 40)
             ->allowEmpty('progresion_lineal_lenta');
 
         $validator
             ->scalar('motilidad_no_progresiva')
-            ->maxLength('motilidad_no_progresiva', 20)
+            ->maxLength('motilidad_no_progresiva', 40)
             ->allowEmpty('motilidad_no_progresiva');
 
         $validator
             ->scalar('inmoviles')
-            ->maxLength('inmoviles', 20)
+            ->maxLength('inmoviles', 40)
             ->allowEmpty('inmoviles');
 
         $validator
             ->scalar('primera_hora_moviles')
-            ->maxLength('primera_hora_moviles', 20)
+            ->maxLength('primera_hora_moviles', 40)
             ->allowEmpty('primera_hora_moviles');
 
         $validator
             ->scalar('primera_hora_inmoviles')
-            ->maxLength('primera_hora_inmoviles', 20)
+            ->maxLength('primera_hora_inmoviles', 40)
             ->allowEmpty('primera_hora_inmoviles');
 
         $validator
             ->scalar('segunda_hora_moviles')
-            ->maxLength('segunda_hora_moviles', 20)
+            ->maxLength('segunda_hora_moviles', 40)
             ->allowEmpty('segunda_hora_moviles');
 
         $validator
             ->scalar('segunda_hora_inmoviles')
-            ->maxLength('segunda_hora_inmoviles', 20)
+            ->maxLength('segunda_hora_inmoviles', 40)
             ->allowEmpty('segunda_hora_inmoviles');
 
         $validator
             ->scalar('tercera_hora_moviles')
-            ->maxLength('tercera_hora_moviles', 20)
+            ->maxLength('tercera_hora_moviles', 40)
             ->allowEmpty('tercera_hora_moviles');
 
         $validator
             ->scalar('tercera_hora_inmoviles')
-            ->maxLength('tercera_hora_inmoviles', 20)
+            ->maxLength('tercera_hora_inmoviles', 40)
             ->allowEmpty('tercera_hora_inmoviles');
 
         $validator

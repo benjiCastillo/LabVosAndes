@@ -60,67 +60,67 @@ class MicrobiologiaPruebasTable extends Table
 
         $validator
             ->scalar('celulas_epitelio_vaginal')
-            ->maxLength('celulas_epitelio_vaginal', 20)
+            ->maxLength('celulas_epitelio_vaginal', 40)
             ->allowEmpty('celulas_epitelio_vaginal');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
+            ->maxLength('leucocitos', 40)
             ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('piocitos')
-            ->maxLength('piocitos', 20)
+            ->maxLength('piocitos', 40)
             ->allowEmpty('piocitos');
 
         $validator
             ->scalar('celulas_clave')
-            ->maxLength('celulas_clave', 20)
+            ->maxLength('celulas_clave', 40)
             ->allowEmpty('celulas_clave');
 
         $validator
             ->scalar('tricomona_vaginalis')
-            ->maxLength('tricomona_vaginalis', 20)
+            ->maxLength('tricomona_vaginalis', 40)
             ->allowEmpty('tricomona_vaginalis');
 
         $validator
             ->scalar('flora_bacteriana')
-            ->maxLength('flora_bacteriana', 20)
+            ->maxLength('flora_bacteriana', 40)
             ->allowEmpty('flora_bacteriana');
 
         $validator
             ->scalar('hifas_micoticas')
-            ->maxLength('hifas_micoticas', 20)
+            ->maxLength('hifas_micoticas', 40)
             ->allowEmpty('hifas_micoticas');
 
         $validator
             ->scalar('prueba_koh')
-            ->maxLength('prueba_koh', 20)
+            ->maxLength('prueba_koh', 40)
             ->allowEmpty('prueba_koh');
 
         $validator
             ->scalar('coco_bacilos_gram_positivos')
-            ->maxLength('coco_bacilos_gram_positivos', 20)
+            ->maxLength('coco_bacilos_gram_positivos', 40)
             ->allowEmpty('coco_bacilos_gram_positivos');
 
         $validator
             ->scalar('cocos_gram_positivos')
-            ->maxLength('cocos_gram_positivos', 20)
+            ->maxLength('cocos_gram_positivos', 40)
             ->allowEmpty('cocos_gram_positivos');
 
         $validator
             ->scalar('bacilos_gram_positivos')
-            ->maxLength('bacilos_gram_positivos', 20)
+            ->maxLength('bacilos_gram_positivos', 40)
             ->allowEmpty('bacilos_gram_positivos');
 
         $validator
             ->scalar('bacilos_gram_negativos')
-            ->maxLength('bacilos_gram_negativos', 20)
+            ->maxLength('bacilos_gram_negativos', 40)
             ->allowEmpty('bacilos_gram_negativos');
 
         $validator
             ->scalar('hifas_esporas_micoticas')
-            ->maxLength('hifas_esporas_micoticas', 20)
+            ->maxLength('hifas_esporas_micoticas', 40)
             ->allowEmpty('hifas_esporas_micoticas');
 
         $validator

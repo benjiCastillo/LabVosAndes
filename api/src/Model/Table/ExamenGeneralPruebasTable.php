@@ -60,107 +60,107 @@ class ExamenGeneralPruebasTable extends Table
 
         $validator
             ->scalar('color')
-            ->maxLength('color', 20)
+            ->maxLength('color', 40)
             ->allowEmpty('color');
 
         $validator
             ->scalar('cantidad')
-            ->maxLength('cantidad', 20)
+            ->maxLength('cantidad', 40)
             ->allowEmpty('cantidad');
 
         $validator
             ->scalar('olor')
-            ->maxLength('olor', 20)
+            ->maxLength('olor', 40)
             ->allowEmpty('olor');
 
         $validator
             ->scalar('aspecto')
-            ->maxLength('aspecto', 20)
+            ->maxLength('aspecto', 40)
             ->allowEmpty('aspecto');
 
         $validator
             ->scalar('espuma')
-            ->maxLength('espuma', 20)
+            ->maxLength('espuma', 40)
             ->allowEmpty('espuma');
 
         $validator
             ->scalar('sedimento')
-            ->maxLength('sedimento', 20)
+            ->maxLength('sedimento', 40)
             ->allowEmpty('sedimento');
 
         $validator
             ->scalar('densidad')
-            ->maxLength('densidad', 20)
+            ->maxLength('densidad', 40)
             ->allowEmpty('densidad');
 
         $validator
             ->scalar('reaccion')
-            ->maxLength('reaccion', 20)
+            ->maxLength('reaccion', 40)
             ->allowEmpty('reaccion');
 
         $validator
             ->scalar('proteinas')
-            ->maxLength('proteinas', 20)
+            ->maxLength('proteinas', 40)
             ->allowEmpty('proteinas');
 
         $validator
             ->scalar('glucosa')
-            ->maxLength('glucosa', 20)
+            ->maxLength('glucosa', 40)
             ->allowEmpty('glucosa');
 
         $validator
             ->scalar('cetona')
-            ->maxLength('cetona', 20)
+            ->maxLength('cetona', 40)
             ->allowEmpty('cetona');
 
         $validator
             ->scalar('bilirrubina')
-            ->maxLength('bilirrubina', 20)
+            ->maxLength('bilirrubina', 40)
             ->allowEmpty('bilirrubina');
 
         $validator
             ->scalar('sangre')
-            ->maxLength('sangre', 20)
+            ->maxLength('sangre', 40)
             ->allowEmpty('sangre');
 
         $validator
             ->scalar('nitritos')
-            ->maxLength('nitritos', 20)
+            ->maxLength('nitritos', 40)
             ->allowEmpty('nitritos');
 
         $validator
             ->scalar('urubilinogeno')
-            ->maxLength('urubilinogeno', 20)
+            ->maxLength('urubilinogeno', 40)
             ->allowEmpty('urubilinogeno');
 
         $validator
             ->scalar('eritrocitos')
-            ->maxLength('eritrocitos', 20)
+            ->maxLength('eritrocitos', 40)
             ->allowEmpty('eritrocitos');
 
         $validator
             ->scalar('piocitos')
-            ->maxLength('piocitos', 20)
+            ->maxLength('piocitos', 40)
             ->allowEmpty('piocitos');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
+            ->maxLength('leucocitos', 40)
             ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('cilindros')
-            ->maxLength('cilindros', 20)
+            ->maxLength('cilindros', 40)
             ->allowEmpty('cilindros');
 
         $validator
             ->scalar('celulas')
-            ->maxLength('celulas', 20)
+            ->maxLength('celulas', 40)
             ->allowEmpty('celulas');
 
         $validator
             ->scalar('cristales')
-            ->maxLength('cristales', 20)
+            ->maxLength('cristales', 40)
             ->allowEmpty('cristales');
 
         $validator
