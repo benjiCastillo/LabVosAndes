@@ -60,122 +60,122 @@ class ReaccionWPruebasTable extends Table
 
         $validator
             ->scalar('paraA1')
-            ->maxLength('paraA1', 20)
+            ->maxLength('paraA1', 40)
             ->allowEmpty('paraA1');
 
         $validator
             ->scalar('paraA2')
-            ->maxLength('paraA2', 20)
+            ->maxLength('paraA2', 40)
             ->allowEmpty('paraA2');
 
         $validator
             ->scalar('paraA3')
-            ->maxLength('paraA3', 20)
+            ->maxLength('paraA3', 40)
             ->allowEmpty('paraA3');
 
         $validator
             ->scalar('paraA4')
-            ->maxLength('paraA4', 20)
+            ->maxLength('paraA4', 40)
             ->allowEmpty('paraA4');
 
         $validator
             ->scalar('paraA5')
-            ->maxLength('paraA5', 20)
+            ->maxLength('paraA5', 40)
             ->allowEmpty('paraA5');
 
         $validator
             ->scalar('paraA6')
-            ->maxLength('paraA6', 20)
+            ->maxLength('paraA6', 40)
             ->allowEmpty('paraA6');
 
         $validator
             ->scalar('paraB1')
-            ->maxLength('paraB1', 20)
+            ->maxLength('paraB1', 40)
             ->allowEmpty('paraB1');
 
         $validator
             ->scalar('paraB2')
-            ->maxLength('paraB2', 20)
+            ->maxLength('paraB2', 40)
             ->allowEmpty('paraB2');
 
         $validator
             ->scalar('paraB3')
-            ->maxLength('paraB3', 20)
+            ->maxLength('paraB3', 40)
             ->allowEmpty('paraB3');
 
         $validator
             ->scalar('paraB4')
-            ->maxLength('paraB4', 20)
+            ->maxLength('paraB4', 40)
             ->allowEmpty('paraB4');
 
         $validator
             ->scalar('paraB5')
-            ->maxLength('paraB5', 20)
+            ->maxLength('paraB5', 40)
             ->allowEmpty('paraB5');
 
         $validator
             ->scalar('paraB6')
-            ->maxLength('paraB6', 20)
+            ->maxLength('paraB6', 40)
             ->allowEmpty('paraB6');
 
         $validator
             ->scalar('somaticoO1')
-            ->maxLength('somaticoO1', 20)
+            ->maxLength('somaticoO1', 40)
             ->allowEmpty('somaticoO1');
 
         $validator
             ->scalar('somaticoO2')
-            ->maxLength('somaticoO2', 20)
+            ->maxLength('somaticoO2', 40)
             ->allowEmpty('somaticoO2');
 
         $validator
             ->scalar('somaticoO3')
-            ->maxLength('somaticoO3', 20)
+            ->maxLength('somaticoO3', 40)
             ->allowEmpty('somaticoO3');
 
         $validator
             ->scalar('somaticoO4')
-            ->maxLength('somaticoO4', 20)
+            ->maxLength('somaticoO4', 40)
             ->allowEmpty('somaticoO4');
 
         $validator
             ->scalar('somaticoO5')
-            ->maxLength('somaticoO5', 20)
+            ->maxLength('somaticoO5', 40)
             ->allowEmpty('somaticoO5');
 
         $validator
             ->scalar('somaticoO6')
-            ->maxLength('somaticoO6', 20)
+            ->maxLength('somaticoO6', 40)
             ->allowEmpty('somaticoO6');
 
         $validator
             ->scalar('flagelarH1')
-            ->maxLength('flagelarH1', 20)
+            ->maxLength('flagelarH1', 40)
             ->allowEmpty('flagelarH1');
 
         $validator
             ->scalar('flagelarH2')
-            ->maxLength('flagelarH2', 20)
+            ->maxLength('flagelarH2', 40)
             ->allowEmpty('flagelarH2');
 
         $validator
             ->scalar('flagelarH3')
-            ->maxLength('flagelarH3', 20)
+            ->maxLength('flagelarH3', 40)
             ->allowEmpty('flagelarH3');
 
         $validator
             ->scalar('flagelarH4')
-            ->maxLength('flagelarH4', 20)
+            ->maxLength('flagelarH4', 40)
             ->allowEmpty('flagelarH4');
 
         $validator
             ->scalar('flagelarH5')
-            ->maxLength('flagelarH5', 20)
+            ->maxLength('flagelarH5', 40)
             ->allowEmpty('flagelarH5');
 
         $validator
             ->scalar('flagelarH6')
-            ->maxLength('flagelarH6', 20)
+            ->maxLength('flagelarH6', 40)
             ->allowEmpty('flagelarH6');
 
         $validator

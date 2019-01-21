@@ -60,42 +60,42 @@ class BiometriaPruebasTable extends Table
 
         $validator
             ->scalar('hematies')
-            ->maxLength('hematies', 20)
+            ->maxLength('hematies', 40)
             ->allowEmpty('hematies');
 
         $validator
             ->scalar('hematocrito')
-            ->maxLength('hematocrito', 20)
+            ->maxLength('hematocrito', 40)
             ->allowEmpty('hematocrito');
 
         $validator
             ->scalar('hemoglobina')
-            ->maxLength('hemoglobina', 20)
+            ->maxLength('hemoglobina', 40)
             ->allowEmpty('hemoglobina');
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
+            ->maxLength('leucocitos', 40)
             ->allowEmpty('leucocitos');
 
         $validator
             ->scalar('vsg')
-            ->maxLength('vsg', 20)
+            ->maxLength('vsg', 40)
             ->allowEmpty('vsg');
 
         $validator
             ->scalar('vcm')
-            ->maxLength('vcm', 20)
+            ->maxLength('vcm', 40)
             ->allowEmpty('vcm');
 
         $validator
             ->scalar('hbcm')
-            ->maxLength('hbcm', 20)
+            ->maxLength('hbcm', 40)
             ->allowEmpty('hbcm');
 
         $validator
             ->scalar('chbcm')
-            ->maxLength('chbcm', 20)
+            ->maxLength('chbcm', 40)
             ->allowEmpty('chbcm');
 
         $validator
@@ -104,42 +104,42 @@ class BiometriaPruebasTable extends Table
 
         $validator
             ->scalar('cayados')
-            ->maxLength('cayados', 20)
+            ->maxLength('cayados', 40)
             ->allowEmpty('cayados');
 
         $validator
             ->scalar('neutrofilos')
-            ->maxLength('neutrofilos', 20)
+            ->maxLength('neutrofilos', 40)
             ->allowEmpty('neutrofilos');
 
         $validator
             ->scalar('basofilo')
-            ->maxLength('basofilo', 20)
+            ->maxLength('basofilo', 40)
             ->allowEmpty('basofilo');
 
         $validator
             ->scalar('eosinofilo')
-            ->maxLength('eosinofilo', 20)
+            ->maxLength('eosinofilo', 40)
             ->allowEmpty('eosinofilo');
 
         $validator
             ->scalar('linfocito')
-            ->maxLength('linfocito', 20)
+            ->maxLength('linfocito', 40)
             ->allowEmpty('linfocito');
 
         $validator
             ->scalar('monocito')
-            ->maxLength('monocito', 20)
+            ->maxLength('monocito', 40)
             ->allowEmpty('monocito');
 
         $validator
             ->scalar('prolinfocito')
-            ->maxLength('prolinfocito', 20)
+            ->maxLength('prolinfocito', 40)
             ->allowEmpty('prolinfocito');
 
         $validator
             ->scalar('cel_inmaduras')
-            ->maxLength('cel_inmaduras', 20)
+            ->maxLength('cel_inmaduras', 40)
             ->allowEmpty('cel_inmaduras');
 
         $validator

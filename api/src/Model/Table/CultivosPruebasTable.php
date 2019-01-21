@@ -60,7 +60,7 @@ class CultivosPruebasTable extends Table
 
         $validator
             ->scalar('leucocitos')
-            ->maxLength('leucocitos', 20)
+            ->maxLength('leucocitos', 40)
             ->allowEmpty('leucocitos');
 
         $validator
@@ -79,27 +79,27 @@ class CultivosPruebasTable extends Table
 
         $validator
             ->scalar('ampicilina_sulbactam')
-            ->maxLength('ampicilina_sulbactam', 20)
+            ->maxLength('ampicilina_sulbactam', 40)
             ->allowEmpty('ampicilina_sulbactam');
 
         $validator
             ->scalar('eritromicina')
-            ->maxLength('eritromicina', 20)
+            ->maxLength('eritromicina', 40)
             ->allowEmpty('eritromicina');
 
         $validator
             ->scalar('clindamicina')
-            ->maxLength('clindamicina', 20)
+            ->maxLength('clindamicina', 40)
             ->allowEmpty('clindamicina');
 
         $validator
             ->scalar('tetraciclina')
-            ->maxLength('tetraciclina', 20)
+            ->maxLength('tetraciclina', 40)
             ->allowEmpty('tetraciclina');
 
         $validator
             ->scalar('vancomicina')
-            ->maxLength('vancomicina', 20)
+            ->maxLength('vancomicina', 40)
             ->allowEmpty('vancomicina');
 
         $validator
@@ -129,32 +129,32 @@ class CultivosPruebasTable extends Table
 
         $validator
             ->scalar('amoxicilina_ac_clavulanico')
-            ->maxLength('amoxicilina_ac_clavulanico', 20)
+            ->maxLength('amoxicilina_ac_clavulanico', 40)
             ->allowEmpty('amoxicilina_ac_clavulanico');
 
         $validator
             ->scalar('gentamicina')
-            ->maxLength('gentamicina', 20)
+            ->maxLength('gentamicina', 40)
             ->allowEmpty('gentamicina');
 
         $validator
             ->scalar('ciprofloxacino')
-            ->maxLength('ciprofloxacino', 20)
+            ->maxLength('ciprofloxacino', 40)
             ->allowEmpty('ciprofloxacino');
 
         $validator
             ->scalar('cefixima')
-            ->maxLength('cefixima', 20)
+            ->maxLength('cefixima', 40)
             ->allowEmpty('cefixima');
 
         $validator
             ->scalar('cotrimoxazol')
-            ->maxLength('cotrimoxazol', 20)
+            ->maxLength('cotrimoxazol', 40)
             ->allowEmpty('cotrimoxazol');
 
         $validator
             ->scalar('nitrofurantoina')
-            ->maxLength('nitrofurantoina', 20)
+            ->maxLength('nitrofurantoina', 40)
             ->allowEmpty('nitrofurantoina');
 
         $validator

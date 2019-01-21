@@ -60,42 +60,42 @@ class LiquidoSinovialPruebasTable extends Table
 
         $validator
             ->scalar('volumen')
-            ->maxLength('volumen', 20)
+            ->maxLength('volumen', 40)
             ->allowEmpty('volumen');
-            
+
         $validator
             ->scalar('proteinas_totales')
-            ->maxLength('proteinas_totales', 20)
+            ->maxLength('proteinas_totales', 40)
             ->allowEmpty('proteinas_totales');
 
         $validator
             ->scalar('glucosa')
-            ->maxLength('glucosa', 20)
+            ->maxLength('glucosa', 40)
             ->allowEmpty('glucosa');
 
         $validator
             ->scalar('celulas')
-            ->maxLength('celulas', 20)
+            ->maxLength('celulas', 40)
             ->allowEmpty('celulas');
 
         $validator
             ->scalar('coagulo_fibrina')
-            ->maxLength('coagulo_fibrina', 20)
+            ->maxLength('coagulo_fibrina', 40)
             ->allowEmpty('coagulo_fibrina');
 
         $validator
             ->scalar('glicemia')
-            ->maxLength('glicemia', 20)
+            ->maxLength('glicemia', 40)
             ->allowEmpty('glicemia');
 
         $validator
             ->scalar('urea')
-            ->maxLength('urea', 20)
+            ->maxLength('urea', 40)
             ->allowEmpty('urea');
 
         $validator
             ->scalar('creatinina')
-            ->maxLength('creatinina', 20)
+            ->maxLength('creatinina', 40)
             ->allowEmpty('creatinina');
 
         $validator

@@ -72,14 +72,12 @@ class InformePruebasTable extends Table
         $validator
             ->scalar('prueba_inmunologica_embarazo')
             ->maxLength('prueba_inmunologica_embarazo', 100)
-            ->requirePresence('prueba_inmunologica_embarazo', 'create')
-            ->notEmpty('prueba_inmunologica_embarazo');
+            ->allowEmpty('prueba_inmunologica_embarazo');
 
         $validator
             ->scalar('other')
             ->maxLength('other', 150)
-            ->requirePresence('other', 'create')
-            ->notEmpty('other');
+            ->allowEmpty('other');
 
         $validator
             ->integer('created_by')
