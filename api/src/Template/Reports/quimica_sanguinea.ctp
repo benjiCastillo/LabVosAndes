@@ -45,8 +45,8 @@ if ($prueba->quimica_sanguinea_pruebas[0]->glucemia == '' && $prueba->quimica_sa
 $col1 = '';
 } else {
     $col1 = '<tr>
-                <td width="35%"></td>
-                <td width="30%"></td>
+                <td width="37%"></td>
+                <td width="28%"></td>
                 <td width="35%"><b>Valores de referencia</b></td>
             </tr>';
     if ($prueba->quimica_sanguinea_pruebas[0]->glucemia != '') {
@@ -54,6 +54,13 @@ $col1 = '';
                     <td>Glucemia:</td>
                     <td>' . $prueba->quimica_sanguinea_pruebas[0]->glucemia . '  mg/dl</td>
                     <td style="color: rgb(58,137,159)">70 - 110 mg/dl</td>
+                </tr>';
+    }
+    if ($prueba->quimica_sanguinea_pruebas[0]->glucemia != '') {
+        $col1 .= '<tr>
+                    <td>Glucemia Post-Prandial: </td>
+                    <td>' . $prueba->quimica_sanguinea_pruebas[0]->glusemia_post_prandial . '  mg/dl</td>
+                    <td style="color: rgb(58,137,159)"></td>
                 </tr>';
     }
     if ($prueba->quimica_sanguinea_pruebas[0]->urea != '') {
