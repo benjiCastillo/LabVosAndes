@@ -56,7 +56,7 @@ $col1 = '';
                     <td style="color: rgb(58,137,159)">70 - 110 mg/dl</td>
                 </tr>';
     }
-    if ($prueba->quimica_sanguinea_pruebas[0]->glucemia != '') {
+    if ($prueba->quimica_sanguinea_pruebas[0]->glusemia_post_prandial != '') {
         $col1 .= '<tr>
                     <td>Glucemia Post-Prandial: </td>
                     <td>' . $prueba->quimica_sanguinea_pruebas[0]->glusemia_post_prandial . '  mg/dl</td>

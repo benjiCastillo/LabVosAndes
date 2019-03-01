@@ -42,7 +42,7 @@ if ($prueba->parasitologia_pruebas[0]->consistencia == '' && $prueba->parasitolo
 $copro = '';
 } else {
     $copro = '<tr>
-                    <td width="40%" colspan="2"><b>Coproparasitológico Simple</b></td>
+                    <td width="40%" colspan="2"><b>' . $prueba->parasitologia_pruebas[0]->subtitulo . '</b></td>
                     <td width="30%"><b>Valores de referencia</b></td>
                 </tr>';
     if ($prueba->parasitologia_pruebas[0]->consistencia != '') {
@@ -97,13 +97,11 @@ if ($prueba->parasitologia_pruebas[0]->leucocitos == '' && $prueba->parasitologi
 if ($prueba->parasitologia_pruebas[0]->sangre_oculta != '') {
     $sangre = '';
     $sangre .= '<tr>
-                    <td width="35%" colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
-                    <td width="20%"></td>
+                    <td width="55%" colspan="3"><b>Sangre Oculta: </b>' . $prueba->parasitologia_pruebas[0]->sangre_oculta . '</td>
+                    <td></td>
                     <td></td>
                 </tr><br>';
 }
-
-
 
 if ($prueba->parasitologia_pruebas[0]->muestra1 == '' && $prueba->parasitologia_pruebas[0]->muestra2 == ''
     && $prueba->parasitologia_pruebas[0]->muestra3 == '') {
