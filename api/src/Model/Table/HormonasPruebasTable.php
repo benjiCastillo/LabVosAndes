@@ -59,11 +59,6 @@ class HormonasPruebasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('subtitulo')
-            ->maxLength('tsh', 100)
-            ->allowEmpty('tsh');
-
-        $validator
             ->scalar('tsh')
             ->maxLength('tsh', 40)
             ->allowEmpty('tsh');
