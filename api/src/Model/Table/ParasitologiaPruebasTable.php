@@ -59,6 +59,11 @@ class ParasitologiaPruebasTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('subtitulo')
+            ->maxLength('subtitulo', 100)
+            ->allowEmpty('subtitulo');
+
+        $validator
             ->scalar('consistencia')
             ->maxLength('consistencia', 40)
             ->allowEmpty('consistencia');
