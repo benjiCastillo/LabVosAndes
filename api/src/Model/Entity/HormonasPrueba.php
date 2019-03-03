@@ -66,6 +66,7 @@ class HormonasPrueba extends Entity
      * @var array
      */
     protected $_accessible = [
+        'subtitulo' => true,
         'tsh' => true,
         't4_libre' => true,
         't4_total' => true,
