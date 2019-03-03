@@ -37,6 +37,7 @@ class ParasitologiaPrueba extends Entity
      * @var array
      */
     protected $_accessible = [
+        'subtitulo' => true,
         'consistencia' => true,
         'color' => true,
         'restos_alimenticios' => true,
