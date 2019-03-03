@@ -5,6 +5,7 @@ app.controller('parasitologiaCtrl', ['$scope', '$routeParams', '$window', 'paras
     //parasitologia
     $scope.parasitologia = new Object();
     $scope.parasitologia = {
+        subtitulo: "",
         consistencia: "",
         color: "",
         restos_alimenticios: "",
