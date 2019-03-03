@@ -1,65 +1,78 @@
 <div class="modal fade" id="modal-insertar-parasitologia">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title">Parasitologia</h4>
-      </div>
-      <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(parasitologia)">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <div class="form-group">
-                <label class="col-sm-4">Consistencia</label>
-                <input type="text" class="col-sm-8" placeholder="Consistencia" ng-model="parasitologia.consistencia">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Color</label>
-                <input type="text" class="col-sm-8" placeholder="Color" ng-model="parasitologia.color">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Restos alimenticios</label>
-                <input type="text" class="col-sm-8" placeholder="Restos alimenticios" ng-model="parasitologia.restos_alimenticios">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Leucocitos</label>
-                <input type="text" class="col-sm-8" placeholder="Leucocitos" ng-model="parasitologia.leucocitos">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Comentario</label>
-                <input type="text" class="col-sm-8" placeholder="Comentario" ng-model="parasitologia.comentario">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Sangre oculta</label>
-                <input type="text" class="col-sm-8" placeholder="Sangre oculta" ng-model="parasitologia.sangre_oculta">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Muestras 1</label>
-                <input type="text" class="col-sm-8" placeholder="Muestras 1" ng-model="parasitologia.muestra1">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Muestras 2</label>
-                <input type="text" class="col-sm-8" placeholder="Muestras 2" ng-model="parasitologia.muestra2">
-              </div>
-              <div class="form-group">
-                <label class="col-sm-4">Muestras 3</label>
-                <input type="text" class="col-sm-8" placeholder="Muestras 3" ng-model="parasitologia.muestra3">
-              </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Parasitologia</h4>
             </div>
-          </div>
+            <form class="form-horizontal" style="padding: 0 10px;" ng-submit="insertar(parasitologia)">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-sm-4">Subtítulo</label>
+                                <input type="text" class="col-sm-8" placeholder="Coproparasitológico simple / seriado"
+                                    ng-model="parasitologia.subtitulo">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Consistencia</label>
+                                <input type="text" class="col-sm-8" placeholder="Consistencia"
+                                    ng-model="parasitologia.consistencia">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Color</label>
+                                <input type="text" class="col-sm-8" placeholder="Color" ng-model="parasitologia.color">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Restos alimenticios</label>
+                                <input type="text" class="col-sm-8" placeholder="Restos alimenticios"
+                                    ng-model="parasitologia.restos_alimenticios">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Leucocitos</label>
+                                <input type="text" class="col-sm-8" placeholder="Leucocitos"
+                                    ng-model="parasitologia.leucocitos">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Comentario</label>
+                                <input type="text" class="col-sm-8" placeholder="Comentario"
+                                    ng-model="parasitologia.comentario">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Sangre oculta</label>
+                                <input type="text" class="col-sm-8" placeholder="Sangre oculta"
+                                    ng-model="parasitologia.sangre_oculta">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Muestras 1</label>
+                                <input type="text" class="col-sm-8" placeholder="Muestras 1"
+                                    ng-model="parasitologia.muestra1">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Muestras 2</label>
+                                <input type="text" class="col-sm-8" placeholder="Muestras 2"
+                                    ng-model="parasitologia.muestra2">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4">Muestras 3</label>
+                                <input type="text" class="col-sm-8" placeholder="Muestras 3"
+                                    ng-model="parasitologia.muestra3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-save"></i> Guardar</button>
+                </div>
+
+            </form>
+
         </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">
-            <i class="fa fa-save"></i> Guardar</button>
-        </div>
-
-      </form>
-
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
