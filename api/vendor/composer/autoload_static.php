@@ -59,7 +59,6 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
             'Symfony\\Component\\Config\\' => 25,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
-            'Seld\\CliPrompt\\' => 15,
         ),
         'P' => 
         array (
@@ -78,6 +77,8 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
         array (
             'JsonSchema\\' => 11,
             'Jasny\\Twig\\' => 11,
+            'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
+            'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'D' => 
         array (
@@ -86,6 +87,7 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
         ),
         'C' => 
         array (
+            'Composer\\XdebugHandler\\' => 23,
             'Composer\\Spdx\\' => 14,
             'Composer\\Semver\\' => 16,
             'Composer\\CaBundle\\' => 18,
@@ -178,10 +180,6 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
         array (
             0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
         ),
-        'Seld\\CliPrompt\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/seld/cli-prompt/src',
-        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -218,6 +216,14 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
         array (
             0 => __DIR__ . '/..' . '/jasny/twig-extensions/src',
         ),
+        'JakubOnderka\\PhpConsoleHighlighter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
+        ),
+        'JakubOnderka\\PhpConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+        ),
         'DebugKit\\Test\\Fixture\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/tests/Fixture',
@@ -225,6 +231,10 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
         'DebugKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/src',
+        ),
+        'Composer\\XdebugHandler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/xdebug-handler/src',
         ),
         'Composer\\Spdx\\' => 
         array (
@@ -309,17 +319,6 @@ class ComposerStaticInit863af657f97bf40a81b8cd5d06b19193
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-        'J' => 
-        array (
-            'JakubOnderka\\PhpConsoleHighlighter' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
-            ),
-            'JakubOnderka\\PhpConsoleColor' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
         'D' => 

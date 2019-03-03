@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-01-2019 a las 05:46:54
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Tiempo de generación: 01-03-2019 a las 16:47:39
+-- Versión del servidor: 10.3.12-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,133 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `vos_andes`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarBiometria` (IN `_hematies` VARCHAR(15), IN `_hematocrito` VARCHAR(15), IN `_hemoglobina` VARCHAR(15), IN `_leucocitos` VARCHAR(15), IN `_vsg` VARCHAR(15), IN `_vcm` VARCHAR(15), IN `_hbcm` VARCHAR(15), IN `_chbcm` VARCHAR(15), IN `_comentario_hema` TEXT, IN `_cayados` VARCHAR(15), IN `_neutrofilos` VARCHAR(15), IN `_basofilo` VARCHAR(15), IN `_eosinofilo` VARCHAR(15), IN `_linfocito` VARCHAR(15), IN `_monocito` VARCHAR(15), IN `_prolinfocito` VARCHAR(15), IN `_cel_inmaduras` VARCHAR(15), IN `_comentario_leuco` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM biometria WHERE id_examen = _id_examen))THEN
-	SELECT true AS error, 'El examen ya fué insertado' AS respuesta;
-ELSE
-	INSERT INTO biometria(hematies, hematocrito, hemoglobina, leucocitos, vsg, vcm, hbcm, chbcm, comentario_hema, cayados, neutrofilos, basofilo, eosinofilo, linfocito, monocito, prolinfocito, cel_inmaduras, comentario_leuco, id_examen) 
-	VALUES(_hematies, _hematocrito, _hemoglobina, _leucocitos, _vsg, _vcm, _hbcm, _chbcm, _comentario_hema, _cayados, _neutrofilos, _basofilo, _eosinofilo, _linfocito, _monocito, _prolinfocito, _cel_inmaduras, _comentario_leuco, _id_examen);
-	SELECT false as error, id FROM biometria WHERE id_examen=_id_examen;
-END IF;		
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarDoctor` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75))  BEGIN
-	INSERT INTO medico(nombre, apellidos) VALUES(_nombre, _apellidos);
-    SELECT false as error, 'Médico insertado correctamente' as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamen` (IN `_id_medico` INT, IN `_id_paciente` INT)  BEGIN
-DECLARE _current_date TIMESTAMP(6);
-	IF (SELECT EXISTS (SELECT * FROM medico WHERE id = _id_medico))THEN 
-		IF ( SELECT EXISTS (SELECT * FROM paciente WHERE id = _id_paciente))THEN 
-			SET _current_date = (SELECT sysdate(6));
-            INSERT INTO examen(fecha, id_medico, id_paciente) VALUES(_current_date, _id_medico, _id_paciente);
-			SELECT id from examen WHERE id_medico = _id_medico AND id_paciente = _id_paciente AND fecha = _current_date;
-		ELSE
-			SELECT true AS error, 'El paciente no existe' AS respuesta;
-		END IF;    
-	ELSE
-		SELECT true AS error, 'El medico no existe' AS respuesta;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarExamenGeneral` (IN `_color` VARCHAR(10), IN `_cantidad` VARCHAR(10), IN `_olor` VARCHAR(10), IN `_aspecto` VARCHAR(10), IN `_espuma` VARCHAR(10), IN `_sedimento` VARCHAR(10), IN `_densidad` VARCHAR(10), IN `_reaccion` VARCHAR(10), IN `_proteinas` VARCHAR(10), IN `_glucosa` VARCHAR(10), IN `_cetona` VARCHAR(10), IN `_bilirrubina` VARCHAR(10), IN `_sangre` VARCHAR(10), IN `_nitritos` VARCHAR(10), IN `_urubilinogeno` VARCHAR(10), IN `_eritrocitos` VARCHAR(10), IN `_piocitos` VARCHAR(10), IN `_leucocitos` VARCHAR(10), IN `_cilindros` VARCHAR(10), IN `_celulas` VARCHAR(10), IN `_cristales` VARCHAR(10), IN `_otros` VARCHAR(200), IN `_exa_bac_sed` VARCHAR(200), IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM examen_general WHERE id_examen = _id_examen)) THEN
-	SELECT true as error, 'El examen ya fué insertado' AS respuesta;
-ELSE
-	INSERT INTO examen_general(color, cantidad, olor, aspecto, espuma, sedimento, densidad, reaccion, proteinas, glucosa, cetona, bilirrubina, sangre, nitritos, urubilinogeno, eritrocitos, piocitos, leucocitos, cilindros, celulas, cristales, otros, exa_bac_sed, id_examen) VALUES(_color, _cantidad, _olor, _aspecto, _espuma, _sedimento, _densidad, _reaccion, _proteinas, _glucosa, _cetona, _bilirrubina, _sangre, _nitritos, _urubilinogeno, _eritrocitos, _piocitos, _leucocitos, _cilindros, _celulas, _cristales, _otros, _exa_bac_sed, _id_examen);
-	SELECT false as error, id FROM examen_general WHERE id_examen = _id_examen;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarMicrobiologia` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM microbiologia WHERE id_examen = _id_examen)) THEN
-	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
-ELSE
-	INSERT INTO microbiologia(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
-    SELECT false as error, id FROM microbiologia WHERE id_examen = _id_examen;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75), IN `_edad` VARCHAR(15), IN `_sexo` CHAR(1))  BEGIN
-	INSERT INTO paciente(nombre, apellidos, edad, sexo) VALUES(_nombre, _apellidos, _edad, _sexo);
-    SELECT false as error, 'Paciente insertado correctamente' as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarParasitologia` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM parasitologia WHERE id_examen = _id_examen)) THEN
-	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
-ELSE
-	INSERT INTO parasitologia(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
-    SELECT false as error, id FROM parasitologia WHERE id_examen = _id_examen;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarQuimica` (IN `_nombre` VARCHAR(100), IN `_contenido` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM quimica_sanguinea WHERE id_examen = _id_examen)) THEN
-	SELECT true AS error, 'El examen ya fué insertado' AS respuesta; 
-ELSE
-	INSERT INTO quimica_sanguinea(nombre, contenido, id_examen)VALUES(_nombre, _contenido, _id_examen);
-    SELECT false as error, id FROM quimica_sanguinea WHERE id_examen = _id_examen;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarReaccionW` (IN `_paraA1` VARCHAR(15), IN `_paraA2` VARCHAR(15), IN `_paraA3` VARCHAR(15), IN `_paraA4` VARCHAR(15), IN `_paraA5` VARCHAR(15), IN `_paraA6` VARCHAR(15), IN `_paraB1` VARCHAR(15), IN `_paraB2` VARCHAR(15), IN `_paraB3` VARCHAR(15), IN `_paraB4` VARCHAR(15), IN `_paraB5` VARCHAR(15), IN `_paraB6` VARCHAR(15), IN `_somaticoO1` VARCHAR(15), IN `_somaticoO2` VARCHAR(15), IN `_somaticoO3` VARCHAR(15), IN `_somaticoO4` VARCHAR(15), IN `_somaticoO5` VARCHAR(15), IN `_somaticoO6` VARCHAR(15), IN `_flagelarH1` VARCHAR(15), IN `_flagelarH2` VARCHAR(15), IN `_flagelarH3` VARCHAR(15), IN `_flagelarH4` VARCHAR(15), IN `_flagelarH5` VARCHAR(15), IN `_flagelarH6` VARCHAR(15), IN `_comentario` TEXT, IN `_id_examen` INT)  BEGIN
-IF (SELECT EXISTS(SELECT * FROM reaccion_w WHERE id_examen = _id_examen))THEN
-	SELECT true AS error, 'El examen ya fué insertado' AS respuesta;
-ELSE
-	INSERT INTO reaccion_w(paraA1, paraA2, paraA3, paraA4, paraA5, paraA6, paraB1, paraB2, paraB3, paraB4, paraB5, paraB6, somaticoO1, somaticoO2, somaticoO3, somaticoO4, somaticoO5, somaticoO6, flagelarH1, flagelarH2, flagelarH3, flagelarH4, flagelarH5, flagelarH6,comentario,id_examen) 
-	VALUES (_paraA1, _paraA2, _paraA3, _paraA4, _paraA5, _paraA6, _paraB1, _paraB2, _paraB3, _paraB4, _paraB5, _paraB6, _somaticoO1, _somaticoO2, _somaticoO3, _somaticoO4, _somaticoO5, _somaticoO6, _flagelarH1, _flagelarH2, _flagelarH3, _flagelarH4, _flagelarH5, _flagelarH6,_comentario,_id_examen);
-	SELECT false as error, id FROM reaccion_w WHERE id_examen = _id_examen;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user))THEN
-		SELECT true as error, 'El nombre de usuario ya existe' AS respuesta;
-    ELSE
-        INSERT INTO usuario(nombre, user, password, fecha) VALUES(_nombre, _user, _password, NOW());
-        SELECT 'Usuario creado' AS respuesta;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertDcotor` (IN `_nombre` VARCHAR(55), IN `_apellidos` VARCHAR(75))  BEGIN
-	INSERT INTO medico(nombre, apellidos) VALUES(_nombre, _apellidos);
-    SELECT false as error, 'Médico insertado correctamente' as respuesta;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser` (IN `_nombre` VARCHAR(50), IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user))THEN
-		SELECT true as error, 'El nombre de usuario ya existe' AS respuesta;
-    ELSE
-        INSERT INTO usuario(nombre, user, password, fecha) VALUES(_nombre, _user, _password, NOW());
-        SELECT 'Usuario creado' AS respuesta;
-    END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarExamenes` (IN `_id_paciente` INT)  BEGIN
-IF (SELECT EXISTS (SELECT * FROM examen WHERE id_paciente = _id_paciente))THEN
-	SELECT e.id, p.nombre AS NombrePac, p.apellidos AS ApellidosPac, m.nombre AS NombreMed, m.apellidos AS ApellidosMed, e.fecha FROM examen e
-    INNER JOIN medico m ON m.id=e.id_medico INNER JOIN paciente p ON p.id=e.id_paciente WHERE id_paciente = _id_paciente ORDER BY e.fecha DESC;
-ELSE
-	SELECT true AS error, 'El paciente no tiene exámenes' AS respuesta;
-END IF;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `_user` VARCHAR(50), IN `_password` VARCHAR(50))  BEGIN
-	IF(SELECT EXISTS(SELECT * FROM usuario WHERE user = _user AND password = _password))THEN
-        SELECT * FROM usuario WHERE user = _user AND password = _password;
-    ELSE
-		SELECT true as error, 'Credenciales incorrectas' AS respuesta;
-    END IF;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -165,7 +38,7 @@ CREATE TABLE `biometria_pruebas` (
   `vcm` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `hbcm` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `chbcm` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `comentario_hema` text COLLATE utf8_spanish2_ci,
+  `comentario_hema` text COLLATE utf8_spanish2_ci DEFAULT NULL,
   `cayados` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `neutrofilos` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `basofilo` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -174,7 +47,7 @@ CREATE TABLE `biometria_pruebas` (
   `monocito` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `prolinfocito` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `cel_inmaduras` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `comentario_leuco` text COLLATE utf8_spanish2_ci,
+  `comentario_leuco` text COLLATE utf8_spanish2_ci DEFAULT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -198,7 +71,7 @@ INSERT INTO `biometria_pruebas` (`id`, `hematies`, `hematocrito`, `hemoglobina`,
 CREATE TABLE `cultivos_pruebas` (
   `id` int(11) NOT NULL,
   `leucocitos` varchar(40) DEFAULT NULL,
-  `bacterias` text,
+  `bacterias` text DEFAULT NULL,
   `esputo_as` varchar(40) DEFAULT NULL,
   `esputo_microorganismo_identificado` varchar(40) DEFAULT NULL,
   `ampicilina_sulbactam` varchar(40) DEFAULT NULL,
@@ -253,7 +126,7 @@ CREATE TABLE `espermograma_pruebas` (
   `cabeza` varchar(40) DEFAULT NULL,
   `pieza_intermedia` varchar(40) DEFAULT NULL,
   `cola` varchar(40) DEFAULT NULL,
-  `otras_celulas` text,
+  `otras_celulas` text DEFAULT NULL,
   `aglutinacion` varchar(40) DEFAULT NULL,
   `progresion_lineal_rapida` varchar(40) DEFAULT NULL,
   `progresion_lineal_lenta` varchar(40) DEFAULT NULL,
@@ -308,8 +181,8 @@ CREATE TABLE `examen_general_pruebas` (
   `cilindros` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `celulas` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `cristales` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `otros` text COLLATE utf8_spanish2_ci,
-  `exa_bac_sed` text COLLATE utf8_spanish2_ci,
+  `otros` text COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `exa_bac_sed` text COLLATE utf8_spanish2_ci DEFAULT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -338,7 +211,7 @@ CREATE TABLE `hormonas_pruebas` (
   `t3` varchar(40) DEFAULT NULL,
   `cisticercosis_resultado` varchar(40) DEFAULT NULL,
   `cisticercosis_cut_off` varchar(20) DEFAULT NULL,
-  `comentario_cisticercosis` text,
+  `comentario_cisticercosis` text DEFAULT NULL,
   `antigeno_carcino` varchar(40) DEFAULT NULL,
   `psa_total` varchar(40) DEFAULT NULL,
   `psa_libre` varchar(40) DEFAULT NULL,
@@ -357,7 +230,7 @@ CREATE TABLE `hormonas_pruebas` (
   `celulas_le_control_negativo` varchar(40) DEFAULT NULL,
   `anticuerpos_resultado` varchar(40) DEFAULT NULL,
   `anticuerpos_cut_off` varchar(40) DEFAULT NULL,
-  `comentario_anticuerpos` text,
+  `comentario_anticuerpos` text DEFAULT NULL,
   `toxoplasmosis_lgm` varchar(40) DEFAULT NULL,
   `toxoplasmosis_lgg` varchar(40) DEFAULT NULL,
   `b_hcg_cuantitativo` varchar(40) DEFAULT NULL,
@@ -367,8 +240,8 @@ CREATE TABLE `hormonas_pruebas` (
   `celulas_hep` varchar(40) DEFAULT NULL,
   `control_positivo` varchar(40) DEFAULT NULL,
   `control_negativo` varchar(40) DEFAULT NULL,
-  `conclusion` text,
-  `comentario_general` text,
+  `conclusion` text DEFAULT NULL,
+  `comentario_general` text DEFAULT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -381,7 +254,7 @@ CREATE TABLE `hormonas_pruebas` (
 --
 
 INSERT INTO `hormonas_pruebas` (`id`, `tsh`, `t4_libre`, `t4_total`, `t3`, `cisticercosis_resultado`, `cisticercosis_cut_off`, `comentario_cisticercosis`, `antigeno_carcino`, `psa_total`, `psa_libre`, `relacion_psa_libre_total`, `estradiol`, `progesterona`, `fsh`, `lh`, `prolactina`, `testosterona`, `ana`, `ana_control_positivo`, `ana_control_negativo`, `celulas_le`, `celulas_le_control_positivo`, `celulas_le_control_negativo`, `anticuerpos_resultado`, `anticuerpos_cut_off`, `comentario_anticuerpos`, `toxoplasmosis_lgm`, `toxoplasmosis_lgg`, `b_hcg_cuantitativo`, `anti_nucleares`, `anticuerpos_control_positivo`, `anticuerpos_control_negativo`, `celulas_hep`, `control_positivo`, `control_negativo`, `conclusion`, `comentario_general`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'awfaw', 'wa4gaw4', 'wagawg', 'aw4gaw4ga', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
+(1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'awda', 'awdawf', 'w4a6a4w6', '', '', '', '', '', '', '', '', '', '', '', 86, '2018-05-05 00:00:00', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -533,11 +406,12 @@ INSERT INTO `pacientes` (`id`, `nombre`, `apellidos`, `edad`, `sexo`, `celular`,
 
 CREATE TABLE `parasitologia_pruebas` (
   `id` int(11) NOT NULL,
+  `subtitulo` varchar(100) NOT NULL,
   `consistencia` varchar(40) DEFAULT NULL,
   `color` varchar(40) DEFAULT NULL,
   `restos_alimenticios` varchar(40) DEFAULT NULL,
   `leucocitos` varchar(40) DEFAULT NULL,
-  `comentario` text,
+  `comentario` text DEFAULT NULL,
   `sangre_oculta` varchar(40) DEFAULT NULL,
   `muestra1` varchar(100) DEFAULT NULL,
   `muestra2` varchar(100) NOT NULL,
@@ -553,8 +427,8 @@ CREATE TABLE `parasitologia_pruebas` (
 -- Volcado de datos para la tabla `parasitologia_pruebas`
 --
 
-INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestra1`, `muestra2`, `muestra3`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(2, 'rawfawwaefaw4twagwaegwaawegawegwaeg', 'awf33w4ta4wtgwaegwaegwaegaegawegaweg', '25252aw4taw4wagawgawegaweg', '2342ttaw4taw4tawwaegwaegaegaegaw', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé4wtwa4t', 'áa´aaá´eeéwagwa4gwag322gaw4ta4', '21d1dawdawdawdta4ta4ta', '12d12123geagergawegw4gw4tw4t', 86, '0000-00-00 00:00:00', '2019-01-21 01:42:13', 0, 20);
+INSERT INTO `parasitologia_pruebas` (`id`, `subtitulo`, `consistencia`, `color`, `restos_alimenticios`, `leucocitos`, `comentario`, `sangre_oculta`, `muestra1`, `muestra2`, `muestra3`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(2, 'Coproparasitologico simple', 'rawfawwaefaw4twagwaegwaawegawegwaeg', 'awf33w4ta4wtgwaegwaegwaegaegawegaweg', '25252aw4taw4wagawgawegaweg', '', 'áa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeéáa´aaá´eeé', 'áa´aaá´eeé4wtwa4t', 'áa´aaá´eeéwagwa4gwag322gaw4ta4', '21d1dawdawdawdta4ta4ta', '', 86, '0000-00-00 00:00:00', '2019-01-21 01:42:13', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -564,8 +438,8 @@ INSERT INTO `parasitologia_pruebas` (`id`, `consistencia`, `color`, `restos_alim
 
 CREATE TABLE `pruebas` (
   `id` int(11) NOT NULL,
-  `fecha` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `comentario` text COLLATE utf8_spanish2_ci,
+  `fecha` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
+  `comentario` text COLLATE utf8_spanish2_ci DEFAULT NULL,
   `medico_id` int(11) NOT NULL,
   `paciente_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -611,7 +485,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
   `cpk` varchar(40) DEFAULT NULL,
   `cpk_mb` varchar(40) DEFAULT NULL,
   `gamaglutamil_transpeptidasa` varchar(40) DEFAULT NULL,
-  `prueba_inmunologica_embarazo` text,
+  `prueba_inmunologica_embarazo` text DEFAULT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -624,7 +498,7 @@ CREATE TABLE `quimica_sanguinea_pruebas` (
 --
 
 INSERT INTO `quimica_sanguinea_pruebas` (`id`, `glucemia`, `glusemia_post_prandial`, `urea`, `creatinina`, `acido_urico`, `colesterol_total`, `hdl_colesterol`, `ldl_colesterol`, `trigliceridos`, `f_alcalina`, `transaminasa_got`, `transaminasa_gpt`, `bilirrubina_total`, `bilirrubina_directa`, `bilirrubina_indirecta`, `amilasa`, `proteinas_totales`, `albumina`, `calcio`, `cpk`, `cpk_mb`, `gamaglutamil_transpeptidasa`, `prueba_inmunologica_embarazo`, `prueba_id`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(1, 'adawda', '', 'a3ta', '3ra3r', '3ra3r', '3ra3ta3t', '3twataw', '3tawta', 't3ataw', '3twatwa', 'hhhhhh', 'aaaaa', 'aaaaa', '33333', '44444', '3333', '1241241', '112412', 'vvv', 'vvvv', 'cccc', 'ccvvvcc', '', 86, '0000-00-00 00:00:00', NULL, 0, 0);
+(1, 'adawda', '', 'a3ta', '3ra3r', '3ra3r', '3ra3ta3t', '3twataw', '3tawta', 't3ataw', '3twatwa', 'hhhhhh', 'aaaaa', 'aaaaa', '33333', '44444', '3333', '1241241', '112412', 'vvv', 'vvvv', 'cccc', 'ccvvvcc', '', 86, '0000-00-00 00:00:00', '2019-01-21 02:13:53', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -658,7 +532,7 @@ CREATE TABLE `reaccion_w_pruebas` (
   `flagelarH4` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `flagelarH5` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `flagelarH6` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `comentario` text COLLATE utf8_spanish2_ci,
+  `comentario` text COLLATE utf8_spanish2_ci DEFAULT NULL,
   `prueba_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -694,7 +568,7 @@ CREATE TABLE `serologia_pruebas` (
   `toxoplasmosis` varchar(40) DEFAULT NULL,
   `chagas_resultado` varchar(40) DEFAULT NULL,
   `chagas_elisa_cut_off` varchar(40) DEFAULT NULL,
-  `chagas_comentario` text,
+  `chagas_comentario` text DEFAULT NULL,
   `tiempo_sangria` varchar(40) DEFAULT NULL,
   `tiempo_coagulacion` varchar(40) DEFAULT NULL,
   `tiempo_protrombina` varchar(40) DEFAULT NULL,
@@ -740,7 +614,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `user`, `password`, `token`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-(20, 'morty', 'admin', '$2y$10$UnvW.QsauJcNS37ABuNemO3i/yxTwfAX6wd8LBD31jezunln0iBz2', '$2y$10$2/cStIMSmqWSBpmAOfL8gehM6XVz/ed1QB10mRUu2fLu1JDldcNqO', '2018-05-06 23:40:40', '2019-01-21 01:07:10', 0, NULL);
+(20, 'morty', 'admin', '$2y$10$UnvW.QsauJcNS37ABuNemO3i/yxTwfAX6wd8LBD31jezunln0iBz2', '$2y$10$d/RkbgjnUB0CzthMweVTqub6.Xe//8OJFTZfTf2QWot3rzXBYqcU6', '2018-05-06 23:40:40', '2019-01-21 02:15:51', 0, NULL);
 
 --
 -- Índices para tablas volcadas
