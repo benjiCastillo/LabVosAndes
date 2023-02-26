@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -21,35 +22,44 @@ class PacientesController extends AppController
     public function list()
     {
         $this->autoRender = false;
-        if ($this->request->is('post')) {
-            $data = $this->request->getData();
+        $fullname = $this->request->getQuery('fullname', null);
+        $limit = $this->request->getQuery('rows', 20);
+        $page = $this->request->getQuery('page', 1);
+        $sord = $this->request->getQuery('sord', 'DESC');
+        $sidx = $this->request->getQuery('sidx', 'created');
 
-            $this->loadModel('Usuarios');
-            $count = $this->Usuarios->find('all', [
-                'conditions' => [
-                    'user' => $data['user'],
-                    'token' => $data['token']
-                ]
-            ])->count();
-
-            if ($count) {
-                $pacientes = $this->Pacientes->find('all');
-                $json = [
-                    'error' => 0,
-                    'message' => '',
-                    'data' => $pacientes
-                ];
-            } else {
-                $json = [
-                    'error' => 1,
-                    'message' => 'Token incorrecto: El usuario ya accedió desde otra máquina.',
-                ];
-            }
-
-            $body = $this->response->getBody();
-            $body->write(json_encode($json));
-            return $this->response->withBody($body);
+        $conditions = [];
+        if ($fullname) {
+            $conditions[] = "concat(nombre, ' ', apellidos) LIKE " . ' \'%' .  trim($fullname) . '%\'';
         }
+
+        $query = $this->Pacientes->find('all')
+            ->where($conditions);
+
+        try {
+            $rows = $this->paginate($query, [
+                'limit' => $limit,
+                'page' => $page,
+                'order' => ['Pacientes.' . $sidx => $sord]
+            ]);
+        } catch (\Exception $e) {
+            $rows = [];
+        }
+
+        $total = $query->count();
+        $res = [
+            'total' => $query->count(),
+            'pages' => (int) ($total / $limit),
+            'current_page' => $page,
+            'limit' => $limit,
+            'data' => $rows
+        ];
+
+        $body = $this->response->getBody();
+        $body->write(json_encode($res));
+        return $this->response
+            ->withType("application/json")
+            ->withBody($body);
     }
 
     /**
@@ -201,7 +211,7 @@ class PacientesController extends AppController
             ]
         ])->first();
 
-        if(!empty($user)) {
+        if (!empty($user)) {
             $registry = $this->Pacientes->get($id);
             if ($this->Pacientes->delete($registry)) {
                 $json = [
@@ -214,7 +224,6 @@ class PacientesController extends AppController
                     'message' => 'El registro no pudo eliminarse correctamente'
                 ];
             }
-
         } else {
             $json = [
                 'error' => 1,
