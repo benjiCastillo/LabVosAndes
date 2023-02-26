@@ -174,7 +174,8 @@
             "cache",
             "extension",
             "twig"
-        ]
+        ],
+        "abandoned": "twig/cache-extension"
     },
     {
         "name": "aura/intl",
@@ -1018,7 +1019,8 @@
                 "name": "Jakub Onderka",
                 "email": "jakub.onderka@gmail.com"
             }
-        ]
+        ],
+        "abandoned": "php-parallel-lint/php-console-color"
     },
     {
         "name": "jakub-onderka/php-console-highlighter",
@@ -1066,7 +1068,8 @@
                 "homepage": "http://www.acci.cz/"
             }
         ],
-        "description": "Highlight PHP code in terminal"
+        "description": "Highlight PHP code in terminal",
+        "abandoned": "php-parallel-lint/php-console-highlighter"
     },
     {
         "name": "jasny/twig-extensions",
@@ -2060,7 +2063,8 @@
             }
         ],
         "description": "Symfony Debug Component",
-        "homepage": "https://symfony.com"
+        "homepage": "https://symfony.com",
+        "abandoned": "symfony/error-handler"
     },
     {
         "name": "symfony/filesystem",
@@ -2599,6 +2603,76 @@
         "abandoned": "tecnickcom/tcpdf"
     },
     {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.6.2",
+        "version_normalized": "6.6.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "e3cffc9bcbc76e89e167e9eb0bbda0cab7518459"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/e3cffc9bcbc76e89e167e9eb0bbda0cab7518459",
+            "reference": "e3cffc9bcbc76e89e167e9eb0bbda0cab7518459",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2022-12-17T10:28:59+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0-only"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "role": "lead"
+            }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
+        ],
+        "funding": [
+            {
+                "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&currency_code=GBP&business=paypal@tecnick.com&item_name=donation%20for%20tcpdf%20project",
+                "type": "custom"
+            }
+        ]
+    },
+    {
         "name": "twig/twig",
         "version": "v1.37.1",
         "version_normalized": "1.37.1.0",
@@ -2715,12 +2789,12 @@
         "version_normalized": "4.3.8.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/WyriHaximus/TwigView.git",
+            "url": "https://github.com/cakephp/legacy-twig-view.git",
             "reference": "a5ec66690aa045d6eda17ab1c8a5baf0efdcfa45"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/WyriHaximus/TwigView/zipball/a5ec66690aa045d6eda17ab1c8a5baf0efdcfa45",
+            "url": "https://api.github.com/repos/cakephp/legacy-twig-view/zipball/a5ec66690aa045d6eda17ab1c8a5baf0efdcfa45",
             "reference": "a5ec66690aa045d6eda17ab1c8a5baf0efdcfa45",
             "shasum": ""
         },
@@ -2833,6 +2907,7 @@
             "http",
             "psr",
             "psr-7"
-        ]
+        ],
+        "abandoned": "laminas/laminas-diactoros"
     }
 ]

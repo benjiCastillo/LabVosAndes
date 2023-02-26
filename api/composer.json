@@ -11,7 +11,8 @@
         "cakephp/plugin-installer": "^1.0",
         "josegonzalez/dotenv": "3.*",
         "mobiledetect/mobiledetectlib": "2.*",
-        "tecnick.com/tcpdf": "^6.2"
+        "tecnick.com/tcpdf": "^6.2",
+        "tecnickcom/tcpdf": "^6.6"
     },
     "require-dev": {
         "cakephp/bake": "^1.1",
@@ -49,6 +50,9 @@
     },
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "cakephp/plugin-installer": true
+        }
     }
 }
