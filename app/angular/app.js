@@ -75,11 +75,11 @@ app.controller('mainCtrl', ['$scope', 'Configuracion', 'Mensajes', 'Notificacion
 
 	});
 
-	$scope.getYear = function(){
+	$scope.getYear = function () {
 		var date = new Date();
 		return date.getFullYear();
 	}
-	
+
 
 
 	$scope.activar = function (menu, submenu, titulo, subtitulo) {
@@ -215,10 +215,6 @@ app.filter('quitarletra', function () {
 		}
 	}
 })
-
-
-
-
 	.filter('mensajecorto', function () {
 
 		return function (mensaje) {
@@ -229,4 +225,41 @@ app.filter('quitarletra', function () {
 					return mensaje;
 			}
 		}
+	}).filter('range', function () {
+		return function (input, total) {
+			total = parseInt(total);
+
+			for (var i = 1; i <= total; i++) {
+				input.push(i);
+			}
+
+			return input;
+		};
 	})
+	.filter('pagination', function () {
+		return function (input, args) {
+			var total = 0;
+			var init = args.current_page;
+			if (args.pages > args.show_pages && parseInt(args.current_page) !== args.pages) {
+				total = parseInt(args.current_page) + 5;
+				if (total > args.pages) {
+					total = args.pages;
+				}
+			} else if (parseInt(args.current_page) == args.pages) {
+				total = parseInt(args.pages);
+			} else {
+				total = parseInt(args.pages);
+			}
+			if (init > 10) {
+				init = init - 5;
+			}
+			if (init < 1 || total < 10) {
+				init = 1;
+			}
+
+			for (var i = init; i <= total; i++) {
+				input.push(i);
+			}
+			return input;
+		};
+	});

@@ -15,15 +15,25 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
     $scope.noExistenPacientes = false;
     $scope.cargandoPacientes = true;
     $scope.pacientesCargado = false;
+    $scope.buscador = '';
+    $scope.response = {
+        data: [],
+        total: 0,
+        pages: 0,
+        current_page: 1,
+        limit: 0
+    };
 
-    $scope.listar = function (user) {
-
+    $scope.listar = function (query) {
+        var defaults = { fullname: "", page: 1 };
+        var params = Object.assign(defaults, query);
+        console.log("params", params);
         $scope.paciente.visible = true;
-        pacientesServices.listar(user).then(function () {
+        pacientesServices.listar(params).then(function () {
             $scope.response = pacientesServices.response;
             $scope.cargandoPacientes = false;
-
-            if ($scope.response.error == 1) {
+            console.log("$scope.response", $scope.response)
+            if ($scope.response.data.length == 0) {
                 $scope.noExistenPacientes = true;
                 $scope.pacientesCargado = false;
             } else {
@@ -31,18 +41,16 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
                 $scope.noExistenPacientes = false;
                 $scope.pacientes = $scope.response.data;
             }
-
         });
     }
 
-    $scope.listar(user);
+    $scope.listar();
 
     $scope.insertarModal = function () {
         $scope.pacienteInsertar = {};
         $("#modal-paciente").modal();
     }
     $scope.insertar = function (paciente) {
-
         paciente.user = $scope.user.user;
         paciente.token = $scope.user.data.token;
         pacientesServices.insertar(paciente).then(function () {
@@ -86,6 +94,26 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
     $scope.crearExamen = function (paciente) {
         $sessionStorage.paciente = paciente;
         $window.location.href = '#/paciente/pruebas/';
+    }
+
+    $scope.search = function () {
+        $scope.listar({ "fullname": $scope.buscador, 'page': 1 });
+    }
+
+    $scope.toPage = function (page, action) {
+        if (action == 'add') {
+            page = parseInt(page) + 1;
+        }
+        else if (action == 'subs') {
+            page = parseInt(page) - 1;
+        }
+        if (page == 0)
+            page = 1;
+        console.log(page, $scope.response.pages)
+        if (page > $scope.response.pages)
+            page = $scope.response.pages;
+
+        $scope.listar({ "fullname": $scope.buscador, page: page });
     }
 
 }])
