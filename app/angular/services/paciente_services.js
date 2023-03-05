@@ -1,10 +1,8 @@
 var app = angular.module('vosandesApp.pacientesServices', [])
-
+console.log(PATH)
 app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
 
-
 	var self = {
-
 		insertar: function (datos) {
 			var d = $q.defer();
 			$http({
@@ -23,15 +21,12 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 			return d.promise;
 
 		},
-		listar: function (data) {
+		listar: function (query) {
 			var d = $q.defer();
+			var query = encodeQueryData(query);
 			$http({
-				method: 'POST',
-				url: PATH + 'pacientes/list',
-				data: {
-					user: data.user,
-					token: data.data.token
-				}
+				method: 'GET',
+				url: PATH + 'pacientes/list?' + query,
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;
@@ -76,10 +71,6 @@ app.factory('pacientesServices', ['$http', '$q', '$rootScope', function ($http, 
 				});
 			return d.promise;
 		}
-
-
 	}
-
-
 	return self;
 }])
