@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -12,6 +13,55 @@ use App\Controller\AppController;
  */
 class MedicosController extends AppController
 {
+
+    /**
+     * all method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function all()
+    {
+        $this->autoRender = false;
+        $nombre = $this->request->getQuery('nombre', null);
+        $limit = $this->request->getQuery('rows', 20);
+        $page = $this->request->getQuery('page', 1);
+        $sord = $this->request->getQuery('sord', 'DESC');
+        $sidx = $this->request->getQuery('sidx', 'created');
+
+        $conditions = [];
+        if ($nombre) {
+            $conditions[] = "nombre LIKE " . ' \'%' .  trim($nombre) . '%\'';
+        }
+
+        $query = $this->Medicos->find('all')
+            ->where($conditions);
+
+        try {
+            $rows = $this->paginate($query, [
+                'limit' => $limit,
+                'page' => $page,
+                'order' => ['Medicos.' . $sidx => $sord]
+            ]);
+        } catch (\Exception $e) {
+            $rows = [];
+        }
+
+        $total = $query->count();
+        $res = [
+            'total' => $query->count(),
+            'pages' => (int) ($total / $limit) <= 1 ? 1 : (int) ($total / $limit),
+            'current_page' => $page,
+            'limit' => $limit,
+            'data' => $rows,
+            'show_pages' => 10
+        ];
+
+        $body = $this->response->getBody();
+        $body->write(json_encode($res));
+        return $this->response
+            ->withType("application/json")
+            ->withBody($body);
+    }
 
     /**
      * List method
@@ -201,7 +251,7 @@ class MedicosController extends AppController
             ]
         ])->first();
 
-        if(!empty($user)) {
+        if (!empty($user)) {
             $registry = $this->Medicos->get($id);
             if ($this->Medicos->delete($registry)) {
                 $json = [
@@ -214,7 +264,6 @@ class MedicosController extends AppController
                     'message' => 'El registro no pudo eliminarse correctamente'
                 ];
             }
-
         } else {
             $json = [
                 'error' => 1,
