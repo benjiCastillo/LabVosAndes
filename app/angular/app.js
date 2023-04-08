@@ -240,7 +240,7 @@ app.filter('quitarletra', function () {
 		return function (input, args) {
 			var total = 0;
 			var init = args.current_page;
-			if (args.pages > args.show_pages && parseInt(args.current_page) !== args.pages) {
+			if (args.pages > args.show_pag && parseInt(args.current_page) !== args.pages) {
 				total = parseInt(args.current_page) + 5;
 				if (total > args.pages) {
 					total = args.pages;
@@ -256,7 +256,6 @@ app.filter('quitarletra', function () {
 			if (init < 1 || total < 10) {
 				init = 1;
 			}
-
 			for (var i = init; i <= total; i++) {
 				input.push(i);
 			}

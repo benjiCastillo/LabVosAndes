@@ -24,7 +24,7 @@
           class="form-control"
           placeholder="Buscar"
           ng-model="buscadorMedico"
-		  ng-change="search()"
+          ng-change="search()"
         />
         <p class="animate fadeIn text-center" ng-show="noExistenMedicos">
           No existen médicos
@@ -38,6 +38,7 @@
         >
           <thead>
             <tr>
+              <th>#</th>
               <th>Nombre</th>
               <th>Editar</th>
               <th>Eliminar</th>
@@ -45,6 +46,10 @@
           </thead>
           <tbody>
             <tr ng-repeat="medico in medicos">
+              <td>
+                {{ ((response.current_page - 1) * response.limit) + ($index + 1)
+                }}
+              </td>
               <td>{{ medico.nombre }}</td>
               <td>
                 <a class="btn btn-info" ng-click="mostrarEditar( medico )">
@@ -59,7 +64,7 @@
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation">
+        <nav aria-label="Page navigation" class="text-center">
           <ul class="pagination pagination-sm">
             <li>
               <a
@@ -84,6 +89,10 @@
               </a>
             </li>
           </ul>
+          <p>
+            Mostrando {{ response.current_page * response.limit }} registros de
+            {{ response.total }} registros en total.
+          </p>
         </nav>
       </div>
     </div>

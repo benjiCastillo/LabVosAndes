@@ -38,6 +38,7 @@
         >
           <thead>
             <tr>
+              <th>#</th>
               <th>Nombre</th>
               <th>Apellidos</th>
               <th>Edad</th>
@@ -49,9 +50,14 @@
             </tr>
           </thead>
           <tbody>
-            <!--					
-						{{ pacientes | json }}-->
-            <tr ng-repeat="paciente in pacientes">
+            <tr
+              ng-repeat="paciente in pacientes"
+              ng-show="pacientes.length > 0"
+            >
+              <td>
+                {{ ((response.current_page - 1) * response.limit) + ($index + 1)
+                }}
+              </td>
               <td>{{ paciente.nombre }}</td>
               <td>{{ paciente.apellidos }}</td>
               <td>{{ paciente.edad }}</td>
@@ -79,7 +85,7 @@
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation">
+        <nav aria-label="Page navigation" class="text-center">
           <ul class="pagination pagination-sm">
             <li>
               <a
@@ -104,6 +110,10 @@
               </a>
             </li>
           </ul>
+          <p>
+            Mostrando {{ response.current_page * response.limit }} registros de
+            {{ response.total }} registros en total.
+          </p>
         </nav>
       </div>
       <div class="box-footer clearfix"></div>

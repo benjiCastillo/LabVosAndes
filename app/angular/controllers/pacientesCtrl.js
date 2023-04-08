@@ -32,7 +32,7 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
         pacientesServices.listar(params).then(function () {
             $scope.response = pacientesServices.response;
             $scope.cargandoPacientes = false;
-            console.log("$scope.response", $scope.response)
+
             if ($scope.response.data.length == 0) {
                 $scope.noExistenPacientes = true;
                 $scope.pacientesCargado = false;
@@ -40,7 +40,10 @@ app.controller('pacientesCtrl', ['$scope', '$routeParams', '$window', 'pacientes
                 $scope.pacientesCargado = true;
                 $scope.noExistenPacientes = false;
                 $scope.pacientes = $scope.response.data;
+                $scope.response.current_page = parseInt($scope.response.current_page);
             }
+
+            console.log("$scope.response", $scope.response)
         });
     }
 

@@ -39,6 +39,7 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
                 $scope.medicosCargado = true;
                 $scope.noExistenMedicos = false;
                 $scope.medicos = $scope.response.data;
+                $scope.response.current_page = parseInt($scope.response.current_page);
             }
         });
     }
