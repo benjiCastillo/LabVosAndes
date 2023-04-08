@@ -49,11 +49,11 @@ class PacientesController extends AppController
         $total = $query->count();
         $res = [
             'total' => $query->count(),
-            'pages' => (int) ($total / $limit) <= 1 ? 1 : (int) ($total / $limit),
+            'pages' => (int) ($total / $limit) <= 1 ? 1 : round(($total / $limit)),
             'current_page' => $page,
             'limit' => $limit,
             'data' => $rows,
-            'show_pages' => 10
+            'show_pag' => 10
         ];
 
         $body = $this->response->getBody();

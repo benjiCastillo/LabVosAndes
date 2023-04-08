@@ -20,6 +20,22 @@ app.factory('medicosServices', ['$http', '$q', '$rootScope', function ($http, $q
 			return d.promise;
 
 		},
+		all: function (query) {
+			var d = $q.defer();
+			var query = encodeQueryData(query);
+			$http({
+				method: 'GET',
+				url: PATH + 'medicos/all?' + query,
+			})
+				.then(function successCallback(response) {
+					self.response = response.data;
+					return d.resolve()
+				}, function errorCallback(response) {
+					return d.resolve()
+					self.response = response.data
+				});
+			return d.promise;
+		},
 		listar: function (data) {
 			var d = $q.defer();
 
@@ -62,7 +78,7 @@ app.factory('medicosServices', ['$http', '$q', '$rootScope', function ($http, $q
 			$http({
 				method: 'POST',
 				url: PATH + 'medicos/delete/' + user.id,
-				data:user
+				data: user
 			})
 				.then(function successCallback(response) {
 					self.response = response.data;

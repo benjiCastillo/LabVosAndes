@@ -13,28 +13,38 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
     $scope.noExistenMedicos = false;
     $scope.cargandoMedicos = true;
     $scope.medicosCargado = false;
+    $scope.buscadorMedico = '';
+    $scope.response = {
+        data: [],
+        total: 0,
+        pages: 0,
+        current_page: 1,
+        limit: 0
+    };
 
+    $scope.listar = function (query) {
+        var defaults = { nombre: "", page: 1 };
+        var params = Object.assign(defaults, query);
+        console.log("params", params);
 
-    $scope.listar = function (user) {
         $scope.pacientesMedicos = true;
-        medicosServices.listar(user).then(function () {
-
+        medicosServices.all(query).then(function () {
             $scope.response = medicosServices.response;
             $scope.cargandoMedicos = false;
-            console.log($scope.response)
-            if ($scope.response.error == 1) {
+            console.log("$scope.response", $scope.response)
+            if ($scope.response.data.length == 0) {
+                $scope.noExistenMedicos = true;
                 $scope.medicosCargado = false;
             } else {
                 $scope.medicosCargado = true;
-                if ($scope.response.data.length == 0) {
-                    $scope.noExistenMedicos = true;
-                }
+                $scope.noExistenMedicos = false;
                 $scope.medicos = $scope.response.data;
+                $scope.response.current_page = parseInt($scope.response.current_page);
             }
         });
     }
 
-    $scope.listar($scope.user);
+    $scope.listar();
 
     $scope.insertarModal = function () {
         $scope.medico = {};
@@ -83,5 +93,24 @@ app.controller('medicosCtrl', ['$scope', '$routeParams', 'medicosServices', func
         });
     }
 
+    $scope.search = function () {
+        $scope.listar({ "nombre": $scope.buscadorMedico, 'page': 1 });
+    }
+
+    $scope.toPage = function (page, action) {
+        if (action == 'add') {
+            page = parseInt(page) + 1;
+        }
+        else if (action == 'subs') {
+            page = parseInt(page) - 1;
+        }
+        if (page == 0)
+            page = 1;
+        console.log(page, $scope.response.pages)
+        if (page > $scope.response.pages)
+            page = $scope.response.pages;
+
+        $scope.listar({ "nombre": $scope.buscadorMedico, page: page });
+    }
 
 }])
